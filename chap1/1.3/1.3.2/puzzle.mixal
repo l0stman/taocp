@@ -13,6 +13,7 @@ ROW1    ORIG    *+OUTSIZ
 ROW2    ORIG    *+OUTSIZ
 ROW3    ORIG    *+OUTSIZ
 
+* Read the puzzle representation, the edges are set to -1.
 READ    STJ     0F
         IN      INBUF(TTERM)
         ENT4    -1
@@ -47,13 +48,14 @@ PUTC    SLC     1
 BLANK   ALF     "     "
 BORDER  ALF     "    +"
 LINE    ALF     "+++++"
+* Print an empty square.
 EBOX    STJ     0F
-        LD3     A11+X,1                 right
+        LD3     A11+X,1                 square to the right
         J3NN    1F
         LDA     BLANK
         JMP     *+2
 1H      LDA     BORDER
-        LD4     A11+X-1+N,1             below
+        LD4     A11+X-1+N,1             square below
         J4N     2F                      empty square?
         LDX     LINE
         JMP     0F
@@ -64,23 +66,26 @@ EBOX    STJ     0F
         JMP     0F
 3H      LDX     BORDER
 0H      JMP     *
+* Print a white square
 WBOX    STJ     0F
         LDA     BORDER
         LDX     LINE
-        LD3     A11+X-1+N,1             below
+        LD3     A11+X-1+N,1             square below
         J3NZ    1F
-        LD3     A11+X-1-N,1             above
+        LD3     A11+X-1-N,1             square above
         J3NZ    2F
-1H      LD3     A11+X,1                 right
+1H      LD3     A11+X,1                 square to the right
         J3NZ    0F
-        LD3     A11+X-2,1               left
+        LD3     A11+X-2,1               square to the left
         J3Z     0F
 2H      ENT6    1
 0H      JMP     *
+* Print a black square.
 BBOX    STJ     0F
         LDA     LINE
         LDX     LINE
 0H      JMP     *
+* Print the puzzle.
 PRINT   STJ     0F
         ENN1    X-1
         ENT5    1                       counter of numbered squares
