@@ -15,7 +15,10 @@ ROW3    ORIG    *+OUTSIZ
 
 * Read the puzzle representation, the edges are set to -1.
 READ    STJ     0F
-        IN      INBUF(TTERM)
+        ENT1    -N
+        IN      INBUF+N,1(TTERM)
+        INC1    INSIZ
+        J1N     *-2
         ENT4    -1
         ST4     A11
         ENT1    A11+1
