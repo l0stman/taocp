@@ -109,7 +109,8 @@ PROW    ENN2    N-1
         CON     SBOX
 TABLE   CON     WBOX
         CON     BBOX
-BTOS    STJ     0F
+* Transform black squares on the edges to empty ones.
+BTOE    STJ     0F
         ENT4    -1
 LOOP    ENT1    N-2*N                   position
         ENT6    0                       number of black squares transformed
@@ -131,7 +132,7 @@ FAIL    DEC1    1
         J6P     LOOP                    newly transformed empty squares?
 0H      JMP     *
 START   JMP     READ
-        JMP     BTOS
+        JMP     BTOE
         JMP     PRINT
         HLT
         END     START
