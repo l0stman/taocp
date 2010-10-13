@@ -47,7 +47,7 @@ PUTC    SLC     1
 BLANK   ALF     "     "
 BORDER  ALF     "    +"
 LINE    ALF     "+++++"
-SBOX    STJ     0F
+EBOX    STJ     0F
         LD3     A11+X,1                 right
         J3NN    1F
         LDA     BLANK
@@ -106,7 +106,7 @@ PROW    ENN2    N-1
         OUT     ROW3(PRINTER)
         J1N     PROW
 0H      JMP     *
-        CON     SBOX
+        CON     EBOX
 TABLE   CON     WBOX
         CON     BBOX
 * Transform black squares on the edges to empty ones.
