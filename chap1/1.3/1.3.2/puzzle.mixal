@@ -83,7 +83,7 @@ BBOX    STJ     0F
 0H      JMP     *
 PRINT   STJ     0F
         ENN1    X-1
-        ENT5    1                       counter of numbered square
+        ENT5    1                       counter of numbered squares
 PROW    ENN2    N-1
 1H      ENT6    0
         LD3     A11+X-1,1               current box
@@ -109,31 +109,29 @@ PROW    ENN2    N-1
         CON     SBOX
 TABLE   CON     WBOX
         CON     BBOX
-REMOVHL STJ     0F
-        ENN1    N-2*N
+BTOS    STJ     0F
         ENT4    -1
-1H      LD2     A11+X-1,1               current position
-        J2NN    2F                      non-empty square?
-        LD2     A11+X,1                 right box
-        J2NP    2F                      non-black square?
-        ST4     A11+X,1
-2H      INC1    1
-        J1N     1B
-0H      JMP     *
-REMOVHR STJ     0F
-        ENT1    N-2*N
-        ENT4    -1
+LOOP    ENT1    N-2*N                   position
+        ENT6    0                       number of black squares transformed
 1H      LD2     A11+N-1,1
-        J2NN    2F
-        LD2     A11+N-2,1               left box
-        J2NP    2F
-        ST4     A11+N-2,1
-2H      DEC1    1
+        J2NP    FAIL                    not a black square?
+        LD2     A11+N-2,1               square to the left
+        J2N     SUCCESS
+        LD2     A11+N,1                 square to the right
+        J2N     SUCCESS
+        LD2     A11-1,1                 square above
+        J2N     SUCCESS
+        LD2     A11+N-1+N,1             square below
+        J2N     SUCCESS
+        JMP     FAIL
+SUCCESS ST4     A11+N-1,1
+        INC6    1
+FAIL    DEC1    1
         J1P     1B
+        J6P     LOOP                    newly transformed empty squares?
 0H      JMP     *
 START   JMP     READ
-        JMP     REMOVHL
-        JMP     REMOVHR
+        JMP     BTOS
         JMP     PRINT
         HLT
         END     START
