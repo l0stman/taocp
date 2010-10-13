@@ -1,0 +1,539 @@
+\documentclass[a4paper,12pt]{article}
+\newcommand{\newpar}[1]{\bigskip \noindent \textbf{#1.}}
+\newcommand{\subpar}[1]{\medskip \noindent (#1)}
+\newcommand{\la}{\leftarrow}
+\newcommand{\ra}{\rightarrow}
+\begin{document}
+
+\newpar{1} $\lfloor 1.1\rfloor = 1$, $\lfloor -1.1\rfloor = -2$,
+$\lceil -1.1\rceil = -1$, $\lfloor 0.9999\rfloor = 0$, $\lfloor \lg
+35\rfloor = 5$.
+
+\newpar{2} $\lceil \lfloor x\rfloor \rceil = \lfloor x\rfloor$.
+
+\newpar{3}
+\subpar{a} Suppose $x < n$.  Thus
+
+\[ \lfloor x\rfloor \le x < n.\]
+
+Reciprocally, suppose $\lfloor x \rfloor < n$.  Thus
+
+\[ x-1 < \lfloor x \rfloor \le n-1.\]
+
+So finally $x < n$.
+
+\medskip
+\subpar{b} Suppose $n \le \lfloor x\rfloor$.  Thus
+
+\[ n \le \lfloor x \rfloor \le x.\]
+
+Reciprocally, suppose $n \le x$.  Thus
+
+\[ n \le x < \lfloor x \rfloor + 1.\]
+
+Since the leftmost and rightmost members in the above inequalities are
+integers, we deduce that $n \le \lfloor x\rfloor$.
+
+\subpar{c} Suppose $\lceil x\rceil \le n$.  Thus,
+
+\[ x \le \lceil x\rceil \le n.\]
+
+Reciprocally, suppose $x\le n$.  Thus,
+
+\[ \lceil x\rceil - 1 < x \le n.\]
+
+Since the leftmost and rightmost members of inequalities are integers,
+we deduce that $\lceil x\rceil \le n$.
+
+\medskip
+\subpar{d} Suppose $n < \lceil x\rceil$.  Thus,
+
+\[ n \le \lceil x\rceil - 1 < x.\]
+
+Reciprocally suppose $n < x$.  Thus,
+
+\[ n < x \le \lceil x\rceil.\]
+
+\medskip
+\subpar{e}  The second equivalence is trivial.  For the first one,
+$\lfloor x\rfloor = n$ if and only if $n$ is the greatest integer less
+than or equal to $x$, that $n$ is less than $x$ and $n+1$ is greater
+than $x$.  Reciprocally, let $n$ be an integer such that
+
+\[ n \le x < n+1.\]
+
+Thus by definition, we have $n \le \lfloor x\rfloor \le x < n+1$.  Or
+rewriting the inequalities:
+
+\[ 0 \le \lfloor x\rfloor - n < 1.\]
+
+Since $\lfloor x\rfloor - n$ is an integer, we deduce that it's equal
+to zero.
+
+\medskip
+\subpar{f} We could apply the same reasoning as in (e).
+
+\newpar{4}  From (e), we have
+
+\begin{eqnarray*}
+  \lfloor -x\rfloor \le &-x& < \lfloor -x\rfloor + 1 \\
+  -\lfloor -x\rfloor - 1 < &x& \le - \lfloor -x\rfloor
+\end{eqnarray*}
+
+We then deduce from (f) that $\lceil x\rceil = -\lfloor -x\rfloor$.
+
+\newpar{5} For $x$ a positive real number, note:
+
+\[ r(x) = \left\lfloor x + \frac{1}{2}\right\rfloor.\]
+
+We have
+
+\begin{eqnarray*}
+  r(x) &=& \left\lfloor \lfloor x\rfloor + x \bmod{1} +
+  \frac{1}{2}\right\rfloor \\
+  &=& \lfloor x\rfloor + \left\lfloor x \bmod 1 +
+  \frac{1}{2}\right\rfloor \\
+  &=& \left\{
+    \begin{array}{l}
+      \lfloor x \rfloor\ \mbox{if $x \bmod 1 < \frac{1}{2}$} \\
+      \lceil x \rceil\ \mbox{if $x \bmod 1\ge \frac{1}{2}$}
+    \end{array}
+    \right.
+\end{eqnarray*}
+
+If $x < 0$, then we have
+
+\[
+r(x) = \left\{
+\begin{array}{l}
+  \lfloor x \rfloor\ \mbox{if $x \bmod 1 \ge -\frac{1}{2}$}\\
+  \lfloor x \rfloor - 1\ \mbox{if $x \bmod 1 < -\frac{1}{2}$}
+\end{array}
+\right.
+\]
+
+\newpar{6}  Note: $n = \lfloor \sqrt x\rfloor$.  By using the
+properties in \textbf{3}, we have
+
+\begin{eqnarray*}
+  n^2 \le & x & < (n+1)^2 \\
+  n^2 \le & \lfloor x \rfloor & \le x < (n+1)^2 \\
+  n \le & \sqrt{\lfloor x\rfloor} & \le \sqrt{x} < n+1
+\end{eqnarray*}
+
+So finally, we deduce that $n = \lfloor\sqrt{x}\rfloor =
+\left\lfloor\sqrt{\lfloor x\rfloor}\right\rfloor$.  Similarly if we
+note $n = \lceil \sqrt{x}\rceil$, we have
+
+\begin{eqnarray*}
+  (n-1)^2 < &x& \le n^2 \\
+  (n-1)^2 < &x& \le \lceil x\rceil \le n^2 \\
+  n-1 < &\sqrt{x}& \le \sqrt{\lceil x\rceil}\le n^2
+\end{eqnarray*}
+
+Thus, finally $n = \left\lceil \sqrt{x}\right\rceil = \left\lceil
+\sqrt{\lceil x\rceil}\right\rceil$.
+
+On the other hand the equality (c) is false since
+
+\[ \left\lceil \sqrt{\lfloor 1.5 \rfloor}\right\rceil = 1 < 2 =
+\left\lceil \sqrt{1.5}\right\rceil.\]
+
+\newpar{7}  We have easily the inequality
+
+\[ \lfloor x \rfloor + \lfloor y\rfloor \le x + y.\]
+
+Thus $\lfloor x\rfloor + \lfloor y\rfloor \le \lfloor x + y\rfloor$.
+Moreover,
+
+\begin{eqnarray*}
+  \lfloor x\rfloor + \lfloor y \rfloor &=& x + y - (x \bmod 1 + y
+  \bmod 1) \\
+  &<& \lfloor x + y\rfloor + 1 - (x \bmod 1 + y \bmod 1)
+\end{eqnarray*}
+
+Thus, if $x \bmod 1 + y \bmod 1 \ge 1$ then
+
+\[ \lfloor x\rfloor + \lfloor y\rfloor < \lfloor x + y\rfloor.\]
+
+On the other hand, if $x \bmod 1 + y \bmod 1 < 1$, then
+
+\begin{eqnarray*}
+  \lfloor x\rfloor + \lfloor y\rfloor &=& x + y - (x\bmod1 +
+  y\bmod1)\\
+  &>& x + y - 1 \\
+  &\ge& \lfloor x + y \rfloor -1
+\end{eqnarray*}
+
+We then deduce that $\lfloor x\rfloor + \lfloor y\rfloor > \lfloor x +
+y\rfloor - 1$.  Thus $\lfloor x\rfloor + \lfloor y\rfloor \ge \lfloor
+x + y\rfloor$, and finally we deduce the equality since the
+reciproc is always true.
+
+We have also $\lceil x + y\rceil \le \lceil x\rceil + \lceil y \rceil$
+and there's equality if and only if $x$ or $y$ is an integer or
+
+\[ x \bmod 1 + y \bmod 1 > 1.\]
+
+\newpar{8} $100 \bmod 3 = 1$, $100 \bmod 7 = 2$, $-100 \bmod 7 = 5$,
+$-100 \bmod 0 = -100$.
+
+\newpar{9} $5 \bmod -3 = -1$, $18 \bmod -3 = 0$, $-2 \bmod -3 = -2$.
+
+\newpar{10} $1.1 \bmod 1 = 0.1$, $0.11 \bmod .1 = 0.01$, $0.11 \bmod
+-.1 = - 0.09$.
+
+\newpar{11} It means that $x = y$.
+
+\newpar{12} All integers.
+
+\newpar{13} $1$ and $-1$.
+
+\newpar{14} Let $p$ and $q$ be two integers such that $x = 3 p + 2$
+and $x = 5 q + 3$.  We then deduce that $3p = 5q + 1$. Given that
+$3\times 3 = 5 \times 2 - 1$, adding the two equalities we obtain:
+
+\[ 3(p+3) = 5(q+2) .\]
+
+Since $3\,\bot\,5 = 1$, we then deduce that $3$ divides
+$q+2$. So finally, we have $x \equiv 8 \bmod{15}$.
+
+\newpar{15} If $z = 0$, the equality is trivial.  Otherwise we have:
+
+\begin{eqnarray*}
+  z(x \bmod y) &=& z \left( x - y \lfloor x/y\rfloor \right) \\
+  &=& zx - yz \left\lfloor\frac{zx}{zy}\right\rfloor \\
+  &=& (zx) \bmod (zy).
+\end{eqnarray*}
+
+\newpar{16}  We have
+
+\begin{eqnarray*}
+  x \bmod y &=& x - y \lfloor x/y \rfloor \\
+  &=& x - y \lfloor (x - z)/y + z/y\rfloor \\
+  &=& x - y \left(\frac{x-z}{y} + \lfloor z/y\rfloor
+  \right),\ \mbox{since $(x - z)/y$ is an integer} \\
+  &=& x - y\,\frac{x-z}{y},\ \mbox{since $0 \le z < y$} \\
+  &=& z
+\end{eqnarray*}
+
+\newpar{17} Let's show that $a \equiv b \bmod m$ if and only if $m$
+divides $a - b$.
+
+If $a \equiv b \bmod m$ then
+
+\begin{eqnarray*}
+  a \bmod m &=& b \bmod m \\
+  a - m \lfloor a/m\rfloor &=& b - m \lfloor b/m\rfloor \\
+  a - b &=& m(\lfloor a/m\rfloor - \lfloor b/m\rfloor)
+\end{eqnarray*}
+
+Reciprocally, let $q$ be a positive integer such that $a = b + q m$.
+Thus,
+
+\[ \lfloor a/m\rfloor = \lfloor b/m + q\rfloor = q + \lfloor
+b/m\rfloor.\]
+
+We then deduce that,
+
+\[  a \bmod m = b + qm - m (q + \lfloor b/m\rfloor) = b \bmod m.\]
+
+\medskip
+So if we have $a \equiv b \bmod m$ and $x \equiv y \bmod m$, it means
+that $m$ divides $a - b$ and $x - y$.  Thus, $m$ divides $(a \pm x) -
+(b \pm y)$.  Which means $a \pm x \equiv b \pm y \bmod m$.
+
+If we note $a = b + pm$ and $x = y + qm$, then we have
+
+\[ a x = b y + m (bq + yp + mpq).\]
+
+Thus, $m$ divides $ax - by$ so $ax \equiv by \bmod m$.
+
+\medskip
+And finally if $a \equiv b \pmod{rs}$, then $rs$ divides $a-b$.  We
+then deduce that $r$ divides $a-b$ and $s$ divides $a-b$.  Thus $a
+\equiv b \pmod{r}$ and $a \equiv b \pmod{s}$.
+
+\newpar{18} Since we have $r\,\bot\, s = 1$ and
+
+\[ s\times \frac{a - b}{s} \equiv s\times 0 \pmod{r}.\]
+
+Using \textbf{Law B}, we deduce that $(a-b)/s \equiv 0 \pmod{r}$.
+Which means that $a - b \equiv 0 \pmod{rs}$.
+
+\newpar{19} From the extension of Euclid's algorithm, if $d$ is the
+greatest common divisor between $n$ and $m$, there exist two integers
+$n'$ and $m'$ such that $nn' + mm' = d$.  Since $d = 1$, we then
+deduce that $n n' \equiv 1 \pmod{m}$.
+
+\newpar{20} Suppose $ax \equiv by$, $a\equiv b$, and $a\,\bot\,m$.
+From the law of inverses, there exists an integer $a'$ such that
+$aa' \equiv 1 \pmod{m}$.  From \textbf{Law A}, we then deduce that $ba'
+\equiv aa' \equiv 1$, thus $a'ax \equiv a'b y \pmod{m}$ is equivalent
+to $x \equiv y \pmod{m}$.
+
+\newpar{21}  From exercise 1.2.1-5, we know that each number $n > 1$
+could be written as product of one or more prime numbers.  Let's show
+by induction on $n$ that this representation is unique.
+
+\medskip If $n=2$, it's trivial.  Now suppose for each integer $k$
+between $2$ and $n$, the representation is unique.  Suppose that we
+have two representations of $n+1$ as the product of prime numbers.
+Note $p$ and $q$ respectively the greatest prime numbers in the two
+representations and $a$ and $b$ the number of time they appear in the
+representations.  Thus we have
+
+\[ n = p^a \frac{n}{p^a} = q^b \frac{n}{q^b}.\]
+
+We have $q^b (n/q^b) \equiv 0 \pmod{p}$, and $p\,\bot\,q^b$.  Thus
+using \textbf{Law B}, we have $n/q^b \equiv 0 \pmod{p}$.  We then
+deduce that $p$ also appears in the second representation of $n$.  But
+since $q$ is the greatest prime in that representation, we deduce that
+$p\le q$.  By symmetry we also have $q\le p$, thus $p=q$.
+
+Now suppose $a \not= b$.  We treat only the case where $a < b$ since
+the case $b > a$ is obtained by swapping $p$ with $q$ and $a$ with
+$b$.  We then deduce that
+
+\[ \frac{n}{p^a} = p^{b-a} \frac{n}{p^b}.\]
+
+Since $b-a>0$, we then deduce that $p$ divides $n/p^a$ which is absurd
+by the definition of $a$.
+
+Finally, we then deduce that $a=b$.  And since the representation of
+$n/p^a$ is unique by induction, we then deduce the same for $n+1$.
+
+\newpar{22} We have $2\times 2 \equiv 0 \pmod{4}$ but, $2\not\equiv 0
+\pmod{4}$.
+
+\newpar{23} We have $4 \equiv 0 \pmod{4}$ and $4 \equiv 0 \pmod{2}$
+but $4 \not\equiv 0 \pmod{8}$.
+
+\newpar{24} Let's show that \textbf{Law A} is still true for addition
+and substraction.  If $\epsilon^2 = 1$, then we have
+
+\begin{eqnarray*}
+  \left\lfloor \frac{a+\epsilon x}{m} \right\rfloor &=&
+  \left\lfloor \frac{b+\epsilon y}{m} + \left(\left\lfloor
+  \frac{a}{m}\right\rfloor - \left\lfloor
+  \frac{b}{m}\right\rfloor \right) + \epsilon \left( \left\lfloor
+  \frac{x}{m}\right\rfloor - \left\lfloor
+  \frac{y}{m}\right\rfloor \right) \right\rfloor \\
+  &=&   \left\lfloor \frac{b+\epsilon y}{m} \right\rfloor + \left(\left\lfloor
+  \frac{a}{m}\right\rfloor - \left\lfloor
+  \frac{b}{m}\right\rfloor \right) + \epsilon \left( \left\lfloor
+  \frac{x}{m}\right\rfloor - \left\lfloor
+  \frac{y}{m}\right\rfloor \right) \\
+  &=&  \left\lfloor \frac{b+\epsilon y}{m} \right\rfloor + \frac{1}{m}
+  (a - b + \epsilon(x - y))
+\end{eqnarray*}
+
+So finally,
+\[ (a+\epsilon x) \bmod{m} = (b+\epsilon y) \bmod{m}.\]
+
+The demonstration in \textbf{15.} doesn't use any integers property so
+we deduce that \textbf{Law C} is always true.
+
+\newpar{25} Use Fermat's theorem and the law of inverses.
+
+\newpar{26} Suppose that $p$ doesn't divide $a$.  From \textbf{26}, we
+have
+\[ (b - 1)(b+1) = b^2 - 1 \equiv 0 \bmod{p}\]
+
+Using \textbf{Law B}, we then deduce that $b \equiv 1 \bmod{p}$ or $b
+\equiv -1 \bmod{p}$.
+
+\newpar{27} Since $p$ is prime, then $p\,\bot\,i = 1$ for $i$ varying
+between $1$ and $p-1$.  Thus $\varphi(p) = p-1$.
+
+Suppose $e$ is a positive integer.  The integers between $0$ and
+$p^e-1$ that share a common divisor with $p^e$ are:
+\[ 0, p, 2p, \ldots, \left\lfloor \frac{p^e-1}{p}\right\rfloor p =
+(p^{e-1}-1)p.\]
+
+We then deduce that $\varphi(p^e) = p^e - p^{e-1}$.
+
+\newpar{28} Note $I(n)$ the integers between $0$ and $n-1$ which are
+inversable.  That is $a \in I(n)$ then there exists $a'$ such that
+$aa' \equiv 1 \bmod{n}$.  Note that $a'$ is also an element of $I(n)$.
+Plus if $a\,\bot\,n = 1$, then the application $x \mapsto ax$ is a
+permutation of $I(n)$.  We then have
+
+\[ \prod_{x \in I(n)}(ax) \equiv \prod_{x \in I(n)}x \equiv a^{\varphi(n)}
+\prod_{x\in I(n)} x.\]
+
+We then deduce that $a^{\varphi(n)} \equiv 1 \pmod{n}$ since $I(n)$ is
+stable under multiplication.
+
+\newpar{29}  \subpar{a} Note that since $r\,\bot\,s = 1$ then
+$rs\not=0$. Thus $f$ is defined and is already multiplicative
+regardless of $r$ and $s$.
+
+\subpar{b} Let $k$ be a positive integer such that $k^2$ divides
+$rs$.  Since $r\,\bot\,s = 1$, then $k^2$ divides $r$ or (exclusive)
+$k^2$ divides $s$.  We then deduce easily
+
+\begin{eqnarray*}
+  f(rs) &=& [rs\ \mbox{is not divisible by $k^2$ for any $k>0$}] \\
+  &=& [\mbox{$r$ is not divisible by $k^2$ and $s$ is not divisible by
+      $k^2$}] \\
+  &=& f(r)f(s)
+\end{eqnarray*}
+
+\subpar{c} $r\,\bot\,s = 1$ and $n$ has a unique representation as a
+product of primes.
+
+\subpar{d} If $f$ and $g$ are two multiplicative functions, we have
+\[ f(rs)g(rs) = (f(r)g(r))(f(s)g(s)).\]
+
+\newpar{30}  Suppose that $r\,\bot\,s = 1$.  If $n$ is a positive
+integer, note $\mathbf{Z/nZ}^*$ the elements of $\mathbf{Z/nZ}$ that
+are invertible.  Note $f$ the application
+\begin{eqnarray*}
+  f: \mathbf{Z/rsZ}^* &\longrightarrow& \mathbf{Z/rZ}^* \times
+  \mathbf{Z/sZ}^* \\
+  x \bmod{rs} &\longmapsto& (x \bmod{r}, x\bmod{s})
+\end{eqnarray*}
+
+Let's show that $f$ is a bijection.  Let $x$ and $x'$ be two integers
+relatively primes to $rs$ and such that $f(x\bmod{rs}) =
+f(x'\bmod{rs})$.  We then deduce that $r$ and $s$ divides $x - x'$.
+We then deduce from \textbf{Law D} that $rs$ divides $x-x'$.  Thus $f$
+is injective.
+
+Let $(y\bmod r, z\bmod s)$ be an element of $\mathbf{Z/rZ}^*\times
+\mathbf{Z/sZ}^*$.  From \textbf{19.}, there exist two integers $n$ and
+$m$ such that $n r + m s = 1$.  We then deduce that
+\[y-z = nr(y-z) + ms(y-z).\]
+
+If we note $x = y + nr(z-y) = z + ms(y-z)$.  Then we have
+\[f(x\bmod{rs}) = (y \bmod r, z\bmod s).\]
+Plus since $\gcd(x, r) = \gcd(y, r) = 1$ and $\gcd(x, s) = \gcd(z, s)
+= 1$, we then deduce that $x\,\bot\,rs$.  Hence, $f$ is a surjection.
+
+Thus $f$ is a bijection from $\mathbf{Z/rsZ}^*$ to
+$\mathbf{Z/rZ}^*\times\mathbf{Z/sZ}^*$, thus \[\varphi(rs) = \varphi(r)
+\varphi(s).\]
+
+Thus we have using \textbf{27.}
+\[ \varphi(10^6) = \varphi(2^6) \varphi(5^6) = (2^6 - 2^5)(5^6 - 5^5)
+= 400000\]
+
+We use the following method to compute $\varphi(n)$.  If $n =
+p_1^{n_1}\cdots p_k^{n_k}$ where the integers $p_1, \ldots, p_k$ are
+prime numbers, we have
+\[ \varphi(n) = \prod_{i=1}^kp_i^{n_i-1}(p_i-1).\]
+
+\newpar{31} Suppose that $f(n)$ is multiplicative.  If $r\,\bot\,s$,
+then we have
+\begin{eqnarray*}
+  g(rs) &=& \sum_{d\backslash rs}f(d) \\
+  &=& \sum_{d\backslash r}\sum_{d'\backslash s}f(dd') \\
+  &=& \sum_{d\backslash r} \sum_{d'\backslash s} f(d)
+  f(d'),\ \mbox{because $d\,\bot\,d'$} \\
+  &=& g(r) g(s)
+\end{eqnarray*}
+
+\newpar{32} We have
+
+\begin{eqnarray*}
+  \sum_{d \char92 n} \sum_{c \char92 d} f(c, d) &=& \sum_{d \char92
+    n\,\mathrm{and}\,c\char92 d} f(c, d) \\
+  &=& \sum_{(cd')\char92 n}f(c, cd'),\,\mbox{if $d = cd'$} \\
+  &=& \sum_{c \char92 n} \sum_{d'\char92 (n/c)} f(c, cd')
+\end{eqnarray*}
+
+\newpar{33} \subpar{a}  If $m$ and $n$ have the same parity, $n
+\pm m$ is even thus
+\[\left\lfloor \frac{1}{2}(n+m)\right\rfloor + \left\lfloor
+\frac{1}{2}(n-m+1)\right\rfloor = \frac{n+m}{2} + \frac{n-m}{2} = n.\]
+
+Otherwise $n\pm m$ is odd and
+\[\left\lfloor \frac{1}{2}(n+m)\right\rfloor + \left\lfloor
+\frac{1}{2}(n-m+1)\right\rfloor = \frac{n+m-1}{2} + \frac{n-m+1}{2} =
+n.\]
+
+\subpar{b} If $m$ and $n$ have the same parity
+\[\left\lceil \frac{1}{2}(n+m)\right\rceil + \left\lceil
+\frac{1}{2}(n-m+1) \right\rceil = \frac{n+m}{2} + \frac{n-m}{2} + 1 =
+n+1\]
+
+Otherwise
+\[\left\lceil \frac{1}{2}(n+m)\right\rceil + \left\lceil
+\frac{1}{2}(n-m+1) \right\rceil = \frac{n+m-1}{2} + 1 +
+\frac{n-m+1}{2} = n+1.\]
+
+\newpar{37} We have
+
+\begin{eqnarray*}
+  \sum_{0\le k<n}\left\lfloor \frac{mk + x}{n}\right\rfloor &=&
+  \sum_{0\le k<n}\frac{mk+x}{n} - \sum_{0\le k<n}\left\{
+  \frac{mk+x}{n}\right\} \\ &=&
+  x + \frac{m(n-1)}{2} - \sum_{0\le k<n}\left\{\frac{mk+x}{n}\right\}
+\end{eqnarray*}
+
+Note $d$ the greatest common divisor of $m$ and $n$ and note $m' =
+m/d$ and $n' = n/d$.  We have
+
+\begin{eqnarray*}
+  \sum_{0\le k<n}\left\{ \frac{mk+x}{n} \right\} &=& \sum_{0\le k<n}
+  \left\{ \frac{m'k}{n'} + \frac{x}{n} \right\} \\
+  &=& \sum_{0\le k<n}\left\{ \frac{k}{n'} + \frac{x}{n} \right\}
+\end{eqnarray*}
+
+since $m'\,\bot\,n' = 1$, then $k \mapsto m'k$ is a permutation of
+$Z/n'Z$.  And we have,
+
+\begin{eqnarray*}
+  \sum_{0\le k<n}\left\{ \frac{k}{n'} + \frac{x}{n} \right\} &=&
+  \sum_{l=0}^{d-1}\sum_{k=ln'}^{(l+1)n'-1} \left\{ \frac{k}{n'} +
+  \frac{x}{n} \right\} \\ &=&
+  \sum_{l=0}^{d-1}\sum_{k=0}^{n'-1}\left\{ \frac{k}{n'} + l +
+  \frac{x}{n} \right\} \\ &=&
+  d \sum_{0\le k <n'}\left\{ \frac{k}{n'} + \frac{x}{n}\right\} \\ &=&
+  d \sum_{0\le k<n'} \left\{ \frac{k}{n'} + \frac{x/d}{n'}\right\}
+  \\ &=& d \sum_{0\le k<n'}\left\{ \frac{k + \lfloor x/d\rfloor}{n'} +
+  \frac{\{ x/d \}}{n'}\right\} \\ &=&
+  d \sum_{0\le k<n'}\left\{ \frac{k}{n'} + \frac{\{x/d\}}{n'} \right\}
+  \\ &=& d \sum_{0\le k<n'} \left( \frac{k + \{x/d\}}{n'} \right)
+\end{eqnarray*}
+
+since $k \mapsto k + \lfloor x/d\rfloor$ is a permutation of $Z/n'Z$
+and $0 \le k + \{x/d\} < n'$ for $0\le k \le n'-1$.  Thus finally
+
+\begin{eqnarray*}
+  \sum_{0\le k<n}\left\{ \frac{mk+x}{n} \right\} &=& d \sum_{0\le
+    k<n'}\left( \frac{k + \{x/d\}}{n'} \right) \\ &=&
+  d \left( \frac{n'-1}{2} + \{x/d\} \right) \\ &=&
+  \frac{d(n'-1)}{2} + x - d \lfloor x/d\rfloor
+\end{eqnarray*}
+
+At last, we deduce that
+
+\begin{eqnarray*}
+  \sum_{0\le k<n}\left\lfloor \frac{mk+x}{n} \right\rfloor &=& x +
+  \frac{m(n-1)}{2} - \frac{d(n'-1)}{2} - x + d \lfloor x/d\rfloor
+  \\ &=& \frac{(m-1)(n-1)}{2} + \frac{d-1}{2} + d \lfloor x/d\rfloor
+\end{eqnarray*}
+
+\newpar{38}  Note $n$ the integer that verifies
+
+\[ x + \frac{n-1}{y} < \lfloor x\rfloor + 1 \le x + \frac{n}{y} .\]
+
+Thus we have $n = \lceil \lfloor x + 1\rfloor y - x y\rceil$.   On the
+other hand, we have
+
+\begin{eqnarray*}
+  \sum_{0\le k <y}\left\lfloor x + \frac{k}{y}\right\rfloor &=&
+  \sum_{0\le k\le\lceil y\rceil -1}\left\lfloor x +
+  \frac{k}{y}\right\rfloor \\ &=&
+  \sum_{0\le k\le n-1}\left\lfloor x + \frac{k}{y}\right\rfloor +
+  \sum_{n\le k\le \lceil y\rceil - 1}\left\lfloor x +
+  \frac{k}{y}\right\rfloor \\ &=&
+  n\lfloor x\rfloor + \lfloor x+1\rfloor(\lceil y\rceil - n) \\ &=&
+  \lfloor x+1\rfloor \lceil y\rceil - n \\ &=&
+  \lfloor x+1\rfloor \lceil y\rceil + \lfloor xy - \lfloor x+1\rfloor
+  y\rfloor \\ &=&
+  \lfloor xy + \lfloor x+1\rfloor(\lceil y\rceil - y)\rfloor
+\end{eqnarray*}
+\end{document}

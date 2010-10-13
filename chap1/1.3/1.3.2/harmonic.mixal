@@ -1,0 +1,73 @@
+* Let rn(x) be the number x rounded to n decimal places. Print the
+* sum: rn(1) + rn(1/2) + rn(1/3) + ... for n = 1, 2, 3, 4, 5.  Note
+* that rn(1/a) = rn(1/b) for b >= a if and only if
+*     10^n rn(1/a) <= 10^n rn(1/b) + 1/2
+* That's equivalent to
+*     b <= 2 10^n/(2 (10^n rn(1/a)) - 1)
+*
+BUF     EQU     3000
+PRINTER EQU     18
+START   ENT1    -6
+        JMP     3F
+1H      ENTA    0
+        LDX     POW10
+2H      DIV     I
+        STX     REST
+        SRC     5
+        ADD     REST
+        SUB     I
+        JAN     *+2
+        INCX    1
+        JXZ     PRINT
+        STX     TERM	10^n rn(1/i).
+        LDA     TERM
+        ADD     TERM
+        DECA    1
+        STA     MAXDEN
+        LDA     POW10
+        ADD     POW10
+        SRAX    5
+        DIV     MAXDEN
+        STA     MAX
+        SUB     I
+        INCA    1
+        MUL     TERM
+        SLAX    5
+        ADD     SUM
+        STA     SUM
+        LDA     MAX
+        INCA    1
+        STA     I
+        JMP     1B
+PRINT   LDX     SUM
+        ENTA    0
+        DIV     POW10
+        STX     REST
+        CHAR
+        STX     BUF(1:4)
+        LDA     REST
+        CHAR
+        ENN2    0,1
+        SLC    -1,2
+        STX     REST
+        OUT     BUF(PRINTER)
+3H      LDA     POW10
+        MUL     =10=
+        STX     POW10
+        STZ     SUM
+        ENT2    1
+        ST2     I
+        INC1    1
+        J1N     2B
+        HLT
+POW10   CON     1
+SUM     CON     0
+TERM    CON     0
+I       CON     0
+MAX     CON     0
+MAXDEN  CON     0
+        ORIG    BUF
+        ALF     "    ."
+REST    ALF
+        ORIG    BUF+24
+        END     START

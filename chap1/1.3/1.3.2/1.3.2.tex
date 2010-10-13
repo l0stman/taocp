@@ -1,0 +1,212 @@
+\documentclass[a4paper,12pt]{article}
+\newcommand{\newpar}[1]{\bigskip \noindent \textbf{#1.}}
+\newcommand{\subpar}[1]{\medskip \noindent (#1)}
+\newcommand{\la}{\leftarrow}
+\newcommand{\ra}{\rightarrow}
+
+\begin{document}
+\newpar{1} ``ENTA 1000; STA X''.
+
+\newpar{2} Actually the address is set to the next instruction
+preceding the jump to the subroutine in instruction $03$.
+
+\newpar{3} Read $100$ words from tape unit 0 and store them in $X+1,
+\ldots, X+100$.  Sort this array in increasing order and write back
+the result to tape unit 1.
+
+\newpar{4}
+\begin{verbatim}
+3000 00 00 00 18 35
+3001  2050 00 05 09
+3002  2051 00 05 10
+3003     1 00 00 49
+3004   499 01 05 26
+3005  3016 00 01 41
+3006     2 00 00 50
+3007     2 00 02 50
+3008 00 00 00 02 48
+3009 00 00 02 02 55
+3010    -1 03 05 04
+3011  3006 00 01 47
+3012    -1 03 05 56
+3013     1 00 00 51
+3014  3008 00 06 39
+3015  3003 00 00 39
+3016  1995 00 18 37
+3017  2035 00 02 52
+3018   -50 00 02 53
+3019   501 00 00 53
+3020    -1 05 05 08
+3021 00 00 00 01 05
+3022 00 00 04 12 31
+3023 00 01 00 01 52
+3024    50 00 01 53
+3025  3020 00 02 45
+3026 00 00 04 18 37
+3027    24 04 05 12
+3028  3019 00 00 45
+3029 00 00 00 02 05
+0000              2
+1995 06 09 19 22 23
+1996 00 06 09 25 05
+1997 00 08 24 15 04
+1998 19 05 04 00 17
+1999 19 09 14 05 22
+2024           2035
+2029           2010
+2050           -499
+2051              3
+\end{verbatim}
+
+\newpar{5} Because the machine waits the unit is ready, if it's not
+initially ready.
+
+\newpar{6}
+\subpar{a}  Suppose $n$ is not a prime.  Then there exits two integers
+$a$ and $b$ such that $1 < a\le b <n$ and $n = ab$.  If $a > \sqrt{n}$,
+we have:
+\[ n = a b > a^2 = n.\]
+Which is absurd so $1 \le a \le \sqrt{n}$.
+
+\subpar{b} Note: $P = \mathrm{PRIME}[K]$.  We have
+\[ N = Q P + R,\,\mbox{with $0 < R  < P$}.\]
+If we have $Q \le P$, then
+\[ N \le P^2 + R < P^2 + P \le (P+1)^2.\]
+Thus
+\[ \sqrt{N} < P+1.\]
+If $N$ has a divisor $d$, we deduce from (a) that $d < P+1$.  That's
+equivalent to $d \le P$.  We then deduce that $N$ has no divisor since
+we have already tested that no prime number less than $P$ divide $N$.
+
+\newpar{7}
+\subpar{a} 4B here references the address 4H at line $29$.
+
+\subpar{b} The jump at line $14$ would references line $15$ instead of
+line $25$.
+
+\newpar{8} The program writes $i$ zero(es) word(s) followed by the word
+``AAAAA'' to the buffer BUF, where $i$ varies from $1$ to $75$ ---
+which represents $2925$ words (100 lines).  It then writes $2400$ words from the
+buffer to the line printer.
+
+\newpar{11} By symmetry, we could assume that the saddle point in the
+matrix is $a_{11}$.  Thus, the probability the matrix has a saddle
+point is $m n$ times the probability $a_{11}$ is a saddle point.  The
+later is equal to $1/(mn)!$ times the probability to have
+\[ a_{2,1} < a_{1,1}, \ldots, a_{m,1} < a_{1,1}, a_{1,1} < a_{1,2},
+\ldots, a_{1,1} < a_{1,n}.\]
+Which is equal to
+\[ C_{mn}^{m+n-1} (m-1)! (n-1)! (mn - (m+n-1))! =
+\frac{(mn)!(m-1)!(n-1)!}{(m+n-1)!}.\]
+Finally, the probability is equal to
+\[ m n \times \frac{(m-1)!(n-1)!}{(m+n-1)!} = \frac{mn}{C_{m+n}^m}.\]
+
+If the elements of the matrix are zeroes and ones, all we have to do
+is finding a column of zeroes or a row of ones.  The probability that
+there's no column of zeroes is
+\[ \left(1 - \frac{1}{2^m}\right)^n\]
+and the probability that there's no row of ones
+\[ \left(1 - \frac{1}{2^n}\right)^m.\]
+Thus the probability to have a saddle point is
+\[ \left(1 - \left(1 - \frac{1}{2^m}\right)^n\right)
++  \left(1 - \left(1 - \frac{1}{2^n}\right)^m\right).\]
+
+\newpar{17} For each positive integers $k$, $n$ and $M$, we have
+
+\[ M = \lfloor 10^n/k + 1/2\rfloor \]
+
+if and only if
+
+\[ \left\lfloor \frac{2\times 10^n}{2M+1}\right\rfloor + 1 \le k \le
+\left\lfloor \frac{2\times 10^n}{2M-1}\right\rfloor\mbox{(*)}.\]
+
+If we note $N = \left\lfloor\frac{2\times10^n}{2m+1}\right\rfloor$, we
+have
+
+\begin{eqnarray*}
+  S_n &=& \sum_{k=1}^{2\times10^n}r_n(1/k) \\
+  &=& 10^{-n} \sum_{k=1}^N \lfloor 10^n/k + 1/2\rfloor + 10^{-n}
+  \sum_{k=N+1}^{2\times10^n} \lfloor 10^n/k + 1/2\rfloor \\
+  &=& 10^{-n} \sum_{k=1}^N (10^n/k + O(1)) +
+  10^{-n} \sum_{k=N+1}^{2\times10^n} \lfloor 10^n/k + 1/2\rfloor \\
+  &=& H_N + O(N/10^n) +  10^{-n} \sum_{k=N+1}^{2\times10^n} \lfloor 10^n/k +
+  1/2\rfloor \\
+  &=& H_N + O(m^{-1}) + 10^{-n} \sum_{k=1}^m
+  \sum_{\left\lfloor\frac{2\times10^n}{2k+1}\right\rfloor + 1\le j \le
+    \left\lfloor\frac{2\times 10^n}{2k-1}\right\rfloor} \lfloor 10^n/j
+  + 1/2\rfloor \\
+  &=& H_N + O(m^{-1}) + 10^{-n} \sum_{k=1}^m k
+  \left(\left\lfloor\frac{2\times 10^n}{2k-1}\right\rfloor -
+  \left\lfloor\frac{2\times10^n}{2k+1}\right\rfloor\right),\,\mbox{from
+    (*)} \\
+  &=& H_N + O(m^{-1}) + 10^{-n} \left( \sum_{k=0}^{m-1}
+  \left\lfloor\frac{2\times10^n}{2k+1}\right\rfloor -
+  m\left\lfloor\frac{2\times10^n}{2m+1}\right\rfloor\right) \\
+  &=& H_N + O(m^{-1}) + 10^{-n} \left(
+  \sum_{k=0}^{m-1} \frac{2\times 10^n}{2k+1} - 10^n (1 - O(m^{-1})) + O(m)
+  \right) \\
+  &=& H_N + O(m^{-1}) - 1 + O(m/10^n) + 2 \sum_{k=0}^{m-1}
+  \frac{1}{2k+1} \\
+  &=& H_N + O(m^{-1}) - 1 + O(m/10^n) + 2 \left(H_{2m} -
+  \frac{H_m}{2}\right)
+\end{eqnarray*}
+
+Given that $H_n = \ln n + \gamma - o(n^{-1})$, we then deduce
+
+\[  S_n = \ln N + 2\gamma + 2\ln 2 - 1 + o(N^{-1}) + O(m^{-1}) + \ln m
++ O(m/10^n).\]
+
+Moreover, if we choose $m = \lfloor 10^{n/2}\rfloor$ we have
+
+\[ N = \frac{2\times 10^n}{2m+1} + O(1).\]
+
+And
+
+\[ 0 \le \frac{1}{2m+1} - \frac{1}{2\times10^{n/2}+1} <
+\frac{1}{2\times10^{n/2}-2} - \frac{1}{2\times10^{n/2}+1} =
+O(10^{-n}).\]
+
+So finally, we have $N = 10^{n/2} + O(10^{-n})$.  Thus, we deduce that
+
+\[ S_n = 10 \ln n + 2\gamma + 2\ln 2 -1 + O(10^{-n/2}).\]
+
+\newpar{19} \subpar{a} Let's show the equality by induction.
+
+If $k=0$, we have
+
+\[ x_1 y_0 - x_0 y_1 = 1.\]
+
+Suppose that we have the equality for $k \ge 0$, then we have
+
+\begin{eqnarray*}
+  x_{k+2} y_{k+1} - x_{k+1} y_{k+2} &=& x_{k+1} y_k - x_k y_{k+1} \\
+  &=&1\,\mbox{, by induction}
+\end{eqnarray*}
+
+\subpar{b}  Let $x, y$ be integers such that $0 \le x \le y \le n$.
+And suppose there's a positive integer $k$ such that:
+
+\[ \frac{x_n}{y_n} < \frac{x}{y} < \frac{x_{n+1}}{y_{n+1}}.\]
+
+We then deduce
+
+\begin{eqnarray*}
+  y x_k y_{k+1} < x y_k y_{k+1} < y x_{k+1} y_k \\
+  \max\left( y_k( y x_{k+1} - x y_{k+1} ), y_{k+1} (x y_k - y x_k)
+  \right) < y (x_{k+1} y_k - x_k y_{k+1}) \\ 
+  y_k + y_{k+1} \le 2 \max(y_k, y_{k+1}) <  y
+\end{eqnarray*}
+
+So finally, we have
+
+\begin{eqnarray*}
+  n \ge y &>& y_k + \left((y_{k-1} + n)/y_k - 1 \right) y_k - y_{k-1} \\
+  &\ge& n
+\end{eqnarray*}
+
+Which is absurd.  We then deduce that there's no fraction between $0$
+and $1$ whose denominator is less than $n$ and whose value lays
+between two consecutive elements of the sequel $(x_n)$.  We then
+deduce that $(x_n)$ is in fact the Farey series of order $n$.
+\end{document}
+

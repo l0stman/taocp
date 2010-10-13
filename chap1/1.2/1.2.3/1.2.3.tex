@@ -1,0 +1,889 @@
+\documentclass[a4paper,12pt]{article}
+\newcommand{\newpar}[1]{\bigskip \noindent \textbf{#1.}}
+\newcommand{\la}{\leftarrow}
+\newcommand{\ra}{\rightarrow}
+\begin{document}
+
+\newpar{1} $a_1 + a_2 + a_3$.
+
+\newpar{2}
+\begin{eqnarray*}
+\sum_{0 \le n \le 5}\frac{1}{2n+1} & = & 1 + \frac{1}{3} + \frac{1}{5} +
+\frac{1}{7} + \frac{1}{9} + \frac{1}{11} \\
+\sum_{0 \le n^2 \le 5} \frac{1}{2n^2+1} & = & = \frac{1}{9}+
+\frac{1}{3} + 1 + \frac{1}{3} +
+\frac{1}{9}
+\end{eqnarray*}
+
+\newpar{3} Because $n \mapsto n^2$ is not a permutation of the range.
+
+\newpar{4} $a_{11} + (a_{21} + a_{22}) + (a_{31} + a_{32} + a_{33}) =
+(a_{11} + a_{21} + a_{31}) + (a_{22} + a_{32}) + a_{33}$.
+
+\newpar{5} Suppose that $(a_i)_{R(i)}$ and $(b_i)_{S(i)}$ are non nul
+series. Let's prove that
+\[
+\left(\sum_{R(i)}a_i\right)\left(\sum_{S(i)}b_i\right) = \sum_{R(i)}
+\sum_{S(j)}a_i b_j.\] 
+If $(b_i)_{S(i)}$ is divergent, the second member is not defined.\\
+If $(a_i)_{S(i)}$ is divergent, it's not a Cauchy sequel.
+Replacing $n$ and $m$ by $-n$ and $-m$ if needed, there exists 
+$\epsilon_0 > 0$ such that:
+\[ \forall N \in \mathbf{N}, \exists m > n > N, \mbox{ such that :}
+\left|\sum_{R(i) \atop n\le i\le m}a_i\right| \ge \epsilon_0. \] Thus,
+\[ \left| \sum_{R(i) \atop n\le i\le m} \sum_{S(j)} a_i b_j \right|
+\ge \epsilon_0 \left|\sum_{S(j)}b_j\right|.\]
+Thus $\left(\sum_{S(j)}a_i b_j\right)_{R(i)}$ is divergent and the reciproque
+is also true.
+
+\medskip
+From now on, let's suppose that $(a_i)_{R(i)}$ and $(b_i)_{S(i)}$ are
+convergent.\\
+Note: $a_+ = \lim_{n \ra \infty}\sum_{R(i), 0 \le i \le n}a_i$,
+$a_- = \lim_{n\ra \infty}\sum_{R(i),-n\le i<0}a_i$, $b = \sum_{S(i)}b_i$.\\
+Let $\epsilon$ be a positive number.  There exists $N$ integer such
+that, for $n \ge N$
+\[\left| a_+ - \sum_{R(i)\atop 0 \le i \le n}a_i \right| < \frac{\epsilon}{|b|}.\]
+Thus,
+\[\left| a_+b - \sum_{R(i)\atop 0\le i\le n}\sum_{S(j)}a_ib_j\right| <
+\epsilon.\]
+We can show too that $\sum_{R(i),-n\le i< 0}\sum_{S(j)}a_ib_j$
+converges to $a_-$.
+
+\newpar{6} If any of the three sums exists, then all sums exist.  For
+$n$ positive integer, we have:
+\[\sum_{R(j)\atop-n\le j\le n}a_j + \sum_{S(j)\atop-n\le j\le n}a_j =
+\sum_{R(j)\,\mathrm{or}\,S(j)\atop-n\le j\le n}a_j + 
+\sum_{R(j)\,\mathrm{and}\,S(j)\atop-n \le j \le n}a_j.\]
+And taking the limit of the equality when $n \ra +\infty$, we have the
+desired result.
+
+\newpar{7} Let $c$ be an integer.  For all integers $m$ and $n$ we
+have:
+\begin{eqnarray*}
+\sum_{R(j)\atop-m\le j \le n}a_j &=& \sum_{R(c-j)\atop-m \le j \le n}a_{c-j}\\
+&=& \sum_{R(c-j)\atop c-n\le c-j\le c+m}a_{c-j}.
+\end{eqnarray*}
+Thus, the two sums converge or diverge simultaneously.
+
+\newpar{8} Let $a_{(i+1)i} = +1$, and $a_{i(i+1)} = -1$, for all 
+$i > 0$, and all other $a_{ij}$ zero; let $R(i) = S(i) = ``i \ge 0''$.
+The left-hand side is -1, the right-hand side is +1.
+
+\newpar{9} Yes.
+
+\newpar{10} Yes.
+
+\newpar{11} It's not defined.
+
+\newpar{12}
+\[ 1 + \frac{1}{7} + \frac{1}{49} + \cdots +
+\left(\frac{1}{7}\right)^n =
+\left(1 - \left(\frac{1}{7}\right)^{n+1}\right)\frac{7}{6}\]
+
+\newpar{13}
+\begin{eqnarray*}
+\sum_{m\le j\le n}j &=& \sum_{0\le j \le n}j - 
+\sum_{0\le j \le  m-1}j\\ & = &
+\frac{1}{2}n(n+1) - \frac{1}{2}m(m-1)
+\end{eqnarray*}
+
+\newpar{14}
+\begin{eqnarray*}
+\sum_{j=m}^n \sum_{k=r}^sjk & = &
+\frac{1}{4} (n(n+1)-m(m-1))(s(s+1)-r(r-1))
+\end{eqnarray*}
+
+\newpar{15} Note: $S_n = \sum_{k = 1}^n k 2^k$.  We have:
+\begin{eqnarray*}
+2S_n &=& \sum_{k=1}^n k 2^{k+1}\\
+&=& \sum_{k=1}^n (k+1)2^{k+1} - \sum_{k=1}^n2^{k+1}\\
+&=& -2 + S_n + 2^{n+1}(n+1) - 2^2(2^n-1).\\
+\end{eqnarray*} Thus,
+\[ S_n = 2^{n+1}(n+1) - 2^{n+2}+2.\]
+
+\newpar{16} We have for $x \not= 1$,
+\begin{eqnarray*}
+\sum_{j=0}^njx^j &=& x \sum_{j=1}^n jx^{j-1}\\
+&=&x\left(\sum_{j=0}^nx^j\right)'\\
+&=& x\left(\frac{x^{n+1} - 1}{x - 1}\right)'\\
+&=& x \frac{(n+1)x^n(x-1)-(x^{n+1}-1)}{(x-1)^2}\\
+&=& x \frac{nx^{n+1} -(n+1) x^n + 1}{(x-1)^2}
+\end{eqnarray*}
+
+\newpar{17}  It's the number of elements of S.
+
+\newpar{18}
+\[\sum_{i | n} \sum_{1 \le j < i} a_{ij} =
+\sum_{1 \le j < n} \sum_{j < i\,\mathrm{and}\,i | n}a_{ij}\]
+
+\newpar{19} if $m \le n$, $\sum_{j=m}^n(a_j-a_{j-1}) = a_n - a_{m-1}$.
+
+\newpar{20} a) $9 \sum_{i=1}^{n-1} (n-i)10^{i-1} + n = \sum_{i=0}^{n-1}10^i$.
+
+\medskip \noindent
+b) $(b-1)\sum_{i=1}^{n-1}(n-i)b^{i-1}+n = \sum_{i=0}^{n-1}b^i$.
+
+\medskip \noindent
+c) We have,
+\begin{eqnarray*}
+(b-1)\sum_{i=1}^{n-1}(n-i)b^{i-1}+n &=&
+\sum_{i=1}^{n-1}(n-i)b^i - \sum_{i=1}^{n-1}(n-i)b^{i-1}+n\\
+&=& \sum_{i=1}^{n-1}(n-i)b^i - \sum_{i=0}^{n-2}(n-i-1)b^i+n\\
+&=& b^{n-1} + \sum_{i=1}^{n-2}b^i - (n-1) + n\\
+&=& \sum_{i=0}^{n-1}b^i
+\end{eqnarray*}
+
+\newpar{21} We have,
+\begin{eqnarray*}
+[R(i)\,\mathrm{or}\,S(i)] &=&
+[R(i)]+(1-[R(i)])[S(i)]\\ &=&
+[R(i)]+[S(i)]-[R(i)\,\mathrm{and}\,S(i)],
+\end{eqnarray*} thus,
+\[[R(i)\,\mathrm{or}\,S(i)] + [R(i)\,\mathrm{and}\,S(i)]
+= [R(i)] + [S(i)]\]
+Given that 
+\[ \sum_{R(i)}a_i + \sum_{S(i)}a_i = 
+\sum_ia_i[R(i)] + \sum_ia_i[S(i)] = 
+\sum_ia_i([R(i)]+[S(j)])\]
+we could easily conclude.
+
+\newpar{22}
+\begin{eqnarray}
+\prod_{R(i)}a_i = \prod_{R(j)}a_j = \prod_{R(p(j))}a_{p(j)}\\
+\prod_{R(i)} \prod_{S(j)}a_{ij} = \prod_{S(j)}\prod_{R(i)}a_{ij}\\
+\prod_{R(i)}(b_ic_i) = \prod_{R(i)}b_i \prod_{S(i)}c_i\\
+\prod_{R(j)}a_j \prod_{S(j)}a_j = \prod_{R(j)\,\mathrm{or}\,S(j)}a_j
+\prod_{R(j)\,\mathrm{and}\,S(j)}a_j
+\end{eqnarray}
+
+\newpar{23} We could write a sum or a product without worrying if it
+exists or not.
+
+\newpar{24} Note $N(R)$ the number of integers satisfying $R$.\\
+(a) If $N(R) = 0$, we have
+\[\log_b\prod_{R(j)}a_j = \log_b 1 = 0 = \sum_{R(j)}(\log_b a_j).\]
+
+\noindent
+(b) Suppose the property is verified for all properties $S$ such that
+$N(S) = n$ and suppose $N(R) = n+1$.\\
+Note $m$ an integer such that
+$R(m)$ is satisfied.  We have,
+\begin{eqnarray*}
+\log_b\prod_{R(j)}a_j &=&
+\log_b\left(a_m \prod_{R(j)\atop j \not= m}a_j\right)\\ &=&
+\log_b a_m + \log_b \prod_{R(j)\atop  j \not= m}a_j\\&=&
+\log_b a_m + \sum_{R(j)\atop j \not= m}\log_b a_j 
+\mbox{, by induction}\\&=&
+\sum_{R(j)}\log_ba_j.
+\end{eqnarray*}
+
+\newpar{25} The following terms have been dropped:
+\[\sum_{1 \le i \le n}
+\sum_{1 \le j \le n\atop i \not= j}
+\frac{a_j}{a_j}.
+\]
+
+\newpar{26}
+\begin{eqnarray*}
+\prod_{i=0}^n \prod_{j=0}^i a_i a_j &=&
+\prod_{j=0}^n \prod_{i=j}^n a_i a_j \\ &=&
+\prod_{i=0}^n \prod_{j=i}^n a_i a_j.
+\end{eqnarray*}
+Thus,
+\begin{eqnarray*}
+\left( \prod_{i = 0}^n \prod_{j=0}^i a_i a_j\right)^2 &=&
+\prod_{i=0}^n \left(
+\prod_{j=0}^i a_i a_j \prod_{j=i}^n a_i a_j\right)\\ &=&
+\prod_{i=0}^n \left(a_i^2
+\prod_{j=0}^na_ia_j\right)\\&=&
+\prod_{i=0}^n\left(a_i^2a_i^{n+1}\prod_{j=0}^na_j\right)\\&=&
+\left(\prod_{i=0}^na_i^{n+3}\right)
+\left(\prod_{i=0}^n a_i\right)^{n+1}\\&=&
+\left(\prod_{i=0}^na_i\right)^{n+3}
+\left(\prod_{i=0}^na_i\right)^{n+1}\\&=&
+\left(\prod_{i=0}^na_i\right)^{2n+4}
+\end{eqnarray*}
+Finally,
+\[\prod_{i=0}^n\prod_{j=0}^i a_i a_j =
+\left(\prod_{i=0}^n a_i\right)^{n+2}\]
+
+\newpar{27} Let's prove the property by induction.\\
+(a) If $n = 1$
+\[\prod_{j = 1}^1 (1 - a_j) \ge \sum_{j=1}^1 a_j,\]
+
+\noindent
+(b) Supporse the property is verified for $n$.
+\begin{eqnarray*}
+\prod_{j=1}^{n+1}(1 - a_j) &=& (1-a_{n+1})\prod_{j=1}^n a_j\\ &\ge&
+(1-a_{n+1})\left(1-\sum_{j=1}^na_j\right),\mbox{ by induction }\\ &=&
+1 + a_{n+1}\sum_{j=1}^na_j - \sum_{j=1}^{n+1}a_j\\ &\ge&
+1-\sum_{j=1}^{n+1}a_j
+\end{eqnarray*}
+
+\newpar{28}
+\begin{eqnarray*}
+\prod_{j=2}^n\left(1 - \frac{1}{j^2}\right) &=&
+\prod_{j=2}^n\left(1 - \frac{1}{j}\right)
+\left(1 + \frac{1}{j}\right)\\ &=&
+\left(\frac{\prod_{j=2}^n(j-1)}{\prod_{j=2}^nj}\right)
+\left(\frac{\prod_{j=2}^n(j+1)}{\prod_{j=2}^nj}\right)\\ &=&
+\left(\frac{1}{n}\right)\left(\frac{n+1}{2}\right)\\
+\prod_{j=2}^n\left(1 - \frac{1}{j^2}\right) &=&
+\frac{1}{2}\left(1 + \frac{1}{n}\right)
+\end{eqnarray*}
+
+\newpar{29} (a) We have,
+\[ \sum_{i=0}^n\sum_{j=0}^i\sum_{k=0}^ja_ia_ja_k =
+\sum_{0 \le k \le j \le i \le n} a_ia_ja_k.\]
+\noindent
+(b) For $0 \le i \le n$, we have
+\[ \left(\sum_{j=0}^ia_j\right)^3 -
+\left(\sum_{j=0}^{i-1}a_j\right)^3 =
+a_i^3 + 3a_i^2\sum_{j=0}^{i-1}a_j+
+3a_i\left(\sum_{j=0}^{i-1}a_j\right)^2.
+\]
+And from equation $(13)$, we deduce
+\begin{eqnarray*}
+\left(\sum_{j=0}^ia_j\right)^3 -
+\left(\sum_{j=0}^{i-1}a_j\right)^3 &=&
+a_i^3+3a_i^2\sum_{j=0}^{i-1}a_j +
+6 \sum_{k=0}^{i-1}\sum_{l=0}^ka_ia_la_k-
+3\sum_{j=0}^{i-1}a_j^2a_i\\&=&
+a_i^3+3\sum_{j=0}^ia_i^2a_j - 3 \sum_{j=0}^ia_ia_j^2+
+6\sum_{k=0}^{i-1}\sum_{l=0}^ka_ia_ka_l\\&=&
+a_i^3 - 3\sum_{j=0}^ia_ia_j(a_i+a_j) +
+6\sum_{k=0}^i\sum_{l=0}^ka_ia_ka_l.
+\end{eqnarray*}
+Taking the sum of the equality when $i$ varies form $0$ to $n$ we
+have,
+\begin{eqnarray*}
+\left(\sum_{j=0}^na_j\right)^3 &=& \sum_{i=0}^na_i^3 -
+3 \sum_{i=0}^n\sum_{j=0}^ia_ia_j(a_j+a_j) +
+6 \sum_{i=0}^n\sum_{j=0}^i\sum_{k=0}^ja_ia_ja_k.
+\end{eqnarray*}
+Given that,
+\begin{eqnarray*}
+2\sum_{i=0}^n\sum_{j=0}^ia_ia_j(a_j+a_i) &=&
+\sum_{i=0}^n\sum_{j=0}^ia_ia_j(a_j+a_i) +
+\sum_{j=0}^n\sum_{i=j}^na_ia_j(a_i+a_j)\\ &=&
+\sum_{i=0}^n\sum_{j=0}^ia_ia_j(a_j+a_i) +
+\sum_{i=0}^n\sum_{j=i}^na_ja_i(a_j+a_i)\\ &=&
+\sum_{i=0}^n\left(\sum_{j=0}^na_ia_j(a_i+a_j) + 2a_i^3\right)\\ &=&
+2\left(\sum_{i=0}^na_i^2\right)\left(\sum_{j=0}^na_j\right)+
+2\sum_{i=0}^na_i^3
+\end{eqnarray*}
+We have then,
+\[\left(\sum_{j=0}^na_j\right)^3 = -2\sum_{i=0}^na_i^3 -
+3\left(\sum_{i=0}^na_i^2\right)\left(\sum_{j=0}^na_j\right) +
+6\sum_{i=0}^n\sum_{j=0}^i\sum_{k=0}^ja_ia_ja_k.\]
+And finally,
+\[\sum_{i=0}^n\sum_{j=0}^i\sum_{k=0}^ja_ia_ja_k =
+\frac{1}{6}\left(\sum_{i=0}^na_i\right)^3 +
+\frac{1}{3}\sum_{i=0}^na_i^3 + 
+\frac{1}{2}\left(\sum_{i=0}^na_i^2\right)\left(\sum_{i=0}^na_i\right)\]
+
+\newpar{30} We have,
+\begin{eqnarray*}
+\Delta_n &=& \left(\sum_{j=1}^na_jx_j\right)\left(\sum_{j=1}^nb_jy_j\right) -
+\left(\sum_{j=1}^na_jy_j\right)\left(\sum_{j=1}^nb_jx_j\right) \\&=&
+\sum_{i=1}^n\sum_{j=1}^na_ix_ib_jy_j -
+\sum_{i=1}^n\sum_{j=1}^na_iy_ib_jx_j\\&=&
+\sum_{i=1}^n\sum_{j=1}^na_ib_j(x_iy_j-x_jy_i)\\&=&
+\sum_{1\le i < j \le n}a_ib_j(x_iy_j-x_jy_i) +
+\sum_{1\le j < i\le n}a_ib_j(x_iy_j-x_jy_i).
+\end{eqnarray*}
+Swapping the indices $i$ and $j$ in the second sum, we have
+\begin{eqnarray*}
+\Delta_n &=& \sum_{1\le i < j \le n}a_ib_j(x_iy_j-x_jy_i) +
+\sum_{1\le i < j\le n}a_jb_i(x_jy_i-x_iy_j)\\&=&
+\sum_{1\le i<j\le n}(a_ib_j-a_jb_i)(x_iy_j-x_jy_i)
+\end{eqnarray*}
+
+\newpar{31} By taking $a_j = u_j, y_j = v_j, b_j = x_j = 1$ in
+Binet's formula, we have
+\[\sum_{1\le i<j \le n}(u_i - u_j)(v_j - v_i) =
+\left(\sum_{j=1}^nu_j\right)\left(\sum_{j=1}^nv_j\right) -
+n\left(\sum_{j=1}^nu_jv_j\right)\]
+
+\newpar{32} Let $m$ be a positive integer.  Let's prove by induction
+for $n > 0$ that
+\[\prod_{j=1}^n\sum_{i=1}^ma_{ij} = 
+\sum_{1\le i_1,\ldots,i_n\le m}a_{i_11}\ldots a_{i_nn}.\]
+\noindent
+(a) If $n = 1$, we have
+\[\sum_{i=1}^ma_{i1} = \sum_{1\le i_1 \le m}a_{i_11}\]
+\noindent
+(b) Suppose the property is true for $n$.
+\begin{eqnarray*}
+\prod_{j=1}^{n+1}\sum_{i=1}^m a_{ij}&=&
+\left(\prod_{j=1}^n\sum_{i=1}^ma_{ij}\right)
+\left(\sum_{j=1}^ma_{i(n+1)}\right)\\&=&
+\left(\sum_{1\le i_1,\ldots,i_n\le m}a_{i_11}\ldots a_{i_nn}\right)
+\sum_{i=1}^ma_{i(n+1)},\mbox{ by induction }\\&=&
+\sum_{1\le i_1,\ldots,i_{m+1}\le m}a_{i_11}\ldots a_{i_n(n+1)}
+\end{eqnarray*}
+
+\newpar{33} Let $x_1, x_2, \ldots, x_n$ be distinct non null numbers.  For $j$
+between $1$ and $n$, note
+\[ P_j = \prod_{1 \le k \le n \atop k \not= j}(x - x_k).\]
+The vectors $(P_j)_{0 \le j \le n}$ are linearly independant so it's a
+base for the vector space of the polynoms of degree lesser or equal to
+$n-1$.
+
+\medskip
+Let's r be an integer between $0$ and $n-2$.  There exist numbers
+$(\alpha_j)_{1 \le j \le n}$ such that
+\[x^{r+1} = \sum_{j = 1}^{n} \alpha_j P_j\mbox{ (*) }\]
+For $1 \le j \le n$, taking $x = x_j$ in the previous equation, we
+deduce that
+\[ \alpha_j = \frac{x_j^{r+1}}{\prod_{1 \le k \le n \atop k \not= j}(x_j -
+  x_k)}.\]
+Taking $x = 0$ in (*), we obtain
+\[ \sum_{j=1}^n\frac{x_j^r}
+{\prod_{1\le k \le n \atop k \not= j}(x_j
+- x_k)} = 0.\]
+There exist numbers $(\beta_j)_{1 \le j \le n}$ such that
+\[ x^n - \prod_{k=1}^n(x - x_k) = 
+\sum_{i=1}^n \beta_i \prod_{k=1\atop k\not=i}^n(x - x_k)\mbox{ (**) }.\]
+For $0 \le i \le n$, taking $x = x_i$ in (**), we obtain
+\[ \beta_i = \frac{x_i^n}{\prod_{1\le k \le n\atop k\not=i}(x_i -
+  x_k)}.\]
+Taking $x = 0$ in (**), we have
+\[(-1)^{n+1}\prod_{k=1}^nx_k =
+\sum_{i=1}^n \beta_i (-1)^{n-1} \prod_{k=1 \atop k\not= i}^n x_k\]
+Thus,
+\[\sum_{i=1}^n \frac{x_i^{n-1}}{\prod_{1\le k \le n \atop k\not= i}
+  x_k} = 1.\]
+The coefficient of $x^{n-1}$ in $\prod_{k=1}^n(x - x_k)$ is 
+$-\sum_{k=1}^nx_k$.  And the coefficient of $x^{n-1}$ in 
+$\sum_{i=1}^n \beta_i \prod_{1\le k\le n \atop k \not= i}(x - x_k)$ is
+$\sum_{i=1}^n\beta_i$.  We then deduce from (**) that
+\[\sum_{j=1}^n\frac{x_j^n}{\prod_{1\le k \le n\atop k\not= i}(x -
+  x_k)} = \sum_{j=1}^nx_j.\]
+So far, we have the result for non null numbers.  Suppose now that
+$x_1 = 0$.  Given that the numbers are all distinct, we have
+$x_i \not= 0$ for $2 \le i \le n$.  From the previous result we have,
+\[\sum_{j=2}^n\frac{x_j^r}{\prod_{2\le k\le n\atop k\not= j}(x_j -
+  x_k)} =
+\left\{ \begin{array}{ll}
+0, & \mbox{if } 0 \le r < n-2;\\
+1, & \mbox{if } r = n-2;\\
+\sum_{j=2}^{n}x_j, & \mbox{if } r = n-1. 
+\end{array}\right. \]
+Given that $x_1 = 0$, we have $\sum_{j=2}^nx_j = \sum_{j=1}^nx_j$ and
+\begin{eqnarray*}
+\sum_{j=2}^n \frac{x_j^r}{\prod_{2\le k\le n\atop k\not= j}(x_j -
+  x_k)} &=& \sum_{j=2}^n 
+\frac{x_j^{r+1}}{\prod_{1\le k \le n\atop k\not= j}(x_j - x_k)}\\&=&
+\sum_{j=1}^n 
+\frac{x_j^{r+1}}{\prod_{1\le k \le n\atop k\not= j}(x_j - x_k)}
+\end{eqnarray*}
+So the case that remains is $r = 0$.  \\
+Note: $\delta = \frac{1}{2}\min_{2\le j \le n} | x_j|.$ Thus we have
+$x_j + \delta > 0$ for $1 \le j \le n$.  We have,
+\[0 = \sum_{j=1}^n \frac{1}
+{\prod_{1\le k\le n\atop k\not= j}((x_j + \delta)- (x_k+\delta))} =
+\sum_{j=1}^n\frac{1}{\prod_{1\le k\le n\atop k\not= j}(x_j - x_k)}\]
+
+\newpar{34} Let $a_0, a_1, \ldots, a_{n-1}$ be numbers such that:
+\[\prod_{1\le r\le n-1}(x - z_r) = \sum_{0\le r \le n-1}a_r x^r.\]
+Thus we have,
+\begin{eqnarray*}
+\sum_{k=1}^n\frac{\prod_{1\le r \le n-1}(y_k - z_r)}
+{\prod_{1\le r\le n\atop r\not= k}(y_k - y_r)} &=&
+\sum_{k=1}^n\frac{\sum_{r=0}^{n-1}a_r y_k{}^r}
+{\prod_{1\le r\le n\atop r\not= k}(y_k - y_r)}\\&=&
+\sum_{r=0}^{n-1}a_r\sum_{k=1}^n\frac{y_k{}^r}
+{\prod_{1\le r\le n\atop n\not= k}(y_k - y_r)}\\&=&
+a_{n-1}, \mbox{ from \textbf{33}}\\&=&
+1
+\end{eqnarray*}
+
+\newpar{35} We have the \emph{distributive law}
+\[\left(\sup_{R(i)}a_i\right)\left(\sup_{S(j)}b_j\right) =
+\sup_{R(i)}\left(\sup_{S(j)}a_ib_j\right).\]
+If $p$ is a permutation of the range we have
+\[\sup_{R(i)}a_i = \sup_{R(j)}a_j = \sup_{R(p(j))}a_{p(j)}.\]
+And finally we have,
+\begin{eqnarray*}
+\sup\left(\sup_{R(j)}a_j, \sup_{S(j)}a_j\right) &=&
+\sup\left(\sup_{R(j) \,\mathrm{or}\,S(j)}a_j,
+	  \sup_{R(j) \,\mathrm{and}\,S(j)}a_j\right) \\&=&
+\sup_{R(j)\,\mathrm{or}\,S(j)}a_j.
+\end{eqnarray*}
+Suppose that $\sup_{R(j)}a_j$ and $\sup_{S(j)}b_j$ both exists.  Then
+we have,
+\begin{eqnarray*}
+\sup_{R(i)}\left(\sup_{S(j)}(a_i+b_j)\right) &=&
+\sup_{R(i)}\left(a_i + \sup_{S(j)}b_j\right) \\&=&
+\sup_{R(i)}a_i + \sup_{S(j)}b_j.
+\end{eqnarray*}
+If $R(j)$ is satisfied for \emph{no} j, we define
+\[ \sup_{R(j)}a_j = -\infty.\]
+
+\newpar{36}  For $1\le j\le n-1$, let's replace the column $j$ with
+the column $j$ minus the column $j-1$.  We then obtain the following
+determinant
+\[ \left| \begin{array}{ccccc}
+  x & 0 & 0 & \ldots & y \\
+  -x & x & 0 & \ldots & y \\
+  0  & -x & x& \ldots & y \\
+  \vdots & & & \ddots & \vdots \\
+  0 & 0 & 0 & \ldots & x+y
+\end{array} \right|\]
+Now for $2\le i \le n$, we replace successively the row $i$ with the
+row $i$ plus the row $i-1$.   We then have the determinant
+\[ \left| \begin{array}{ccccc}
+  x & 0 & 0 & \ldots & y \\
+  0 & x & 0 & \ldots & 2y \\
+  0 & 0 & x & \ldots & 3y \\
+  \vdots & & & \ddots & \vdots \\
+  0 & 0 & 0 & \ldots & x + ny
+\end{array} \right|\]
+This is the determinant of a trigonal matrix so it's the product of
+the diagonal.  We then deduce that the determinant of the
+combinatorial matrix is $x^{n-1}(x+ny)$.
+
+\newpar{37}  Note
+\[ V(x_1, x_2, \ldots, x_n) = \left|
+\begin{array}{cccc}
+  x_1 & x_2 & \ldots & x_n \\
+  x_1{}^2 & x_2{}^2 & \ldots & x_n{}^2 \\
+  \vdots & & & \vdots \\
+  x_1{}^n & x_2{}^2 & \ldots & x_n{}^n
+\end{array} \right| \]
+For $2\le i\le n$, let's replace the row $i$ by the difference between
+the row $i$ and the row $i-1$ multiplied by $x_1$.  We then obtan
+\[ V(x_1, x_2, \ldots, x_n) = \left|
+\begin{array}{cccc}
+  x_1 & x_2 & \ldots & x_n \\
+  0 & x_2(x_2 - x_1)& \ldots & x_n(x_n - x_1) \\
+  \vdots & & & \vdots \\
+  0 & x_2{}^{n-1}(x_2 - x_1) & \ldots & x_n{}^{n-1}(x_n - x_1)
+\end{array} \right| \]
+By developing according to the first column and by factoring the
+common term in each column of the remaining determinant, we have
+\[ V(x_1, x_2, \ldots, x_n) =
+x_1 \prod_{i=2}^n(x_i-x_1) V(x_2, x_3, \ldots, x_n).\]
+Thus, a little induction gives us
+\[ V(x_1, x_2, \ldots, x_n) =
+\prod_{1\le j\le n} x_j\prod_{1\le i<j\le n}(x_j - x_i).\]
+
+\newpar{38}  Note
+\[ C(x_1, x_2, \ldots, x_n, y_1, y_2, \ldots, y_n) = \left|
+\begin{array}{cccc}
+  \frac{1}{x_1+y_1} & \frac{1}{x_1+y_2} & \ldots & \frac{1}{x_1+y_n}\\
+  \frac{1}{x_2+y_1} & \frac{1}{x_2+y_2} & \ldots & \frac{1}{x_2+y_n}\\
+  \vdots & & & \vdots \\
+  \frac{1}{x_n+y_1} & \frac{1}{x_n + y_2} & \ldots & \frac{1}{x_n+y_n}
+\end{array} \right| \]
+For $2\le j\le n$, we replace the column $j$ by the first column minus
+the column $j$.  We then have
+\begin{eqnarray*}
+  C(x_1, \ldots, x_n, y_1,\ldots,y_n) &=& \left|
+  \begin{array}{cccc}
+    \frac{1}{x_1+y_1} & \frac{y_2-y_1}{(x_1+y_1)(x_1+y_2)} &
+    \ldots & \frac{y_n - y_1}{(x_1+y_n)(x_1+y_1)} \\
+    \frac{1}{x_2+y_1} & \frac{y_2-y_1}{(x_2+y_1)(x_2+y_2)} &
+    \ldots & \frac{y_n - y_1}{(x_1+y_1)(x_1+y_n)} \\
+    \vdots & & & \vdots \\
+    \frac{1}{x_n+y_1} & \frac{y_2-y_1}{(x_n+y_1)(x_n+y_2)} & \ldots &
+    \frac{y_n-y_1}{(x_n+y_1)(x_n+y_n)}
+  \end{array} \right| \\
+  &=& \frac{1}{\prod_{i=1}^n(x_i+y_1)} \left|
+  \begin{array}{cccc}
+    1 & \frac{y2-y1}{x_1+y_2} & \ldots & \frac{y_n-y_1}{x_1+y_n} \\
+    1 & \frac{y2-y1}{x_2+y_2} & \ldots & \frac{y_n-y_1}{x_2+y_n} \\
+    \vdots & & & \vdots \\
+    1 & \frac{y2-y1}{x_n+y_2} & \ldots & \frac{y_n-y_1}{x_n+y_n}
+  \end{array} \right| \\
+  &=& \frac{\prod_{j=2}^n(y_j-y_1)}{\prod_{i=1}^n(x_i+y_1)} \left|
+  \begin{array}{cccc}
+  1 & \frac{1}{x_1+y_2} & \ldots & \frac{1}{x_1+y_n} \\
+  1 & \frac{1}{x_2+y_2} & \ldots & \frac{1}{x_2+y_n} \\
+  \vdots & & & \vdots \\
+  1 & \frac{1}{x_n+y_2} & \ldots & \frac{1}{x_n+y_n}
+  \end{array} \right|
+\end{eqnarray*}
+For $2\le i\le n$ we replace the row $i$ by the first row minus the
+row $i$.  We the obtain
+\begin{eqnarray*}
+  C(x_1, \ldots, x_n, y_1,\ldots,y_n) &=&
+  \frac{\prod_{j=2}^n(y_j-y_1)}{\prod_{i=1}^n(x_i+y_1)} \left|
+  \begin{array}{cccc}
+    1 & \frac{1}{x_1+y_2} & \ldots & \frac{1}{x_1+y_n} \\
+    0 & \frac{x_2-x_1}{(x_1+y_2)(x_2+y_2)} & \ldots &
+    \frac{x_2-x_1}{(x_2+y_n)(x_1+y_n)} \\
+    \vdots & & & \vdots \\
+    0 & \frac{x_n-x_1}{(x_1+y_2)(x_n+y_2)} & \ldots &
+    \frac{x_n-x_1}{(x_n+y_n)(x_1+y_n)}
+  \end{array} \right| \\
+  &=&\frac{\prod_{j=2}^n(y_j-y_1)(x_j-x_1)}{\prod_{i=1}^n(x_i+y_1)
+    \prod_{j=2}^n(x_1+y_j)} C(x_2, \ldots, x_n, y_1, \ldots, y_n) \\
+  &=& \frac{\prod_{j=2}^n(y_j-y_1)(x_j-x_1)}{(x_1+y_1)
+    \prod_{j=2}^n(x_1+y_j)(x_j+y_1)} C(x_2, \ldots, x_n, y_1, \ldots, y_n) \\
+\end{eqnarray*}
+So a little induction give us
+\begin{eqnarray*}
+  C(x_1,\ldots,x_n,y_1,\ldots,y_n) &=&
+  \frac{\prod_{1\le i <j \le n}(y_j-y_i)(x_j-x_i)}{\prod_{i=1}^n(x_i+y_i)
+    \prod_{1\le i<j\le n}(x_i+y_j)(x_j+y_i)} \\
+  &=& \frac{\prod_{1\le i<j\le n}(y_j-y_i)(x_j-x_i)}
+       {\prod_{1\le i,j\le n}(x_i+y_j)}
+\end{eqnarray*}
+
+\newpar{39}  Note $b_{ij} = (-y + \delta_{ij}(x+ny))/x(x+ny)$.  If we
+note $c_{ij}$ the matrix product of this matrix with the combinatorial
+one, we have
+\begin{eqnarray*}
+  c_{ij} &=& \sum_{k=1}^na_{ik}b_{kj} \\
+  &=& \sum_{k=1}^n (y + \delta_{ik}x)
+  \frac{-y + \delta_{kj}(x+ny)}{x(x+ny)} \\
+  &=& \frac{1}{x(x+ny)}
+  \sum_{k=1}^n\left(-y^2 + \delta_{kj}y(x+ny)
+  - yx\delta_{ik} + \delta_{ik}\delta_{kj}x(x+ny)\right) \\
+  &=& \frac{1}{x(x+ny)}
+  \left(-ny^2 + y(x+ny) - yx + \delta_{ij}x(x+ny)\right) \\
+  &=& \delta_{ij}
+\end{eqnarray*}
+We then deduce that $b_{ij}$ is the inverse of the combinatorial
+matrix.
+
+\newpar{40}  Let  $x_1,x_2,\ldots,x_n$ be distinct numbers and for
+$1\le i\le n$
+\[ P_i = \frac{x}{x_i}\,\prod_{k=1\atop
+  k\not=i}^n\frac{x-x_k}{x_i-x_k}.\]
+If we note $S$ the vectorial space of the polynomials of degree
+greater than $0$ and less than or equal to $n$, $(P_i)_{1\le i\le n}$
+form a base of $S$.  The transpose of the Vandermonde matrix $(\alpha_{ij})$ is
+the transformation matrix from the base $(x^j)_{1\le j\le n}$ to the base
+$(P_j)_{1\le j\le n}$ of $S$.  That is, for $1\le j\le n$ we have
+\[ x^j = \sum_{i=1}^n \alpha_{ij}P_i.\]
+Thus, if we note $(\beta_{ij})$ the inverse of the transpose of
+Vandermonde matrix, we have for $1\le j\le n$
+\[ P_j = \sum_{i=1}^n \beta_{ij}x^i.\mbox{(*)}\]
+
+Let $(a_n)_{n\ge 1}$ be a sequel of real numbers and note
+for $0\le j\le n-1$
+\[ \sigma_{j,n} =
+\sum_{1\le k_1<\cdots<k_{n-j}\le n}(-1)^{n-j}
+a_{k_1}a_{k_2}\ldots a_{k_{n-j}}.\]
+Let's show by induction on $n\ge 1$ that we have
+\[ \prod_{1\le j\le n}(x - a_j) = x^n +
+\sum_{0\le j\le n-1} \sigma_{j,n}x^j.\]
+For $n=1$, we have
+\[ x-a_1 = x^1 + \sigma_{0,1}.\]
+Suppose we have the equality for $n$.  By induction, we then have
+\begin{eqnarray*}
+  \prod_{1\le j\le n+1}(x-a_j) &=&
+  (x-a_{n+1}) \prod_{1\le j\le n}(x-a_j) \\
+  &=& (x-a_{n+1}) \left(x^n + \sum_{0\le j\le
+    n-1}\sigma_{j,n}x^j\right) \\
+  &=& x^{n+1} + \sum_{1\le j\le n}\sigma_{j-1,n}x^j -
+  a_{n+1}x^n - \sum_{0\le j\le n-1}\sigma_{j,n}a_{n+1}x^j \\
+  &=& x^{n+1} + (\sigma_{n-1,n} - a_{n+1})x^n + \\ &&
+  \sum_{1\le j\le n-1}(\sigma_{j-1,n} - a_{n+1}\sigma_{j,n})x^j - 
+  \sigma_{0,n}a_{n+1} \\
+  &=& x^{n+1} + \sigma_{n,n+1}x^n +
+  \sum_{1\le j\le n-1} \sigma_{j,n+1}x^j +
+  \sigma_{0,n+1} \\
+  &=& x^{n+1} + \sum_{0\le j\le n}\sigma_{j,n}x^j.
+\end{eqnarray*}
+We then deduce for $1\le j\le n$
+\begin{eqnarray*}
+  P_j\frac{x_j}{x} \prod_{k=1\atop k\not=j}^n&&(x_k - x_j) = \\
+  &&
+  \sum_{0\le i\le n-1}
+  \left(
+  \sum_{1\le k_1<\cdots<k_{n-1-i}\le n-1\atop k_1,\ldots,k_{n-1-i}\not= j}
+  (-1)^{n-1-i}x_{k_1}x_{k_2}\ldots x_{k_{n-1-i}}\right)x^i.
+\end{eqnarray*}
+Passing the other arguments on the right hand of the equality and
+changing the index from $i+1$ to $i$, we obtain
+
+\[  P_j =
+\sum_{1\le i\le n} \left(
+\sum_{1\le k_i<\cdots<k_{n-i}\le n-1\atop k_1\ldots\le k_{n-i}\not= j}
+(-1)^{i-1}
+\frac{x_{k_1}x_{k_2}\ldots x_{k_{n-i}}}{x_j \prod_{k=1 \atop k\not=
+    j}^n(x_j - x_k)}\right) x^i.\]
+We then deduce the values of $(\beta_{ij})$ from (*) and we transpose
+the matrix to get the result.
+
+\newpar{41} Note $A = (a_{ij})$ Cauchy's matrix and $(b_{ij})$ its
+inverse.  From Cramer's formula, we have
+\[ b_{ij} = \frac{{}^t\textmd{cofactor}(a_{ij})}{\textmd{det}(A)}.\]
+From \textbf{38}, we have
+\begin{eqnarray*}
+  (-1)^{i+j}\frac{\textmd{cofactor}(a_{ij})}{\textmd{det}(A)} &=&
+  \frac{\prod_{1\le k<l\le n\atop k,l\not=i}(x_l -
+    x_k)\prod_{1\le k<l\le n\atop k,l\not=j}(y_l-y_k)} {\prod_{1\le
+      k,l\le n\atop k\not= i, l\not=
+      j}(x_k+y_l)} \\ &&
+  \frac{\prod_{1\le k,l\le n}(x_k+y_l)}{\prod_{1\le k<l\le n}(x_l -
+    x_k)(y_l-y_k)} \\
+  &=& \frac{\prod_{1\le k\le n}(x_k+y_j)\prod_{1\le l\le n}(x_i+y_l)}
+       {\prod_{i+1\le l\le n}(x_l-x_i) \prod_{1\le k\le
+           i-1}(x_i-x_k)} \\ &&
+       \frac{1}{\prod_{j+1\le l\le n}(y_l-y_j)\prod_{1\le k\le
+           j-1}(y_j-y_k)} \\
+  &=& (-1)^{i-1+j-1}\frac{\prod_{1\le k\le n}(x_k+y_j)(x_i+y_k)}{\prod_{1\le k\le
+           n\atop k\not= i}(x_k-x_i)\prod_{1\le k\le n\atop
+           k\not=j}(y_k-y_j)} \\
+  &=& (-1)^{i+j}b_{ji}
+\end{eqnarray*}
+
+\newpar{42} From \textbf{39} we have
+\begin{eqnarray*}
+  \sum_{1\le i,\le n}b_{ij} &=&
+  \frac{-n^2y + n(x+ny)}{x(x+ny)} \\
+  &=& \frac{n}{x+ny}
+\end{eqnarray*}
+
+\newpar{43}
+From (*) in \textbf{40.}, we deduce taking $x = 1$
+\[ \sum_{j=1}^n b_{ij} =
+\frac{\prod_{1\le k\le n\atop i\not= k}(x_k - 1)} {x_i \prod_{1\le
+    k\le n\atop i\not= k}(x_k - x_i)}.\]
+Suppose there exists $1\le l\le n$ such that $x_l = 1$.  We then have
+\[ \sum_{j=1}^n b_{ij} = \delta_{il},\]
+and finally
+\[ \sum_{1\le i,j\le n}b_{ij} = 1.\]
+From now on, suppose $x_i \not= 1$ for $1\le i\le n$.  We have
+
+\begin{eqnarray*}
+  \sum_{i=1}^n\sum_{j=1}^n b_{ij} &=&
+  \prod_{1\le k\le n} (1 -
+  x_k)\sum_{i=1}^n\frac{1}{x_i(1-x_i)\prod_{1\le k\le n\atop k\not=
+      i}(x_i - x_k)} \\ &=&
+  \prod_{1\le k\le n}(1-x_k)\\&&\left(
+  \sum_{i=1}^n\frac{1}{x_i\prod_{1\le k\le n\atop i\not= k}(x_i -
+    x_k)} - \sum_{i=1}^n\frac{1}{(x_i-1)\prod_{1\le k\le n\atop k\not=
+      i}(x_i-x_k)} \right)
+\end{eqnarray*}
+
+If $x_{n+1} \not= x_i$ for $1\le i\le n$, we deduce from \textbf{33.}
+taking $r=0$,
+\[  \sum_{j=1}^n\frac{1}{(x_j-x_{n+1})\prod_{1\le k\le n\atop k\not=
+    j}(x_j - x_k)} =
+1 - \frac{1}{\prod_{1\le k\le n}(x_{n+1}-x_k)}.\]
+So taking $x_{n+1} = 0$ and $x_{n+1}=1$ in our equality, we have
+
+\begin{eqnarray*}
+  \sum_{i=1}^n\sum_{j=1}^nb_{ij} &=&
+  \prod_{1\le k\le n}(1-x_k) \left(
+  1 - \frac{1}{\prod_{1\le k\le n}(-x_k)} - 1 +
+  \frac{1}{\prod_{1\le k\le n}(1-x_k)}\right) \\
+  &=& 1 - \prod_{1\le k\le n}\left(1-\frac{1}{x_k}\right)
+\end{eqnarray*}
+
+Note that the above equality remains even if $x_i = 1$ for some $i$
+between $1$ and $n$.
+
+\newpar{44} We have shown from \textbf{34.} that
+
+\[ \sum_{k=1}^n \frac{\prod_{1\le r\le n-1}(y_k-z_r)}{\prod_{1\le r\le
+    n\atop r\not=k}(y_k - y_r)} = 1.\]
+
+We then deduce that
+
+\begin{eqnarray*}
+  \sum_{j=1}^n b_{ij} &=&
+  \frac{\prod_{1\le k\le n}(x_k + y_i)}{\prod_{1\le k\le n\atop k\not=
+      i}(y_i - y_k)}
+  \sum_{j=1}^n \frac{\prod_{1\le k\le n\atop
+      k\not=i}(x_j+y_k)}{\prod_{1\le k\le n\atop k\not= j}(x_j -
+    x_k)}\\ &=&
+  \frac{\prod_{1\le k\le n}(x_k + y_i)}{\prod_{1\le k\le n\atop k\not=
+      i}(y_i - y_k)}
+\end{eqnarray*}
+
+Note: $\prod_{1\le k\le n}(y + x_k) = \sum_{l=0}^n a_l y^l$.  We have
+
+\begin{eqnarray*}
+  \sum_{i=1}^n\sum_{j=1}^nb_{ij} &=&
+  \sum_{i=1}^n \frac{\sum_{l=0}^n a_l y_i^l}{\prod_{1\le k\le n\atop
+      k\not= i}(y_i - y_k)} \\
+  &=& \sum_{l=0}^n a_l \sum_{i=1}^n \frac{y_i^l}{\prod_{1\le k\le
+      n\atop k\not= i}(y_i - y_k)} \\
+  &=& a_n \sum_{i=1}^n y_i + a_{n-1},\,\mbox{from \textbf{33.}} \\
+  &=& \sum_{i=1}^n(x_i + y_i)
+\end{eqnarray*}
+
+\newpar{45} An Hilbert matrix is a special case of Cauchy's matrix with
+$x_i = i$ and $x_j = j-1$ for $1\le i, j\le n$.
+
+From \textbf{41.}, the inverse of Hilbert's matrix is
+
+\begin{eqnarray*}
+  b_{ij} &=& \left( \prod_{1\le k\le n}(j + k - 1)(k + i - 1)\right)
+  \left/(j+i-1)\left(\prod_{1\le k \le n\atop k \not= j}(j-k)\right)
+  \left(\prod_{1\le k\le n\atop k \not= i}(i-k)\right)\right. \\ &=&
+  \frac{(j+n-1)!(i+n-1)!}
+       {(j+i-1)(-1)^{n-i-j}\left((j-1)!(i-1)!\right)^2(n-j)!(n-i)!}
+  \\ &=&
+  (-1)^{n-i-j} (i+j-1) C_{n+i-1}^{n-j} C_{n+j-1}^{n-i}
+  \left(C_{i+j-2}^{i-1}\right)^2
+\end{eqnarray*}
+Thus all the elements of the matrix are integers.  From \textbf{44.},
+we deduce easily
+\begin{eqnarray*}
+  \sum_{1\le i,j\le n}b_{ij} &=& \sum_{1\le i\le n}(2i-1) \\
+  &=& n(n+1) - n \\
+  &=& n^2
+\end{eqnarray*}
+
+\newpar{46} Let $M$ be a square matrix of size $n$ and $\Sigma$ the
+set of the permutations of $\{1,2,\ldots,n\}$.  If we note $\epsilon$
+the signature of a permutation, we have
+\[ \mathrm{det}(M) = \sum_{\sigma \in \Sigma} \epsilon(\sigma)
+m_{\sigma(1),1} \ldots m_{\sigma(n),n}.\]
+
+We then deduce
+
+\begin{eqnarray*}
+  \mathrm{det}(AB) &=& \sum_{\sigma \in \Sigma} \epsilon(\sigma)
+  \left(\sum_{k=1}^n a_{\sigma(1),k}b_{k,1}\right)\ldots
+  \left(\sum_{k=1}^n a_{\sigma(m),k}b_{k,m}\right) \\ &=&
+  \sum_{1\le k_1,\ldots,k_m\le n} b_{k_1,1}\ldots
+  b_{k_m,m}\sum_{\sigma \in \Sigma}
+  \epsilon(\sigma)a_{\sigma(1),k_1}\ldots a_{\sigma(m),k_m} \\ &=&
+  \sum_{1\le k_1,\ldots,k_m\le n} b_{k_1,1}\ldots b_{k_m,m}\,
+  \mathrm{det}(A_{k_1}\ldots A_{k_m}) \\ &=&
+  \sum_{1\le j_1 < \ldots < j_n \le n}\, \sum_{\sigma \in \Sigma}
+  b_{\sigma(j_1),1}\ldots b_{\sigma(j_m),m}
+  \,\mathrm{det}(A_{\sigma(j_1)}\ldots A_{\sigma(j_m)}) \\ &=&
+  \sum_{1\le j_1 < \ldots < j_n \le n}\,\mathrm{det}(A_{j_1}\ldots
+  A_{j_m}) \sum_{\sigma \in \Sigma} \epsilon(\sigma) b_{\sigma(j_1),1}
+  \ldots b_{\sigma(j_m),m} \\ &=&
+  \sum_{1\le j_1 < \ldots < j_n \le n} \mathrm{det}(A_{j_1}\ldots
+  A_{j_m})\,\mathrm{det}(B_{j_1}\ldots B_{j_m})
+\end{eqnarray*}
+
+\newpar{47}  Note that the determinant is a polynomial in the
+variables
+\[x, y, z, p_1, p_2, q_2, q_3.\]
+
+If we develop the determinant according to the first line, each
+cofactor doesn't contain the variable $x$.  We then deduce that the
+determinant is a polynomial of degree $2$ in $x$.  If we take $x = y$
+or $x = z$,  the determinant is equal to zero because two lines in the
+matrix are equals.  Thus, $(x - y)(x - z)$ divides the determinant and
+is the only factor containing $x$.
+
+Similar reasoning for $y$ and $z$ gives us $(x - y)(x - z)(y - z)$ as a
+polynomial dividing the determinant and only where the variables $x,
+y, z$ appear.
+
+If we develop the determinant according to the first column, we could
+see that it's a polynomial of degree $2$ in $p_1$.  If $p_1 = q_2$,
+the first column is equal to the second one, thus the determinant is
+zero.  If $p_1 = q_3$, we have
+\begin{eqnarray*}
+  &=& \left|
+  \begin{array}{ccc}
+    (x+q_2)(x+q_3) & (x+q_3)(x+q_3) & (x+q_3)(x+p_2) \\
+    (y+q_2)(y+q_3) & (y+q_3)(y+q_3) & (y+q_3)(y+p_2) \\
+    (z+q_2)(z+q_3) & (z+q_3)(z+q_3) & (z+q_3)(z+p_2)
+  \end{array}
+  \right| \\
+  &=& (x+q_3)\left|
+  \begin{array}{ccc}
+    (x+q_2) & (x+q_3) & (x+p_2) \\
+    (y+q_2)(y+q_3) & (y+q_3)(y+q_3) & (y+q_3)(y+p_2) \\
+    (z+q_2)(z+q_3) & (z+q_3)(z+q_3) & (z+q_3)(z+p_2)
+  \end{array}
+  \right| \\
+  &=& (x+q_3)(y+q_3)\left|
+  \begin{array}{ccc}
+    (x+q_2) & (x+q_3) & (x+p_2) \\
+    (y+q_2) & (y+q_3) & (y+p_2) \\
+    (z+q_2)(z+q_3) & (z+q_3)(z+q_3) & (z+q_3)(z+p_2)
+  \end{array}
+  \right| \\
+  &=& (x+q_3)(y+q_3)(z+q_3)\left|
+  \begin{array}{ccc}
+    x+q_2 & x+q_3 & x+p_2 \\
+    y+q_2 & y+q_3 & y+p_2 \\
+    z+q_2 & z+q_3 & z+p_2
+  \end{array}
+  \right| \\
+   &=& (x+q_3)(y+q_3)(z+q_3)\left|
+    \begin{array}{ccc}
+    x+q_2 & q_3-q_2 & p_2-q_2 \\
+    y+q_2 & q_3-q_2 & p_2-q_2 \\
+    z+q_2 & q_3-q_2 & p_2-q_2
+  \end{array}
+    \right|\\
+    &=& 0,\ \mbox{subtracting the first column the last two}
+\end{eqnarray*}
+We then deduce that the determinant is divided by
+\[(x-y)(x-z)(y-z)(p_1-q_2)(p1-q_3)\]
+and the rest of the divisors depends only on the variables, $p_2, q_3$
+since by developing according to the first column, we see that the
+determinant is a polynomial of degree $1$ in $q_2$.
+
+By developing according to the last column, we see that the
+determinant is a polynomial of degree $1$ in $p_2$ and of degree $2$
+in $q_3$.  Since it's equal zero for $p_2 = q_3$, we finally conclude
+that the determinant is proportional to
+\[(x-y)(x-z)(y-z)(p_1-q_2)(p_1-q_3)(p_2-q_3).\]
+If we choose, $y = -q_2$ and $z = -q_3$ the determinant is trigonal and
+is equal to
+
+\begin{eqnarray*}
+  &=& (x-y)(x-z)(y+p_1)(y-z)(z+p_1)(z+p_2) \\
+  &=& (x-y)(x-z)(y-z)(p_1-q_2)(p_1-q_3)(p_2-q_3).
+\end{eqnarray*}
+
+We then deduce that the constant factor is equal to $1$.
+
+\medskip
+Let $m$ be a square matrix of size $n$ such that
+\[ m_{i,j} = \prod_{k=1}^{j-1}(x_i + p_k) \prod_{k=j+1}^n(x_i +
+q_k).\]
+
+For $j$ varying from $1$ to $n-1$, if we replace the $j^{th}$ column
+by the $(j+1)^{th}$ column minus the $j^{th}$ column and factoring by
+$p_j  - q_{j+1}$, we obtain \[\prod_{j=1}^{n-1}(pj-q_{j+1})\] times
+the determinant of a matrix $m'$ where
+
+\[m_{i,j}' = \prod_{k=1}^{j-1}(x_i+p_k) \prod_{k=j+2}^n(x_i+q_k),\]
+
+If we apply recursively the same method to the sub-matrices of size
+$n-1, n-2, \ldots, 2$, we have the factor $\prod_{1\le i<j\le
+  n}(p_i-q_j)$ multiplied by the determinant of the matrix $m''$ where
+
+\[ m_{i,j}'' = \prod_{k=1}^{j-1}(x_i + p_k).\]
+
+For $j$ varying from $n$ down to $2$, if we replace the $j^{th}$
+column by the $(j-1)^{th}$ column times $(x_1+p_{j-1})$ minus the
+$j^{th}$ column and we factorize the terms $x_1 - x_i$ in each row, we
+obtain
+
+\[ \prod_{i=1}^n (x_1 - x_i).\]
+
+times the determinant of the matrix $m'''$ where $m_{1,j} = 0$ and
+
+\[ m_{i,j}''' = \prod_{k=1}^{j-2}(x_i + p_k)\ \mbox{for $2\le i\le
+  n$}.\]
+
+Given that $m_{1,1}''' = 1$,  we could develop the determinant
+according the first line and we obtain the obvious recurrence relation
+
+\[ D(x_1, \ldots, x_n, p_1, \ldots, p_{n-1}) =
+\prod_{k=1}^n(x_1-x_i) D(x_2, \ldots, x_n, p_1, \ldots, p_{n-2})\]
+
+Given that the determinant of size $1$ corresponds to $1$, we deduce
+that the result is
+
+\[ \prod_{1\le i<j\le n}(x_i - x_j)\]
+
+So finally the determinant of the matrix m is
+
+\[ \prod_{1\le i<j\le n}(x_i - x_j)(p_i - p_j).\]
+
+When $p_k = q_k = y_k$, the matrix is equal to a Cauchy matrix with
+the $i^{th}$ row multiplied by $\prod_{k=1}^n(x_i + y_k).$
+\end{document}

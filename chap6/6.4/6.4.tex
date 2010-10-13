@@ -1,0 +1,498 @@
+\documentclass[a4paper,12pt]{article}
+\newcommand{\newpar}[1]{\bigskip \noindent \textbf{#1.}}
+\newcommand{\subpar}[1]{\medskip \noindent (#1)}
+\newcommand{\la}{\leftarrow}
+\newcommand{\ra}{\rightarrow}
+
+\begin{document}
+
+\newpar{1} It varies between $-37$ and $46$.
+
+\newpar{2} We generate all the words of length less than or equal to
+$5$ from a dictionary and we can do an exhaustive search.  In
+particular, here is a list of ten common words of at most 5 letters
+that fill all the remaining gaps between $-10$ and $30$.
+
+\begin{quote}
+  \begin{tabular}{|c|c|}
+    \hline word & hash \\
+    \hline CLAN & -9 \\
+    BLACK & -8 \\
+    BLEED & -4 \\
+    TAN & 0 \\
+    AGILE & 2 \\
+    ALLAH & 15 \\
+    AGENT & 24 \\
+    AHEAD & 26 \\
+    ERR & 27 \\
+    CAR & 28 \\
+    \hline
+  \end{tabular}
+\end{quote}
+
+For a complete list, look at the file table1-words.
+
+\newpar{3}
+If we use LD1 and LD2, or LD1N and LD1N we would have $h(AT) =
+h(IN)$.  On the other hand, if we use LD1N and LD2, or LD1 and LD2N we
+would have $h(BE) = h(OR)$.
+
+\newpar{4}
+Suppose that there's $n$ people at the party with $3 \le n\le 365$.
+Let's compute the probability that there's no more than two people
+having the same birthday in the attendee.
+
+Note $k$ the number of pairs so that the two people in a pair have the
+same birthday different from the other pairs' birthday.  The number of
+ways to choose the $2k$ people forming the $k$ pairs is:
+
+\begin{eqnarray*}
+&=& \frac{1}{k!}\times \frac{n(n-1)}{2} \times \frac{(n-2)(n-1)}{2}
+\times \cdots \times \frac{(n-2k+2)(n-2k+1)}{2} \\
+&=& \frac{n!}{2^k k!(n-2k)!}
+\end{eqnarray*}
+
+Once the birthday of one member of a
+couple is chosen, the other one's is fixed.  Thus the probability that
+each pair has different birthday than other pairs is
+
+\[ \frac{m}{m^2} \times \frac{m-1}{m^2} \times \cdots \times
+\frac{m-k+1}{m^2},\,\mbox{with $m = 365$}.\]
+
+And the probability that the remaining $n-2k$ people having different
+birthday to each other and to the pairs is
+
+\[ \frac{m-k}{m} \times \frac{m-k-1}{m} \times \cdots \times
+\frac{m+k-n+1}{m}.\]
+
+So finally the probability that there's exactly $k$ pairs whose
+members have the same birthday is
+
+\begin{eqnarray*}
+  &=& \frac{n!}{2^kk!(n-2k)!}\times \prod_{i=0}^{k-1}\frac{m-i}{m^2}
+  \times \prod_{i=0}^{n-2k-1} \frac{m-k-i}{m} \\
+  &=& \frac{n!}{2^kk!(n-2k)!} \times \frac{m!}{m^n(m+k-n)!} \\
+  &=& \frac{n!}{m^n2^k}\,C_m^{n-k} \frac{(n-k)!}{(n-2k)!\,k!} \\
+  &=& \frac{n!}{m^n2^k} C_m^{n-k} C_{n-k}^k
+\end{eqnarray*}
+
+Thus the probability that there's no more than one people having the
+same birthday as another one in the attendee is
+
+\[ p_n = \frac{n!}{m^n} \sum_{k=0}^{\lfloor n/2\rfloor}
+C_m^{n-k}C_{n-k}^k 2^{-k}.\]
+
+To make it likely that there are three people with the same birthday,
+we want the inequality $p_n < \frac{1}{2}$, so we have $1-p_n >
+\frac{1}{2}$.
+
+Using a program to find the minimum value of $n$ that verifies this
+property we find that for $n = 88$, $p_n \simeq 0.49$.
+
+\newpar{5} It's a bad idea.  There's only $26$ different values taken
+by the hash function $h$.  So if we have $300$ hundreds symbols in a
+Fortran program, there would be on average $\simeq 11.54$ symbols for
+each value of the hash function.  This would lead to a terrible
+performance.
+
+\newpar{6} Theorically there's no difference between the distribution
+of the hash function since $M$ is prime.  But for MIX, this new method
+will cause a division overflow most of the time.
+
+\newpar{8} Let $n$ be a positive integer and $\theta$ an irrational
+positive real.  We choose a point of origin noted $0$ on a circle
+whose circumference is $1$.  We then move clockwise on the circle and
+place the points whose distance from $0$ is $i\theta$ (we refer to
+this point as $i$), for $i$ varying between $0$ and $n$.  Note that if
+$\alpha$ is irrational then $\lceil \alpha\rceil = 1+\lfloor
+\alpha\rfloor$, thus
+
+\[ \{-\alpha\} = - \alpha - \lfloor -\alpha\rfloor= - \alpha + \lceil \alpha
+\rceil = 1 - \{\alpha\}.\]
+
+Note $d_{i,j}$ the length of the arc between $i$ and $j$ if we're moving
+clockwise.
+\begin{itemize}
+\item If $\{j\theta\} > \{i\theta\}$ we have
+  \begin{eqnarray*}
+    d_{i,j} &=& \{j\theta\} - \{i\theta\} \\
+    &=& \{ \{j\theta\} - \{i\theta\}\},\ \mbox{since $0 \le
+      \{j\theta\} - \{i\theta\} < 1$} \\
+    &=& \{ j\theta - \lfloor j\theta\rfloor - i\theta + \lfloor
+    i\theta\rfloor\} \\
+    &=& \{ (j-i)\theta\}
+  \end{eqnarray*}
+
+\item If $\{j\theta\} \le \{i\theta\}$ then
+  \begin{eqnarray*}
+    d_{i,j} &=& 1 - d_{j,i} \\
+    &=& 1 - \{(i-j)\theta\},\ \mbox{using the above property} \\
+    &=& \{(j-i)\theta\}
+  \end{eqnarray*}
+\end{itemize}
+
+We then deduce that $d_{i,j} = \{(j-i)\theta\}$.  Let $m$ and $M$ be
+the two integers verifying
+\[ \{m\theta\} = \min_{1\le i\le n}\{i\theta\}\mbox{ and } \{M\theta\}
+= \max_{1\le i\le n}\{i\theta\}.\ (1)\]
+
+We then have the following properties
+
+\[ d_{0,m} = \{m\theta\} = \min_{1\le i\le n}d_{0,i}\mbox{ and }
+d_{M,0} = \{-M\theta\} = \min_{1\le i\le n}d_{i,0}.\ (2)\]
+
+First note that $d_{M,m} = d_{M,0} + d_{0,m} = \{m\theta\} + 1 -
+\{M\theta\} > \{m\theta\} = d_{M, M+m}$.  Thus if $M+m \le n$, there
+would be another point between $M$ and $0$ or $0$ and $m$, which will
+contradict (2).  We then deduce that
+\[M+m > n\ (3).\]
+
+If we're moving clockwise, note $\mathrm{succ}(i)$ the point we
+encounter after $i$.  We have
+
+\begin{eqnarray*}
+  d_{i,\mathrm{succ}(i)} &=& \min_{1\le j\le n\atop i\not= j}d_{i,j}\\
+  &=& \min\left( \min_{1\le j\le i-1}d_{i,j}, \min_{i+1\le j\le
+    n}d_{i,j}\right) \\
+  &=& \min\left( \min_{1\le i-j\le i-1}d_{i-j,0}, \min_{1\le j-i\le
+    n-i}d_{0,j-i}\right) \\
+  &=& \min\left( \min_{1\le j\le i-1}d_{j,0}, \min_{1\le j\le
+    n-i}d_{0,j}\right)
+\end{eqnarray*}
+
+\begin{itemize}
+\item If $0\le i \le n-m$, then $m\le n-i$ thus $\min_{1\le j\le
+  n-i}d_{0,j} = d_{0,m}$ from (2).  We then have
+  \[ d_{i,\mathrm{succ}(i)} = \min\left( \min_{1\le j\le i-1}d_{j,0},
+  d_{0,m}\right).\]
+
+  Now suppose that there's $j$ between $1$ and $i-1$ such that
+  $d_{j,0} < d_{0, m}$.  From (3), we deduce that $j\le i-1 < M$.
+  Since $ 0 < d_{M,0} < d_{j,0}$ by (2), we then deduce
+
+  \[ d_{0,M-j} = d_{j, M} = d_{j, 0} - d_{M, 0} < d_{0, m}.\]
+
+  Which contradicts the property of $m$ in (2).  So finally,
+  \[d_{i,\mathrm{succ}(i)} = d_{0,m} = d_{i,i+m}.\]
+
+  And since $i+m \le n$, we then deduce that $\mathrm{succ(i)} = i+m$.
+
+\item If $M+1 \le i\le n$, then $M\le i-1$ thus $\min_{1\le j\le
+  i-1}d_{j,0} = d_{M,0}$ from (2).  We then have
+  \[ d_{i,\mathrm{succ}(i)} = \min\left(d_{M,0}, \min_{1\le j\le
+    n-i}d_{0,j}\right).\]
+
+  As before, suppose there's $j$ between $1$ and $n-i$ such that
+  $d_{0,j} < d_{M,0}$.  From (3), we deduce that $j \le n-i\le n-M <
+  m$.  Since $0 < d_{0, m} < d_{0, j}$ by (2), we then deduce
+  \[ d_{m-j, 0} = d_{m, j} = d_{0, j} - d_{0, m} < d_{M, 0}.\]
+
+  Which contradicts the property of $M$ in (2).  So finally,
+  \[ d_{i,\mathrm{succ}(i)} = d_{M,0} = d_{i,i-M}.\]
+
+  Since $i-M \ge 1$, we then deduce that $\mathrm{succ}(i) = i-M$.
+  Which is also true for $i = M$.
+
+\end{itemize}
+
+From the above properties we deduce that if $n = m+M-1$, then we have
+
+\begin{eqnarray*}
+  \mathrm{succ}(i) &=& \left\{
+  \begin{array}{ll}
+    i+m,&\mbox{if $0\le i\le M-1$} \\
+    i-M,&\mbox{if $M\le i\le n$}
+  \end{array}
+  \right.\ \mbox{(*)}
+\end{eqnarray*}
+
+Now consider the general case where $n < n'= m+M-1$.  We're inserting
+$n'+1$ points in the circle instead of $n+1$, and note $m'$ and
+$M'$ respectively the first point and the last one different from $0$
+we encounter by moving clockwise.  Let's show that $m = m'$ and $M =
+M'$.
+
+Let's do an absurd reasoning. Suppose that the arc relying $M$ and $m$
+if we move clockwise contains some of the points: $n+1, n+2, \ldots,
+n'$.  Note $p_1$ and $p_2$ respectively the nearest of these points
+from $M$ and from $m$ by moving  clockwise.  We have
+
+\[  d_{M, p_1} = \min_{n+1\le i\le n'}d_{M, i} = \min_{n+1-M \le i\le
+    m-1}d_{0, i} > d_{0,m} = \min_{1\le i\le n}d_{0,i},\]
+
+and
+
+\[ d_{p_2, m} = \min_{n+1\le i\le n'}d_{i, m} = \min_{n+1-m\le i\le
+  M-1} d_{i,0} > d_{M, 0} = \min_{1\le i\le n}d_{i,0}.\]
+
+And finally
+
+\[ d_{M,m} = d_{M, 0} + d_{0, m} < d_{p_2,m} + d_{M,p_1} \le
+d_{M,m}.\]
+
+Which is absurd.  So there's no points greater than $n$ in the arc
+relying $M$ and $m$.  We then deduce that $m = m'$ and $M = M'$ and
+from (*),
+
+\begin{eqnarray*}
+  \mathrm{succ}(i) &=& \left\{
+  \begin{array}{ll}
+    i+m,&\mbox{if $0\le i\le M-1$} \\
+    i-M,&\mbox{if $M\le i\le n'$}
+  \end{array}
+  \right.
+\end{eqnarray*}
+
+Now let's remove from the circle the points $n+1, n+2, \ldots, n'$.
+Since $0 < n+1-m$ and $n' - m = M-1$, we have using the above property
+
+\[ \mathrm{succ}(n+i-m) =
+n+i\ \mbox{and}\ \mathrm{succ}(\mathrm{succ}(n+i-m)) = n+i-M.\]
+
+for $i$ varying between $1$ and $n'-n$.  Combining all these results,
+we finally have,
+
+\[
+\mathrm{succ}(i) = \left\{
+\begin{array}{ll}
+  i+m,&\mbox{if $0\le i\le n-m$} \\
+  i+m-M,&\mbox{if $n-m < i < M$} \\
+  i-M,&\mbox{if $M\le i\le n$}
+\end{array}
+\right.
+\]
+
+If we note $\lbrack x\rbrack = \min(\{x\}, 1-\{x\})$, then we have
+$n-m+1$ intervals of length $\lbrack m\theta\rbrack$, $M+m-n-1$
+intervals of length $\lbrack(M-m)\theta\rbrack$ and $n-M+1$ intervals
+of length $\lbrack M\theta\rbrack$.
+
+\bigskip
+Note $r_0 = \theta$ and for $k \ge 0$
+\[ a_k = \lfloor r_k\rfloor\ \mbox{and}\ r_{k+1} = \frac{1}{r_k -
+  a_k}.\]
+
+Since $\theta$ is irrational, we could verify that the sequences
+$(r_k)$ and $(a_{k+1})$ are defined for $k \in \textbf{N}$ since $r_k$
+is irrational.  If we note $q_0 = 0, p_0 = 1, q_1 = 1, p_1 = 0$ and
+$q_{k+1} = a_k q_k + q_{k-1}$, $p_{k+1} = a_k p_k + p_{k-1}$ for $k\ge
+1$, we can easily verify by induction that
+
+\[ \theta = //a_1,a_2,\ldots,a_{k-1},r_k //\ \mbox{for $k\ge 0$}\ \mbox{(3)}\]
+and
+\[ //a_1, a_2, \ldots, a_k // = \frac{p_{k+1}}{q_{k+1}} = \frac{a_k
+  p_k + p_{k-1}}{a_k q_k + q_{k-1}}\ \mbox{(4)}.\]
+
+Moreover, we have
+\[p_k q_{k+1} - q_k p_{k+1} = - (p_{k-1}q_k - q_{k-1}p_k).\]
+
+And since $p_0 q_1 - q_0 p_1 = 1$, we have
+\[ p_k q_{k+1} - q_k p_{k+1} = (-1)^k.\ \mbox{(5)}\]
+
+And from the above relation, we also deduce that
+
+\[ p_kq_{k+2} - q_k p_{k+2} = (-1)^ka_{k+1}.\ \mbox{(6)}\]
+
+From (6) we deduce that the sequence $(p_{2k}/q_{2k})_{k>0}$ is
+decreasing and the sequence $(p_{2k+1}/q_{2k+1})_{k \in \textbf{N}}$ is
+increasing.  And from (5), we have for $k>0$
+\[ \frac{p_{2k}}{q_{2k}} > \frac{p_{2k+1}}{q_{2k+1}}.\]
+
+Thus for all $k>0$ we have
+
+\[ \frac{p_2}{q_2} > \cdots > \frac{p_{2k}}{q_{2k}} >
+\frac{p_{2k+1}}{q_{2k+1}} > \cdots > \frac{p_1}{q_1}.\ \mbox{(7)}\]
+
+And combining (3) and (4) we have
+
+\begin{eqnarray*}
+  \theta - \frac{p_k}{q_k} &=&
+  //a_1, a_2,\ldots, a_{k-1}, r_k// - \frac{p_k}{q_k}\\ &=&
+  \frac{r_k p_k + p_{k-1}}{r_k q_k + q_{k-1}} - \frac{p_k}{q_k} \\ &=&
+  \frac{(-1)^{k-1}}{q_k(r_k q_k + q_{k-1})},\ \mbox{(8)}
+\end{eqnarray*}
+
+Given that $a_k \le r_k < a_k + 1$, we then deduce that
+\[ \frac{1}{q_{k+1}+q_k}<|q_k\theta - p_k| < \frac{1}{q_{k+1}}.\ \mbox{(9)}\]
+
+We could see from the above relation that $p_{k+1}/q_{k+1}$ is closer
+to $\theta$ than $p_k/q_k$.
+
+From (7), we deduce that the sequence $(p_{2k}/q_{2k})_{k>0}$ tends to
+its lower bound and the sequence $(p_{2k+1}/q_{2k+1})_{k \in
+  \textbf{N}}$ tends to its upper bound.  Since $\theta$ is
+irrational, $q_k$ tends to $+\infty$ when $k$ tends to $+\infty$.
+Combining this with (9), we then deduce that the sequence $p_k/q_k$
+tends to $\theta$.  Plus we have
+\[ \frac{p_2}{q_2} > \cdots > \frac{p_{2k}}{q_{2k}} > \theta >
+\frac{p_{2k+1}}{q_{2k+1}} > \cdots > \frac{p_1}{q_1}.\ \mbox{(10)}\]
+
+Let's show that for $k> 0$, $p_k/q_k$ is a best approximation of the
+second kind for $\theta$ in the sense that for all integers $a$ and
+$b$ such that $0 < b < q_k$ and $a/b \not= p_k/q_k$, we have
+\[ |q_k \theta - p_k| < |b \theta - a|.\]
+
+Note that for a fixed value of $b$ the value of $a$ that minimizes $|b
+\theta - a|$ is $\lfloor b \theta\rfloor$ or $\lceil b \theta\rceil$.
+For $0 < b < q_k$, note $b_0$ the minimal value of $b$ that minimizes
+$|b\theta-a|$ for a integers.  And $a_0$ a value $a$ such that this
+minimal is reached.
+
+Since $\theta$ is irrational, $a_0$ is unique otherwise if $a_0' \not=
+a_0$ is another integer verifying the property, we have
+\[ b_0\theta = \frac{a_0 + a_0'}{2}.\]
+
+We then deduce that $a_0/b_0$ is a best approximation of the second
+kind of $\theta$, since $b_0$ is the smallest value of $b$ that
+minimizes $|b\theta - a|$ for $0 < b < q_k$.  Let's show that each
+best approximation of the second kind of $\theta$ is of the form
+$p_n/q_n$ where $n>0$.
+
+Suppose that $a_0/b_0$ is different of the values taken by the
+sequence $p_n/q_n$ for $0<n\le k$.  From (10), we then deduce that
+$a_0/b_0 > p_2/q_2$ or there exists $n>0$ such that $a_0/b_0$ lays
+between $p_n/q_n$ and $p_{n+2}/q_{n+2}$.  In the first case we have
+\[ \left| \theta - \frac{a_0}{b_0} \right| > \left| \frac{a_0}{b_0} -
+\frac{p_2}{q_2}\right| \ge \frac{1}{b_0 q_2}.\]
+
+We then have
+\[ |b_0\theta - a_0| > \frac{1}{q_2} = \frac{1}{a_1}.\]
+On the other hand
+\[ |1.\theta - 0 | \le \frac{1}{a_1}.\]
+so that
+\[ |1. \theta - 0| < |b_0 \theta - a_0|\ \mbox{with $1\le b$}.\]
+
+Which contradicts $a_0/b_0$ as a second best approximation of
+$\theta$. In the second case, we have using (10)
+
+\[ \frac{1}{b_0q_n}\le \left|\frac{p_n}{q_n} - \frac{a_0}{b_0}\right| <
+\left|\frac{p_{n+1}}{q_{n+1}} - \frac{p_n}{q_n}\right| =
+\frac{1}{q_nq_{n+1}},\ \mbox{from (5)}.\]
+
+Hence $b_0 > q_{n+1}$.  On the other hand, we have
+
+\[ \left| \theta - \frac{a_0}{b_0} \right| \ge \left|
+\frac{a_0}{b_0} - \frac{p_{n+2}}{q_{n+2}}\right| \ge
+\frac{1}{b_0 q_{n+2}}\]
+
+Hence \[ \frac{1}{q_{n+2}} \le |b_0 \theta - a_0|.\]
+From (9), we then deduce that
+\[ |q_{k+1}\theta - p_{k+1}| < |b_0\theta - a_0|\ \mbox{and}\ b_0>q_{n+1}.\]
+
+Again, we then deduce from this that $a_0/b_0$ isn't a second best
+approximation for $\theta$.  We then deduce that there exists integer
+$n$ such that $0<n\le k$ and $a_0/b_0 = p_n/q_n$.  Of course $a_0/b_0$
+is irreductible otherwise we can find $a_0'$ and $0 < b_0'< b_0$ such
+that
+\[ |b_0'\theta - a_0'| < |b_0 \theta - a_0|.\]
+
+Since from (5), we can deduce that the fraction $p_n/q_n$ is also
+irreductible, we then have $a_0 = p_n$ and $b_0 = q_n$.  If $n < k$,
+then we have from (9)
+\[ |q_n\theta - p_n| > \frac{1}{q_n+q_{n+1}} \ge
+\frac{1}{q_{k-1}+q_k},\,|q_k \theta - p_k| \le \frac{1}{q_{k+1}}. \]
+
+Since $|q_k\theta - p_k| \le |q_n\theta - p_n| = |b_0\theta - a_0|$,
+we then deduce that
+\[ q_{k+1} < q_{k-1} + q_k.\]
+
+Which is absurd since, $\theta$ is irrational, thus $a_k > 0$.
+
+Finally $a_0/b_0$ is a best approximation of the second kind for
+$\theta$ if only if $a_0/b_0 = p_k/q_k$ for $k>0$.
+
+Let $n$ be a positive integer such that $q_k\le n < q_{k+1}$.  We then
+deduce from the above property
+\begin{eqnarray*}
+  \min_{1\le b\le n\atop a\in\mathbf{N}}|b\theta - a| = \min_{1\le
+    b\le n}(b\theta - \lfloor b\theta\rfloor, \lceil b\theta\rceil -
+  b\theta) = \min_{1\le b\le n}\lbrack b\theta\rbrack = |q_k\theta - p_k|
+\end{eqnarray*}
+
+Using (8), we then deduce
+\[ \min_{1\le b\le n}\lbrack b\theta\rbrack =
+\{(-1)^{k+1}q_k\theta\}.\ \mbox{(11)}\]
+
+Let's note $r$ the integer verifying
+\[0\le r< a_k\ \mbox{and}\ rq_k + q_{k-1} \le n < (r+1)q_k +
+q_{k-1}\].
+
+Let $p$ and $q$ be two integers such that $q_k \le q \le n$ and $q
+\not\equiv 0 \bmod{q_k}$.  Using (5), we can write
+\begin{eqnarray*}
+  q &=& u q_k + v ((r+1)q_k + q_{k-1}) \\
+  p &=& u p_k + v ((r+1)p_k + p_{k-1})
+\end{eqnarray*}
+with
+\begin{eqnarray*}
+  u &=& (-1)^k ( p ((r+1)q_k + q_{k-1}) - ((r+1) p_k + p_{k-1}) q) \\
+  v &=& (-1)^k ( p_k q - p q_k)
+\end{eqnarray*}
+The constraints on $q$ impose that $uv < 0$.  And we have
+
+\begin{eqnarray*}
+  \theta - \frac{t p_k + p_{k-1}}{tq_k + q_{k-1}} &=&
+  \frac{r_k p_k + p_{k-1}}{r_k q_k + q_{k-1}} - \frac{tp_k +
+    p_{k-1}}{tq_k + q_{k-1}} \\
+  &=&\frac{(p_{k-1}q_k - q_{k-1}p_k)(t - r_k)}{(r_k q_k +
+    q_{k-1})(tq_k+q_{k-1})} \\
+  &=& (-1)^k \frac{r_k - t}{(r_k q_k + q_{k-1})(t q_k + q_{k-1})}
+\end{eqnarray*}
+Hence,
+\[ (-1)^k((tq_k + q_{k-1})\theta - (tp_k + p_{k-1})) = \frac{r_k -
+  t}{r_kq_k + q_{k-1}}.\ \mbox{(12)}.\]
+
+Given that $uv<0$ and we have
+\[ q\theta - p = u(q_k\theta - p_k) + v(((r+1)q_k+q_{k-1})\theta +
+((r+1)p_k+ p_{k-1})),\]
+and from (8) and (12), $(q_k\theta - p_k)$ and $((r+1)q_k+q_{k-1})\theta
+- (rp_k + p_{k-1})$ have opposite signs, hence
+\begin{eqnarray*}
+  |q\theta - p| &=& |u(q_k\theta - p_k)| + |v(((r+1)q_k + q_{k-1})\theta -
+  ((r+1)p_k + p_{k-1}))| \\
+  &\ge& |q_k \theta - p_k| + |((r+1)q_k + q_{k-1})\theta - ((r+1)p_k +
+  p_{k-1})| \\
+  &=& \frac{r_k - r}{r_k q_k + q_{k-1}}\\
+  &=& \left\{ \frac{r_k - r}{r_k q_k + q_{k-1}}\right\} \\
+  &=& \{ |q_k \theta - p_k| + |((r+1)q_k + q_{k-1})\theta - ((r+1)p_k +
+  p_{k-1})| \} \\
+  &=& \{ (-1)^{k+1}(q_k\theta - p_k) + (-1)^k (((r+1)q_k +
+  q_{k-1})\theta - ((r+1) p_k + p_{k-1}))\} \\
+  &=& \{ (-1)^k(rq_k + q_{k-1})\theta\}
+\end{eqnarray*}
+And given that
+$\min_{1\le b<q_k}\lbrack b\theta \rbrack = \{(-1)^{k}q_{k-1}\theta\}$,
+and from (12) we have
+\[ \{(-1)^k(rq_k + q_{k-1}) \} \le \frac{r_k}{r_kq_k + q_{k-1}} =
+(-1)^k (q_{k-1}\theta - p_{k-1}).\]
+
+We finally deduce
+\[ \min_{1\le b\le n\atop b \not\equiv 0 \bmod{q_k}}\lbrack
+b\theta\rbrack = \{(-1)^k(rq_k + q_{k-1})\theta\}.\ (13)\]
+
+Let $s$ be an integer between $1$ and $r$.  We have for $k\ge 1$
+\[ r_k + s - r \le r_k < r_k q_k + q_{k-1}.\]
+Thus
+\[ \frac{r_k - r}{r_k q_k + q_{k-1}} < 1 - \frac{s}{r_k q_k +
+  q_{k-1}}\]
+From (8) and (12), we then deduce for $1\le s\le r$
+\[ \{(-1)^k(r q_k + q_{k-1})\theta\} <
+\{(-1)^ksq_k\theta\}\ \mbox{(14)}\]
+
+\begin{itemize}
+\item
+  if $k$ is odd, from (11) we have
+  \[ \min_{1\le b\le n}\lbrack b\theta \rbrack = \{q_k\theta\} =
+  \min_{1\le b\le n}\{ b \theta\}\]
+  Thus $m = q_k$.  And from (13)
+  \[ \min_{1\le b\le n\atop b \not\equiv 0 \bmod{q_k}}\lbrack
+  b\theta\rbrack = \{-(rq_k + q_{k-1})\theta\} = \min_{1\le b\le n\atop
+    b \not\equiv 0\bmod{q_k}}\{ -b\theta\}\]
+  Combining this relation with (14), we then deduce that $M = rq_k +
+  q_{k-1}$.
+
+\item
+  if $k$ is even, using the same reasoning we deduce that $m = rq_k +
+  q_{k-1}$ and $M = q_k$.
+\end{itemize}
+\end{document}

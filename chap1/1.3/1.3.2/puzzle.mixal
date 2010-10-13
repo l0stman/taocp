@@ -1,0 +1,139 @@
+* Draw a puzzle.
+*
+N       EQU     6+2                     puzzle size with the borders
+X       EQU     N-1*N+1
+A11     EQU     0
+TTERM   EQU     19
+INSIZ   EQU     14
+PRINTER EQU     18
+OUTSIZ  EQU     24
+        ORIG    N*N
+INBUF   ORIG    *+INSIZ
+ROW1    ORIG    *+OUTSIZ
+ROW2    ORIG    *+OUTSIZ
+ROW3    ORIG    *+OUTSIZ
+
+READ    STJ     0F
+        IN      INBUF(TTERM)
+        ENT4    -1
+        ST4     A11
+        ENT1    A11+1
+        MOVE    A11(N-2)
+        ENT1    A11+X
+        MOVE    A11(N-1)
+        JBUS    *(TTERM)
+        ENN1    N-2*N+2                 remaining boxes to set
+        ENT2    -1                      position in the input buffer
+        ENT5    0                       remaining bytes in a word
+NROW    ENT3    N-2                     remaining elements in the row
+        ST4     A11+X,1
+        ST4     A11+X+1,1
+        INC1    2
+        J1NN    0F
+        J5P     PUTC
+GETW    INC2    1
+        LDA     INBUF,2
+        ENT5    5
+PUTC    SLC     1
+        DECX    30
+        STX     A11+X,1(5:5)
+        DEC5    1
+        DEC3    1
+        INC1    1
+        J3Z     NROW                    end of row?
+        J5P     PUTC
+        JMP     GETW
+0H      JMP     *
+BLANK   ALF     "     "
+BORDER  ALF     "    +"
+LINE    ALF     "+++++"
+SBOX    STJ     0F
+        LD3     A11+X,1                 right
+        J3NN    1F
+        LDA     BLANK
+        JMP     *+2
+1H      LDA     BORDER
+        LD4     A11+X-1+N,1             below
+        J4N     2F                      empty square?
+        LDX     LINE
+        JMP     0F
+2H      J3NN    3F
+        LD3     A11+X+N,1               diagonal
+        J3NN    3F
+        LDX     BLANK
+        JMP     0F
+3H      LDX     BORDER
+0H      JMP     *
+WBOX    STJ     0F
+        LDA     BORDER
+        LDX     LINE
+        LD3     A11+X-1+N,1             below
+        J3NZ    1F
+        LD3     A11+X-1-N,1             above
+        J3NZ    2F
+1H      LD3     A11+X,1                 right
+        J3NZ    0F
+        LD3     A11+X-2,1               left
+        J3Z     0F
+2H      ENT6    1
+0H      JMP     *
+BBOX    STJ     0F
+        LDA     LINE
+        LDX     LINE
+0H      JMP     *
+PRINT   STJ     0F
+        ENN1    X-1
+        ENT5    1                       counter of numbered square
+PROW    ENN2    N-1
+1H      ENT6    0
+        LD3     A11+X-1,1               current box
+        LD3     TABLE,3
+        JMP     0,3
+        STA     ROW1+N-1,2
+        STA     ROW2+N-1,2
+        STX     ROW3+N-1,2
+        J6Z     2F                      not numbered?
+        ENTA    0,5
+        CHAR
+        STX     ROW1+N-1,2(1:2)
+        INC5    1
+2H      INC2    1
+        INC1    1
+        J2N     1B
+        INC1    1                       skip last box in the row
+        OUT     ROW1(PRINTER)
+        OUT     ROW2(PRINTER)
+        OUT     ROW3(PRINTER)
+        J1N     PROW
+0H      JMP     *
+        CON     SBOX
+TABLE   CON     WBOX
+        CON     BBOX
+REMOVHL STJ     0F
+        ENN1    N-2*N
+        ENT4    -1
+1H      LD2     A11+X-1,1               current position
+        J2NN    2F                      non-empty square?
+        LD2     A11+X,1                 right box
+        J2NP    2F                      non-black square?
+        ST4     A11+X,1
+2H      INC1    1
+        J1N     1B
+0H      JMP     *
+REMOVHR STJ     0F
+        ENT1    N-2*N
+        ENT4    -1
+1H      LD2     A11+N-1,1
+        J2NN    2F
+        LD2     A11+N-2,1               left box
+        J2NP    2F
+        ST4     A11+N-2,1
+2H      DEC1    1
+        J1P     1B
+0H      JMP     *
+START   JMP     READ
+        JMP     REMOVHL
+        JMP     REMOVHR
+        JMP     PRINT
+        HLT
+        END     START

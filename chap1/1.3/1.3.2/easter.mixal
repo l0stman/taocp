@@ -1,0 +1,97 @@
+* Date of Easter.
+*
+PRINTER EQU     18
+EASTER  STJ     RETURN
+        STX     YEAR
+        ENTA    0
+        DIV     =19=
+        INCX    1
+        STX     G       Golden number.
+        ENTA    0
+        LDX     YEAR
+        DIV     =100=
+        INCA    1
+        STA     C       Century.
+        MUL     =3=
+        DIV     =4=
+        DECA    12
+        STA     X       Number of leap year dropped.
+        LDA     C
+        MUL     =8=
+        INCX    5
+        DIV     =25=
+        DECA    5
+        STA     Z       Special correction.
+        LDA     YEAR
+        MUL     =5=
+        DIV     =4=
+        SUB     X
+        DECA    10
+        STA     D       Sunday.
+        LDA     G
+        MUL     =11=
+        INCX    20
+        SLAX    5
+        SUB     X
+        ADD     Z
+        SRAX    5
+        DIV     =30=
+        CMPX    =25=
+        JNE     1F
+        LD1     G
+        DEC1    11
+        J1NP    1F
+        INCX    1
+        JMP     2F
+1H      CMPX    =24=
+        JNE     2F
+        INCX    1
+2H      STX     E       Epact.
+        ENTA    44
+        SUB     E
+        CMPA    =21=
+        JGE     1F
+        INCA    30
+1H      STA     N
+        ADD     D
+        SRAX    5
+        DIV     =7=
+        STX     *+1(1:2)
+        ENT1    0
+        LDA     N
+        DECA    -7,1
+        CMPA    =31=
+        JG      1F
+        LDX     MARCH
+        JMP     PRINT
+1H      DECA    31
+        LDX     APRIL
+PRINT   STX     MONTH
+        CHAR
+        STX     BUF(1:2)
+        LDA     YEAR
+        CHAR
+        STX     YEAR
+RETURN  JMP     *
+APRIL   ALF     APRIL
+MARCH   ALF     MARCH
+G       CON     0
+C       CON     0
+X       CON     0
+Z       CON     0
+D       CON     0
+E       CON     0
+N       CON     0
+BUF     ALF     DD
+MONTH   ALF     MMMMM
+        ALF     ,
+YEAR    ALF     YYYYY
+        ORIG    *+20
+START   ENT6    1950-2000
+1H      ENTX    2000,6
+        JMP     EASTER
+        OUT     BUF(PRINTER)
+        INC6    1
+        J6NP    1B
+        HLT
+        END     START

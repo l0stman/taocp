@@ -1,0 +1,560 @@
+1. There's no smallest positive rational number.
+
+2. No. It's 1 + 0.24.
+
+3. It's a rational.
+
+4. (0.125)^(-2/3) = (1000/125)^(2/3) = ((10/5)^3)^(2/3) = 4.
+
+   It's an ineteger.
+5. A real number is a quantity x who has a "binary expansion":
+     x = n + 0.b1b2b3....., (1)
+   where n is an integer, each bi is digit equal to zero or one and no infinite
+   sequence of 1's appears. The representation (1) means that:
+     n + b1/2 + b2/4 + ... + bk/2^k <= x < n + b1/2 + ... + bk/2^k + 1/2^k (2)
+
+6. Let x = m + 0.d1d2.... and y = n + 0.e1e2.... be real numbers.
+   If m = n and di = ei for all i positive, then x = y.
+   If m < n, then x < y.
+   If m > n, then x > y. Otherwise:
+   There's an integer k such that:
+   	   di = ei for all i <= k and dk != ek
+	   if dk > ek a then x > y otherwise x < y.
+
+7. Let x and y be integers.
+   Let's prove by induction relative to y the relations (4).
+   If y = 0, then:
+      b^(x+0) = b^x b^0,
+   Suppose we have:
+      b^(x+y) = b^x b^y, 
+   Then:
+      b^(x+y+1) = b^(x+y) b, by (3)
+      		= b^x b^y b, by induction
+		= b^x b^(y+1), by (3)
+
+   If y = 0, then:
+      (b^x)^0 = b^(x 0) = 1
+   Suppose we have:
+      (b^x)^y = b^(xy)
+   Then:
+      (b^x)^(y+1) = (b^x)^y b^x, by (3)
+      		  = b^(xy) b^x, by induction
+		  = b^(xy + x), by the other relation we just proved
+		  = b^(x(y+1)
+
+8. Let m be a positive integer. If x and y are positive integers, we could
+   easily proove by induction that if x > y then x^n > y^n for all positive n.
+   So if u  has a positive mth root, it's unique.
+
+   Suppose x^m = u and let xk be the decimal expansion of x.
+   Note: xk = d0 + d1/10 + ... + dk/10^k, for k positive
+   d0 is the integer verifying:
+     d0^m <= u < (d0+1)^m
+   And x0 = d0.
+   Now suppose d0, d1, ..., dk-1 are determined.
+   Thus xk-1 is defined and we have:
+   	xk-1^m <= u < (xk-1 + 1/10^(k-1))^m
+   If u = xk-1^m, x = xk-1. Otherwise:
+      xk-1^m < u < (xk-1 + 1/10^(k-1))^m
+   If (xk-1 + 9/10^k)^m <= u, we could take dk = 9 and we have:
+      (xk-1 + dk/10^k)^m <= u < (xk-1 + 1/10^(k-1))^m
+      	      		       = (xk-1 + dk/10^k + 1/10^k)^m
+   Thus,
+	xk^m <= u < (xk + 1/10^k)^m
+   If (xk-1 + 9/10^k)^m > u, given that xk-1^m < u, there exits an integer dk
+   between 0 and 8 such that:
+   	   (xk-1 + dk/10^k)^m <= u < (x-1 + (dk+1)/10^k)^m
+   Thus,
+	xk^m <= u < (xk + 1/10^k)^m
+
+9. Suppose x = p/q and y = r/s
+   b^(x + y) = b^(p/q + r/s)
+   	     = b^((p s + q r)/qs)
+   Thus,
+   (b^(x + y))^(qs) = b^(p s + q r)
+   	   	    = b^(p s) b^(q r)
+		    = (b^p)^s (b^r)^q
+		    = ((b^(p/q))^q)^s ((b^(r/s))^s)^q
+		    = (b^x)^(qs) (b^y)^(sq)
+		    = (b^x b^y)^(qs)
+   b^(x+y) = b^x b^y
+
+   We have,
+      (b^(xy))^(qs) = (b^(pr/(qs)))^(qs)
+      		    = b^(pr)
+		    = (b^p)^r
+		    = ((b^x)^q)^r
+		    = (b^x)^(qr)
+		    = ((b^x)^r)^q
+		    = (((b^x)^y)^s)^q
+		    = ((b^x)^y)^(qs)
+   Thus, b^(xy) = (b^x)^y
+
+10. Suppose that log10 2 is a rational number.
+    Note log10 2 = p/q, with gcd(p, q) = 1.
+    We have: p = q log10 2
+       	     p = log10 2^q
+	     10^p = 2^q
+	     2^q = 2^p 5^p
+    This is primary factor decomposition so we have,
+    	 p = q = 0, absurd.
+    Thus log10 2 is irrational.
+
+11. Infinitily many because log10 2 is irrational. We will never if b^x is 
+    1.99999.... or 2.000000....
+
+12. We have: 10^(0.30102999) <= 2 < 10^(0.30103000)
+    Thus: 0.30102999 <= log10 2 < 0.3103000
+
+13. (a) Let x be positive real number and n is is positive integer.
+    f(x) = (1+x/n)^n - 1 - x
+    f'(x) = (1+x/n)^(n-1) - 1 >= 0
+    f(x) >= f(0) = 0
+    (b) b^(n+d1/10+...+dk/10^k)(b^(1/10^k) - 1) <= b^(n+1)(b^(1/10^k) - 1
+    					   = b^(n+1) ((1 + (b-1))^1/10^k - 1)
+					   <= b^(n+1) (b-1)/10^k
+
+14. We have:
+    b^(logb(c^y)) = c^y, by definition
+    		  = (b^logb c)^y
+		  = b^(y logb c)
+    Thus, logb(c^y) = y logb c 
+
+15. Let x, y be positive real numbers.
+    logb(x) = logb(y x/y) = logb(y) + logb(x/y) by (10) 
+
+16. log10 x = ln x/ln 10
+
+17. log2 32 = log2 2^5 = 5
+    logpi (pi) = 1
+    ln e = 1
+    logb 1 = 0
+    logb (-1) is not defined
+
+18. log8 x = ln x / ln 8 = ln x / ln(2^3) = 1/3 log2 x
+
+19. No. The greatest 14-digit integer is n = 10^15 - 1.
+    Given that: log2 n ~ 49.83
+    n is a 49-bit integer. So it doesn't fit.
+
+20. log2 10 = ln 10 / ln 2 = 1 / (ln 2 / ln 10) = 1/log10 2
+
+21. logb (logb x) = logb (ln x / ln b)
+    	       	  = logb ln x - logb ln b
+		  = (ln ln x - ln ln b) / ln b
+
+22. log2 x - ln x - log10 x = ln x (1/ln 2 - 1 - 1/ln 10)
+    We have
+       1/ln 2 - 1 - 1/ln 10 ~ 0.008
+    Thus
+	|log2 x - ln x -log10 x| / |ln x| < 1/100
+
+24. We shift the decimal point of x to left or to the right so that we hawe
+    1 <= x/2^n < 2; this determinates n. 
+    Set x0 = x/2^n and for k >= 1,
+    bk = 0, xk = xk-1^2, if xk-1^2 < 2;
+    bk = 1, xk = xk-1^2/2, if xk-1^2 >= 2.
+
+25. Note n the number of precision used by the computer and suppose n > 1.
+    We have the algorithm:
+    L1. [Initialize]. Set y <- 0, z <- (x >> 1), k <- 1
+    L2. [Test for end]. If x = 1, stop.
+    L3. [Compare]. If x-z < 1, goto L5.
+    L4. [Reduce values]. Set x <- x-z, z<-x>>k, y <- y + logb(2^k/(2^k-1)) and
+    	goto L2.
+    L5. [Shift]. Set z <- z >> 1, k <- k + 1, and goto L5.
+
+    Let x0 be a number verifying 1 <= x0 < 2.
+    A1. [Start-L1]. x = x0
+    A2. [L1-L2]. y = 0, k = 1, l = 0, z = (x >> k), x >= 1, k <= n-1
+    A3. [L2-Stop]. x = 1, | logb x0 - y | < (n-1)(1 + 1/|ln b|) / 2^(n-1)
+    A4. [L2-L3]. x > 1, z = x >> k, l <= k, k <= n-1
+    	|logb x0 - logb x - y| < l (1 + 1/|ln b|) / 2^(n-1)
+    A5. [L3-L4]. x - z >= 1, z = x >> k, m = ceil(-lg(x-1)), k <= n-1
+    	k = m and l < k or k=m+1 and l < k-1, 0 <= x - 1 - z < 1/2^m
+    	| logb x0 - logb x - y| < l (1 + 1/|ln b|) / 2^(n-1)
+    A6. [L3-L5]. x > 1, z = x >> k, l <= k, k < n-1
+    	|logb x0 - logb x - y| < (1 + 1/|ln b|) l/2^(n-1)
+    A7. [L4-L2]. z = x >> k, l=l+1, k <= n-1
+    	|logb x0 - logb x - y| < l (1 + 1/|ln b|) / 2^(n-1)
+	k = m and l <= k
+	k = m+1 and l < k
+	0 <= x-1 < 1/2^m
+    A8. [L5-L2]. z = x >> k, x > 1, k <= n-1
+    	|logb x0 - logb x - y| < (1 + 1/|ln b|) l/2^(n-1), l < k
+
+    A1.
+    A2.
+    A3. If we're from L1 before L2, we have x0 = x = 1, and y = 0.
+    	Thus | logb x0 - y | = 0, so the inequality holds.
+	We couldn't come from L5 because according to A8, x > 1.
+	If we're from L4, according to A7:
+	   |logb x0 - logb x - y| < l (1 + 1/|ln b|) / 2^(n-1)
+	And because x = 1, we have:
+	   | logb x0 - y | < k (1 + 1/|ln b|) / 2^(n-1)
+	and given that l < k <= n-1, we have
+	   | logb x0 - y | < (1 + 1/|ln b|)(n-1)/2^(n-1)
+
+    A4. From A2, A7 and A8, we deduce that x >= 1, z = x >> k, l <= k and 
+    	k <= n-1. And given that x != 1, we have x > 1. 
+	We have also: |logb x0 - logb x - y| < (1 + 1/|ln b|) l/2^(n-1)
+
+    A5. From A4 we have, z = x >> k, k <= n-1, and
+    	|logb x0 - logb x - y| < l(1 + 1/|ln b|) / 2^(n-1)
+	And from L3 x - z >= 1. And from A2, A7, A8, we have l <= k.
+	Note: m = ceil(-lg(x-1)).
+	We have: m >= -lg(x-1) > m-1
+	   	 1/2^m <= x-1 < 1/2^(m-1) (1)
+        We have: 1/2^k <= (x >> k) < 1/2^k-1 (2)
+	If k < m, x-1-z = x-1-(x >> k) < 1/2^m-1 - 1/2^k <= 0
+	   Thus, x-z < 1.
+	So we should have k >= m if we want to reach L4.
+	Suppose k = m.
+	From (1) and (2), we deduce: -1/2^m < x - 1 - z < 1/2^m
+	If x-1-z >= 0, we have k=m, and 0 <= x-1-z < 1/2^m
+	From A8 and A2, l < k so if we have l = k, we're from A7.
+	But according to A7:
+	k = m,    0 <= x - 1< 1/2^k and z = (x >> k)
+	thus,	  1/2^k <= z
+	So,	  x - 1 - z < 0
+	If l = k, we don't reach L4 and increment k at L5. Thus if k = m, l < k.
+	If x-1-z < 0, we go to L5 and increment k, now k = m+1 and
+	z = (x>>(m+1)). Thus, l < k-1.
+	From (1) and (2)
+	x-1-(x>>(m+1)) > 1/2^m - 1/2^m = 0
+	And: x-1-(x>>(m+1)) = x-1 - {(x>>m)/2 - b/2^n}, with b in {0, 1}
+	     		    = x-1 - (x>>m) + {(x>>m)/2 + b/2^n}
+        We have 0 < (x>>m)-(x-1). Given that the machine precision is n, the 
+	smallest number we could have is 1/2^n-1.
+	Thus, (x>>m)-(x-1) >= 1/2^n-1.
+	We have x-1-(x>>(m+1)) <= b/2^n - 1/2^n-1 + (x>>m)/2
+	   		       < 1/2^n - 1/2^n-1 + (1/2^(m-1))/2
+			       < 1/2^m - 1/2^n
+			       < 1/2^m
+	And of course we have:
+	    |logb x0 - logb x - y| < (1 + 1/|ln b|) l/2^(n-1)
+
+    A6. From A5 x > 1 and k <= n-1. If k = n-1, z = x >> n-1 = 1/2^n-1
+    	Given that x > 1, we have x -1 >= 1/2^n-1 because the number of
+	bits of the machine is n.
+	So, we have: x - z >= 1.
+	So If we reach L5, we must have k < n-1.
+    A7. We have easily: z = x >> k, k <= n-1, 0 <= x - 1 < 1/2^m
+	k = m and l <= k or k=m+1 and l < k
+	We have z = x >> k
+	   	  = x/2^k - b1/2^n - b2/2^(n+1) - ... - bk/2^(n-1+k)
+        with b1, b2, ..., bk in {0, 1}.
+	Thus, 0 <= x/2^k - z <= 1/2^n (1 + 1/2 + ... + 1/2^(k-1))
+	      	   	     = 1/2^n(1 - 1/2^k)/(1-1/2)
+	      0 <= x/2^k - z < 1/2^(n-1) (1)
+
+
+	logb[x(1-1/2^k)] = logb[x-z + z-x/2^k]
+			 = logb(x-z) + logb[1 + (z-x/2^k)/(x-z)]
+
+        |logb[x(1-1/2^k)] - logb(x-z)| = |logb[1 - (x/2^k - z)/(x-z)|
+	We have 0 <= (x/2^k - z)/(x-z) < 1/(x-z) < 1
+	Thus |logb[1-(x/2^k-z)/(x-z)| = - ln(1 - (x/2^k - z)/(x-z))/ |ln b|
+	     			      <= (x/2^k - z)/((x-z)|lnb|)
+				      < 1/(|ln b| 2^(n-1))
+
+	|logb[x(1-1/2^k)] - logb(x-z)| < 1/(|ln b| 2^(n-1)) (2)
+	Note v the value of logb(2^k/(2^k-1)) given by the machine, we have:
+	|v - logb(2^k/2^k-1)| < 1/2^(n-1)
+	From A5, we have:
+	|logb x0 - logb x - y| < (1 + 1/|ln b|) l/2^(n-1)
+	Finall we have,
+	|logb x0 - logb(x-z) - (y + v)| <=
+	      |logb x0 - logb x - y| + |logb(2^k/2^k-1) - v| +
+	      |logb[x(1-1/2^k)] - logb(x-z)|
+	      <= (1+1/|ln b|) l/2^(n-1) + 1/2^(n-1) + 1/(|ln b| 2^(n-1)),
+	      from (1), (2), and (3)
+	Thus,
+	|logb x0 - logb(x-z) - (y+v)| < (1+1/|ln b|) (l+1)/2^(n-1)
+
+    A8. 
+
+    Let's show that the algorithm terminates. We have k <= n-1.
+    From A5 we have k >= ceil(-lg(x-1)).
+    Until k reach m = ceil(-lg(x-1)), k is incremented.
+    If k = m, and x-z >= 1, from A7 we have after L4, x-z < 1. Thus k is
+    incremented in the next iteration.
+    and if x-z < 1, k is incremented.
+    So k incremented at leat each 2 iterations. And given that k <= n-1,
+    the algorithm terminates.
+
+26. From 25, we deduce that the maximum value of error corresponds to the
+    maximum value of l.
+    To simplify the notation, let's say the numbers we deal with are integers
+    between 0 and 2^n - 1 instead of 0 and 2 - 1/2^(n-1), 
+    where n is the precision of the machine.
+    Note m = |_n/2_| and let k be an integer such that: m > k > 1
+	f(y) = y - (y >> k), for 2^(n-1) < y <= 2^n - 1
+    Note that y >> k = |_y/2^k_|
+
+    Let's show that for every z such that 0 <= z < 2^(n-2k-1), there exists
+    an integer z' < 2^(n-2k+1) such that:
+	f(2^(n-1) + 2^(n-k) + z') = 2^(n-1) + 2^(n-k-1) + z
+
+    Note: y0 = 2^(n-1) + S{1 <= i <= r} 2^(n-lk), with r = |_n/k_|
+    we have f(y0) = 2^(n-1) + 2^(n-k-1)
+
+    (a + b) >> k = |_(a + b)/2^k_|
+       	       	 = |_(2^k |_a/2^k_|+a mod 2^k+2^k |_b/2^k_|+b mod 2^k)/2^k_|
+		 = |_a/2^k_| + |_b/2^k_| + |_(a mod 2^k + b mod 2^k)/2^k_| (1)
+
+    we have: (n-rk) - k = n - (r+1)k < n - n/k k = 0
+       	     (n-(r-1)k - k = n - rk >= 0
+    so, 2^(n-rk) < 2^k and 2^(n-lk) >= 2^k if k <= r-1. Thus,
+	y0 mod 2^k = 2^(n-rk)
+    (y0 + b) >> k = |_y0/2^k_| + |_b/2^k_| + |_(2^(n-rk) + b mod 2^k)/2^k_| (2)
+
+    if 0 <= b < 2^k - 2^(n-rk),
+    |_b/2^k_| = 0 and |_(2^(n-rk) + b mod 2^k)/2^k_| = |_(2^(n-rk)+b)/2^k_| = 0
+    So f(y0 + b) = f(y0) + b = 2^(n-1) + 2^(n-k-1) + b
+    If we have 2^(n-2k-1) <= 2^k - 2^(n-rk), then
+    z < 2^k - 2^(n-rk), so f(y0 + z) = 2^(n-1) + 2^(n-k-1) + z
+    and given that:
+    	y0 + z = 2^(n-1) + 2^(n-k) + S{2 <= l <= r}2^(n-lk) + z
+    Note: z' = S{2 <= l <= r} 2^(n-lk) + z
+    We have 2^(n-2k-1) <= 2^k - 2^(n-rk), so n-2k-1 <= k-1, then r <= 3
+    * if r = 2
+    z' = 2^(n-2k) + z < 2^(n-2k) + 2^(n-2k-1) < 2^(n-2k+1)
+    * if r = 3
+    z < 2^k - 2^(n-3k) <= 2^(n-2k) - 2^(n-3k)
+    so, z' < 2^(n-2k) + 2^(n-2k) = 2^(n-2k+1) 
+     
+    From now on then, let's suppose that 2^k - 2^(n-rk) < 2^(n-2k-1) and
+    z >= 2^k - 2^(n-rk)
+    We have k <= n-2k-1, 1/k + 3 <= n/k, so r >= 3
+
+    Note y1 = y0 + 2^k - 2^(n-rk) = 2^(n-1) + S{1 <= l <= r-1)2^(n-lk) + 2^k
+    From (2), we have
+	(y0 + 2^k - 2^(n-rk)) >> k = |_y0/2^k_| + 1
+    and f(y1) = f(y0) + 2^k - 2^(n-rk) - 1
+    	f(y1) = 2^(n-1) + 2^(n-k-1) + 2^k - 2^(n-rk) - 1
+
+    if 1 <= l <= r-1, n-lk  >= k, so y1 mod 2^k = 0, so from (1)
+    (y1 + b) >> k = |_y1/2^k_| + |_b/2^k_|
+    f(y1 + b) = f(y1) + b - |_b/2^k_| (3)
+
+    We have, x > f(y1). Note: D = 2^(n-1) + 2^(n-k-1) + z - f(y1)
+       	       	 	      	= z - 2^k + 2^(n-rk) + 1
+
+    Note: Ui = D + |_D/2^k_| + ... + |_D/2^(ki)_|
+    From (3),
+    f(y1 + U(i+1)) = f(y1 + Ui + |_D/2^(k(i+1))_|)
+    	   	   = f(y1 + Ui) + |_D/2^(k(i+1))_| - |_D/2^(k(i+2)_|
+
+    S{0 <= j <= i} (f(y1 + U(j+1)) - f(y1 + Uj)) =
+    	     	   - S{0 <= j <= i}(|_D/2^(k(j+2))_| - |_D/2^(k(j+1))_|)
+    f(y1 + U(i+1)) - f(y1 + U0) = - (|_D/2^(k(i+2))_| - |_D/2^k_|)
+
+    f(y1 + Ui) = f(y1) + D - |_D/2^(k(i+1))_|
+    Note s = |_(lg D)/k_|
+    s <= (lg D)/k < s+1
+    2^(sk) <= D < 2^((s+1)k)
+
+    So f(y1 + Us) = f(y1) + D = 2^(n-1) + 2^(n-k-1) + z (4)
+    
+    y1 + Us = 2^n-1 + S{1 <= l <= r-1}2^(n-lk) + 2^k + Us
+
+    Note: z' = S{2 <= l <= r-1}2^(n-lk) + 2^k + Us
+
+    y1 + Us = 2^(n-1) + 2^(n-k) + z'
+    
+    We have: 2^k - 2^(n-rk) < 2^(n-2k-1), so k <= n-2k-1 and r >= 3
+    Us < D (1 - 1/2^k) = D (1 + 1/(2^k - 1)) <= D (1 + 1/2^(k-1))
+    D < z < 2^(n-2k-1), so
+      Us < D + z/2^(k-1) 
+      	 < D + 2^(n-3k) < 2^(n-2k-1) - 2^k + 2^(n-rk) + 2^(n-3k) + 1
+    
+    Thus,
+	z' < S{2 <= l <= r-1}2^(n-lk) + 2^(n-2k-1) + 2^(n-rk) + 2^(n-3k) + 1
+    Given that r >= 3
+    	z' < S{2 <= l <= r-1} 2^(n-lk) + 2^(n-2k-1) + 2^(n-3k+1) + 1
+    Note that all the exponents are different because k > 1. Thus,
+    	z' < 2^(n-2k+1)
+
+    So far, we showed that for k between 2 and m-1, and for each integer
+    z < 2^(n-2k-1), there exists an integer z' < 2^(n-2k+1) such that:
+	(2^(n-1) + 2^(n-k) + z') - {(2^(n-1) + 2^(n-k) + z') >> k} =
+			2^(n-1) + 2^(n-1-k) + z (*)
+
+    Note:  xl = 2^(n-1) + 2^(n-m+l) + zl, zl < 2^(n-2(m-l)+1)
+           x0 = 2^(n-1) + 2^(n-m) + |_2^(n-2m-1)_|
+
+    We can show by induction and (*) that the sequel (xl) exists 
+    for 0 <= l <= m-2, and such that:
+    	xl - (xl >> (m-l)) = xl-1, 1 <= l <= m-2 (5)
+
+    Plus, for 0 <= l <= m-2
+	(xl >> (m-l-1)) >= 2^(n-m+l) + 2^(n-2(m-l)+1), because n-2m+1 > 0
+    So, xl - (xl >> (m-l-1)) < 2^(n-1) (6)
+
+    Note: p = |_(n+1)/2_|
+    Suppose: x = 2^(n-1) + 2^(n-1-k) + z, with k >= p, and z < 2^(n-1-k)
+    Then, x >> k = 2^(n-1-k), because:
+    	  n-1-2k <= n-1-2p < n-1-2((n+1)/2 - 1) = 0
+    So, x - (x >> k) = 2^(n-1) + z (7)
+
+    Let's say that we put some input in the algorithm, and N is the value
+    of l when x become less than 2^(n-1) + 2^(n-1-p). If we note b the
+    number of bits equal to 1 in x, (b >= 1, because x >= 2^(n-1)), from
+    (7) we deduce that the value of l when the algorithm terminates is
+    N + b - 1. (8)
+
+    We have b <= n-p
+    * If b < n-p.
+      Note that l <= k from 25. Or before reaching the current value of
+      its value is greater or equal to 2^(n-1) + 2^(n-p), so:
+      k <= (n-1) - (n-p) + 1 = p
+      Thus, N + b - 1 <= p + n-p-1 - 1 = n-2
+
+    * If b = n-p, the current value of x is then:
+      	 2^n-1 + 2^(n-p) - 1
+      Let's show that there's no integer y verifying:
+      	    2^(n-1) + 2^(n-p) <= y < 2^(n-1) + 2^(n-p+1)
+      Such that: y - (y >> (p-1)) = x 
+      	   	 or y - (y >> (p-1)) < 2^(n-1) and y - (y >> p) = x
+
+      we have (y >> (p-1)) >= 2^(n-p) + 2^(n-2p+1)
+      because, n-2p+1 >= n - 2(n+1)/2 + 1 = 0
+      So, y - (y >> (p-1)) < 2^(n-1) + 2^(n-p+1) - 2^(n-p) - 2^(n-2p+1)
+      	      	    	   <= 2^(n-1) + 2^(n-p) - 1 = x
+      Thus, y - (y >> (p-1)) < x
+
+      
+      y < 2^(n-1) + (y >> (p-1)) <= 2^(n-1) + 2^(n-p) + 2^(n-2p+1)
+      y < 2^(n-1) + 2^(n-p) + 2^(n-2p+1)
+
+      y - (y >> p) < 2^(n-1) + 2^(n-p) + 2^(n-2p+1) - 2^(n-1-p)
+      	     	   = 2^(n-1) + 2^(n-1-p) + 2^(n-2p+1)
+
+      y - (y >> p) < 2^(n-1) + 2^(n-1-p) + 2^(n-2p+1)
+
+
+      2^(n-1) + 2^(n-1-p) + 2^(n-2p+1) <= x if and only if:
+	2^(n-2p+1) <= 2^(n-1-p) - 1
+
+      n-2p+1 <= n-2-p
+      p >= 3
+      Let's suppose: n >= 5. So p>=3 and y - (y >> p) < x
+
+      We then have N <= p-1, so N + b - 1 <= n-2
+
+    If n >= 5, N + b - 1 <= n-2.
+    From, (5) and (6) we could deduce that if we take as input xm-2 for the
+    algorithm the sequel xm-2, xm-3, ..., x0 are the successive values taken
+    by x.
+    x0 = 2^(n-1) + 2^(n-m) + |_2^(n-2m-1)_|
+    From (6), x0 - (x0 >> (m-1)) < 2^(n-1)
+    and (x0 >> m) = 2^(n-1-m) + 2^(n-2m)
+    x = x0 - (x0 >> m) = 2^(n-1) + 2^(n-1-m) - 2^(n-2m) + |_2^(n-2m-1)_|
+      	     	       = 2^(n-1) + 2^(n-1-m) - 1
+
+    We have m+1 = |_n/2_| + 1 = |_(n+2)/2_| >= p. From (8), we deduce that
+    the value of l at the end of the algorithm is:
+	m-1 + n-1-m + 1 - 1 = n-2.
+
+    Thus, if n >= 5, the maximum value of l is n-2. And we could verify that
+    if n < 5, the value is n-1.
+
+27. x(1 - eta) <= 10^n x0' <= x(1 + eps)
+    (x'k-1)^2(1 - eta) <= yk <= (x'k-1)^2(1 + eps)
+    
+    Note: Nk = n + b1/2 + b2/4 + ... + bk/2^k
+    Let's show by induction that:
+    [x/10^N(k-1)]^(2^k)(1-eta)^(2^(k+1)-1)<= yk <=
+    					  [x/10^N(k-1)]^(2^k)(1+eps)^(2^(k+1)-1)
+    and
+    log10 x + 2 log10(1-eta) - 1/2^(k-1) < Nk-1 < log10 x + 2 log10(1+eps)
+    for k >= 1
+
+    (1) If k = 1:
+    We have, x/10^n(1-eta) <= x'0 <= x/10^n(1+eps)
+    [x/10^n]^2(1-eta)^3 <= (x'0)^2(1-eta) <= y1 <= (x'0)^2(1+eps)
+    			   		     	<= [x/10^n]^2(1+eps)^3
+
+    N0 = n, and 10^n <= x < 10^(n+1)
+       So x(1-eta)^2 < 10^(n+1), thus log10 x + 2log10(1-eta) < N0+1
+       	  and 10^n < x(1+eps)^2, thus N0 < log10 x + 2 log10(1+eps)
+
+
+
+
+    (2) Suppose the proprieties are verified for k. We have x'k = yk/10^bk.
+    	So by hypothesis:
+	  [x/10^Nk]^(2^k)(1-eta)^(2^(k+1)-1) <= x'k <=
+	  	 [x/10^Nk]^(2^k)(1+eps)^(2^(k+1)-1)
+        and raising the inequalities to the power of two, we have:
+	  [x/10^Nk]^(2^(k+1))(1-eta)^(2^(k+2)-2) <= (x'k)^2 <=
+	  	 [x/10^Nk]^(2^(k+1))(1+eps)^(2^(k+2)-2)
+		 
+	Thus:
+	  [x/10^Nk]^(2^(k+1))(1-eta)^(2^(k+2)-1) <= (x'k)^2(1-eta) <=
+		y(k+1) <= (x'k)^2(1+eps) <=
+		       [x/10]^(2^(k+1))(1+eps)^(2^(k+2)-2)
+
+	So we have the desired result.
+	On the other hand, suppose yk >= 10, thus bk = 1:
+	We have by hypothesis:
+	  10 <= [x/10^N(k-1)]^(2^k)(1+eps)^(2^(k+1)-1)
+	Taking the logarithm we obtain:
+	  1 <= 2^k(log10 x - N(k-1))(2^(k+1)-1)log10(1+eps)
+	and dividing by 2^k:
+	  Nk = N(k-1)+1/2^k <= log10 x + (2 - 1/2^k)log10(1+eps)
+	       		    < log10 x + 2 log10(1+eps)
+
+	by hypothesis: log10 x + 2 log10(1-eta) - 1/2^(k-1) < Nk-1
+	Thus, log10 x + 2 log10(1-eta) - 1/2^k < Nk-1 + 1/2^k = Nk
+
+	If yk < 10, thus bk = 0:
+	We have by hypothesis:
+	   [x/10^Nk-1]^(2^k)(1-eta)^(2^(k+1)-1) < 10
+	   log10 x - Nk-1 + (2 - 1/2^k)log10(1-eta) < 1/2^k
+	log10(1-eta) < 0, so we have:
+           log10 x + 2 log10(1-eta) - 1/2^k < Nk-1 = Nk
+
+	And by hypothesis: Nk = Nk-1 < log10 x + 2 log10(1+eps)
+
+28. F1. [Initialize.] Set y <- 0, k <- 1.
+    F2. [Test for end.] If x = 0, stop. y is the result.
+    F3. [Compare.] If x < logb(1 + 1/2^k), go to L5.
+    F4. [Reduce values.] Set x <- x - logb(1 + 1/2^k), y <- y + (y >> k) and
+    	go to L2.
+    F5. [Increment.] k <- k+1, and go to L2. |
+
+    A1. [Start-F1.] x = x0, 0 <= x0 < 1, N = 0.
+    A2. [F1-F2.] y = 0, k = 1
+    A3. [F2-Stop.] |y - b^x0| <
+    A4. [F2-F3.] x > 0, |b^x0 - b^x y| < N
+    A4. [F3-F4.] logb(1 + 1/2^k) <= x < logb(1 + 1/2^(k-1)), N = N+1
+    A5. [F3-F5.] x < logb(1 + 1/2^k), |b^x0 - b^x y| < N
+    A6. [F4-F2.] |b^x0 - b^x y| < (N+1) 
+
+|b^x0 - b^x y| < eps
+
+0 <= y/2^k - (y >> k) < 1/2^(n-1)
+
+|logb(1 + 1/2^k) - xk| < eta
+
+|b^x0 - b^(x-xk)(y+(y>>k))| <=
+|b^x0 - b^x y| + b^(x-xk)|y b^xk - (y+(y>>k))|
+
+logb(1+1/2^k)-eta < xk < logb(1+1/2^k)+eta
+
+(1+1/2^k) e^(-eta|ln b|) < b^xk < (1+1/2^k) e^(eta|lnb|)
+
+(y+(y>>k))e^(-eta|lnb|) < y b^xk < (y+(y>>k)+1/2^(n-1)) e^(eta|ln b|)
+
+(y+(y>>k))(e^(-eta|ln b|)-1) < yb^xk - (y+(y>>k)) < 
+			(y+(y>>k))(e^(eta|lnb|)-1) + e^(eta|ln b|)/2^(n-1)
+
+
+We have: e^(-eta|ln b|) <= 1
+
+and 1 - e^(-eta|ln b|) <= e^(eta | ln b|) - 1
+
+
+|y b^xk - (y+(y>>k))| < (y+(y>>k))(e^(eta|ln b|)

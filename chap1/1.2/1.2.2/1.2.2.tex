@@ -1,0 +1,910 @@
+\documentclass[a4paper,12pt]{article}
+\newcommand{\newpar}[1]{\bigskip \noindent \textbf{#1.}}
+\newcommand{\la}{\leftarrow}
+\begin{document}
+
+\newpar{1} There's no smallest positive rational number.
+
+\newpar{2} No. It's $1 + 0.24$.
+
+\newpar{3} It's rational.
+
+\newpar{4} $(0.125)^{-\frac{2}{3}} = (\frac{1000}{125})^{\frac{2}{3}} = 
+((\frac{10}{5})^3)^{\frac{2}{3}} = 4$.  So it's an integer.
+
+\newpar{5} A real number is a quantity $x$ who has a 
+``\emph{binary expansion}'':
+\[ x = n + 0.b_1b_2b_3\ldots, \mbox{ (1) }\]
+where $n$ is an integer, each $b_i$ is a digit equal to zero or one and no
+infinite sequence of $1$'s appears.  The representation (1) means that:
+\[n + \frac{b_1}{2} + \frac{b_2}{4} + \cdots + \frac{b_k}{2^k} \le x <
+n + \frac{b_1}{2} + \cdots + \frac{b_k}{2^k} + \frac{1}{2^k} \mbox{ (2) } \]
+
+\newpar{6} Let $x = m + 0.d_1d_2\ldots$ and $y = n + 0.e_1e_2\ldots$ be real
+numbers.\\
+If $m < n$, then $x < y$.\\
+If $m > n$, then $x > y$.\\
+If $m = n$ and $d_i = e_i$ for all $i$ positive, then $x = y$.\\
+Otherwise, there's an integer $k$ such that:
+\[ d_i = e_i \mbox{ for all } i \le k \mbox{ and } d_k \not= e_k \]
+If $d_k > e_k$ then $x > y$ otherwise $x < y$.
+
+\newpar{7} Let $x$ and $y$ be integers.\\
+Let's proove by induction relative to $y$ the relations (4).
+
+\noindent
+If $y=0$, then:
+\[ b^{x+0} = b^x b^0,\]
+Suppose we have:
+\[ b^{x+y} = b^x b^y,\]
+Then:
+\begin{eqnarray*}
+b^{x+y+1} & = & b^{x+y} b, \mbox{ by (3) }\\
+& = & b^x b^y b, \mbox{ by induction }\\
+& = & b^x b^{y+1}, \mbox{ by (3) }
+\end{eqnarray*}
+
+If $y = 0$, then:
+\[ (b^x)^0 = b^{x.0} = 1, \]
+Suppose we have:
+\[ (b^x)^y = b^{xy} ,\]
+Then:
+\begin{eqnarray*}
+(b^x)^{y+1} & = & (b^x)^y b^y, \mbox{ by (3) }\\
+& = & b^{xy} b^x, \mbox{ by induction }\\
+& = & b^{xy + x}, \mbox{ by the other relation we just proved}\\
+& = & b^{x(y+1)}
+\end{eqnarray*}
+
+\newpar{8} Let $m$ be a positive integer.  If $x$ and $y$ are positive
+integers, we could easily proove by induction that if $x > y$ then
+$x^n > y^n$ for all positive integer $n$.  So if $u$ has a positive $m^{th}$
+root, it's unique.
+
+\medskip
+Suppose $x^m = u$ and let $x_k$ be the decimal expansion of $x$.\\
+Note: $x_k = d_0 + \frac{d_1}{10} + \cdots + \frac{d_k}{10^k}$, for $k \ge 0$.\\
+$d_0$ is the integer verifying:
+\[ d_0{}^m \le u < (d_0 + 1)^m \mbox{ and } x_0 = d_0.\]
+Now suppose $d_0, d_1, \ldots, d_{k-1}$ are determined.\\
+Thus $x_{k-1}$ is defined and we have:
+\[ x_{k-1}{}^m \le u < \left(x_{k-1} + \frac{1}{10^{k-1}}\right)^m \]
+If $u = x_{k-1}{}^m$, $x = x_{k-1}$. Otherwise:
+\[ x_{k-1}{}^m < u < \left(x_{k-1} + \frac{1}{10^{k-1}}\right)^m \]
+If $(x_{k-1} + \frac{9}{10^k})^m \le u$, we could take $d_k = 9$ and we have:
+\begin{eqnarray*}
+\left(x_{k-1} + \frac{d_k}{10^k}\right)^m \le u & < & 
+\left(x_{k-1} + \frac{1}{10^{k-1}}\right)^m \\
+& = & \left(x_{k-1} + \frac{d_k}{10^k} + \frac{1}{10^k}\right)^m
+\end{eqnarray*}
+
+Thus,
+\[ x_k{}^m \le u < \left(x_k + \frac{1}{10^k}\right)^m \]
+If $(x_{k-1} + \frac{9}{10^k})^m > u$, given that $x_{k-1}{}^m < u$, there 
+exists an integer $d_k$ between $0$ and $8$ such that:
+\[ \left(x_{k-1} + \frac{d_k}{10^k}\right)^m \le u < 
+\left(x_{k-1} + \frac{d_k+1}{10^k}\right)^m \]
+Thus,
+\[ x_k{}^m \le u < \left(x_k + \frac{1}{10^k}\right)^m \]
+
+\newpar{9} Suppose $x = \frac{p}{q}$ and $y = \frac{r}{s}$:
+\begin{eqnarray*}
+b^{x+y} & = & b^{\frac{p}{q} + \frac{r}{s}}\\
+& = & b^{\frac{ps + qr}{qs}}
+\end{eqnarray*}
+Thus,
+\begin{eqnarray*}
+(b^{x+y})^{qs} & = & b^{ps+qr}\\
+& = & b^{ps} b^{qr}\\
+& = & (b^p)^s (b^r)^q\\
+& = & ((b^{\frac{p}{q}})^q)^s ((b^{\frac{r}{s}})^s)^q\\
+& = & (b^x)^{qs} (b^y)^{sq}\\
+& = & (b^x b^y)^{qs}\\
+\mbox{Thus, }b^{x+y} & = & b^x b^y
+\end{eqnarray*}
+
+We have,
+\begin{eqnarray*}
+(b^{xy})^{qs} & = & (b^{\frac{pr}{qs}})^{qs}\\
+& = & b^{pr}\\
+& = & (b^p)^r\\
+& = & ((b^x)^q)^r\\
+& = & (b^x)^{qr}\\
+& = & ((b^x)^r)^q\\
+& = & (((b^x)^y)^s)^q\\
+& = & ((b^x)^y)^{qs}\\
+\mbox{Thus, }b^{xy} & = & (b^x)^y
+\end{eqnarray*}
+
+\newpar{10} Suppose that $\log_{10}2$ is a rational number.\\
+Note: $\log_{10}2 = \frac{p}{q}$, with $\gcd(p, q) = 1$.\\
+We have:
+\begin{eqnarray*}
+p &=& q \log_{10}2\\
+p &=& \log_{10}2^q\\
+10^p &=& 2^q\\
+2^q &=& 2^p 5^p\\
+\end{eqnarray*}
+We have a primary factor decompositon so, $p = q = 0$. Wich is absurd.
+Thus $\log_{10}2$ is irrational.
+
+\newpar{11} Infinitely many because $\log_{10}2$ is irrational.  We will
+never know if $b^x$ is $1.99999\ldots$ or $2.00000\ldots$.
+
+\newpar{12} We have: $10^{0.30102999} \le 2 < 10^{0.30103000}$.\\
+Thus: $0.30102999 \le \log_{10}2 < 0.3103000$.
+
+\newpar{13} (a) Let $x$ be a positive real number and $n$ a positive integer.\\
+We have:
+\begin{eqnarray*}
+f(x) &=& \left(1+\frac{x}{n}\right)^n - 1 - x\\
+f'(x) &=& \left(1+\frac{x}{n}\right)^{n-1} - 1 \ge 0\\
+f(x) &\ge& f(0) = 0
+\end{eqnarray*}
+
+\medskip
+(b)
+\begin{eqnarray*}
+b^{n+\frac{d_1}{10}+\cdots+\frac{d_k}{10^k}}(b^{\frac{1}{10^k}}-1) & \le &
+b^{n+1}(b^{\frac{1}{10^k}} - 1)\\ &=&
+b^{n+1}((1 + (b-1))^{\frac{1}{10^k}} - 1)\\ & \le &
+b^{n+1}\frac{b-1}{10^k}
+\end{eqnarray*}
+
+\newpar{14} We have:
+\begin{eqnarray*}
+b^{\log_b(c^y)} & = & c^y, \mbox{ by definition}\\
+&=& (b^{\log_bc})^y\\
+&=& b^{y \log_b c}
+\end{eqnarray*}
+Thus, $\log_b(c^y) = y \log_b c$.
+
+\newpar{15} Let $x$, $y$ be positive real numbers.\\
+$\log_bx = \log_b(y \frac{x}{y}) = \log_by + \log_b(\frac{x}{y})$ by (10)
+
+\newpar{16} $\log_{10} x = \frac{\ln x}{\ln 10}$.
+
+\newpar{17} $\log_2 32 = \log_2 2^5 = 5$\\
+$\log_{\pi}\pi = 1$\\
+$\ln e =  1$\\
+$\log_b 1 = 0$\\
+$\log_b(-1)$ is not defined.
+
+\newpar{18} $\log_8 x = \frac{\ln x}{\ln 8} = \frac{\ln x}{\ln 2^3} =
+\frac{1}{3} \log_2 x$.
+
+\newpar{19} No. The greatest $14$-digit integer is $n = 10^{15} - 1$.\\
+Given that: $\log_2 n \simeq 49.83$, $n$ is a $49$-bit integer.  So it
+doesn't fit.
+
+\newpar{20} \[ \log_2 10 = \frac{\ln 10}{\ln 2} = 
+\frac{1}{\frac{\ln 2}{\ln 10}} = \frac{1}{\log_{10}2}\]
+
+\newpar{21} 
+\begin{eqnarray*}
+\log_b(\log_b x) &=& \log_b\left(\frac{\ln x}{\ln b}\right)\\&=&
+\log_b \ln x - \log_b \ln b\\&=&
+\frac{(\ln \ln x - \ln \ln b)}{\ln b}
+\end{eqnarray*}
+
+\newpar{22} $\log_2 x - \ln x - \log_{10} x = \ln x (\frac{1}{\ln 2} - 1 -
+\frac{1}{\ln 10})$.\\
+We have
+\[\frac{1}{\ln 2} - 1 - \frac{1}{\ln 10} \simeq 0.008 \]
+Thus
+\[ \frac{|\log_2 x - \ln x - \log_{10} x|}{|\ln x|} < \frac{1}{100}\]
+
+\newpar{24} We shift the decimal point of $x$ to the left or to the right 
+so that we have $1 \le \frac{x}{2^n} < 2$; this determinates $n$.\\
+Set $x_0 = \frac{x}{2^n}$ and for $k \ge 1$,\\
+$b_k = 0, x_k = x_{k-1}{}^2,$ if $x_{k-1}{}^2 < 2$;\\
+$b_k = 1, x_k = \frac{x_{k-1}{}^2}{2},$ if $x_{k-1}{}^2 \ge 2$.
+
+\newpar{25} Note $n$ the number of precision used by the computer and suppose
+$n > 1$.\\
+Let's modify slightly the algorithm. We'll introduce the variable $l$ wich
+counts the number of times \textbf{L4} is executed.
+\begin{description}
+\item[L1.]
+[Initialize.] Set $y \la 0$, $z \la x \gg 1$,
+$k \la 1$, $l \la 0$.
+\item[L2.]
+[Test for end.] If $x = 1$, stop.
+\item[L3.]
+[Compare.] If $x - z < 1$, goto \textbf{L5}.
+\item[L4.]
+[Reduce values.] Set $x \la x-z$, $z \la x \gg k$,
+$l \la l+1$,
+$y \la y + \log_b\left(\frac{2^k}{2^k-1}\right)$ and goto \textbf{L2}.
+\item[L5.]
+[Shift.] Set $z \la z \gg 1$, $k \la k+1$, and goto \textbf{L5}.
+\end{description}
+
+\noindent 
+Let $x_0$ be a number veryfying $1 \le x_0 < 2$, and let $v_k$ be the value of 
+$\log_b\left(\frac{2^k}{2^k-1}\right)$ on the machine and  $\eta > 0$ veryfying:
+\[ \left|v_k - \log_b\left(\frac{2^k}{2^k-1}\right)\right| < \eta,
+\mbox{ for } 1 \le k \le n-1 \]
+
+\begin{description}
+\item[A1.]
+[\textbf{Start--L1}.] $x = x_0$.
+\item[A2.]
+[\textbf{L1--L2}.] $y=0$, $k=1$, $l=0$, $z = x \gg k$, $x \ge 1$, $k \le n-1$
+\item[A3.]
+[\textbf{L2--Stop}.] 
+$|\log_bx_0-y| < (n-1)\left(\eta + 
+\left|\log_b\left(1 - \frac{1}{2^{n-1}}\right)\right|\right)$
+\item[A4.]
+[\textbf{L2--L3}.]
+$x>1$, $z = x \gg k$, $l \le k$, $k \le n-1$,\\
+$|\log_bx_0 - \log_b x - y| < l\left(\eta+
+\left|\log_b\left(1 - \frac{1}{2^{n-1}}\right)\right|\right)$
+\item[A5.]
+[\textbf{L3--L4}.]
+$m = \lceil-\log_2(x-1)\rceil$, $1 \le x-z < 1+\frac{1}{2^m}$,\\
+$z = x \gg k$, $k \le n-1$,\\
+$k = m$ and $l < k$ or $k=m+1$ and $l < k-1$,\\
+$|\log_bx_0 - \log_b x - y| < l\left(\eta+
+\left|\log_b\left(1 - \frac{1}{2^{n-1}}\right)\right|\right)$
+\item[A6.]
+[\textbf{L3--L5}.]
+$x>1$, $z = x \gg k$, $l \le k$, $k < n-1$,\\
+$|\log_bx_0 - \log_b x - y| < l\left(\eta+
+\left|\log_b\left(1 - \frac{1}{2^{n-1}}\right)\right|\right)$
+\item[A7.]
+[\textbf{L4--L2}.]
+$z = x \gg k$, $k \le n-1$, $0 \le x-1 < \frac{1}{2^m}$,\\
+$k = m$ and $l \le k$ or $k = m+1$ and $l \le k-1$,\\
+$|\log_bx_0 - \log_b x - y| < l\left(\eta+
+\left|\log_b\left(1 - \frac{1}{2^{n-1}}\right)\right|\right)$
+\item[A8.]
+[\textbf{L5--L2}.]
+$z = x \gg k$, $x > 1$, $k \le n-1$, $l < k$,\\
+$|\log_bx_0 - \log_b x - y| < l\left(\eta+
+\left|\log_b\left(1 - \frac{1}{2^{n-1}}\right)\right|\right)$
+\end{description}
+
+\begin{description}
+\item[A1.]
+\item[A2.]
+\item[A3.]
+If we're from \textbf{L1} before \textbf{L2}, we have $x_0 = x = 1$, and $y=0$.
+Thus $|\log_bx_0 - y| = 0$, so the inequality holds.\\
+We couldn't come from \textbf{L5} because according to \textbf{A8}, $x > 1$.\\
+If we're from \textbf{L4}, according to \textbf{A7}:
+\[ |\log_bx_0 - \log_b x - y| < l \left(\eta +
+\left|log_b\left(1 - \frac{1}{2^{n-1}}\right)\right|\right)\]
+And because $x = 1$ and given that $l \le k \le n-1$, we have:
+\[ |\log_bx_0 - y| < (n-1) \left(\eta +
+\left|log_b\left(1 - \frac{1}{2^{n-1}}\right)\right|\right)\]
+\item[A5.]
+From \textbf{A4} we have, $z = x \gg k$, $k \le n-1$, and
+\[ |\log_bx_0 - \log_bx - y| < l \left(\eta +
+\left|log_b\left(1 - \frac{1}{2^{n-1}}\right) \right| \right)\]
+And from \textbf{L3} $x - z \ge 1$.  And from \textbf{A2, A7, A8} we have
+$l \le k$.\\
+We have:
+\[ m \ge -\log_2(x-1) > m-1, \]
+\[ \frac{1}{2^m} \le x-1 < \frac{1}{2^{m-1}} \mbox{ (1)}\]and
+\[ \frac{1}{2^k} \le (x \gg k) < \frac{1}{2^{k-1}}\mbox{ (2)}.\]
+
+We then deduce that if $k < m$, \[
+x-1-z = x-1-(x \gg k) < \frac{1}{2^{m-1}} - \frac{1}{2^k} \le 0,\]
+thus $x-z < 1$. So we should have $k \ge m$ if we want to reach \textbf{L4}.\\
+Suppose $k = m$.\\
+From (1) and (2), we deduce:
+\[ -\frac{1}{2^m} < x - 1 - z < \frac{1}{2^m} \]
+If $x-1-z \ge 0$, we have $k=m$, and $0 \le x-1-z < \frac{1}{2^m}$.\\
+From \textbf{A8} and \textbf{A2}, $l < k$ so if we have $l = k$, we're from
+\textbf{A7}.\\
+But according to \textbf{A7}:
+\[ k = m, 0 \le x-1 < \frac{1}{2^k} \mbox{ and } z = x \gg k\]
+thus, $\frac{1}{2^k} \le z$ so $x-1-z < 0$.\\
+If $l = k$, we don't reach \textbf{L4} and increment $k$ at \textbf{L5}.  Thus
+if $k = m$, $l < k$.
+
+If $x-1-z < 0$, we go to \textbf{L5} and increment $k$, now $k = m+1$ and
+$z = x \gg (m+1)$.  Thus, $l < k-1$.\\
+From (1) and (2)
+\[ x-1-(x \gg (m+1)) > \frac{1}{2^m} - \frac{1}{2^m} = 0 \] and
+\begin{eqnarray*}
+x-1-(x\gg(m+1)) &=& x-1 - \left(\frac{x \gg m}{2} - \frac{b}{2^n} \right),
+\mbox{ with } b \in \{0, 1\}\\ &=&
+x-1 - (x \gg m) + \left(\frac{x \gg m}{2} + \frac{b}{2^n}\right)
+\end{eqnarray*}
+
+We have $0 < (x \gg m) - (x-1)$. Given that the machine precision is $n$, the
+smallest number we could have is $\frac{1}{2^{n-1}}$.\\
+Thus, \[(x \gg m) - (x-1) \ge \frac{1}{2^{n-1}}.\]
+Finally we have
+\begin{eqnarray*}
+x-1-(x\gg(m+1)) & \le & \frac{b}{2^n} - \frac{1}{2^{n-1}} + \frac{x \gg m}{2}\\
+& < & \frac{1}{2^n} - \frac{1}{2^{n-1}} + \frac{\frac{1}{2^{m-1}}}{2},
+\mbox{ from (2) } \\
+& < & \frac{1}{2^m} - \frac{1}{2^n} \\
+x-1-(x \gg (m+1)) & < & \frac{1}{2^m}
+\end{eqnarray*}
+And of course we have:
+\[|\log_bx_0 - \log_bx - y| < l\left(\eta +
+\left|log_b\left(1 - \frac{1}{2^{n-1}}\right) \right| \right)\]
+
+\item[A6.]
+From \textbf{A5} $x > 1$ and $k \le n-1$.  If $k = n-1$, 
+$z = x \gg (n-1) = \frac{1}{2^{n-1}}$.  Given that $x > 1$, we have 
+$x - 1 \ge \frac{1}{2^{n-1}}$ because the number of bits of the machine is $n$.
+Thus we have: $x - z \ge 1$.\\
+So if we reach \textbf{L5}, we must have $k < n-1$.
+
+\item[A7.]
+We have easily from \textbf{A5}: 
+\[z = x \gg k, k \le n-1, 0 \le x-1 < \frac{1}{2^m},\]
+\[ k = m \mbox{ and } l \le k \mbox{ or } k=m+1 \mbox{ and } l<k.\]
+We have:
+\[z = x \gg k = \frac{x}{2^k} - \frac{b_1}{2^n} - \frac{b_2}{2^{n+1}} -
+\cdots - \frac{b_k}{2^{n-1+k}}\]
+with $(b_1, b_2, \ldots, b_k) \in \{0, 1\}^k$.\\
+Thus,
+\begin{eqnarray*}
+0 \le \frac{x}{2^k} - z & \le & 
+\frac{1}{2^n} \left(1 + \frac{1}{2} + \cdots + \frac{1}{2^{k-1}}\right)\\&=&
+\frac{1}{2^n} \frac{\left(1 - \frac{1}{2^k}\right)}{1-\frac{1}{2}}\\
+0 \le \frac{x}{2^k} - z & < & \frac{1}{2^{n-1}} \mbox{ (1)}
+\end{eqnarray*}
+And
+\begin{eqnarray*}
+\log_b\left(x \left(1 - \frac{1}{2^k}\right) \right) &=&
+\log_b\left((x-z) + \left(z - \frac{x}{2^k}\right) \right)\\ &=&
+\log_b(x-z) + \log_b\left(1+ \frac{z-\frac{x}{2^k}}{x-z}\right) \mbox{ (*)}
+\end{eqnarray*}
+
+From (1) we have
+\[0 \le \frac{\frac{x}{2^k}-z}{x-z} < \frac{1}{2^{n-1}(x-z)} 
+\le \frac{1}{2^{n-1}} ,\]
+Thus,
+\begin{eqnarray*}
+0 \le -\ln \left(1 - \frac{\frac{x}{2^k}-z}{x-z} \right)
+&<& -\ln \left(1 - \frac{1}{2^{n-1}}\right)\\
+\left|\ln \left(1 - \frac{\frac{x}{2^k}-z}{x-z} \right)\right|
+&<& \left|\ln \left(1 - \frac{1}{2^{n-1}}\right)\right|\\
+\left|\log_b \left(1 - \frac{\frac{x}{2^k}-z}{x-z} \right)\right|
+&<& \left|\log_b \left(1 - \frac{1}{2^{n-1}}\right)\right|
+\end{eqnarray*}
+
+From (*) we have:
+\[ \left| \log_b \left(x \left(1 - \frac{1}{2^k}\right)\right) -
+\log_b(x-z) \right| < \left| \log_b\left(1 - \frac{1}{2^{n-1}}
+\right) \right| \mbox{ (2)}\]
+
+From \textbf{A5} we have:
+\[ |\log_bx_0 - \log_bx - y| < l \left(\eta +
+\left|\ln \left(1 - \frac{1}{2^{n-1}}\right) \right| \right) \]
+
+Remembering that:
+\[ \left|v_k - \log_b\left(\frac{2^k}{2^k-1}\right) \right| < \eta, 
+\mbox{ for } 1 \le k \le n-1 \mbox{ (3)}\]
+
+Finally, we have
+\begin{eqnarray*}
+|\log_bx_0 - \log_b(x-z) & - & (y+v_k)|  \le \\ &&
+|\log_bx_0 - \log_bx - y| +\\ &&
+\left|\log_b\left(\frac{2^k}{2^k-1}\right)-v_k\right|+\\&&
+\left|\log_b\left[x \left(1 - \frac{1}{2^k}\right) \right] - \log_b(x-z)
+\right|
+\end{eqnarray*}
+From (1), (2), (3) we deduce
+\begin{eqnarray*}
+|\log_bx_0 - \log_b(x-z) - (y+v_k)|  & \le &
+l\left(\eta + \left|\log_b\left(1 - \frac{1}{2^{n-1}}\right)\right|\right)+\\&&
+\eta + \left|\log_b\left(1 - \frac{1}{2^{n-1}}\right)\right|\\& \le & 
+(l+1)\left(\eta + \left|\log_b\left(1 - \frac{1}{2^{n-1}}\right)\right|\right).
+\end{eqnarray*}
+
+\item[A8.]
+\end{description}
+
+Let's show that the algorithm terminates.  We have $k \le n-1$. From \textbf{A5}
+we have $k \ge \lceil -\log_2(x-1)\rceil$.\\
+Until $k$ reach $m = \lceil -\log_2(x-1)\rceil$, $k$ is incremented.\\
+If $k = m$, and $x-z \ge 1$, from \textbf{A7} we have after \textbf{L4},
+$x-z < 1 + \frac{1}{2^m} - \frac{1}{2^m} <1$.  Thus $k$ is incremented in 
+the next iteration.\\
+And if $x-z<1$, $k$ is incremented.
+
+So $k$ is incremented at least each $2$ iterations.  And given that
+$k \le n-1$, the algorithm terminates.
+
+\newpar{26} From the demonstration of \textbf{A3} in \textbf{25}, we deduce
+that the maximum value of error corresponds to the maximum value of $l$.
+
+To simplify the notation, let's say the numbers we deal with are integers
+between $0$ and $2^{n-1}$ instead of $0$ and $2 - \frac{1}{2^{n-1}}$, where
+$n$ is the precision of the machine.
+
+
+Since we're only dealing with addition, soustraction and shifting, we just
+mutliply the numbers by $2^{n-1}$.  We then have $2^{n-1} \le x_0 < 2^n$.
+So let's rewrite the algorithm like this:
+\begin{description}
+\item[L1.]
+[Initialize.] Set $y \la 0$, $z \la x \gg 1$,
+$k \la 1$, $l \la 0$.
+\item[L2.]
+[Test for end.] If $x = 2^{n-1}$, stop.
+\item[L3.]
+[Compare.] If $x - z < 2^{n-1}$, goto \textbf{L5}.
+\item[L4.]
+[Reduce values.] Set $x \la x-z$, $z \la x \gg k$,
+$l \la l+1$,
+$y \la y + \log_b\left(\frac{2^k}{2^k-1}\right)$ and goto \textbf{L2}.
+\item[L5.]
+[Shift.] Set $z \la z \gg 1$, $k \la k+1$, and goto \textbf{L5}.
+\end{description}
+Note: $m = \lfloor \frac{n}{2}\rfloor$.\\
+Let $k$ be an integer such that $1 < k < m$ and
+\[f_k(y) = y - (y \gg k), \mbox{ for } 2^{n-1} < y < 2^{n}.\]
+And note that: $y \gg k = \lfloor \frac{y}{2^k}\rfloor$.
+
+\medskip
+Let's show that for every $z$ such that $0 \le z < 2^{n-2k-1}$, there exists an
+integer $z' < 2^{n-2k+1}$ if $k > 2$ and $z'<2^{n-2k+2}$ if $k=2$ such that:
+\[ f_k(2^{n-1} + 2^{n-k} + z') = 2^{n-1} + 2^{n-k-1} + z \mbox{ (*)}\]
+
+Note: $y_0 = 2^{n-1} + \sum_{i=1}^r 2^{n-lk},$ with 
+$r=\lfloor \frac{n}{k}\rfloor$.  We have 
+\[f_k(y_0) = 2^{n-1} + 2^{n-k-1}\]
+
+\begin{eqnarray*}
+(a+b) \gg k & = & \left\lfloor \frac{a+b}{2^k}\right\rfloor\\ & = &
+\left\lfloor \frac{2^k\lfloor\frac{a}{2^k}\rfloor + a\ \mathrm{mod}\ 2^k + 
+2^k\lfloor\frac{b}{2^k}\rfloor + b\ \mathrm{mod}\ 2^k}{2^k}\right\rfloor\\ &=&
+\left\lfloor\frac{a}{2^k}\right\rfloor + 
+\left\lfloor\frac{b}{2^k}\right\rfloor +
+\left\lfloor\frac{a\ \mathrm{mod}\ 2^k + b\ \mathrm{mod}\ 2^k}{2^k}\right\rfloor
+\mbox{ (1)}
+\end{eqnarray*}
+
+We have
+\[ (n-rk) - k = n - (r+1)k < n - \frac{n}{k} k = 0\]
+\[ (n - (r-1)k) - k = n - rk \ge 0 \]
+
+So 
+\[2^{n-rk} < 2^k \mbox{ and } 2^{n-ik} \ge 2^k\mbox{ if }i \le r-1.\]
+ Thus,
+\[y_0\ \mathrm{mod}\ 2^k = 2^{n-rk}\] and from (1)
+\[(y_0 + b) \gg k = \left\lfloor\frac{y_0}{2^k}\right\rfloor +
+\left\lfloor\frac{b}{2^k}\right\rfloor +
+\left\lfloor\frac{2^{n-rk} + b\ \mathrm{mod}\ 2^k}{2^k}\right\rfloor
+\mbox{ (2)}\]
+
+If $0 \le b < 2^k - 2^{n-rk}$,
+\[\left\lfloor\frac{b}{2^k}\right\rfloor = 0 \mbox{ and }
+\left\lfloor\frac{2^{n-rk}+b\ \mathrm{mod}\ 2^k}{2^k}\right\rfloor =
+\left\lfloor\frac{2^{n-rk}+b}{2^k}\right\rfloor = 0.\]
+
+So,
+\[f_k(y_0 + b) = f_k(y_0) + b = 2^{n-1} + 2^{n-k-1} + b.\]
+
+\begin{itemize}
+\item
+If we have $2^{n-2k-1}\le 2^k - 2^{n-rk}$, then $z < 2^k - 2^{n-rk}$, so 
+\[ f_k(y_0 + z) = 2^{n-1} + 2^{n-k-1} + z\]
+Note: $z' = \sum_{i=2}^r 2^{n-ik} + z$, so $y_0 + z = 2^{n-1}+2^{n-1}+z'$.\\
+We have $2^{n-2k-1} \le 2^{k}-2^{n-rk}$, so $n-2k-1 \le k-1$, then $r\le3$.
+\begin{description}
+\item[*] If $r=2$, $z' = 2^{n-2k} + z < 2^{n-2k} + 2^{n-2k-1} < 2^{n-2k+1}$.
+\item[*] If $r=3$, $z < 2^k - 2^{n-3k} \le 2^{n-2k} - 2^{n-3k}$ so,\\
+$z' < 2^{n-2k} + 2^{n-2k} = 2^{n-2k+1}$.
+\end{description}
+So we have (*).
+
+\item
+From now on then, let's suppose that $2^k - 2^{n-rk} < 2^{n-2k-1}$ and\\
+$z \ge 2^k - 2^{n-rk}$.  We have $k \le n-2k-1$ so $r \ge 3$.
+
+Note: $y_1 = y_0 + 2^k - 2^{n-rk} = 2^{n-1} + \sum_{i=1}^{r-1}2^{n-ik} + 2^k$.\\
+From (2), we have
+\[ (y_0 + 2^k - 2^{n-rk}) \gg k = \left\lfloor\frac{y_0}{2^k}\right\rfloor + 1\]
+and
+\begin{eqnarray*}
+f_k(y_1)& = &f_k(y_0) + 2^k - 2^{n-rk} - 1\\ &=&
+2^{n-1} + 2^{n-k-1} + 2^k - 2^{n-rk} - 1.
+\end{eqnarray*}
+
+If $1 \le i \le r-1$, $n-ik \ge k$, so $y_1\ \mathrm{mod}\ 2^k = 0$. And from
+(1)
+\[(y_1+b) \gg k = \left\lfloor\frac{y_1}{2^k}\right\rfloor +
+\left\lfloor\frac{b}{2^k}\right\rfloor\]
+\[f_k(y_1+b) = f_k(y_1) + b - \left\lfloor\frac{b}{2^k}\right\rfloor \mbox{ (3)}
+\]
+
+Note: $\delta = z - 2^k + 2^{n-rk} + 1$.  Remember that $z \ge 2^k - 2^{n-rk}$ 
+so $\delta > 0$.
+
+\begin{description}
+\item[*]
+If $\delta < 2^k$, from (3) we have
+\[f_k(y_1 + \delta) = f_k(y_1) + \delta = 2^{n-1} + 2^{n-k-1} + z,\]
+and if we note: $z' = \sum_{i=2}^r2^{n-ik} + z + 1$, we have
+\[ y_1 + \delta = 2^{n-1} + 2^{n-k} + z'.\]
+Given that $z < 2^{n-2k-1}$, we have
+\[ z' < \sum_{i=2}^r 2^{n-ik} + 2^{n-2k-1} + 1,\]
+Given that $k > 1$, $n-2k > n-2k-1 > n-3k$, so
+\[ \sum_{i=2}^{r-1}2^{n-ik} + 2^{n-2k-1} \le \sum_{i=2k}^{(r-1)k}2^{n-i},\]
+and
+\[ 1+2^{n-rk} \le 2^{n-(r-1)k} - 1\]
+so we have prooved (*) because
+\[z' < 2^{n-2k+1}\]
+\item[*]
+If $\delta \ge 2^k$, from (3) we have
+\begin{eqnarray*}
+f_k\left(y_1 + \delta + \left\lfloor\frac{\delta}{2^k-1}\right\rfloor\right)&=&
+f_k(y_1) + \delta + \left\lfloor\frac{\delta}{2^k-1}\right\rfloor - \\&&
+\left\lfloor\frac{\delta + \left\lfloor
+\frac{\delta}{2^k-1}\right\rfloor}{2^k}\right\rfloor \mbox{ (**)}
+\end{eqnarray*}
+If $p$ is a positive integer and $x$ a real, let's show that
+\[ \left\lfloor\frac{\lfloor x \rfloor}{p}\right\rfloor =
+\left\lfloor\frac{x}{p}\right\rfloor\]
+
+We have,
+\[\left\lfloor\frac{\lfloor x \rfloor}{p}\right\rfloor \le
+\frac{\lfloor x \rfloor}{p} \le \frac{x}{p}\] and
+
+\[p\left(\left\lfloor\frac{\lfloor x \rfloor}{p}\right\rfloor + 1\right) >
+p \frac{\lfloor x \rfloor}{p} = \lfloor x \rfloor\]
+
+Given that the two members of the inequality are integers, we have
+\[p\left(\left\lfloor\frac{\lfloor x \rfloor}{p}\right\rfloor + 1\right) \ge
+\lfloor x \rfloor + 1 > x\]
+thus,
+\[\left\lfloor\frac{\lfloor x \rfloor}{p}\right\rfloor \le \frac{x}{p} <
+\left\lfloor\frac{\lfloor x \rfloor}{p}\right\rfloor + 1\]
+
+We then deduce that
+\begin{eqnarray*}
+\left\lfloor\frac{\delta + \left\lfloor\frac{\delta}{2^k-1}\right\rfloor}{2^k}
+\right\rfloor & = &
+\left\lfloor\frac{\left\lfloor \delta + \frac{\delta}{2^k-1}\right\rfloor}{2^k}
+\right\rfloor\\ & = &
+\left\lfloor\frac{\left\lfloor \frac{2^k\delta}{2^k-1}\right\rfloor}{2^k}
+\right\rfloor\\ & = &
+\left\lfloor\frac{\delta}{2^k-1}\right\rfloor
+\end{eqnarray*}
+
+From (**), we have
+\[f_k\left(y_1 + \delta + \left\lfloor\frac{\delta}{2^k-1}\right\rfloor\right)
+= f_k(y_1) + \delta = 2^{n-1} + 2^{n-k-1} + z.\]
+Note: $z' = \sum_{i=2}^r 2^{n-ik} + z + 1 + \left\lfloor\frac{\delta}{2^k-1}
+\right\rfloor$, we have
+\[ y_1 + \delta = 2^{n-1} + 2^{n-k} + z'.\]
+We have, $z < 2^{n-2k-1}$ and $k > 1$ so
+\begin{eqnarray*}
+\left\lfloor\frac{\delta}{2^k-1}\right\rfloor & \le &
+\frac{\delta}{2^k-1}\\ & \le &
+\frac{z}{2^k-1}\\ & \le &
+\frac{z}{2^{k-1}} \\ & < &
+\frac{2^{n-2k-1}}{2^{k-1}} \\
+\left\lfloor\frac{\delta}{2^k-1}\right\rfloor & \le & 2^{n-3k}-1 
+\end{eqnarray*}
+
+Remember that $r \ge 3$, so we have
+\begin{eqnarray*}
+z' & \le & \sum_{i=2}^r2^{n-ik} + z + 2^{n-3k}\\
+& < & \sum_{i=2}^r 2^{n-ik} + 2^{n-2k-1} + 2^{n-3k} \\
+& = & 2^{n-2k} + 2^{n-2k-1} + 2^{n-3k+1} + \sum_{i=4}^r 2^{n-ik}
+\end{eqnarray*}
+
+If $k > 2$, $n-2k-1 > n-3k+1$ so
+\[z' < 2^{n-2k+1},\]
+
+If $k = 2$,
+\[z' < 2^{n-3} + \sum_{i=4}^r 2^{n-ik} < 2^{n-2}.\]
+
+So we have demonstrated (*).
+\end{description}
+\end{itemize}
+
+So far, we've showed that for $2 \le k \le m-1$, and for each integer
+$z < 2^{n-2k-1}$, there exists an $z' < 2^{n-2k+1}$ if $k > 2$ and
+$z' < 2^{n-2}$ if $k = 2$ such that:
+\[(2^{n-1} + 2^{n-k} + z') - ((2^{n-1} + 2^{n-k} + z') \gg k) =
+2^{n-1} + 2^{n-1} + z \mbox{ (*) }\]
+
+Note: $x_0 = 2^{n-1} + 2^{n-m} + \lfloor 2^{n-2m-1}\rfloor$.
+
+We can show by induction and thanks to (*) that there exists a sequel
+$(x_i)_{0 \le i \le m-2}$ such that:
+\[x_i = 2^{n-1} + 2^{n-m+i} + z_i,\]
+with $z_{m-2}< 2^{n-2}$ and $z_i < 2^{n-2(m-i)+1}$ if $i < m-2$ and
+\[x_i - (x_i \gg (m-i)) = x_i-1, \mbox{ for } 1 \le i \le m-2 \mbox{ (4)}\]
+
+Plus, for $0 \le i \le m-2$
+\[(x_i \gg (m-i-1)) \ge 2^{n-m+i} + 2^{n-2(m-i)+1}, \mbox{ because } n-2m+1 > 0,\]
+so,
+\[x_i - (x_i \gg (m-i-1)) < 2^{n-1} \mbox { (5).}\]
+Note: $p = \left\lfloor\frac{n+1}{2}\right\rfloor$.
+
+Suppose: $x = 2^{n-1} + 2^{n-1-k} + z$, with $k \ge p$, and $z < 2^{n-1-k}$.\\
+Then, $x \gg k = 2^{n-1-k}$ because:
+\[n-1-2k \le n-1-2p < n- 1 - 2(\frac{n+1}{2} - 1) = 0\] so,
+\[x - (x \gg k) = 2^{n-1} + z \mbox{ (6)}\]
+
+Let's say that we run the algorithm on some input, and $N$ is the value of
+$l$ when $x$ becomes less than $2^{n-1} + 2^{n-p}$.  If we note $b$ the
+number of bits equal to $1$ in $x$ ($b \ge 1$, because $x \ge 2^{n-1}$), from
+(6) we deduce that the value of $l$ when the algorithm terminates is
+$N + b - 1$. (7)
+
+We've just executed \textbf{L4} so from 
+\textbf{A7} we have,
+\[\frac{x}{2^{n-1}} - 1 < \frac{1}{2^m}\]
+or rearranging the inequality
+\[x < 2^{n-1} + 2^{n-1-m}.\]
+ We deduce too from \textbf{A7},
+\[k = m \mbox{ and } N \le k \mbox{ or } k = m+1 \mbox{ and } N \le k-1,\]
+Thus we have,
+\[N \le m \mbox{ and } x < 2^{n-1} + 2^{n-1-m}. \mbox{ (8)}\]
+
+We have $b \le n-p+1$.
+\begin{description}
+\item[*] If $b < n-p+1$,\\
+Replacing $m$ by $p-1$ in (8), we have
+\[x < 2^{n-1} + 2^{n-p} \mbox{ and } N \le p-1.\]
+So from (7), we have
+\[l \le N + b - 1 \le n-2.\]
+\item[*]If $b = n-p+1$:\\
+The current value of $x$ is then $2^{n-1} + 2^{n-p} - 1$.
+Let $y$ be an integer verifying
+\[2^{n-1} + 2^{n-p} \le y < 2^{n-1} + 2^{n-p+1}.\]
+Let's show that $y$ couldn't verify
+\[\left\{\begin{array}{l}
+y - (y \gg (p-1)) = x\\
+or\\
+y - (y \gg (p-1)) < 2^{n-1} \mbox{ and } y - (y \gg p) = x.
+\end{array}\right. \]
+
+We have
+\[(y \gg (p-1)) \ge 2^{n-p} + 2^{n-2p+1}\] because
+$n-2p+1 \ge n - 2\frac{n+1}{2}+1 = 0$.  So,
+\begin{eqnarray*}
+y - (y \gg (p-1)) &<& 2^{n-1} + 2^{n-p+1} - 2^{n-p} - 2^{n-2p+1}\\
+&\le& 2^{n-1} + 2^{n-p} - 1\\
+\mbox{Thus, }y - (y \gg (p-1)) &<& x.
+\end{eqnarray*}
+
+Suppose that
+\begin{eqnarray*}
+y &<& 2^{n-1} + (y >> (p-1))\\
+&\le& 2^{n-1} + 2^{n-p} + 2^{n-2p+1},
+\end{eqnarray*}
+we then deduce
+\begin{eqnarray*}
+y - (y \gg p) &<& 2^{n-1} + 2^{n-p} + 2^{n-2p+1} - 2^{n-1-p}\\
+&=& 2^{n-1} + 2^{n-1-p} + 2^{n-2p+1}.
+\end{eqnarray*}
+
+We have,
+\begin{eqnarray*}
+2^{n-1} + 2^{n-1-p} + 2^{n-2p+1} \le x & \Leftrightarrow &
+2^{n-2p+1} \le 2^{n-1-p} - 1\\ & \Leftrightarrow &
+n-2p+1 \le n-2-p\\ & \Leftrightarrow &
+p \ge 3.
+\end{eqnarray*}
+
+Let's suppose $n \ge 5$.  So $p \ge 3$ and $y - (y \gg p) < x$.  Thus, if $y$
+is the previous value of $x$, we must have
+\[ 2^{n-1} + 2^{n-p+1} \le y,\]
+\[ 1 + 2^{-p+2} \le \frac{y}{2^{n-1}}\]
+\[ p-2 \ge \left\lceil \frac{y}{2^{n-1}} - 1 \right\rceil.\]
+Given that the value of $m$ in (8) is $\left\lceil \frac{y}{2^{n-1}} - 1 
+\right\rceil$, we conclude 
+\[ N \le m \le p-2.\]
+And from (7)
+\[l \le N + b - 1 \le n-2.\] 
+\end{description}
+
+To summarize, if $n \ge 5$ then $l \le n-2$.  
+
+Let's show that it's a maximum.  From (4) and (5), we could deduce that if we 
+take as input $x_{m-2}$ for the algorithm, the sequel $x_{m-2}, x_{m-3}, 
+\ldots, x_0$ are the successive values taken by $x$.\\
+We have: $x_0 = 2^{n-1} + 2^{n-m} + \lfloor 2^{n-2m-1} \rfloor$.  From (5),
+\[x_0 - (x_0 \gg (m-1)) < 2^{n-1}.\]And given that
+\[x_0 \gg m = 2^{n-1-m} + 2^{n-2m},\]we have the next value of $x$, 
+\begin{eqnarray*}
+x = x_0 - (x_0 \gg m) & = &
+2^{n-1} + 2^{n-1-m} - 2^{n-2m} + \lfloor 2^{n-2m-1}\rfloor\\ & = &
+2^{n-1} + 2^{n-1-m} - 1.
+\end{eqnarray*}
+ 
+We have: $m+1 = \left\lfloor\frac{n}{2}\right\rfloor + 1 =
+\left\lfloor\frac{n+2}{2}\right\rfloor \ge p$.  So from (7), we deduce that
+the value of $l$ at the end of the algorithm is:
+\[ (m-1) + (n-m) - 1 = n-2.\]
+
+Thus, if $n \ge 5$, the maximum value of $l$ is $n-2$.  And we could verify
+that if $n < 5$, this value is $n-1$.
+
+\newpar{27} We have,
+\[x(1 - \eta) \le 10^n x_0' \le x(1 + \epsilon)\]
+\[{x'}_{k-1}{}^2(1 - \eta) \le y_k \le {x'}_{k-1}{}^2(1 + \epsilon).\]
+
+Note: $N_k = n + \frac{b_1}{2} + \frac{b_2}{4} + \cdots + \frac{b_k}{2^k}$.
+Let's show by induction that:
+\[\left(\frac{x}{10^{N_{k-1}}}\right)^{2^k}(1 - \eta)^{2^{k+1}-1} \le
+y_k \le \left(\frac{x}{10^{N_{k-1}}}\right)^{2^k}(1 + \epsilon)^{2^{k+1} - 1}\] and
+\[\log_{10}x  + 2 \log_{10}(1 - \eta) - \frac{1}{2^{k-1}} < N_{k-1} <
+\log_{10}x + 2 \log_{10}(1 + \epsilon)\] for $k \ge 1$.
+
+\begin{description}
+\item[(1)] If $k = 1$, we have:
+\[\frac{x}{10^n}(1-\eta) \le {x'}_0 \le \frac{x}{10^n}(1 + \epsilon)\] so
+
+\[\left(\frac{x}{10^n}\right)^2(1-\eta)^3 \le {x'}_0{}^2(1-\eta) \le y_1
+\le {x'}_0{}^2(1+\epsilon)\le \left(\frac{x}{10^n}\right)^2(1+\epsilon)^3.\]
+
+$N_0=n$ and $10^n \le x < 10^{n+1}$.  So,
+\[x(1-\eta)^2 < 10^{n+1} \mbox{ and } 10^n < x(1+\epsilon)^2,\] thus,
+\[\log_{10}x + 2\log_{10}(1-\eta) < N_0 + 1 \mbox{ and }
+N_0 < \log_{10} x + 2 \log_{10}(1 + \epsilon).\]
+
+\item[(2)] Suppose the proprieties are verified for $k$.  We have
+${x'}_k = \frac{y_k}{10^{b_k}}$.  So by hypothesis:
+\[\left(\frac{x}{10^{N_k}}\right)^{2^k}(1-\eta)^{2^{k+1}-1} \le {x'}_k \le
+\left(\frac{x}{10^{N_k}}\right)^{2^k}(1+\epsilon)^{2^{k+1}-1},\]
+
+and raising the inequalities to the power of two, we have:
+\[\left(\frac{x}{10^{N_k}}\right)^{2^{k+1}}(1-\eta)^{2^{k+2}-2} \le {x'}_k{}^2 \le
+\left(\frac{x}{10^{N_k}}\right)^{2^{k+1}}(1+\epsilon)^{2^{k+2}-2}.\] Thus,
+\[\left(\frac{x}{10^{N_k}}\right)^{2^{k+1}}(1-\eta)^{2^{k+2}-1} \le
+{x'}_k{}^2(1-\eta) \le y_{k+1},\] and
+\[y_{k+1} \le {x'}_k{}^2(1+\epsilon) \le
+\left(\frac{x}{10^{N_k}}\right)^{2^{k+1}}(1+\epsilon)^{2^{k+2}-1}.\]
+
+So we have the desired result.  On the other hand, suppose $y_k \ge 10$, thus
+$b_k = 1$.  We have by hypothesis:
+\[ 10 \le \left(\frac{x}{10^{N_{k-1}}}\right)^{2^k}(1+\epsilon)^{2^{k+1}-1}.\]
+Taking the logarithm we obtain:
+\[ 1 \le 2^k(\log_{10}x - N_{k-1}) + (2^{k+1}-1)\log_{10}(1+\epsilon)\]
+and dividing by $2^k$
+\begin{eqnarray*}
+N_k = N_{k-1} + \frac{1}{2^k} & \le & \log_{10}x + (2 - \frac{1}{2^k})
+\log_{10}(1+\epsilon)\\
+& < & \log_{10}x + 2 \log_{10}(1+\epsilon).
+\end{eqnarray*}
+
+By hypothesis: $\log_{10}x + 2 \log_{10}(1-\eta) - \frac{1}{2^{k-1}} < N_{k-1}$.
+Thus,
+\[\log_{10}x + 2 \log_{10}(1-\eta) - \frac{1}{2^k} < N_{k-1} + \frac{1}{2^k}
+= N_k.\]
+
+\medskip If $y_k < 10$, then $b_k = 0$.  We have by hypothesis:
+\[\left(\frac{x}{10^{N_{k-1}}}\right)^{2^k}(1-\eta)^{2^{k+1}-1} < 10,\]
+thus taking the logarithm and dividing by $2^k$ we have
+\[\log_{10} x - N_{k-1} + \left(2 - \frac{1}{2^k}\right)\log_{10}(1-\eta)
+< \frac{1}{2^k}.\]
+$\log_{10}(1-\eta) < 0$, so we have:
+\[\log_{10}x + 2 \log_{10}(1-\eta) - \frac{1}{2^k} < N_{k-1} = N_k.\]
+And by hypothesis:
+\[ N_k = N_{k-1} < \log_{10} x + 2 \log_{10}(1 + \epsilon).\]
+\end{description}
+
+\newpar{28} Let $n > 1$ be the precision of the machine in bits.  We're using
+fixed-point arithmetic here.  
+\begin{description}
+\item[F1.]
+[Initialize.] Set $y \la 1$, $k \la 0$.
+\item[F2.]
+[Test for and end.] If $x = 0$, stop.  $y$ is the result.
+\item[F3.]
+[Compare.] If $x < \log_b\left(1 + \frac{1}{2^k}\right)$, go to \textbf{L5}.
+\item[F4.]
+[Reduce values.] Set $x \la x - \log_b\left(1 + \frac{1}{2^k}\right)$,
+$y \la y + (y \gg k)$, and go to \textbf{L2}.
+\item[F5.]
+[Increment.] $k \la k + 1$, and go to \textbf{L2}. $|$
+\end{description} Note: $\epsilon = \frac{1}{2^n}$.  
+And for $0 \le y < \epsilon$, let $r$ be the function defined by
+\[ r(y) = \left\{ \begin{array}{ll}
+	0 & \mbox{ if } 0 \le y < \frac{\epsilon}{2};\\
+	\epsilon & \mbox{ if } \frac{\epsilon}{2} \le y \le \epsilon.
+        \end{array} \right. \]
+For $0 \le y < 1$, let $M$ be the function defined by,
+\[ M(y) = \left\lfloor \frac{y}{\epsilon} \right\rfloor \epsilon +
+	r(y\; \mathrm{mod}\; \epsilon).\]
+We have
+\begin{equation}
+\left| y - M(y) \right| =
+\left|y\; \mathrm{mod}\; \epsilon - r(y\; \mathrm{mod}\; \epsilon)\right|
+\le  \frac{\epsilon}{2} 
+\end{equation}
+
+Let $M(y)$ be the approximation of $y$ on the machine.
+
+Let $x_0$ be the initial value of $x$ and suppose the algorithm terminates
+for this input.  Suppose \textbf{F4} is executed $N$ time(s) and 
+$(k_i)_{1 \le i \le N}$ is the sequel of values taken by $k$ when \textbf{F4}
+is executed.
+
+Note: $M\left(\log_b\left(1 + \frac{1}{2^{k_i}}\right)\right) =
+\log_b\left(1 + \frac{1}{2^{k_i}}\right) + \delta_i$ and
+$M(y \gg k) = \frac{y}{2^{k_i}} (1 + \epsilon_i)$.
+
+\textbf{F4} is thus replaced by
+\[ x \la x - \log_b\left(1 + \frac{1}{2^{k_i}}\right) - \delta_i \mbox{ and }
+y \la y\left(1 + \frac{1}{2^{k_i}}\right)(1 + \epsilon_i).\]
+We could show that at the end of the algorithm,
+\[ y = b^{x_0 - \sum_{i = 1}^N \delta_i} \prod_{i=1}^N (1 + \epsilon_i).\]
+
+\medskip
+Let's show that the algorithm terminates for all input 
+$x_0 \in [0, 1[$.  We can see easily that as long as there exists an 
+integer $k$ such that 
+\[0 < M\left(\log_b\left(1 + \frac{1}{2^{k}}\right)\right) \le x,\]
+ the value of $x$ will decrease.
+
+
+Let's suppose that
+\[ x < M\left(\log_b\left(1 + \frac{1}{2^{k}}\right)\right) \mbox{ and }
+M\left(\log_b\left(1 + \frac{1}{2^{k+1}}\right)\right) = 0.\]
+Given that $M$ is the sum of two positive functions, we deduce
+\[ \left\lfloor\frac{\log_b\left(1 + \frac{1}{2^{k+1}}\right)}{\epsilon}
+\right\rfloor = 0 \mbox{ and }
+r\left(\log_b\left(1 + \frac{1}{2^{k+1}}\right)\; \mathrm{mod} \; \epsilon
+\right) = 0\]
+thus
+\[ \log_b\left(1 + \frac{1}{2^{k+1}}\right) < \epsilon \mbox{ and }
+r\left(\log_b\left(1 + \frac{1}{2^{k+1}}\right)\right) = 0\]
+and finally
+\begin{equation}
+0 \le \log_b\left(1 + \frac{1}{2^{k+1}}\right) < \frac{\epsilon}{2}.
+\end{equation}
+From (1), we have
+\begin{eqnarray*}
+M\left(\log_b\left(1 + \frac{1}{2^k}\right)\right) & \le &
+\log_b\left(1 + \frac{1}{2^k}\right) + \frac{\epsilon}{2} \\ & < &
+2 \log_b\left(1 + \frac{1}{2^{k+1}}\right) + \frac{\epsilon}{2} \\ & < &
+\epsilon + \frac{\epsilon}{2},\; \mbox{ from (2)}
+\end{eqnarray*}
+
+$M\left(\log_b\left(1 + \frac{1}{2^k}\right)\right) > 0$ so we have
+$M\left(\log_b\left(1 + \frac{1}{2^k}\right)\right) \ge \epsilon$, thus
+\[ 0 \le M\left(\log_b\left(1 + \frac{1}{2^k}\right)\right)
+- \epsilon < \frac{\epsilon}{2}.\]
+
+The middle member of the inequalities is a number on the machine, and the unique
+number on the machine less than $\frac{\epsilon}{2}$ is $0$. Thus,
+\[ M\left(\log_b\left(1 + \frac{1}{2^k}\right)\right) = \epsilon.\]
+So we deduce $x < \epsilon$, thus $x = 0$ and the algorithm terminates.
+
+\newpar{29}  Let $x$ be a real number greater than $1$.
+
+\noindent
+(a) Note: $f(b) = \frac{b}{\ln b}$ for $b > 1$. We have,
+\[f'(b) = \frac{\ln b - 1}{\ln b}.\]
+So we deduce that $f(b) \ge f(e) = e$.  Thus $b \log_bx \ge e \ln x$.
+
+\medskip \noindent
+(b) We have: $2 < e < 3$.  And $\frac{2}{\ln 2} \simeq 2.88$ and
+$\frac{3}{\ln 3} \simeq 2.73$. Thus,
+\[ \frac{3}{\ln 3} < \frac{2}{\ln 2}.\]
+
+We then deduce that $b \log_bx$ is a \emph{minimum} for the integer $b = 3$.
+
+\medskip \noindent
+(c) Note: $g(b) = \frac{b+1}{\ln b}$ for $b > 1$. We have,
+\[ g'(b) = \frac{\ln b - 1 - \frac{1}{b}}{(\ln b)^2}.\]
+If we note: $h(b) = \ln b - 1 - \frac{1}{b}$. Then,
+\[ h'(b) = \frac{1}{b} - \frac{1}{b^2} \ge 0, \mbox{ for } b \ge 1.\]
+Given that $h(1) = -2$ and $\lim_{b \rightarrow +\infty}h(b) = +\infty$, there
+exists $b_0 \in \rbrack -1, +\infty\rbrack$ such that,
+\[ h(b) \le 0 \mbox{ if } b \le b_0 \mbox{ and } h(b) > 0 \mbox{ if } b > b_0.\]
+We then deduce that $b_0$ is a minimum for $g$.
+
+Plus, $g'(3) < 0$ and $g'(4) > 0$,  so $3 < b_0 < 4$.
+$g(3) \simeq 3.64$ and $g(4) \simeq 3.61$.
+
+We then deduce that the minimum of $(b+1)\log_bx$ for $b$ an integer
+greater than $1$ is $5 \log_4x$.
+\end{document}

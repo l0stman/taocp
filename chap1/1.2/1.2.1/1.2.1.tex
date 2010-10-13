@@ -1,0 +1,426 @@
+\documentclass[a4paper,12pt]{article}
+\begin{document}
+
+\noindent
+\textbf{1.} We prove the statement $Q(n)$ wich corresponds to the statement 
+$P(n-1)$ for all integer $n$.
+
+\bigskip
+\noindent
+\textbf{2.} In the proof by induction, we that $a^{n-2} = 1$ wich is not true
+because the propriety is verified only for n = 1.
+
+\bigskip
+\noindent
+\textbf{3.} The left side of the equality is defined only for $n > 1$.
+
+\bigskip
+\noindent
+\textbf{4.} If $n = 1$, $F_1 = 1 \ge \phi^{-1}$\\
+If $n = 2$, $F_2 = 1 \ge \phi^0$
+
+\medskip
+Suppose $F_n \ge F_{n-2}$ for $n \ge 2$, then we have:
+\begin{eqnarray*}
+F_{n+1} = F_n + F_{n-1} & \ge & \phi^{n-2} + \phi^{n-3} \\ & = &
+\phi^{n-2} (1 + \phi) = \phi^{n-2} \phi^2 = \phi^n
+\end{eqnarray*}
+
+\bigskip
+\noindent
+\textbf{5.} If $n = 2$, $2$ is prime so it's a product of prime numbers.
+
+\medskip
+Suppose that for $k$ between $2$ and $n$, $k$ could be written as product
+of prime numbers.
+
+If $n+1$ is a prime, we could easily conclude.\\
+Suppose $n+1$ is not a prime.  There exist two integers greater than $1$,
+$a$ and $b$ such that: $n+1 = a b$.
+
+\medskip
+Because $a > 1$ and $b > 1$, we must have $a < n+1$ and $b < n+1$.\\
+By induction, a and b could be expressed as products of prime numbers, so 
+$n+1$ could also be expressed as such.
+
+\bigskip
+\noindent
+\textbf{6.} Suppose we have: $a' m + b' n = c$, $a m + b n = d$ before
+the execution of \textbf{E4}. From now on, we append the indice $1$ to 
+the variables before \textbf{E4} is executed and the indice $2$ after
+it was.
+\[ a'_2 m + b'_2 n = a_1 m + b_1 n = d_1 = c_2 \] and
+\begin{eqnarray*}
+a_2 m + b_2 n & = & (a'_1 - q a_1) m + (b'_1 - q b_1) n\\
+& = & (a'_1 m + b'_1 n) - q (a_1 m + b_1 n)\\
+& = & c_1 - q d_1 = r = d_2
+\end{eqnarray*}
+
+\bigskip
+\noindent
+\textbf{7.} We have for $n \ge 0$: $S_n = \sum_{k = 0}^{n} (-1)^{n-k} k^2$.\\
+So we deduce for each positive integer $n$: $S_n = n^2 - S_{n-1}$.\\
+Note: $R_n = S_{2n}$ for $n > 0$.\\
+We have: $R_n = R_{n-1} + (2n)^2 - (2n-1)^2 = R_{n-1} + 4 n - 1$\\
+Thus, $R_n = R_0 + n(2n+1) = n(2n+1)$
+
+\begin{eqnarray*}
+S_{2n} & = & \frac{(2n)(2n+1)}{2}\\
+S_{2n+1} & = & (2n+1)^2 - S_{2n} = (2n+1)^2 - \frac{(2n+1)(2n)}{2}\\
+& = & \frac{(2n+1)(2n+2)}{2}
+\end{eqnarray*}
+So $S_n = \frac{n(n+1)}{2}$ for all integer $n \ge 0$.
+
+\bigskip
+\noindent
+\textbf{8.} (a) For $n > 0$:
+\[n^3 = k + (k+2) + (k+4) + \cdots + (k + 2(n-1)) \] with
+\[k = 2 (1 + 2 + \cdots + (n-1)) + 1 = n(n-1) + 1 \]
+Rewriting $n^3$, we have
+\[n^3 = \sum_{i = 0}^{n-1}(n(n-1) + 2 i + 1) \]
+
+\medskip
+\noindent
+If $n = 1$, $1^3 = 1$\\
+Suppose we have, $n^3 = \sum_{i = 0}^{n-1}(n(n-1)+1+2i)$\\
+Thus,
+\begin{eqnarray*}
+\sum_{i=0}^n((n+1)n+1+2i) & = &
+n(n+3)+1 + \sum_{i=0}^{n-1}(n(n-1)+1+2i + 2n) \\ & = &
+n(n+3)+1 + 2n^2 + \sum_{i=0}^{n-1}(n(n-1)+1+2i) \\ & = &
+3n^2 + 3n + 1 + n^3\mbox{, by induction}\\ & = &
+(n+1)^3
+\end{eqnarray*}
+
+\medskip
+\noindent
+(b)
+\begin{eqnarray*}
+(\sum_{i=0}^{n+1}i)^2 & = &
+(\sum_{i=0}^ni)^2 + 2\sum_{i=0}^ni(n+1) + (n+1)^2 \\ & = &
+(\sum_{i=0}^ni)^2 + (n+1) \sum_{i=0}^n(2i+1) \\ & = &
+(\sum_{i=0}^ni)^2 + (n+1) (\sum_{i=0}^n (n(n+1)+2i+1) - n(n+1)^2) \\ & = &
+(\sum_{i=0}^ni)^2 + (n+1) ((n+1)^3 - n(n+1)^2)\mbox{, by (a)} \\ & = &
+1^3 + 2^3 + \cdots + n^3 + (n+1)^3\mbox{, by induction}
+\end{eqnarray*}
+
+\bigskip
+\noindent
+\textbf{9.} If $n = 0$, $(1 - a)^0 \ge 1 - 0 a$.\\
+Suppose, $(1 - a)^n \ge 1 - na$ for $n \ge 0$.\\
+Thus we have by induction:
+\begin{eqnarray*}
+(1-a)^{n+1} & \ge & (1-a)(1-na)\mbox{, because } 1-a > 0\\
+& = & 1 - (n+1)a + na\\
+& \ge & 1 - (n+1)a\mbox{, because } a > 0
+\end{eqnarray*}
+
+\bigskip
+\noindent
+\textbf{10.} If $n = 10$, $2^{10} = 1024 > 10^3 = 1000$.\\
+Suppose $2^n > n^3$, for $n \ge 10$.\\
+We have $n \ge 1$,\\
+thus $3n+1 \le 4n \le 4n^2$\\
+and $3n^2+3n+1 \le 7n^2 \le n^3$, because $n \ge 10$\\
+thus $(n+1)^3 \le 2n^3 < 2^{n+1}$ by induction
+
+\bigskip
+\noindent
+\textbf{11.} For $n$ positive, note: 
+$S_n = \sum_{k=0}^n\frac{(2k+1)^3}{(2k+1)^4 + 4}$\\
+For $x$ real, we have:
+\[ \frac{x^3}{x^4 + 4} =
+\frac{1}{4} \left(\frac{1}{x - (1+\imath)} + \frac{1}{x + (1+\imath)} +
+\frac{1}{x-(1-\imath)} + \frac{1}{x + (1-\imath)}\right)\mbox{ (*)}
+\]
+
+Thus,
+\begin{eqnarray*}
+S_n & = & \frac{1}{4}\left(
+\sum_{k=0}^n\frac{(-1)^k}{2k-\imath} + \sum_{k=0}^n\frac{(-1)^k}{2n+\imath} +
+\sum_{k=0}^n\frac{(-1)^k}{2(k+1)+\imath} + 
+\sum_{k=0}^n\frac{(-1)^k}{2(n+1)-\imath} \right)
+\\
+S_n & = & \frac{(-1)^n}{4} \left(\frac{1}{2(n+1)+\imath} +
+\frac{1}{2(n+1)-\imath}\right)\mbox{ (**)}
+\\
+S_n & = & \frac{(-1)^n(n+1)}{4(n+1)^2 + 1}
+\end{eqnarray*}
+
+\noindent
+If $n=0$, $S_0 = \frac{1^3}{1^4+4} = \frac{1}{4 1^2 + 1}$.\\
+Suppose $S_n = \frac{(-1)^n (n+1)} {4(n+1)^2 + 1}$, for $n \ge 0$.\\
+By induction:
+\begin{eqnarray*}
+S_{n+1} & = & \frac{(-1)^n(n+1)}{4(n+1)^2+1} +
+\frac{(-1)^{n+1}(2(n+1)+1)^3}{(2(n+1)+1)^4 + 4}
+\\ & = &
+\frac{(-1)^n}{4} 
+\left(\frac{1}{2(n+1)+\imath} + \frac{1}{2(n+1)-\imath}\right) +
+\\&&
+\frac{(-1)^{n+1}}{4}
+\left(\frac{1}{2(n+1)-\imath} + \frac{1}{2(n+2)+\imath} +
+\frac{1}{2(n+1)+\imath} + \frac{1}{2(n+2)-\imath}\right)
+\mbox{, by (*) and (**)}
+\\ & = &
+\frac{(-1)^{n+1} (n+2)}{4(n+2)^2+1} 
+\end{eqnarray*}
+
+\bigskip
+\noindent
+\textbf{12.}
+\begin{description}
+\item[E1.]
+[Initialize.] Set $a' \leftarrow b \leftarrow 1$,
+$a \leftarrow b' \leftarrow 0$, $c \leftarrow |m|$, $d \leftarrow |n|$.
+\item[E2.]
+[Divide.] Let q and r be the real numbers verifying 
+$q = \lfloor \frac{c}{d} \rfloor$ and $r = c - qd$ (thus, $0 \le r < |d|$)
+\item[E3.]
+[Remainder zero?] If $r=0$, if $m < 0$ set $a \leftarrow -a$ and if $n < 0$
+set $b \leftarrow -b$ and the algorithm terminates; we have in this case
+$am + bn = d$ as desired.
+\item[E4.]
+[Recycle.] Set $c \leftarrow d$, $d \leftarrow r$, $t \leftarrow a'$,
+$a' \leftarrow a$, $a \leftarrow t - qa$, $t \leftarrow b'$, $b' \leftarrow b$,
+$b \leftarrow t - qb$, and go back to \textbf{E2}. $|$
+\end{description}
+
+Let's proove that $a|m|+b|n|=d$, $a'|m|+b'|n|=c$, always hold whenever 
+\textbf{E2} is executed.\\
+After \textbf{E1} $a' = 1$, $b = 1$, $a = 0$, $b' = 0$, $c = |m|$, $d = |n|$.\\
+After \textbf{E2}\\
+After \textbf{E3}\\
+After \textbf{E4}
+\begin{eqnarray*}
+a_2 |m| + b_2 |n| & = & (a'_1 - qa_1)|m| + (b'_1 - qb_1)|n|\\
+& = & a'_1|m|+b'_1|m| - q(a_1|m|+b_1|n|)\\
+& = & c_1 - qd_1\\
+& = & r\\
+& = & d_2
+\end{eqnarray*}
+and $a'_2|m| + b'_2|n| = a_1|m|+b_1|n| = d_1 = c_1$.
+
+\medskip
+Note that if $u$ and $v$ are integers then:
+\[ \lfloor u + v\sqrt{2} \rfloor = u + \lfloor v\sqrt{2} \rfloor \]
+
+Here's a simple algorithm that computes $\lfloor \sqrt{v} \rfloor$ if $v$
+is a positive integer.
+\begin{description}
+\item[C1.]
+[Initialize.] $m \leftarrow 0$
+\item[C2.]
+[Terminate.] If $(m+1)^2 > 2 v^2$, the algorithm terminates; $m$ is the answer.
+\item[C3.]
+[Recycle.] $m \leftarrow m+1$ and go back to $C2$.
+\end{description}
+
+And if $v$ is a negative integer,
+\[ \lfloor v \sqrt{2} \rfloor = - \left(\lfloor -v\sqrt{2}\rfloor + 1\right) \]
+
+Suppose the algorithm \textbf{F} terminates for $m = 1$ and $n = \sqrt{2}$.\\
+Thus,
+\begin{eqnarray*}
+0 & = & c - qd \\
+& = & (a'|m| + b'|n|) - q(a|m|+b|n|)\\
+& = & (a'-qa) + (b'-qb)\sqrt{2}
+\end{eqnarray*}
+
+Thus, $\sqrt{2}$ is rationnal wich is absurd. We then conclude that the
+computation won't terminate for $m = 1$ and $n = \sqrt{2}$.
+
+\bigskip
+\noindent
+\textbf{13.}
+\begin{description}
+\item[E1.]
+[Initialize.] Set $a' \leftarrow b \leftarrow 1$, $a \leftarrow b' \leftarrow 0
+$, $c \leftarrow m$, $d \leftarrow n$, $T \leftarrow T+1$.
+\item[E2.]
+[Divide.] Set $T \leftarrow T+1$. Let $q$, $r$ be the quotient and remainder,
+respectively, of $c$ divided by $d$. (We have $c=qd+r$, $0 \le r < d$.)
+\item[E3.]
+[Remainder zero?] Set $T \leftarrow T+1$. If $r=0$, the algorithm terminates;
+we have in this case $am + bn = d$ as desired.
+\item[E4.]
+[Recycle.] Set $T \leftarrow T+1$, $c \leftarrow d$, $d \leftarrow r$,
+$t \leftarrow a'$, $a' \leftarrow a$, $a \leftarrow t - qa$, $t \leftarrow b'$,
+$b' \leftarrow b$, $b \leftarrow t - qb$, and go back to E2. $|$
+\end{description}
+
+\begin{description}
+\item[A1.]
+$m > 0$, $n > 0$, $T = 0$.
+\item[A2.]
+$c = m > 0$, $d = n > 0$, $T = 1$, $a = b' = 0$, $a' = b = 1$.
+\item[A3.]
+$am + bn = d$, $a'm + b'n = c = qd + r$, $0 \le r < d$\\
+$\gcd(m, n) = \gcd(c, d)$\\
+$T \le 3(n-r)-1$
+\item[A4.]
+$am + bn = d = \gcd(m, n)$\\
+$T \le 3(n-r)$
+\item[A5.]
+$am + bn = d$, $a'm + b'n = c = qd + r$, $0 < r < d$, $\gcd(m,n) = \gcd(c, d)$,
+$T \le 3(n-r)$
+\item[A6.]
+$am+bn=d$, $a'm + b'n = c$, $d > 0$, $\gcd(c,d) = \gcd(m,n)$, $T \le 3(n-d)+1$
+\end{description}
+
+\begin{description}
+\item[A1.]
+We have $T = 0$.
+\item[A2.]
+We increment $T$ by $1$, so $T = 1$.
+\item[A3.]
+Suppose it's the first time we execute \textbf{E2}.\\
+We have, $0 \le r < d = n$,\\
+Thus $3(n-r)-1 \ge 3 - 1 = 2 = T$.\\
+Suppose we stepped from \textbf{E6} to \textbf{E2}, we have already
+$ T - 1 \le 3(n - d)+1$.\\
+So
+\begin{eqnarray*}
+T & \le & 3(n-d) + 2\\
+T & \le & 3(n-r) + 3(r-d) + 2\\
+& \le & 3(n-r) - 1\mbox{, because } 0 \le r < d
+\end{eqnarray*}
+
+\end{description}
+
+\textbf{A4}, \textbf{A5}, \textbf{A6} are straitforward.
+
+\medskip
+If $r = 0$, we have $T \le 3(n-r) = 3n$.  The algorithm terminates after at
+most $3n$ steps.
+
+\bigskip
+\noindent
+\textbf{15.}
+a) $\rbrack -\infty, 0 \rbrack \cap \mathbf{N}$ is non-empty subset of 
+\textbf{N} wich don't have a minimal element.
+
+b) Note $\dashv$ the relation defined by:
+\[ n \dashv m \Leftrightarrow \left\{\begin{array}{lll}
+	mn < 0 & \mbox{and} & m < 0 < n\mbox{,}\\
+	& \mbox{or} &\\
+        mn \ge 0 & \mbox{and} & |n| \le |m|. \end{array}\right. \]
+Thus we have,
+ \[ 0 \dashv -1 \dashv -2 \dashv \ldots \dashv -100 \dashv \ldots 1 \dashv 
+2 \dashv \ldots \]
+
+c) No.  Because the set $\rbrack 0, 1 \rbrack$ doesn't verify he propriety iii).
+
+d) Let $x$, $y$, $z$ be elements of $T_n$ such that $x \prec y$ and
+ $y \prec z$ with $x = (x_1, \ldots, x_n)$, $y = (y_1, \ldots, y_n)$, 
+$z = (z_1, \ldots, z_n)$. By definition, there're $k$ and $l$ between $1$ 
+and $n$ such that:
+\[x_i = y_i \mbox{ for } 1 \le i < k \mbox{ and } x_k \prec y_k \] and
+\[y_i = z_i \mbox{ for } 1 \le i < l \mbox{ and } y_l \prec z_l \]
+
+Let $m$ be the minimum between $k$ and $l$. We have:
+\[ x_i = y_i = z_i \mbox{ for } 1 \le i < m \mbox { and } x_m \prec y_m
+\mbox{  or } y_m \prec z_m\]
+Thus, $x_m \prec z_m$ given that $x_m \preceq y_m \preceq z_m$. 
+So $x \prec y$.
+
+\medskip
+Let $x$, $y$ be in $T_n$ and $x \not= y$. Let $k$ be the smallest integer 
+between $1$ and $n$ such that $x_k \not= y_k$.\\
+Thus, $x_i=y_i$ for $1 \le i \le k$ and $x_k \prec y_k$ or $y_k \prec x_k$.\\
+Thus, $x \prec y$ or $y \prec x$.
+
+\medskip
+Let's reason by induction:\\
+If $n = 1$, $S$ is well-ordered by $\prec$.\\
+Suppose $T_{n-1}$ is well-ordered by $\prec$.
+
+Because $(S, \prec)$ is well-ordered, there exists an element
+$m$ of $S$ such that $m \prec s$ for each $s$ in $S$.
+Let $M$ be the subset of $S$ composed of the elements wich first member is
+$m$.  If $x$ isn't in $M$, thus $a \prec x$ for each $a$ in $M$.
+
+$M$ could be identified as a subset of $T_{n-1}$, because each element has its
+first member equal to $m$.  By induction $M$ is well-ordered by $\prec$. Thus
+$(T_n, \prec)$ is well-ordered.
+
+\medskip
+e) $T = \bigcup_{n \ge 1}T_n$.\\
+$(x_1,x_2,\ldots,x_n) \prec (y_1,y_2,\ldots,y_m)$ if $x_i = y_j$ for
+$1 \le j < k$ and $x_k < y_k$, for some $k < m$, $n$; or if $x_j = y_j$ for
+$1 \le j \le n$ and $n < m$.
+
+Let $x$, $y$, $z$ be in $T$ such that $x \prec y$ and $y \prec z$ with
+$x = (x_1,\ldots,x_n)$, $y = (y_1,\ldots,y_m)$, $z = (z_1,\dots,z_l)$.
+\begin{itemize}
+\item
+Suppose $x_j = y_j$ for $1 \le j \le n$ and $n < m$.\\
+If we have $y_j = z_j$ for $1 \le j \le m$ and $m < l$,
+\[x_j = z_j \mbox{ for } 1 \le j \le n \mbox{ and } n < m < l \mbox{, thus }
+x \prec z.\]
+If we have $y_j = z_j$ for $ 1 \le j < k$ and $y_k \prec z_k$, for some 
+$k < m$, $l$.\\
+If $k > n$, we have:
+\[x_j = y_j = z_j \mbox{ for }1 \le j \le n \mbox{ and } n < l \mbox{, thus } 
+x \prec z.\]
+If $k \le n$, we have:
+\[x_j = y_j = z_j \mbox{ for } 1 \le j < k \mbox{ and } x_k = y_k \prec z_k
+\mbox{, thus } x \prec z.\]
+\item
+Suppose $x_j = y_j$ for $1 \le j < k$ and $x_k \prec y_k$, for some $k < m$, 
+$n$;\\
+If we have $y_j = z_j$ for $1 \le j \le m$ and $m < l$, thus
+\[x_j = y_j = z_j \mbox{ for } 1 \le j < k \mbox{ and } x_k \prec y_k = z_k
+\mbox{, thus } x \prec z.\]
+If we have $y_j = z_j$ for $1 \le j < p$ and $y_p \prec z_p$, for some 
+$p < m$, $l$. If $k < p$:
+\[x_j = y_j = z_j \mbox{ for } 1 \le j < k \mbox { and } x_k \prec y_k = z_k,
+k < n, \mbox{ thus } x \prec z\]
+If $k \ge p$:
+\[x_j = y_j = z_j \mbox{ for } 1 \le j < p \mbox{ and } 
+x_p \preceq y_p \prec z_p, \mbox { for some } p < n, l.\]
+Thus $x \prec z$.
+\end{itemize}
+
+\medskip
+Let $x$, $y$ be in $T$ and $x \not= y$.\\
+Note $x = (x1, \ldots, x_n)$ and $y = (y_1, \ldots, y_m)$ with $n$ and $m$ 
+integers. If $n = m$, we have already treated the case.  We suppose $n < m$
+without a loss of generality.\\
+If $x_j = y_j$ for $1 \le j \le n$, we have $x \prec y$ because $n < m$.\\
+Otherwise, let $k$ be the smallest integer such that $x_k \not= y_k$.  We have,
+\[x_j = y_j \mbox{ for } 1 \le j < k \mbox{ and } x_k \prec y_k \mbox{ or }
+y_k \prec x_k.\]
+Thus $x \prec y$ or $y \prec x$.
+
+\medskip
+Let $A$ be the subset of $T$ composed of the elements $X_j$ of $T_j$ for $j$
+integers defined by:
+\[X_j(i) = 0 \mbox{ if } i < j \mbox{ and } X_j(j) = 1.\]
+For $j$ integer, $X_{j+1} \prec X_j$ thus $(T, \prec)$ is not well-ordered.
+
+\medskip
+f) Suppose $\prec$ is a well-ordering  of $S$.  i) and ii) are satisfied.
+And suppose there's an infinite sequence $x_1, x_2, x_3, \ldots$ with
+$x_{n+1} < x_n$ for all $n \ge 1$.
+
+$(S, \prec)$ is well-ordered thus, there exists $n$ positive integer such that\\
+$x_n \preceq x_j$ for all $j \ge 0$.  This is absurd because $x_{n+1} \prec x_n$
+so ii) is not verified.  So, such a sequence couldn't exist.
+
+Suppose $(S, \prec)$ is not well-ordered.\\
+Let $x_1$ be an element of $S$.  By definition there exists an elment $x_2$ of
+$S$ such that $x_2 < x_1$.  There's an element of $S$ such that $x_3 \prec x_2$
+and so on.
+
+\medskip
+g) Let $S$ be well-ordered by $\prec$, and let $P(x)$ be a statement about the
+element $x$ of $S$.\\
+Suppose that there exists $x_0 \in S$ such that $P(x_0)$ is false. Note $F$ the 
+non-empty set defined by:
+\[ F = \{ f \in S, P(f) \mbox{ is false } \} .\]
+S is well-ordered so there exists an element $m$ of $F$ such that:
+\[ m \prec f,  \forall f \in F\]
+We then conclude that if $x \prec m$, $P(x)$ is true.  We then have also
+$P(m)$ is true.  Wich is absurd.  So $P(x)$ is true for all $x$ in $S$. 
+\end{document}

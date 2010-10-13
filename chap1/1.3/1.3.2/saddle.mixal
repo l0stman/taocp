@@ -1,0 +1,32 @@
+* Store the ``saddle point'' of the matrix if any or 0 otherwise in rI1.
+* It verifies: aij = min{1<=k<=8} aik = max{1<=k<=9} akj.
+*
+ROW     EQU     9
+COL     EQU     8
+A10     EQU     1008
+LIST    EQU     A10-COL list of columns equals to the minimum in the row.
+
+START   ENT1    COL*ROW Position in the matrix.
+MINROW  ENT2    COL
+3H      LDX     A10,1	minimum in the current row
+        ENT4    0       number of columns in LIST
+2H      ST2     LIST,4
+        INC4    1
+1H      DEC1    1
+        DEC2    1
+        J2Z     MAXCOL
+        CMPX    A10,1
+        JL      1B      rX is still the minimum
+        JG      3B      new minimum?
+        JMP     2H      Remember another minimum
+MAXCOL  ENT2    COL*(ROW-1),4
+1H      CMPX    A10,2
+        JL      FAILURE
+        DEC2    COL
+        J2P     1B      done with column?
+SUCCESS ENT1    A10+8,2
+        HLT
+FAILURE DEC4    1
+        J4P     MAXCOL  Is list non-empty? Try again.
+        J1P     MINROW  Have we tried all rows?
+        HLT

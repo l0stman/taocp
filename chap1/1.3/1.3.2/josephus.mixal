@@ -1,0 +1,42 @@
+* Josephus problem.  We solve this problem using linked-lists. rI1
+* contains the current position in the circle.
+*
+N       EQU     24
+M       EQU     11
+NEXT    EQU     0
+PRINTER EQU     18
+BUF     EQU     N
+BSIZE   EQU     24
+
+        ORIG    BUF+N+BSIZE
+START   ENT1    N-1
+        ST1     NEXT-1,1        initialize the linked lists
+        DEC1    1
+        J1P     *-2
+        ENT2    -N+1            counter
+        ENTA    1               store the execution number in rX
+        CHAR
+LOOP    ENT4    M-2             assume (M > 2)
+        LD1     NEXT,1          advance to the next position
+        DEC4    1
+        J4P     *-2
+        LD3     NEXT,1          rI3 = dead man
+        LD4     NEXT,3          rI4 = next man
+        STX     BUF,3(1:4)      store the execution number
+        ST4     NEXT,1          take the dead man out of the circuit
+        ENT1    0,4             advance
+        INC2    1
+        CMPX    =39=(5:5)       rX <- rX + 1
+        JL      0F              last digit of rX is less than 9
+        ENTA    N,2
+        CHAR
+        JMP     *+2
+0H      INCX    1
+        J2N     LOOP            n > 1?
+        STX     BUF,1(1:4)      kill the last man
+        ENN1    N
+PRINT   OUT     BUF+N,1(PRINTER)
+        INC1    BSIZE
+        J1N     PRINT
+        HLT
+        END     START

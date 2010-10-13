@@ -1,0 +1,60 @@
+1. t <- a, a <- b, b <- c, c <- d, a <- t
+
+2. E1. [Find remainder.] Divide m by n and let r be the remainder. (We will have
+       0 <= r < n.)
+   E2. [Is it zero?] If r = 0, the algorithm terminates; n is the answer.
+   E3. [Interchange.] Set m <- n, n <- r, and go back to step E1. |
+
+Suppose m >= n
+after E1, m >= n
+after E2, m >= n
+after E3, we have m > n because 0 <= r < n.
+
+Suppose m < n
+Then r = m, and after the execution of E3, if we get there, m > n.
+
+Thus, m is always greater than n at the beginning of E1, except possibly the
+first time this step occurs.
+
+3.
+F1. Divide m by n and let r be the remainder. (0 <= r < n)
+F2. If r = 0, the algorithm terminates; n is the answer.
+F3. Divide n by r and let m be the remainder. (0 <= m < r)
+F4. If m = 0, the algorithm terminates; r is the answer.
+F5. Divide r by m and let n be the remainder. (0 <= n < m)
+F6. If n = 0, the algorithm terminates; m is the answer; otherwise go back 
+    to step F1. |
+
+4. gcd(2166, 6099) = 57
+
+5. Finiteness: the reader can work on exercices and check answers indefinitely
+   Output: the procedure have no output
+   Effectiveness: relaxing and sleeping are not effective operations
+
+6. N0 = 1; N1 = 2; N2 = 3; N3 = 4; N4 = 3;
+   T5 = (1+2+3+4+3)/5 = 13/5 = 2.6
+
+   If k < 5, the first iteration just permutes the values of m and n.
+   And if k >= 5, the first iteration is a division of k by 5.
+   So the number of steps is the same for each class modulo 5 of integers.
+
+7. Un = Tn+1
+
+8.   
+     |  tj  |  fj  |  aj  |  bj  |
+_____|______|______|______|______|
+     |      |      |      |      |
+  0  |  ab  |  --  |  2   |  1   | Suppress an occurence of ab
+_____|______|______|______|______|
+     |      |      |      |      |
+  1  |  --  |  c   |  --  |  0   | Adding c at the beginning of the string
+_____|______|______|______|______|
+     |      |      |      |      |
+  2  |  a   |  b   |  3   |  2   | Replacing all a's by b's
+_____|______|______|______|______|
+     |      |      |      |      |
+  3  |  c   |  a   |  4   |  3   | Replacing all c's by b's
+_____|______|______|______|______|
+     |      |      |      |      |
+  4  |  b   |  b   |  5   |  0   | If b's remain, repeat 
+_____|______|______|______|______|

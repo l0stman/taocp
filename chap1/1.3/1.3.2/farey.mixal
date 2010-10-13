@@ -1,0 +1,32 @@
+* Farey series of order n which is stored in rI1.
+*
+X       EQU     2000
+Y       EQU     3000
+FAREY   STJ     RETURN
+        ST1     N
+        ENT1    1
+1H      INC1    1
+        LDA     Y-2,1
+        ADD     N
+        SRAX    5
+        DIV     Y-1,1
+        STA     TEMP
+        MUL     X-1,1
+        SLAX    5
+        SUB     X-2,1
+        STA     X,1
+        LDA     TEMP
+        MUL     Y-1,1
+        SLAX    5
+        SUB     Y-2,1
+        STA     Y,1
+        SUB     X,1
+        JAN     1B
+RETURN  JMP     *
+TEMP    CON     0
+        ORIG    X
+        CON     0
+        CON     1
+        ORIG    Y
+        CON     1
+N       CON     0

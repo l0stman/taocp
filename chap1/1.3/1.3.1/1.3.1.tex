@@ -1,0 +1,246 @@
+\documentclass[a4paper,12pt]{article}
+\newcommand{\newpar}[1]{\bigskip \noindent \textbf{#1.}}
+\newcommand{\la}{\leftarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\subpar}[1]{\medskip \noindent (#1)}
+\newcommand{\cell}[1]
+           {\begin{tabular}{|*{6}{c|}} \hline #1 \\ \hline \end{tabular}}
+
+\begin{document}
+\newpar{1} There would be $4$ ``trits'' per byte.
+
+\newpar{2} We'd need up to $\lceil \log_{64}99999999\rceil = 5$ bytes.
+
+\newpar{3} \subpar{a} (1:2)
+
+\subpar{b} (3:3)
+
+\subpar{c} (4:4)
+
+\subpar{d} (5:5)
+
+\newpar{4} The register I4 can contain an integer value up to
+$64 * 64 - 1 = 4096$.  So the effective address in the instruction
+could be positive.
+
+\newpar{5} ``LD6 -80,3(0:5)''
+
+\newpar{6}
+\subpar{a} $ra \la \cell{-&5&1&200&15}$
+
+\subpar{b} $I2 \la \cell{-&200}$
+
+\subpar{c} $rX \la \cell{+&0&0&5&1&?}$
+
+\subpar{d} undefined
+
+\subpar{e} $rX \la \cell{-&0&0&0&0&0}$
+
+\newpar{7} Let $n = |rAX|$ be the magnitude of the register $rA$ and $rX$
+and let $d = |V|$ the magnitude of the divisor.  After the operation,
+the magnitude of the register $rA$ is $\lfloor n/d\rfloor$ and the
+magnitude of the register $rX$ is $n \bmod{d}$.  $rX$ has the sign of $rA$
+before the division and the sign of $rA$ is positive if and only if $rA$
+and $V$ have the same sign before the division.
+
+\newpar{8} $rA \la \cell{-&0&617&0&1}$ and $rX \la
+\cell{-&0&0&0&1&1}$.
+
+\newpar{9} ADD, SUB, DIV, INCA, INCX, DECA, DECX, JOV, JNOV, NUM.
+
+\newpar{10} CMPA, CMPX, CMPi for $1 \le i \le 6$.
+
+\newpar{11} LD1, LD1N, ENT1, ENN1, INC1, DEC1, MOVE.
+
+\newpar{12} ``INC3 0, 3''
+
+\newpar{13} If the overflow toggle is off, with ``JNOV 1001'' 1001 is
+loaded into $rJ$.  ``JNOV 1000'' produces an infite loop whereas ``JOV
+1001'' does nothing.
+
+With ``JOV 1000'' the execution time changes.
+
+\newpar{15} $70$, $80$, $120$
+
+\newpar{16}
+\subpar{a}
+\begin{verbatim}
+STZ	0
+ENT1	1
+MOVE	0(63)
+MOVE	0(36)
+\end{verbatim}
+This program takes $203u$ of time.
+
+\subpar{b}  Use STZ $100$ times and the execution time is equal to
+$200u$.
+
+\newpar{17} \subpar{a}
+\begin{verbatim}
+STZ   0,2
+DEC2  1
+J2NN  3000
+\end{verbatim}
+
+\subpar{b}
+\begin{verbatim}
+        STZ    0
+(3001)  DEC2   63
+        J2N    3005
+        MOV    0(63)
+        JMP    3001
+(3005)  INC2   63
+(3006)  STZ    0,1
+        INC1   1
+        DEC2   1
+        J2NN   3006
+\end{verbatim}
+
+\newpar{18}  The overflow indicator is set on when executing ``ADD
+1''.   The comparison indicator is set to \textsc{EQUAL}.  The
+register $rI1$ is set to $+3$, the memories $0$ and $2$ are set to
+$+0$.  $rA$ contains \cell{-&30&30&30&30&30} and $rX$ contains
+\cell{-&31&30&30&30&30}.
+
+\newpar{19} The execution time is $42u$.
+
+\newpage
+\newpar{20}
+\begin{verbatim}
+(0)  ENT1   12
+     ENT2   3988     (4000 - 12)
+     DEC2   63
+     J2N    6
+     MOV    11(63)
+     JMP    3
+(6)  INC2   63
+     ST2    8(4:4)
+(8)  MOV    11
+     ENT1   0
+     MOV    11(12)
+(11) HLT    0
+\end{verbatim}
+
+\newpar{21}
+\subpar{a} No.  The J-register is changed only when a jump occurs, and it
+contains the address of the next instruction.
+
+\subpar{b}
+\begin{verbatim}
+          LDA    -1,4
+          LDX    3004
+          STX    -1,4
+          JMP    -1,4
+(3004)    JMP    3005
+(3005)    STA    -1,4
+\end{verbatim}
+
+\newpar{22}  Program using a minimum number of MIX memory locations.
+\begin{verbatim}
+          ENT1   12
+          LDA    2000
+(3002)    DEC1   1
+          MUL    2000
+          SLC    5
+          J1NN  3002
+          HLT    0
+\end{verbatim}
+The running time is $171u$ and the space occupied
+is $7$.
+
+For the program having the minimum execution time possible, we use the
+following property $X^{13} = X
+\left(X^2\right)^2\left[\left(X^2\right)^2\right]^2$.   We use $5$
+multiplications instead of $12$.
+
+\newpage 
+\begin{verbatim}
+(3000)   NOP    0
+         LDA    2000
+         MUL    2000
+         STX    3000
+         LDA    3000
+         MUL    3000
+         STX    3000
+         LDA    3000
+         MUL    3000
+         SLC    5
+         MUL    3000
+         SLC    5
+         MUL    2000
+         SLC    5
+         HLT    0
+\end{verbatim}
+The running time is $66u$ and the space $15$.
+
+\newpar{23}
+Here's one using \textbf{MIX}'s load and store partial fields of
+words.
+\begin{verbatim}
+(3000)  ENT1  5
+        ENT2  45           (partial field: 45 = 8 * 5 + 5)
+(3002)  ST1   3002(4:4)
+        LDA   200
+        SLA   1
+        DEC1  5
+        DEC2  9
+        JNN1 3002
+\end{verbatim}
+Here's one using addition:
+\begin{verbatim}
+(3000)  NOP   0
+        ENT1  5
+        LDX   200
+(3003)  ENTA  0
+        SRC   1
+        SLA   0,1
+        ADD   3000
+        STA   3000
+        DEC1  1
+        J1NN  3003
+\end{verbatim}
+
+\newpar{24}
+\begin{verbatim}
+SLC    1
+SRX    1
+\end{verbatim}
+
+\newpar{26}
+\begin{verbatim}
+00      IN    16(16)      read the second card
+01      IN    32(16)      read next card into buf
+02      JBUS  2(16)       wait until the transfer is complete
+03      LDA   33(1:5)
+04      SLA   1
+05      SRAX  6           rAX contains the address characters
+06      NUM   0           rA <- address
+07      STA   11(1:2)
+08      LDX   33(1:1)     
+09      SRA   5           rA <- 0
+10      NUM   1
+11      JAZ   0           transfer card
+11      STA   31(5:5)     31 <- counter
+12      LDA   31(5:5)
+13      SUB   10(2:2)
+14      STA   31          count <- counter-1
+15      LD1   31(5:5)
+---------------------------------------------------------------
+16      LDA   34,1(5:5)   last byte of the word
+17      SUB   21(2:2)
+18      LDA   0(0:0)      load the word sign into rA
+19      LDA   34,1(1:5)
+20      LDX   35,1(1:5)       
+21      NUM   30           rA <- counter-th word
+22      LDX   11(1:2)      rX <- address of word 1
+23      STX   24(1:2)
+24      STA   0,1
+25      JNN1  12
+26      JMP   1
+27      NOP   0
+28      NOP   0
+29      NOP   0
+30      NOP   0
+31      NOP   0
+\end{verbatim}
+\end{document}

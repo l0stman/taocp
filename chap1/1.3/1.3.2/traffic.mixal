@@ -1,0 +1,54 @@
+* Controls the traffic light.  rI2 = 1 means that Del Mar's traffic is
+* running and rI2 = 0 means it's Berkeley's.
+*
+USEC    EQU     10000           Number of instruction executed per second.
+DWALK   ALF     " CABB"         Don't walk on Berkeley
+        ALF     " ACBB"         Don't walk on Del Mar
+OFF     ALF     " CAB "         Turn off pedestrian light on Berkeley
+        ALF     " AC B"         Turn off pedestrian light on Del Mar
+AMBER   ALF     " CBBB"         Amber on Berkeley
+        ALF     " BCBB"         Amber on Del Mar
+ATIME   CON     5*USEC-5        Amber duration on Berkeley
+        CON     8*USEC-5        Amber duration on Del Mar
+RED     ALF     " ACAB"         Red on Berkeley
+        ALF     " CABA"         Red on Del Mar
+* Sleep during max(rA,7)u excluding the jump to the subroutine.
+SLEEP   STJ     1F                  2
+        DECA    6                   1
+        DECA    2                   1
+        JAP     *-1                 1
+        JAN     *+2                 1
+        NOP                         1
+1H      JMP     *                   1
+* Stop the current running traffic and run the other one.
+TOGGLE  STJ     RETURN              2
+        ENT1    8                   1
+1H      LDX     OFF,2               2   Turn off the pedestrian light.
+        ENTA    USEC/2-4            1
+        JMP     SLEEP               1
+        LDX     DWALK,2             2   Flash "DON'T WALK" back.
+        ENTA    USEC/2-6            1
+        JMP     SLEEP               1
+        DEC1    1                   1
+        J1P     1B                  1   Repeat 8 times.
+        LDA     4*USEC-5            2
+        JMP     SLEEP               1   Wait 4s.
+        LDX     AMBER,2             2
+        LDA     ATIME,2             2
+        JMP     SLEEP               1
+        LDX     RED,2               2
+RETURN  JMP     *                   1
+START   LDX     RED                 2
+        NOP                         1   Synchronize with the timing in
+        NOP                         1   the main loop.
+LOOP    ENT2    1                   1   The traffic on Del Mar is running.
+        ENTA    10*USEC-12          1
+        JMP     SLEEP               1
+        JNOV    *                   1
+        JMP     TOGGLE              1   Stop traffic on Del Mar.
+        ENT2    0                   1   The traffic on Berkeley is running.
+        ENTA    3*USEC-10           1
+        JMP     SLEEP               1
+        JMP     TOGGLE              1   Stop traffic on Berkeley.
+        JMP     LOOP                1
+        END     START

@@ -1,0 +1,50 @@
+* Count the frequency of each character.
+*
+TABLE   EQU     2000
+LEN     EQU     56
+BUF     EQU     TABLE+LEN
+PRINTER EQU     18
+TAPE    EQU     19
+BSIZ    EQU     14              Block size of a tape.
+        ORIG    3000
+START   ENT6    BUF+BSIZ
+        IN      BUF(TAPE)       Read into the first buffer.
+        IN      0,6(TAPE)       Process first buffer while reading into
+READBUF ENT1    -BSIZ           the second one.
+        ST6     GETC(1:2)
+GETW    ENT2    1:1
+1H      ST2     GETC(4:4)
+GETC    LD3     0,1
+        CMP3    =46=            asterisk?
+        JE      PRINT
+        J3Z     2F              blank?
+        LDA     TABLE,3
+        INCA    1
+        STA     TABLE,3
+2H      INC2    1:1
+        CMP2    =5:5=
+        JLE     1B              Count rest of characters in the word.
+        INC1    1
+        J1N     GETW            Fetch a new word from the buffer.
+        IN      -BSIZ,6(TAPE)   Read into the finished buffer.
+        CMP6    =BUF+BSIZ=
+        JE      3F              First buffer?
+        DEC6    BSIZ
+        JMP     READBUF         Process first buffer.
+3H      INC6    BSIZ
+        JMP     READBUF         Process second buffer.
+PRINT   ENT1    BUF+1
+        STZ     BUF
+        MOVE    BUF(22)
+        ENT1    LEN-1
+1H      LDA     TABLE,1
+        JAZ     2F              Ignore character.
+        ST1     BUF(1:1)
+        CHAR    0
+        STA     BUF+1
+        STX     BUF+2
+        OUT     BUF(PRINTER)
+2H      DEC1    1
+        J1NN    1B
+        HLT
+        END     START

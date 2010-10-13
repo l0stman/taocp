@@ -1,0 +1,103 @@
+* Verify that the instruction at INST is a valid one.
+* Jump to GOOD if it's the case or to BAD if not.
+*
+        LDA     INST
+        CMPA    =64=(5:5)
+        JG      BAD             C is greater than 64?
+        CMPA    =5=(5:5)
+        JE      SKIP            Instruction ignores M?
+        CMPA    =0=(5:5)
+        JE      SKIP
+        CMPA    =6=(3:3)
+        JG      BAD             I greater than 6?
+        STA     2F(0:3)
+2H      ENTX    0
+        JXN     BAD
+        DECX    3999
+        JXP     BAD             M greater than 3999?
+SKIP    LD1     INST(5:5)
+        LD2     TABLE,1(0:2)    routine address
+        JMP     0,2
+FLOAT   CMPA    =6=(4:4)        float arithmetic?
+        JE      GOOD
+FIELD   LDA     INST(4:4)
+        LD2     TABLE,1(3:3)    value of the rightmost field
+        J2P     2F
+        ENT2    5
+2H      SRAX    5
+        DIV     =8=
+        DECA    0,2
+        JAP     BAD
+        DECX    0,2
+        JXP     BAD
+        JMP     GOOD
+FMAX    LD2     TABLE,1(4:4)    maximum field value
+        LD1     INST(4:4)
+        DEC1    0,2
+        J1NP    GOOD
+        JMP     BAD
+UMAX    EQU     20
+TABLE   NOP     GOOD
+        ADD     FLOAT
+        SUB     FLOAT
+        MUL     FLOAT
+        DIV     FLOAT
+        HLT     FMAX
+        SRC     FMAX
+        MOVE    GOOD
+        LDA     FIELD
+        LD1     FIELD
+        LD2     FIELD
+        LD3     FIELD
+        LD4     FIELD
+        LD5     FIELD
+        LD6     FIELD
+        LDX     FIELD
+        LDAN    FIELD
+        LD1N    FIELD
+        LD2N    FIELD
+        LD3N    FIELD
+        LD4N    FIELD
+        LD5N    FIELD
+        LD6N    FIELD
+        LDXN    FIELD
+        STA     FIELD
+        ST1     FIELD
+        ST2     FIELD
+        ST3     FIELD
+        ST4     FIELD
+        ST5     FIELD
+        ST6     FIELD
+        STX     FIELD
+        STJ     FIELD,2
+        STZ     FIELD
+        JBUS    FMAX(UMAX)
+        IOC     FMAX(UMAX)
+        IN      FMAX(UMAX)
+        OUT     FMAX(UMAX)
+        JRED    FMAX(UMAX)
+        JLE     FMAX
+        JANP    FMAX
+        J1NP    FMAX
+        J2NP    FMAX
+        J3NP    FMAX
+        J4NP    FMAX
+        J5NP    FMAX
+        J6NP    FMAX
+        JXNP    FMAX
+        ENNA    FMAX
+        ENN1    FMAX
+        ENN2    FMAX
+        ENN3    FMAX
+        ENN4    FMAX
+        ENN5    FMAX
+        ENN6    FMAX
+        ENNX    FMAX
+        CMPA    FLOAT
+        CMP1    FIELD
+        CMP2    FIELD
+        CMP3    FIELD
+        CMP4    FIELD
+        CMP5    FIELD
+        CMP6    FIELD
+        CMPX    FIELD

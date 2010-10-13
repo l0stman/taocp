@@ -1,0 +1,59 @@
+* Generate a magic square of size 23 x 23.  The row number i and
+* column number j of the magic square is at the location
+* 23*(i-1)+(j-1).  rI1 contains the position -23*(i-1)-(j-1) and rI2
+* contains the column j-23.
+*
+NMAX    EQU     23*23
+MSQUARE EQU     23*22+22
+PRINTER EQU     18
+BSIZE   EQU     24
+BUF     EQU     NMAX
+
+        ORIG    BUF+BSIZE
+MOVDIAG STJ     1F
+        INC1    24
+        INC2    1
+        J2NP    2F              haven't moved past the last column?
+        DEC2    23
+        DEC1    23
+2H      J1NP    1F              haven't moved past the last row?
+        DEC1    23*23
+1H      JMP     *
+MOVVERT STJ     1F
+        INC1    46
+        J1NP    1F              haven't moved past the last row?
+        DEC1    23*23
+1H      JMP     *
+NEXTPOS STJ     RETURN
+        ENT4    0,1             save positions
+        ENT5    0,2
+        JMP     MOVDIAG
+        LDA     MSQUARE,1
+        JAZ     RETURN          non-filled square?
+        ENT1    0,4             backtrack
+        ENT2    0,5
+        JMP     MOVVERT
+RETURN  JMP     *
+PRINT   STJ     3F
+        ENT1    -NMAX
+1H      ENT2    -23
+2H      LDA     NMAX,1
+        CHAR
+        STX     BUF+23,2(3:5)
+        INC1    1
+        INC2    1
+        J2N     2B
+        OUT     BUF(PRINTER)
+        J1N     1B
+3H      JMP     *
+START   ENN1    23*11+11        position
+        ENN2    11              column
+        ENN3    NMAX-1          counter
+1H      ENTA    NMAX,3
+        STA     MSQUARE,1
+        JMP     NEXTPOS
+        INC3    1
+        J3NP    1B
+        JMP     PRINT
+        HLT
+        END     START

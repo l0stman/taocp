@@ -1,0 +1,101 @@
+\documentclass[a4paper,12pt]{article}
+\begin{document}
+
+\noindent
+\textbf{1.} $t \leftarrow a$, $a \leftarrow b$, $b \leftarrow c$, 
+$c \leftarrow d$, $a \leftarrow t$.
+
+\bigskip
+\noindent
+\textbf{2.} We have the following algorithm:
+\begin{description}
+\item[E1.]
+[Find remainder.] Divide $m$ by $n$ and let $r$ be the remainder.
+(We will have $0 \leq r < n$.)
+\item[E2.]
+[Is it zero?] If $r = 0$, the algorithm terimates; n is the answer.
+\item[E3.]
+[Interchange.] Set $m \leftarrow n$, $n \leftarrow r$, and go back
+to step E1. $|$
+\end{description}
+
+\noindent
+Suppose $m \ge n$\\
+after \textbf{E1}, $m \ge n$\\
+after \textbf{E2}, $m \ge n$
+
+\noindent
+after \textbf{E3}, we have $m > n$ because $0 \le r < n$.
+
+Suppose $m < n$ then $r = m$, and after the execution of \textbf{E3}, 
+if we get there, $m > n$.
+
+\medskip
+Thus, $m$ is always greater than n at the beginning of \textbf{E1}, 
+except possibly the first time this step occurs.
+
+\bigskip
+\noindent
+\textbf{3.} Here's the algorithm:
+\begin{description}
+\item[F1.]
+Divide $m$ by $n$ and let $r$ be the remainder. $(0 \le r < n)$
+\item[F2.]
+If $r = 0$, the algorithm terminates; $n$ is the answer.
+\item[F3.]
+Divide $n$ by $r$ and let m be the remainder. $(0 \le m < r)$
+\item[F4.]
+If $m = 0$, the algorithm terminates; $r$ is the answer.
+\item[F5.]
+Divide $r$ by $m$ and let $n$ be the remainder. $(0 \le n < m)$
+\item[F5.]
+If $n = 0$, the algorithm terminates; $m$ is the answer; otherwise go
+back to step \textbf{F1}. $|$
+\end{description}
+
+\bigskip
+\noindent
+\textbf{4.} $\gcd(2166, 6099) = 57$.
+
+\bigskip
+\noindent
+\textbf{5.} Finiteness: the reader can work on exercises and check answers
+indefinitely.\\
+Output: the procedure have no output.\\
+Effectiveness: relaxing and sleeping are not effective operations.
+
+\bigskip
+\noindent
+\textbf{6.} $N_0 = 1; N_1 = 2; N_2 = 3; N_3 = 4; N_4 = 3;$ \\
+$T_5 = \frac{1+2+3+4+3}{5} = \frac{13}{5} = 2.6$.
+
+\medskip
+If $k < 5$, the first iteration just permutes the values of $m$ and $n$.
+And if $k \ge 5$, the first iteration is a division of $k$ by $5$.
+So the number of steps is the same for each class modulo 5 of integers.
+
+\bigskip
+\noindent
+\textbf{7.} $U_n = T_{n+1}$
+
+\bigskip
+\noindent
+\textbf{8.}
+\begin{quote}
+\begin{tabular}{|c|c|c|c|c|l}
+\cline{1-5}
+&$t_j$&$f_j$&$a_j$&$b_j$\\
+\cline{1-5}
+$0$&$ab$&---&$2$&$1$&Suppress an occurence of $ab$\\
+\cline{1-5}
+$1$&---&$c$&---&$0$&Adding $c$ at the beginning of the string\\
+\cline{1-5}
+$2$&$a$&$b$&$3$&$2$&Replacing all $a$'s by $b$'s\\
+\cline{1-5}
+$3$&$c$&$a$&$4$&$3$&Replacing all $c$'s by $b$'s\\
+\cline{1-5}
+$4$&$b$&$b$&$5$&$0$&If b's remain, repeat\\
+\cline{1-5}
+\end{tabular}
+\end{quote}
+\end{document}

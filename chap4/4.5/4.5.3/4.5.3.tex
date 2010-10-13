@@ -1,0 +1,235 @@
+\documentclass[a4paper,12pt]{article}
+\newcommand{\newpar}[1]{\bigskip \noindent \textbf{#1.}}
+\newcommand{\subpar}[1]{\medskip \noindent (#1)}
+\newcommand{\la}{\leftarrow}
+\newcommand{\ra}{\rightarrow}
+
+\begin{document}
+
+\newpar{2} Let's show by induction on $n > 1$ that
+
+\begin{eqnarray*}
+  P_n &=&
+\left(
+\begin{array}{cc}
+  x_1 & 1 \\
+  1 & 0
+\end{array}
+\right)
+\left(
+\begin{array}{cc}
+  x_2 & 1 \\
+  1 & 0
+\end{array}
+\right)
+\cdots
+\left(
+\begin{array}{cc}
+  x_n & 1 \\
+  1 & 0
+\end{array}
+\right) \\
+&=&
+\left(
+\begin{array}{cc}
+  K_n(x_1, x_2, \ldots, x_n) & K_{n-1}(x_1, x_2, \ldots, x_{n-1}) \\
+  K_{n-1}(x_2, x_3, \ldots, x_n) & K_{n-2}(x_2, x_3, \ldots, x_{n-1})
+\end{array}
+\right)
+\end{eqnarray*}
+
+We verify easily that the equality holds for $n = 2$.  Suppose that
+it's true for $n > 1$.  Then by induction we have,
+
+\begin{eqnarray*}
+  P_{n+1} &=& P_n
+  \left(
+  \begin{array}{cc}
+    x_{n+1} & 1 \\
+    1 & 0
+  \end{array}
+  \right) \\ &=&
+  \left(
+  \begin{array}{cc}
+    K_n(x_1, x_2, \ldots, x_n) & K_{n-1}(x_1, x_2, \ldots, x_{n-1}) \\
+    K_{n-1}(x_2, x_3, \ldots, x_n) & K_{n-2}(x_2, x_3, \ldots, x_{n-1})
+  \end{array}
+  \right)
+  \left(
+  \begin{array}{cc}
+    x_{n+1} & 1 \\
+    1 & 0
+  \end{array}
+  \right) \\
+  &=&
+  \left(
+  \begin{array}{cc}
+    x_{n+1} K_n(x_1, \ldots, x_n) + K_{n-1}(x_1, \ldots, x_{n-1}) &
+    K_{n-1}(x_1, \ldots, x_{n-1}) \\
+    x_{n+1} K_n(x_2, \ldots, x_n) + K_{n-2}(x_1, \ldots, x_{n-1}) &
+    K_{n-1}(x_2, \ldots, x_n) \\
+  \end{array}
+  \right) \\
+  &=&
+  \left(
+  \begin{array}{cc}
+    K_{n+1}(x_1, \ldots, x_{n+1}) & K_{n-1}(x_1, \ldots, x_{n-1}) \\
+    K_n(x_2, \ldots, x_{n+1}) & K_{n-1}(x_2, \ldots, x_{n-1})
+  \end{array}
+  \right),\,\mbox{from (7)}
+\end{eqnarray*}
+
+\newpar{3}  Let's show that the determinant is equal to $q_1q_2\ldots
+q_n$.  In order to accomplish this, we replace successively for $i$
+varying from $2$ to $n$ the $i^{th}$ column $C_i$ by $m_iC_i -
+C_{i-1}$ where $m_i = C_{i-1,i-1}$.
+
+Let's show by induction that after the $i^{th}$ transformation, the
+column $C_k$ where $1\le k\le i+1$ is equal to
+$(C_{k,1},\ldots,C_{k,n})$ where
+
+\[
+C_{k,l} = \left\{
+\begin{array}{ll}
+  q_k &\mbox{if $l=k$} \\
+  -q_{k-1}& \mbox{if $l=k+1$} \\
+  0& \mbox{otherwise}
+\end{array}
+\right.
+\]
+
+After accomplishing $0$ transformation, we have $C_{1,1} = q_1$,
+$C_{1, 2} = -q_0$ and $C_{1, l} = 0$ otherwise.
+
+Suppose we have the property for $i$ such that $1\le i\le n-2$.  After
+the $(i+1)^{th}$ transformation all the other columns remain the same
+except $C_{i+1}$.  Thus by induction we have the property for $1\le
+k\le i$.  And we have
+
+\[
+C_{i+1,l} = \left\{
+\begin{array}{ll}
+  x_{i+1}q_i + q_{i-1} = q_{i+1} &\mbox{if $l=i+1$} \\
+  -q_i& \mbox{if $l=i+2$} \\
+  0& \mbox{otherwise}
+\end{array}
+\right.
+\]
+
+And finally, the initial determinant is equal to the determinant of a
+trigonal matrix whose diagonal elements are equal to $q_1, q_2,
+\ldots, q_n$.  Hence, we have the desired result.
+
+\newpar{4} Let's show the relation by induction on $n \ge 1$.  If
+$n=1$, we have
+
+\[ K_1(x_1)K_1(x_2) - K_2(x_1,x_2) = -1.\]
+
+Suppose that we have the property for $n \ge 1$, we then have
+
+\begin{eqnarray*}
+  &&K_{n+1}(x_1,\ldots,x_{n+1})K_{n+1}(x_2,\ldots,x_{n+2}) \\
+  &=& K_{n+1}(x_1,\ldots,x_{n+1})(x_{n+2}K_n(x_2,\ldots,x_{n+1}) +
+  K_{n-1}(x_2,\ldots,x_n)) \\
+  &=& x_{n+2} K_{n+1}(x_1,\ldots, x_{n+1}) K_n(x_2,\ldots,x_{n+1}) + \\
+  &&K_{n+1}(x_1,\ldots,x_{n+1}) K_{n-1}(x_2,\ldots,x_n) \\
+  &=& (K_{n+2}(x_1,\ldots,x_{n+2}) - K_n(x_1,\ldots, x_n))
+  K_n(x_2,\ldots,x_{n+1}) + \\
+  && K_{n+1}(x_1,\ldots,x_{n+1}) K_{n-1}(x_2,\ldots,x_n) \\
+  &=& K_{n+2}(x_1,\ldots,x_{n+2})K_n(x_2,\ldots,x_{n+1}) +
+  (-1)^{n+1},\,\mbox{by induction}
+\end{eqnarray*}
+
+Thus we have also verified that we have the property for $n+1$.
+
+\newpar{5} We have,
+
+\[ q_n q_{n+1} - q_{n-1} q_n = x_{n+1} q_n q_{n-1} > 0.\]
+
+Thus the sequence $\left(\frac{1}{q_nq_{n-1}}\right)_{n>0}$ is positive
+and decreasing.  If we show that the sequence tends to $0$ when $n$
+tends to $+\infty$, we then deduce from (9) that $//x_1,x_2,\ldots//$
+exists because it's the sum of decreasing alternate sequence that tends
+to $0$.  Note $u_n$ the sequence defined by
+
+\[
+u_n = \left\{
+\begin{array}{ll}
+  1,&\mbox{if $n=0$} \\
+  \epsilon,&\mbox{if $n=1$} \\
+  \epsilon u_{n-1} + u_{n-2},&\mbox{if $n>1$}
+\end{array}
+\right.
+.\]
+
+We deduce easily from (7) that $q_n \ge u_n$ for $n\ge0$.Let's show by
+induction on $n$ that
+
+\[ u_n = \frac{1}{\sqrt{\epsilon^2+4}}\left(\left(\frac{\epsilon +
+  \sqrt{\epsilon^2 + 4}}{2}\right)^{n+1} -
+\left(\frac{\epsilon - \sqrt{\epsilon^2 + 4}}{2}\right)^{n+1}\right) .\]
+
+We have the inequality for $n=0$ and $n=1$.  Now suppose that we have
+the equality for $0\le k\le n$ where $n\ge 2$.  Then we have by
+induction
+
+\begin{eqnarray*}
+  u_{n+1} &=& \epsilon u_n + u_{n-1} \\
+  &=& \frac{1}{\sqrt{\epsilon^2+4}}\left(
+  \left(\frac{\epsilon + \sqrt{\epsilon^2 + 4}}{2} \right)^n
+  \left(\epsilon\ \frac{\epsilon + \sqrt{\epsilon^2+4}}{2} + 1 \right)
+  -\right.\\
+  && \left.\left(\frac{\epsilon - \sqrt{\epsilon^2 + 4}}{2} \right)^n
+  \left(\epsilon\ \frac{\epsilon - \sqrt{\epsilon^2+4}}{2} + 1 \right)
+  \right) \\
+  &=& \frac{1}{\sqrt{\epsilon^2+4}}\left(
+  \left(\frac{\epsilon + \sqrt{\epsilon^2 + 4}}{2} \right)^n
+  \left(\frac{\epsilon + \sqrt{\epsilon^2+4}}{2}\right)^2
+  -\right.\\
+  && \left.\left(\frac{\epsilon - \sqrt{\epsilon^2 + 4}}{2} \right)^n
+  \left(\frac{\epsilon - \sqrt{\epsilon^2+4}}{2}\right)^2
+  \right) \\
+  &=& \frac{1}{\sqrt{\epsilon^2+4}}\left(\left(\frac{\epsilon +
+  \sqrt{\epsilon^2 + 4}}{2}\right)^{n+2} -
+\left(\frac{\epsilon - \sqrt{\epsilon^2 + 4}}{2}\right)^{n+2}\right)
+\end{eqnarray*}
+
+We then deduce easily that
+
+\[ \lim_{n\to +\infty}\frac{1}{q_nq_{n-1}} = 0.\]
+
+Now consider the sequence $(x_n)_{n>0}$ defined by
+
+\[
+x_n = \left\{
+\begin{array}{ll}
+  1,&\mbox{if $n=1$}\\
+  1,&\mbox{if $n=2$}\\
+  \frac{4(n-1)}{n(n-2)(5n-7)},&\mbox{if $n>2$}
+\end{array}
+\right.
+.\]
+
+Let's show by induction on $n>0$ that $q_n \le \frac{5}{2} -
+\frac{1}{n}$.
+
+We have $q_1 = 1 \le \frac{3}{2}$ and
+
+\[  q_2 = x_2 q_1 + q_0 = 2 \le \frac{5}{2} - \frac{1}{2}.\]
+
+Now suppose that the property is true for $n \ge 2$ and $n-1$.  We
+then have
+
+\begin{eqnarray*}
+  q_{n+1} &=& x_{n+1} q_n + q_{n-1} \\
+  &\le& x_{n+1}\left(\frac{5}{2} - \frac{1}{n}\right) + \frac{5}{2} -
+  \frac{1}{n-1} \\
+  &=& \frac{5}{2} - \frac{1}{n+1}
+\end{eqnarray*}
+
+We then deduce that the sequence $(q_n)_{n\in \mathbf{N}}$ is bounded
+above by $\frac{5}{2}$. Hence, $q_nq_{n-1}$ doesn't tend to $0$ when
+$n$ tends to $+\infty$.  We then deduce from (9) that
+$//x_1,\ldots,x_n//$ has no limit when $n$ tends to $+\infty$.
+
+\end{document}

@@ -1,0 +1,166 @@
+* Josephus problem.  We're using doubly linked lists so we can move
+* clockwise or anticlockwise on the circle depending on the shortest
+* path.
+*
+N       EQU     24
+M       EQU     11
+PREV    EQU     0
+NEXT    EQU     1
+PRINTER EQU     18
+BUF     EQU     2*N
+BSIZE   EQU     24
+
+        ORIG    2*N+BUF+BSIZE
+START   ENT1    N-1*2           initialize the doubly-linked lists
+        ST1     0+PREV
+        ST1     N-2*2+NEXT
+1H      DEC1    2               assume n > 2
+        ST1     NEXT-2,1
+        ST1     PREV+2,1
+        J1P     1B
+        ENT2    -N
+        ENT3    -M+1
+        ENTA    1               Store the execution number
+        CHAR    0               in rX.
+        ENT5    M-1*2-N
+        J5P     CASE2           2(m-1) > n?
+* We first treat the case where 2(m-1) <= n.
+LOOP1   ENT4    M-2            assume m > 2.
+        LD1     NEXT,1         move clockwise
+        DEC4    1
+        J4P     *-2
+        LD4     NEXT,1         rI1 = lucky man; rI4 = dead man
+        STX     BUF,4          store the execution number
+        LD4     NEXT,4         next man
+        ST4     NEXT,1         Take the dead man out
+        ST1     PREV,4         of the circuit.
+        ENT1    0,4            advance
+        INC5    1
+        CMPX    =39=(5:5)      rX <- rX+1
+        JL      0F             last digit of rX is less than 9
+        ENTA    1-M*2+N+1,5
+        CHAR
+        JMP     *+2
+0H      INCX    1
+        J5NP    LOOP1
+        ENN2    2*M-3
+CASE2   ENT5    M-1,2
+        J5P     LOOP3           m-1 > n?
+        J5Z     CASE3
+* We now have m-1 < n < 2(m-1).
+LOOP2   ENT4    1,5
+        J4Z     0F
+        LD1     PREV,1          move anticlockwise
+        INC4    1
+        J4N     *-2
+0H      LD4     PREV,1          rI1 = next man; rI4 = dead man
+        STX     BUF,4           store the execution number
+        LD4     PREV,4          lucky man
+        ST1     NEXT,4          Take the dead man out
+        ST4     PREV,1          of the circuit.
+1H      INC5    1               rX <- rX+1
+        CMPX    =39=(5:5)
+        JL      2F              last digit of rX is less than 9
+        ENTA    N-M+2,5
+        CHAR
+        JMP     *+2
+2H      INCX    1
+        J5N     LOOP2           m-1 < n?
+        J5P     3F              m-1 > n?
+CASE3   STX     BUF,1           store the execution number
+        LD4     PREV,1          lucky man
+        LD1     NEXT,1          advance to the next man
+        ST1     NEXT,4          Take the dead man out
+        ST4     PREV,1          of the circuit.
+        JMP     1B
+3H      ENN2    M-2
+        ENT3    -1
+        ENT6    1
+        JMP     MOVC
+* Finally we have n < m-1.  If we note: m-1 = qn + r with 0 <= r < n.
+* Then we only need to advance by r position.  But since division is
+* an expensive operation in MIX, we store -r in rI3 and q in rI6.
+* Thus each time we kill a man we decrement the value stored in rI3 by
+* rI6.  Note also that we move clockwise or anticlockwise depending on
+* the shortest path.
+LOOP3   ST2     X
+        ENNA    0
+        ENTX    0,3
+        DIV     X
+        INCA    0,6             increment m by the value
+        STA     X               in rI6 after killing
+        LD6     X               a man
+        STX     X
+        LD3     X               m <- m % n
+        ENTA    N+1,2           store the next execution number in rX
+        CHAR
+* Kill a man by moving clockwise.
+MOVC    ENT4    0,3
+        INC4    0,3
+        DEC4    0,2
+        J4N     CASE4           n < 2(m-1)?
+        ENT4    0,3
+        J4Z     0F
+        LD1     NEXT,1          advance clockwise
+        INC4    1
+        J4N     *-2
+0H      STX     BUF,1           store the execution number
+        LD4     PREV,1          rI4 = lucky man
+        LD1     NEXT,1          advance to the next man
+        ST1     NEXT,4          Take the dead man out
+        ST4     PREV,1          of the circuit.
+        INC2    1
+        CMPX    =39=(5:5)       rX <- rX+1
+        JL      2F              last digit of rX is less than 9
+        ENTA    N+1,2
+        CHAR
+        JMP     *+2
+2H      INCX    1
+        DEC3    0,6
+        J2N     MOVC
+        JMP     PRINT
+CASE4   ENN3    0,3
+        INC3    0,2             m <- n-m
+        J3NP    MOVA            n >= m?
+        DEC3    0,2
+        ENN3    0,3
+        JMP     LOOP3
+* Kill a man by moving anticlockwise.
+MOVA    ENT4    1,3
+        J4Z     0F
+        LD1     PREV,1          move anticlockwise
+        INC4    1
+        J4N     *-2
+0H      LD4     PREV,1          rI4 = dead man; rI1 = next man
+        STX     BUF,4           store the execution number
+        LD4     PREV,4          rI4 = lucky man
+        ST1     NEXT,4          Take the dead man out
+        ST4     PREV,1          of the circuit.
+        INC2    1
+        CMPX    =39=(5:5)
+        JL      1F              last digit of rX is less than 9
+        ENTA    N+1,2
+        CHAR
+        JMP     *+2
+1H      INCX    1
+        INC3    1,6
+        J3N     MOVA            m < n?
+        J3P     2F              m > n?
+        STX     BUF,1           store the execution number
+        LD4     PREV,1          rI4 = lucky man; rI1 = dead man
+        LD1     NEXT,1          advance to the next man
+        ST1     NEXT,4          Take the dead man out
+        ST4     PREV,1          of the circuit.
+        INC3    1,6
+        INC2    1
+2H      J2Z     PRINT
+        ENN3    0,3
+        INC3    0,2
+        JMP     LOOP3
+PRINT   ENN1    N*2
+        OUT     2*N+BUF,1(PRINTER)
+        INC1    BSIZE
+        J1N     *-2
+        HLT
+X       CON     0
+        END     START

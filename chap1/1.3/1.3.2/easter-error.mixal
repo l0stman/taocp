@@ -1,0 +1,106 @@
+* Find the earliest year for which the quantity 11G+20+Z-X is negative,
+* and computes an incorrect value of the Easter.  Store the result in rA.
+*
+YEAR    CON     0
+G       CON     0
+C       CON     0
+X       CON     0
+Z       CON     0
+N       CON     0
+D       CON     0
+E       CON     0
+E1      CON     0
+DAY     ALF     DD
+MONTH   ALF     MMMMM
+APRIL   ALF     APRIL
+MARCH   ALF     MARCH
+EASTER  STJ     RETURN
+        STX     YEAR
+        ENTA    0
+        DIV     =19=
+        INCX    1
+        STX     G       Golden number.
+        ENTA    0
+        LDX     YEAR
+        DIV     =100=
+        INCA    1
+        STA     C       Century.
+        MUL     =3=
+        DIV     =4=
+        DECA    12
+        STA     X       Number of leap year dropped.
+        LDA     C
+        MUL     =8=
+        INCX    5
+        DIV     =25=
+        DECA    5
+        STA     Z       Special correction.
+        LDA     YEAR
+        MUL     =5=
+        DIV     =4=
+        SUB     X
+        DECA    10
+        STA     D       Sunday.
+        LDA     G
+        MUL     =11=
+        INCX    20
+        SLAX    5
+        SUB     X
+        ADD     Z
+        JANN    FAIL
+        STA     E1
+        INCA    30
+        ENT6    1
+EPACT   SRAX    5
+        DIV     =30=
+        CMPX    =25=
+        JNE     1F
+        LD1     G
+        DEC1    11
+        J1NP    1F
+        INCX    1
+        JMP     2F
+1H      CMPX    =24=
+        JNE     2F
+        INCX    1
+2H      STX     E       Epact.
+        ENTA    44
+        SUB     E
+        CMPA    =21=
+        JGE     1F
+        INCA    30
+1H      STA     N
+        ADD     D
+        SRAX    5
+        DIV     =7=
+        STX     *+1(1:2)
+        ENT1    0
+        LDA     N
+        DECA    -7,1
+        CMPA    =31=
+        JG      1F
+        LDX     MARCH
+        JMP     2F
+1H      DECA    31
+        LDX     APRIL
+2H      J6Z     CMP
+        STA     DAY
+        STX     MONTH
+        LDA     E1
+        STA     E
+        DEC6    1
+        JMP     EPACT
+CMP     CMPA    DAY
+        JNE     FOUND
+        CMPX    MONTH
+        JE      FAIL
+FOUND   ENT5    1
+FAIL    LDX     YEAR
+RETURN  JMP     *
+START   ENT5    0
+        ENTX    0
+1H      INCX    1
+        JMP     EASTER
+        J5Z     1B
+        HLT
+        END     START

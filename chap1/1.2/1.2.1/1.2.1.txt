@@ -1,0 +1,264 @@
+1. We prove the statement Q(n) which corresponds to the statement P(n-1) for
+   all integer n.
+
+2. In the proof by induction, we assume that a^n-2 = 1 wich is not true
+   because the property is verified only for n = 1.
+
+3. The left side of the equality is defined only for n > 1.
+
+4. If n = 1, F1 = 1 >= F^-1
+   If n = 2, F2 = 1 >= F^0
+
+   Suppose Fn >= F^n-2 for n >= 2, then we have:
+   	   Fn+1 = Fn + Fn-1 >= F^n-2 + F^n-3 
+	   	       	    = F^n-2 (1 + F) = F^n-2 F^2 = F^n
+
+5. If n = 2, 2 is a prime so it's a product of prime numbers.
+   Suppose that for k between 2 and n, k could be written as product of 
+   prime numbers.
+   If n+1 is a prime, we could easily conclude.
+   Suppose n+1 is not a prime. There exist two integers greater than 1 a and b
+   such that: n+1 = a b.
+   Because a > 1 and b > 1, we must have a < n+1 and b < n+1.
+   By induction, a and b could be expressed as products of prime numbers, so
+   n+1 could also be expressed as such.
+
+6. Suppose we have: a'm + b'n = c, am + bn = d before the execution of E4.
+   From now on, we  append the indice 1 to the variables before E4 is
+   performed and the indice 2 after the execution of E4.
+   	     a'2 m + b'2 n = a1 m + b1 n = d1 = c2 and
+	     a2 m + b2 n = (a'1 - q a1)m + (b'1 - q b1) n
+	     	       	 = (a'1 m + b'1 n) - q (a1 m + b1 n)
+			 = c1 - q d1 = r = d2
+
+7. We have for n non negative integer: Sn = S{0<=k<=n} (-1)^(n-k) k^2.
+   So we deduce for each positive integer n: Sn = n^2 - Sn-1.
+   Note: Rn = S2n for n > 0.
+   We have: Rn = Rn-1 + (2n)^2 - (2n-1)^2 = Rn-1 + 4n - 1
+   Thus, Rn = R0 + n(2n+1) = n(2n+1)
+   S2n = (2n)(2n+1)/2
+
+   S2n+1 = (2n+1)^2 - S2n = (2n+1)^2 - (2n+1)(2n)/2 = (2n+1)(2n+2)/2
+
+   So Sn = n(n+1)/2 for all non negative integer n.
+
+8. (a) For n > 0:
+       n^3 = k + (k+2) + (k+4) + ... + (k+2(n-1))
+       with k = 2 (1 + 2 + ... + (n-1)) + 1 = n(n-1) + 1
+
+       n^3 = S{0<=i<=n-1}(n(n-1) + 1 + 2i)
+
+       If n = 1, 1^3 = 1
+       Suppose we have, n^3 = S{0<=i<=n-1}(n(n-1)+1+2i)
+       Thus, S{0<=i<=n}((n+1)n+1+2i) 
+       	     = (n(n+3)+1) + S{0<=i<=n-1}(n(n-1)+1+2i + 2n)
+	     = n(n+3)+1 + 2n^2 + S{0<=i<=n-1}(n(n-1)+1+2i)
+	     = 3n^2 + 3n + 1 + n^3, by induction
+	     = (n+1)^3
+ 
+   (b) (1+2+...+(n+1))^2 
+       	= (1+2+...+n)^2 + 2(1+2+...+n)(n+1) + (n+1)^2
+       	= (1+2+...+n)^2 + (n+1) S{0<=i<=n} (2i+1)
+       	= (1+2+...+n)^2 + (n+1)(S{0<=i<=n}(n(n+1)+2i+1) - n(n+1)^2)
+	= (1+2+...+n)^2 + (n+1)((n+1)^3 - n(n+1)^2), by (a)
+	= 1^3+2^3+...+n^3 + (n+1)^3, by induction
+
+9. If n = 0, (1 - a)^0 >= 1 - 0.a
+   Suppose, (1 - a)^n >= 1 - na for n >= 0
+   Thus we have by induction:
+   	(1-a)^(n+1) >= (1-a)(1-na), because 1-a > 0
+		    = 1-(n+1)a+na
+		    >=1-(n+1)a, because a>0
+
+10. If n = 10, 2^10 = 1024 > 10^3 = 1000
+    Suppose 2^n > n^3, for n >= 10
+    We have, n >= 1,
+       Thus 3n+1<= 4n <= 4n^2
+       and 3n^2+3n+1 <= 7n^2 <= n^3, because n>=10
+       Thus (n+1)^3 <= 2n^3 < 2^(n+1) by induction
+
+11. For n positive, note: Sn = S{0<=k<=n}(-1)^k (2k+1)^3/((2k+1)^4 + 4)
+    For x real, we have:
+    x^3 / (x^4 + 4) = 1/4 (1 / (x-(1+i)) + 1 / (x+(1+i)) + 
+    	       	      	   1 / (x-(1-i)) + 1 / (x+(1-i))) (*)
+    Thus,
+    Sn = 1/4(S{0<=k<=n}(-1)^k/(2k-i) + S{0<=k<=n}(-1)^k/(2n+i) +
+       	 S{0<=k<=n}(-1)^k/(2(k+1)+i) + S{0<=k<=n}(-1)^k/(2(k+1)-i))
+
+    Sn = (-1)^n/4 (1/(2(n+1)+i) + 1/(2(n+1)-i)) (**)
+    Sn = (-1)^n (n+1) / (4(n+1)^2 + 1)
+
+    If n = 0, S0 = 1^3/(1^4 + 4) = 1 / (4 1^2 + 1)
+    Suppose Sn = (-1)^n (n+1) / (4(n+1)^2 + 1), for n >= 0.
+    By induction:
+       Sn+1 = (-1)^n (n+1) / (4(n+1)^2 + 1) + 
+       	      (-1)^(n+1)(2(n+1)+1)^3 / ((2(n+1)+1)^4 + 4)
+	    = (-1)^n /4(1/(2(n+1)+i) + 1/(2(n+1)-i)) +
+	      (-1)^(n+1)/4 (1/(2(n+1)-i) + 1/(2(n+2)+i) + 1/(2(n+1)+i) +
+	      		   1/(2(n+2)-i)), by (**) and (*)
+	    = (-1)^n (n+2)/(4(n+2)^2+1)		     
+
+12. E1. [Initialize.] Set a'<-b<-1, a<-b'<-0, c<-|m|, d<-|n|
+    E2. [Divide.] Let q and r be the real numbers verifying
+    	q = |_c/d_| and r = c - qd (thus, 0<=r<|d|)
+    E3. [Remainder zero?] If r = 0, If m < 0 set a <- -a and if n < 0 
+    	set b <- -b and the algorithm terminates; we have in this case
+	am + bn = d as desired.
+    E4. [Recycle.] Set c<-d, d<-r, t<-a', a'<-a, a<-t - qa, t<-b', b'<-b,
+    	b<-t-qb, and go back to E2. |
+
+    Let's proove that a|m|+b|n| = d, a'|m|+b'|n|=c, always hold whenever
+    E2 is executed.
+    After E1. a'<-1, b<-1, a<-0 ,b'<-0, c<-|m|, d<-|n|
+    After E2.
+    After E3.
+    After E4.
+    	  a2|m|+b2|n| = (a'1 - qa1)|m|+(b'1 - qb1)|n|
+	  	      = c1 - qd1
+		      = r
+		      = d2
+      and a'2|m|+b'2|n| = a1|m|+b1|n| = d1 = c1
+    Note that if u and v are integers then:
+    	 |_u+v 2^(1/2)_| = u + |_v 2^(1/2)_|
+
+    Here's a simple algorithm that computes |_v 2^(1/2)_| if v is a positive
+    integer.
+    C1. [Initialize.] m <- 0
+    C2. [Terminate.] If (m+1)^2 > 2 v^2, the algorithm terminates; m is
+    	the answer
+    C3. [Recycle.] m <- m+1 and go back to C2.
+
+    and if v is a negative integer, |_v 2^(1/2)_| = - (|_-v 2^(1/2)_| + 1)
+
+    Suppose the algorithm terminates for m = 1 and n = 2^(1/2).
+    Thus 0 = c - q d 
+    	   = (a'|m|+b'|n|) - q(a|m|+b|n|)
+	   = (a'-qa) + (b'-qb)2^(1/2)
+    Thus, 2^(1/2) is rationnal wich is absurd. We then conclude that the
+    computation won't terminate for m = 1 and n = 2^(1/2)
+    	       	   
+13. E1. [Initialize] Set a' <- b <- 1, a <- b' <- 0, c <- m , d <- n ,
+    	 T <- T + 1.
+    E2. [Divide.] Set T <- T + 1. Let q, r be the quotient and remainder, 
+    	respectively, of c divided by d. (We have c = qd + r, 0 <= r < d.)
+    E3. [Remainder zero?] Set T <- T + 1. If r = 0, the algorithm terminates;
+    	 we have in this case am + bn = d as desired.
+    E4. [Recycle.] Set T <- T + 1, c <- d, d <- r, t <- a', a' <- a, 
+    	a <- t - qa, t <- b', b' <- b, b <- t - qb, and go back to E2. |
+    
+    A1. m > 0, n > 0, T = 0
+    A2. c = m > 0, d = n > 0, T = 1, a = b' = 0, a' = b = 1.
+    A3. am + bn = d, a'm + b'n = c = qd + r, 0 <= r < d
+    	gcd(m, n) = gcd(c, d)
+	T <= 3(n - r) - 1 
+    A4. am + bn = d = gcd(m, n)
+    	T <= 3(n - r) 
+    A5. am + bn = d, a'm + b'n = c = qd + r, 0 < r < d, gcd(m, n) = gcd(c, d)
+    	T <= 3(n - r)
+    A6. am + bn = d, a'm + b'n = c, d > 0, gcd(c, d) = gcd(m, n) 
+    	T <= 3(n - d) + 1
+
+    A1. We have T = 0
+    A2. We increment T by 1, so T = 1
+    A3. Suppose it's the first time we execute E2.
+    	We have, 0 <= r < d = n,
+	Thus 3(n-r) - 1 >= 3 - 1 = 2 = T
+	Suppose we stepped from E6 to E2, we have have already
+	T - 1 <= 3(n - d) + 1
+	So, T <= 3(n - d) + 2
+	    T <= 3(n - r) + 3(r - d) + 2 <= 3(n - r) - 1, because 0 <= r < d
+
+    A4 and A5 and A6. Straightforward.
+
+    If r = 0, we have T <= 3(n - r) = 3n. Thus the algorithm terminates after
+    at most 3n steps.
+
+15. a) ]| -inf, 0 |] is a nonempty subset of |N wich don't have a minimal 
+    element.
+    b) Note R the relation defined by:
+    if mn < 0, then: n R m if and only if m < 0 < n
+    if mn >= 0, then: n R m if and only if |n| <= |m|
+    Thus we have,
+    0 R -1 R -2 R ... R -100 R .... R 1 R 2 R ....
+    c) No. Because the set ]0, 1] doesn't verify the propriety iii)
+    d) Let x, y, z be in Tn such that x < y and y < z
+       with x = (x1, ..., xn), y = (y1, ..., yn), z = (z1, ..., zn)
+       By definition, theres k and l between 1 and n such that:
+       	  xi = yi for 1 <= i < k and xk < yk and
+	  yi = zi for 1 <= i < l and yl < zl
+
+       Let m be the minimum between k and l. We have:
+       	  xi = yi = zi for 1 <= i < m and xm < ym or ym < zm
+       Thus, xm < zm
+
+       Let x, y be in Tn and x != y
+       Let k be the smallest integer between 1 and n such that xk != yk.
+       Thus, xi = yi for 1 <= i < k and xk < yk or yk < xk
+       Thus, x < y or y < x.
+
+       Let's reason by induction.
+       If n = 1, S is well-ordered by <.
+       Suppose Tn-1 is well-ordered by <.
+       Let A be the subset of S composed by the first member of each element
+       of Tn. Because (S, <) is well-ordered, there exists an element a of A
+       such that a <= b for each b in A.
+       Let B be the subset of A composed of the elements wich first member is
+       a. If x isn't in B, thus b < x for each b in B.
+       B could be identified as a subset of Tn-1, because each element has
+       its first member equal to a. By induciton B is well-ordered by <.
+       Thus (Tn, <) is well-ordered.
+
+    e) T = U{n>=1}Tn
+       (x1, x2, ..., xn) < (y1, y2, ..., ym) if xj = yj for 1 <= j < k and 
+       xk < yk, for some k < m, n; or if xj = yj for 1 <= j <= n and n < m.
+       
+       Let x, y, z be in T such that x < y and y < z
+       with x = (x1, ..., xn), y = (y1, ..., ym), z = (z1, ..., zl)
+       Suppose xj = yj for 1 <= j <= n and n < m.
+       If we have yj = zj for 1 <= j <= m and m < l, we have
+       xj = zj for 1 <= j <= n and n < m < l, thus x < z.
+       If we have yj = zj for 1 <= j < k and yk < zk, for some k < m, l.
+       If k > n, we have:
+       	  xj = yj = zj for 1 <= j <= n and n < l, thus x < z.
+       If k <= n, we have:
+       	  xj = yj = zj for 1 <= j < k and xk = yk < zk, thus x < z.
+       
+       Suppose xj = yj for 1 <= j < k and xk < yk, for some k < m, n;
+       If we have yj = zj for 1 <= j <= m and m < l, thus
+       	  xj = yj = zj for 1 <= j < k and xk < yk = zk, thus x < z.
+       If we have yj = zj for 1 <= j < p and yp < zp, for some p < m, l,
+       if k < p:
+       	  xj = yj = zj for 1 <= j < k and xk < yk = zk, k < n, l, thus x < z
+       if k >= p:
+       	  xj = yj = zj for 1 <= j < p and xp <= yp < zp, for some p < n, l.
+	  thus x < z.
+
+
+       Let x, y be in T and x != y.
+       Note x = (x1, ..., xn) and y = (y1, ..., ym) with n and m integers.
+       If n = m, we have already treated the case. We could suppose n < m.
+       If xj = yj for 1 <= j <= n, we have x < y because n < m.
+       Otherwise, let k be the smallest integer such that xk != yk. We have,
+       xj = yj for 1 <= j < k and xk < yk or yk < xk. Thus x < y or y < x.
+
+       Let A be the subset of T composed of the elements Xj of Tj for j integers
+       defined by: 
+       	       Xj(i) = 0 if i < j and Xj(j) = 1.
+       For j integer, Xj > Xj+1 thus (T, <) is not well-ordered.
+
+    f) Suppose < is a well-ordering of S. i) and ii) are satisfied.
+       And suppose there's an infinite sequence x1, x2, x3, ... with xj+1 < xj
+       for all j >= 1.
+       (S, <) is well-ordered thus, there exists n positive integer such that:
+       xn <= x for all x in the sequence x1, x2, x3, .... This is absurd because
+       xn+1 < xn. Thus such a sequence couldn't exist.
+
+       Suppose (S, <) is not well-ordered.
+       Let x1 be an element of S. By definition there exists an element x2 of S
+       such that x2 < x1. There's an element of S such that x3 < x2. and so on.
+
+    g) Let S be well-ordered by <, and let P(x) be a statement about the element
+       x of S.
+       There is an element a in S with a <= b for all b in S.
+       Thus P(b) is true for all b < a, thus P(a) is true for all a in S.
+       
