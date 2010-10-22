@@ -463,6 +463,89 @@ Otherwise
 \frac{1}{2}(n-m+1) \right\rceil = \frac{n+m-1}{2} + 1 +
 \frac{n-m+1}{2} = n+1.\]
 
+\newpar{34} Let's show that $\lfloor \log_b \lfloor x\rfloor \rfloor =
+\lfloor \log_b x \rfloor$ if and only if $b > 1$.  Let $n$ be an
+integer such that
+
+\[ n \le \log_b \lfloor x\rfloor < n+1\]
+
+Since $b>1$, we have
+
+\[ b^n \le \lfloor x\rfloor < b^{n+1}.\]
+
+Given that the all the numbers in the inequalities are integers, the
+preceding inequalities are equivalent to
+\[ b^n \le \lfloor x\rfloor +1\le b^{n+1}.\]
+
+Thus,
+\[ b^n \le \lfloor x\rfloor \le x < \lfloor x\rfloor + 1 \le b^{n+1}\]
+
+And taking the logarithm
+
+\[ n \le \log_b x < n+1.\]
+
+We then deduce that $n = \lfloor \log_b \lfloor x\rfloor \rfloor =
+\lfloor \log_b x\rfloor$ if and only if $b>1$.
+
+\newpar{35} First let's treat the special case where $m=0$.  We have
+\[ n \left\lfloor \frac{x}{n}\right\rfloor \le x < \lfloor x\rfloor +
+1\]
+
+Since the leftmost and rightmost members in the previous inequalities
+are integers, we then deduce that
+
+\[ n \left\lfloor \frac{x}{n}\right\rfloor \le \lfloor x\rfloor.\]
+Hence \[ \left\lfloor \frac{x}{n}\right\rfloor \le \left\lfloor
+\frac{\lfloor x\rfloor}{n}\right\rfloor\]
+
+Since the reverse of this inequality is always true, we then deduce
+that
+\[ \left\lfloor \frac{x}{n}\right\rfloor = \left\lfloor
+\frac{\lfloor x\rfloor}{n}\right\rfloor\]
+
+Thus we have
+\[ \left\lfloor \frac{x+m}{n}\right\rfloor =
+\left\lfloor \frac{\lfloor x+m\rfloor}{n}\right\rfloor =
+\left\lfloor \frac{\lfloor x\rfloor + m}{n}\right\rfloor\]
+
+\newpar{36} We have
+
+\begin{eqnarray*}
+  \sum_{k=1}^{2n} \lfloor k/2\rfloor &=& \sum_{l=0}^{n-1} (\lfloor (2l)/2
+  \rfloor + \lfloor (2l+1)/2\rfloor) + n \\
+  &=& 2 \sum_{l=0}^{n-1} l + n \\
+  &=& (n-1)n + n \\
+  &=& n^2 \\
+  &=& \lfloor (2n^2)/4\rfloor
+\end{eqnarray*}
+
+And we then deduce
+
+\begin{eqnarray*}
+  \sum_{k=1}^{2n+1}\lfloor k/2\rfloor &=& \sum_{k=1}^{2n}\lfloor
+  k/2\rfloor + \lfloor (2n+1)/2\rfloor \\
+  &=& n^2 + n \\
+  &=& \lfloor n^2 + n + 1/4\rfloor \\
+  &=& \lfloor (n+1/2)^2\rfloor \\
+  &=& \lfloor (2n+1)^2/4\rfloor
+\end{eqnarray*}
+
+Hence,
+\[ \sum_{k=1}^n \lfloor k/2\rfloor = \lfloor n^2/4\rfloor.\]
+
+We have also
+
+\begin{eqnarray*}
+  \sum_{k=1}^n \lceil k/2\rceil &=& \sum_{0\le k\le n/2} \lceil
+  (2k)/2\rceil + \sum_{0\le k\le (n-1)/2} \lceil (2k+1)/2\rceil \\
+  &=& \sum_{0\le k\le n/2}\lfloor (2k)/2\rfloor +
+  \sum_{0\le k\le (n-1)/2}(\lfloor (2k+1)/2\rfloor + 1) \\
+  &=& \sum_{k=1}^n \lfloor k/2\rfloor + \lfloor (n+1)/2\rfloor \\
+  &=& \lfloor n^2/4\rfloor + \lfloor (n+1)/2\rfloor \\
+  &=& \lfloor (n^2 + 2n + 2)/4\rfloor \\
+  &=& \left\lfloor \frac{(n+1)^2+1}{4}\right\rfloor
+\end{eqnarray*}
+
 \newpar{37} We have
 
 \begin{eqnarray*}
@@ -478,18 +561,20 @@ m/d$ and $n' = n/d$.  We have
 \begin{eqnarray*}
   \sum_{0\le k<n}\left\{ \frac{mk+x}{n} \right\} &=& \sum_{0\le k<n}
   \left\{ \frac{m'k}{n'} + \frac{x}{n} \right\} \\
-  &=& \sum_{0\le k<n}\left\{ \frac{k}{n'} + \frac{x}{n} \right\}
+  &=& \sum_{l=0}^{d-1} \sum_{k=ln'}^{(l+1)n'-1}\left\{ \frac{m'k}{n'}
+  + \frac{x}{n} \right\} \\
+  &=& \sum_{l=0}^{d-1} \sum_{k=0}^{n'-1} \left\{ \frac{m'k}{n'} + lm'
+  + \frac{x}{n} \right\} \\
+  &=& \sum_{l=0}^{d-1}\sum_{k=0}^{n'-1} \left\{ \frac{m'k}{n'} +
+  \frac{x}{n} \right\} \\
+  &=& d \sum_{k=0}^{n'-1}\left\{ \frac{m'k}{n'} + \frac{x}{n} \right\}
 \end{eqnarray*}
 
 since $m'\,\bot\,n' = 1$, then $k \mapsto m'k$ is a permutation of
-$Z/n'Z$.  And we have,
+$Z/n'Z$.  Hence,
 
 \begin{eqnarray*}
-  \sum_{0\le k<n}\left\{ \frac{k}{n'} + \frac{x}{n} \right\} &=&
-  \sum_{l=0}^{d-1}\sum_{k=ln'}^{(l+1)n'-1} \left\{ \frac{k}{n'} +
-  \frac{x}{n} \right\} \\ &=&
-  \sum_{l=0}^{d-1}\sum_{k=0}^{n'-1}\left\{ \frac{k}{n'} + l +
-  \frac{x}{n} \right\} \\ &=&
+  \sum_{0\le k<n}\left\{ \frac{mk+x}{n}\right\} &=&
   d \sum_{0\le k <n'}\left\{ \frac{k}{n'} + \frac{x}{n}\right\} \\ &=&
   d \sum_{0\le k<n'} \left\{ \frac{k}{n'} + \frac{x/d}{n'}\right\}
   \\ &=& d \sum_{0\le k<n'}\left\{ \frac{k + \lfloor x/d\rfloor}{n'} +
@@ -502,8 +587,7 @@ since $k \mapsto k + \lfloor x/d\rfloor$ is a permutation of $Z/n'Z$
 and $0 \le k + \{x/d\} < n'$ for $0\le k \le n'-1$.  Thus finally
 
 \begin{eqnarray*}
-  \sum_{0\le k<n}\left\{ \frac{mk+x}{n} \right\} &=& d \sum_{0\le
-    k<n'}\left( \frac{k + \{x/d\}}{n'} \right) \\ &=&
+  \sum_{0\le k<n}\left\{ \frac{mk+x}{n} \right\} &=&
   d \left( \frac{n'-1}{2} + \{x/d\} \right) \\ &=&
   \frac{d(n'-1)}{2} + x - d \lfloor x/d\rfloor
 \end{eqnarray*}
@@ -536,4 +620,142 @@ other hand, we have
   y\rfloor \\ &=&
   \lfloor xy + \lfloor x+1\rfloor(\lceil y\rceil - y)\rfloor
 \end{eqnarray*}
+
+\newpar{39} \subpar{a} We have
+\begin{eqnarray*}
+  \sum_{k=0}^{n-1} \left(x + \frac{k}{n} - \frac{1}{2} \right) &=&
+  \left(x - \frac{1}{2}\right) n + \frac{n-1}{2} \\
+  &=& nx - \frac{1}{2}
+\end{eqnarray*}
+
+\subpar{b} Only one of the numbers $x + \frac{k}{n}$ for $0\le k\le
+n-1$ could take an integer value since they're contained in an
+interval of length less than $1$.  And if one of them is an integer,
+we deduce easily that $nx$ is also an integer.
+
+Suppose that $n x$ is an integer equal to $m$.  Thus
+\[ x = \left\lfloor \frac{m}{n}\right\rfloor + \frac{m \bmod n}{n}\]
+
+If $m \bmod n = 0$ then $x$ is an integer.  Otherwise, $x +
+\frac{k}{n}$ is an integer where $0 < k = n - m \bmod n < n$.
+
+Finally, we then deduce that $nx$ is an integer if and only if exactly
+one of the numbers $x + \frac{k}{n}$ for $0\le k\le n-1$ is an
+integer.  Thus
+
+\[ \sum_{0\le k\le n-1} \left[x+\frac{k}{n}\ \mbox{is an
+    integer}\right] = [ nx\ \mbox{is an integer}]\]
+
+\subpar{c} If $x \le 0$ then $x + \frac{k}{n} < 1$ for $0\le k\le
+n-1$.  Thus, none of the numbers $x + \frac{k}{n}$ is a positive
+integer.  We then deduce that if one of these numbers is a positive
+integer, then $x > 0$.  And thus $nx$ is also a positive integer.
+
+Conversely, if $nx$ is a positive integer, then $x$ is positive
+integer and we conclude that exactly one of the numbers
+$x+\frac{k}{n}$ is a positive integer using the same reasoning as in
+(b).  Thus
+
+\[ \sum_{0\le k\le n-1} \left[x+\frac{k}{n}\ \mbox{is a positive
+    integer}\right] = [ nx\ \mbox{is a positive integer}]\]
+
+\subpar{d} Let $m$ and $m'$ be tow integers, $r$ and $r'$ two
+rationals and $k$ and $k'$ two other integers between $0$ and $n-1$
+such that
+\begin{eqnarray*}
+  x + \frac{k}{n} &=& r\pi + m \\
+  x + \frac{k'}{n} &=& r'\pi + m'
+\end{eqnarray*}
+
+By subtracting  the two equations we obtain
+\[ \frac{k-k'}{n} = (r-r')\pi + m-m'.\]
+
+Since $\pi$ is irrational, we deduce that $r=r'$.  And given that
+$|k-k'| < n$, we then deduce that $|m - m'| < 1$.  Since that last
+expression is an integer, we deduce that $m = m'$ and finally $k=k'$.
+
+We then deduce that only one of the numbers $x + \frac{k}{n}$ for
+$0\le k\le n-1$ could take a value of the form $r \pi + m$ where $r$
+is rational and $m$ is an integer.  And in that case $n x = rn \pi +
+nm-k$ has also the same form.
+
+Conversely, suppose that there's a rational $r$ and an integer $m$
+such that $nx = r\pi + m$.  Then,
+\[ x = \frac{r}{n} \pi + \left\lfloor \frac{m}{n}\right\rfloor +
+\frac{m\bmod n}{n}\]
+
+If $m\bmod n = 0$ then $x$ has the desired form.  Otherwise
+\[ x + \frac{n-m \bmod n}{n} = \frac{r}{n} \pi + \left\lfloor
+\frac{m}{n}\right\rfloor + 1,\ \mbox{where $1\le n - m \bmod n<n$}\]
+
+Finally, we deduce that $nx$ is of the form $r\pi + m$ if and only if
+exactly one of the numbers $x + \frac{k}{n}$ for $0\le k \le n-1$ is
+of the same form.
+
+\subpar{e}  Just note that $rn > 0$ if and only if $r > 0$.  Thus the
+reasoning in (c) holds true if we restrict $r$ to be positive.
+
+If $m>0$, then $nm-k>0$ for $0\le k<n$.  Moreover if $m \bmod n = 0$,
+then $\lfloor m/n\rfloor > 0$.  Thus the reasoning in (c) remains true
+if we restrict $m$ to be positive.
+
+\subpar{f} We have
+\begin{eqnarray*}
+  \sin \pi n x &=& \frac{e^{i\pi nx} - e^{-i\pi nx}}{2} \\
+  &=& e^{-i\pi nx} \frac{e^{i2\pi nx} - 1}{2i} \\
+  &=& \frac{e^{-i\pi nx}}{2i} \prod_{k=0}^{n-1}(e^{i2\pi x} -
+  e^{i2k\pi/n}) \\
+  &=& \frac{e^{-i\pi nx}}{2i}
+  \prod_{k=0}^{n-1}e^{i\pi(x+k/n)}(e^{i2\pi (x-k/n)} -
+  e^{i2k\pi(x-k/n)}) \\
+  &=& \frac{e^{i\pi(n-1)/2}}{2i} \prod_{k=0}^{n-1} 2i \sin\pi\left(x
+  - \frac{k}{n}\right) \\
+  &=& \frac{i^{n-1}}{2i} (2i)^n \prod_{k=0}^{n-1} \sin\pi\left(x
+  - \frac{k}{n}\right) \\
+  \sin \pi n x &=& 2^{n-1} \prod_{k=0}^{n-1} \sin\pi\left(x
+  - \frac{k}{n}\right)
+\end{eqnarray*}
+
+So finally, we have
+
+\begin{eqnarray*}
+  \sum_{k=0}^{n-1} \log\left|2 \sin\pi \left(x +
+  \frac{k}{n}\right)\right| &=& \log \left| 2^n \prod_{k=0}^{n-1}
+  \sin\pi \left(x + \frac{k}{n}\right)\right| \\
+  &=& \log \left| 2^n \prod_{k=0}^{n-1} \sin\pi\left(-x -
+  \frac{k}{n}\right)\right| \\
+  &=& \log| 2 \sin\pi n(-x)| \\
+  &=& \log| 2 \sin\pi n x|
+\end{eqnarray*}
+
+\subpar{g} and \subpar{h} could be proved using the linearity of
+summation.
+
+\subpar{i}  Let $m$ be the integer such that
+\[ \{x\} + \frac{m-1}{n} < 1 \le \{x\} + \frac{m}{n}.\]
+That is, $m = \lceil n(1-\{x\})\rceil$.  We then have
+
+\begin{eqnarray*}
+  \sum_{k=0}^{n-1}g\left(x+\frac{k}{n}\right) &=&
+  \sum_{k=0}^{n-1}f\left(\left\{x+\frac{k}{n}\right\}\right) \\
+  &=&   \sum_{k=0}^{m-1}f\left(\left\{x+\frac{k}{n}\right\}\right) +
+  \sum_{k=m}^{n-1}f\left(\left\{x+\frac{k}{n}\right\}\right) \\
+  &=& \sum_{k=0}^{m-1}f\left(\{x\} + \frac{k}{n}\right) +
+  \sum_{k=m}^{n-1}f\left(\{x\}+\frac{k}{n}-1\right) \\
+  &=& \sum_{k=n-m}^{n-1}f\left(\{x\}+\frac{m-n+k}{n}\right) +\\
+  &&\sum_{k=0}^{n-m-1}f\left(\{x\} + \frac{m-n+k}{n}\right) \\
+  &=& \sum_{k=0}^{n-1}f\left(\{x\}+\frac{m-n}{n} + \frac{k}{n}\right)
+  \\
+  &=& f\left(n\left(\{x\} + \frac{m -
+    n}{n}\right)\right),\ \mbox{since $f$ is replicative} \\
+  &=& f(n\{x\} + \lceil n(1-\{x\})\rceil - n ) \\
+  &=& f(n\{x\} + \lceil - n\{x\}\rceil) \\
+  &=& f(n\{x\} - \lfloor n\{x\}\rfloor) \\
+  &=& f(\{n\{x\}\}) \\
+  &=& f(\{nx - n\lfloor x\rfloor\}) \\
+  &=& f(\{nx\})
+\end{eqnarray*}
+
+We then deduce that $g$ is replicative.
+
 \end{document}
