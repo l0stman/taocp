@@ -463,10 +463,7 @@ Otherwise
 \frac{1}{2}(n-m+1) \right\rceil = \frac{n+m-1}{2} + 1 +
 \frac{n-m+1}{2} = n+1.\]
 
-\newpar{34} Let's show that $\lfloor \log_b \lfloor x\rfloor \rfloor =
-\lfloor \log_b x \rfloor$ if and only if $b > 1$.  Let $n$ be an
-integer such that
-
+\newpar{34} Let $n$ be an integer such that
 \[ n \le \log_b \lfloor x\rfloor < n+1\]
 
 Since $b>1$, we have
@@ -480,12 +477,16 @@ preceding inequalities are equivalent to
 Thus,
 \[ b^n \le \lfloor x\rfloor \le x < \lfloor x\rfloor + 1 \le b^{n+1}\]
 
+$x = b$ implies that $n=1$ and $\lfloor b\rfloor = b$.
+Thus $b$ is in an integer greater than $1$.
+
 And taking the logarithm
 
 \[ n \le \log_b x < n+1.\]
 
 We then deduce that $n = \lfloor \log_b \lfloor x\rfloor \rfloor =
-\lfloor \log_b x\rfloor$ if and only if $b>1$.
+\lfloor \log_b x\rfloor$ if and only if $b$ is an integer greater than
+$1$.
 
 \newpar{35} First let's treat the special case where $m=0$.  We have
 \[ n \left\lfloor \frac{x}{n}\right\rfloor \le x < \lfloor x\rfloor +
@@ -701,7 +702,7 @@ if we restrict $m$ to be positive.
 
 \subpar{f} We have
 \begin{eqnarray*}
-  \sin \pi n x &=& \frac{e^{i\pi nx} - e^{-i\pi nx}}{2} \\
+  \sin \pi n x &=& \frac{e^{i\pi nx} - e^{-i\pi nx}}{2i} \\
   &=& e^{-i\pi nx} \frac{e^{i2\pi nx} - 1}{2i} \\
   &=& \frac{e^{-i\pi nx}}{2i} \prod_{k=0}^{n-1}(e^{i2\pi x} -
   e^{i2k\pi/n}) \\
@@ -757,5 +758,7 @@ That is, $m = \lceil n(1-\{x\})\rceil$.  We then have
 \end{eqnarray*}
 
 We then deduce that $g$ is replicative.
+
+\newpar{41} 
 
 \end{document}
