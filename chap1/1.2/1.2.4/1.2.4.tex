@@ -759,6 +759,278 @@ That is, $m = \lceil n(1-\{x\})\rceil$.  We then have
 
 We then deduce that $g$ is replicative.
 
-\newpar{41} 
+\newpar{41} Let $n$ be a positive integer and $k$ the integer
+verifying
+\[ \sum_{i=1}^k i \le n < \sum_{i=1}^{k+1}i.\]
+We then have $a_n = k$.  Rewriting the preceding inequalities, we have
+\[ \frac{k(k+1)}{2} \le n < \frac{(k+1)(k+2)}{2}.\]
 
+Resolving the equation $ \frac{x(x+1)}{2} = n $, we find a positive
+solution for \[x = \frac{\sqrt{1+8n}-1}{2}\].
+
+Given that $x \mapsto \frac{x(x+1)}{2}$ is an increasing function for
+$x\ge 0$, we then deduce that
+\[ a_n = k = \left\lfloor \frac{\sqrt{1+8n}-1}{2}\right\rfloor.\]
+
+\newpar{42} \subpar{a} We have
+\begin{eqnarray*}
+  \sum_{k=1}^n a_k &=& \sum_{k=1}^n (ka_k - (k-1)a_k) \\
+  &=& \sum_{k=1}^n ka_k - \sum_{k=0}^{n-1}ka_{k+1} \\
+  &=& na_n - \sum_{k=1}^{n-1} k(a_{k+1} - a_k)
+\end{eqnarray*}
+
+\subpar{b}  We have
+\begin{eqnarray*}
+  \sum_{k=1}^n\lfloor \log_b k\rfloor &=& \sum_{l=0}^{\lfloor \log_b
+    n\rfloor -1} \sum_{b^l \le k < b^{l+1}} \lfloor \log_b k\rfloor +
+  \sum_{k = b^{\lfloor \log_b n\rfloor}}^n \lfloor \log_b k\rfloor \\
+  &=& \sum_{l=0}^{\lfloor \log_b n\rfloor -1} l(b^{l+1}-b^l) +
+  \lfloor \log_b n\rfloor (n - b^{\lfloor \log_b n\rfloor}+1) \\
+  &=& - \sum_{l=1}^{\lfloor \log_b n\rfloor} b^l + (n+1) \lfloor
+  \log_b n\rfloor,\ \mbox{from (a)}\\
+  &=& (n+1)\lfloor \log_b n\rfloor - (b^{\lfloor \log_b n\rfloor +1}-b)(b-1)
+\end{eqnarray*}
+
+\newpar{43} We have
+\begin{eqnarray*}
+  \sum_{k=1}^n \lfloor \sqrt{k}\rfloor &=&
+  \sum_{l=0}^{\lfloor \sqrt{n}\rfloor -1} \sum_{l^2 \le k < (l+1)^2}
+  \lfloor \sqrt{k}\rfloor + \sum_{k=\lfloor \sqrt{n}\rfloor^2}^n
+  \lfloor \sqrt{k}\rfloor \\
+  &=& \sum_{l=0}^{\lfloor \sqrt{n}\rfloor -1} l((l+1)^2 - l^2) +
+  \lfloor \sqrt{n}\rfloor(n - \lfloor \sqrt{n}\rfloor^2+1) \\
+  &=& - \sum_{l=1}^{\lfloor\sqrt{n}\rfloor} l^2 + (n+1)\lfloor
+  \sqrt{n}\rfloor \\
+  &=& - \frac{\lfloor \sqrt{n}\rfloor (\lfloor \sqrt{n}\rfloor + 1)
+    (2\lfloor\sqrt{n}\rfloor+1)}{6} + (n+1)\lfloor \sqrt{n}\rfloor \\
+  &=& \lfloor\sqrt{n}\rfloor \left(n+1 - \frac{(\lfloor\sqrt{n}\rfloor
+    + 1)(2\lfloor\sqrt{n}\rfloor+1)}{6}\right)
+\end{eqnarray*}
+
+
+\newpar{44}  Using \textbf{38} with $x = n/b^{k+1}$ and $y = b$, we have
+\[ \sum_{1\le j<b} \left\lfloor \frac{n}{b^{k+1}} +
+\frac{j}{b}\right\rfloor = \left\lfloor\frac{n}{b^k}\right\rfloor -
+\left\lfloor\frac{n}{b^{k+1}}\right\rfloor.\]
+
+Hence
+\[ \sum_{k\ge 0} \sum_{1\le j<b} \left\lfloor \frac{n}{b^{k+1}} +
+\frac{j}{b}\right\rfloor = n.\]
+
+\newpar{45} We have
+\begin{eqnarray*}
+  \sum_{0\le j<n}f\left( \left\lfloor \frac{mj}{n} \right\rfloor
+  \right) &=& \sum_{r=0}^{m-1} \sum_{\frac{nr}{m} \le j <
+    \frac{n(r+1)}{m}} f\left( \left\lfloor \frac{mj}{n} \right\rfloor
+  \right) \\
+  &=& \sum_{r=0}^{m-1} \sum_{\left\lceil \frac{nr}{m}\right\rceil \le
+    j < \left\lceil \frac{n(r+1)}{m}\right\rceil} f(r) \\
+  &=& \sum_{r=0}^{m-1} f(r) \left( \left\lfloor \frac{n(r+1)}{m}
+  \right\rfloor - \left\lfloor \frac{nr}{m} \right\rfloor \right) \\
+  &=& \sum_{1\le r <m+1} f(r-1) \left\lfloor \frac{nr}{m}
+  \right\rfloor - \sum_{0\le r < m} f(r)\left\lfloor \frac{nr}{m}
+  \right\rfloor \\
+  &=& \sum_{0\le r < m} (f(r-1) - f(r)) \left\lceil \frac{rn}{m}
+  \right\rceil + n f(m-1)
+\end{eqnarray*}
+
+Thus taking $f(x) = C^k_{x+1}$, we have
+\[  \sum_{0\le j<n} C^k_{\lfloor mj/n\rfloor + 1} =
+  \sum_{0\le r<m} \left\lceil \frac{rn}{m} \right\rceil
+  \left( C^k_r - C^k_{r+1}\right) + n C^k_m \]
+
+But on the other hand
+\begin{eqnarray*}
+  C^k_r - C^k_{r+1} &=& \frac{r!}{k!(r-k)!} -
+  \frac{(r+1)!}{k!(r+1-k)!} \\
+  &=& \frac{r!}{k!(r-k)!} \left(1 - \frac{r+1}{r+1-k}\right) \\
+  &=& - C^{k-1}_r
+\end{eqnarray*}
+
+Hence
+\[\sum_{0\le j<n}C^k_{\lceil mj/n\rceil + 1} + \sum_{0\le j <m}
+C^{k-1}_j = n C^k_m\]
+
+\newpar{46} We have
+\begin{eqnarray*}
+  \sum_{0\le j< \alpha n} f\left( \left\lfloor \frac{mj}{n}
+  \right\rfloor \right) &=&
+  \sum_{0\le r < \lceil \alpha m\rceil-1}\ \sum_{ nr/m\le j < n(r+1)/m} f(\lfloor
+  mj/n\rfloor) + \\
+  && \sum_{n(\lceil \alpha m\rceil - 1)/m \le j < \alpha n} f(\lfloor mj/n\rfloor) \\
+  &=& \sum_{r=0}^{\lceil \alpha m\rceil - 2}
+  \sum_{\lceil nr/m \rceil \le j < \lceil n(r+1)/m\rceil} f(r) + \\
+  && \sum_{\lceil n(\lceil \alpha\rceil - 1)/m \rceil \le j < \lceil \alpha n\rceil}
+  f(\lceil \alpha m \rceil - 1)\\
+  &=& \sum_{r=0}^{\lceil \alpha m\rceil -2}
+  f(r)(\lceil n(r+1)/m\rceil - \lceil nr/m\rceil) + \\
+  && f(\lceil \alpha m\rceil - 1)(\lceil \alpha n\rceil -
+  \lceil n(\lceil\alpha\rceil - 1)/m\rceil) \\
+  &=& \sum_{r=1}^{\lceil \alpha m\rceil - 1} \lceil nr/m\rceil (f(r-1)
+  - f(r)) + f(\lceil \alpha m\rceil - 1) \lceil \alpha n\rceil
+\end{eqnarray*}
+
+Thus finally
+\[ \sum_{0\le j<\alpha n}f\left( \left\lfloor \frac{mj}{n}
+\right\rfloor \right) = \sum_{0\le r < \alpha m}\left\lceil
+\frac{nr}{m} \right\rceil(f(r-1)-f(r)) + f(\lceil \alpha m\rceil -
+1)\lceil \alpha n\rceil\]
+
+\newpar{47} \subpar{a} Let $k$ and $k'$ be two integers such that
+$0<k,k'< p/2$ and
+\[ (-1)^{\lfloor 2kq/p\rfloor}(2kq \bmod p) = (-1)^{\lfloor
+  2k'q/p\rfloor}(2k'q \bmod p).\]
+
+Given that $q \bot p$, we then deduce that $k' \equiv \pm k \bmod p$,
+which is equivalent to $k' = k'\bmod p = \pm k \bmod p$ since
+$0<k'<p/2$.  But we have
+\begin{eqnarray*}
+  -k \bmod p &=& -k - p \left\lfloor \frac{-k}{p}\right\rfloor \\
+  &=& (p - k) - p \left\lfloor \frac{p-k}{p}\right\rfloor \\
+  &=& p-k,\ \mbox{since $p/2 < p-k < p$} \\
+  &>& \frac{p}{2} \\
+  &>& k'
+\end{eqnarray*}
+
+We then deduce that $k' = k\bmod p = k$.  Thus if we note
+\[ f(k) = (-1)^{\lfloor 2kq/p\rfloor}(2kq\bmod p)\]
+then $f$ is injective for $0 < k < p/2$.  Moreover, given that
+\[ 2kq = p\lfloor 2kq/p\rfloor + 2kq \bmod p.\]
+
+and $p$ is an odd prime number, we deduce that $\lfloor 2kq/p\rfloor$
+and $2kq \bmod p$ have the same parity.  If they're both even then
+$f(k) \equiv (2kq \bmod p) \bmod p$.  Otherwise, $f(k) \equiv (p - 2kq
+\bmod p) \bmod p$.
+
+Since $f$ is injective, we then deduce that its image is a permutation
+of $2, 4, \ldots, p-1 \pmod p$.  Hence
+\begin{eqnarray*}
+  \prod_{0 < k < p/2} (-1)^{\lfloor 2kq/p\rfloor} 2kq
+  &\equiv& \left(\prod_{0 < k <p/2} 2k \right) \bmod p \\
+  q^{\frac{p-1}{2}} &\equiv& (-1)^{\sum_{0<k<p/2} \lfloor
+    2kq/p\rfloor} \bmod p
+\end{eqnarray*}
+
+\subpar{b} We have
+\begin{eqnarray*}
+  \sigma &=& \sum_{0 \le k<p/2}\lfloor 4k/p\rfloor \\
+  &=& \sum_{p/4 \le k < p/2} \lfloor 4k/p\rfloor \\
+  &=& \sum_{\lceil p/4\rceil \le k < \lceil p/2\rceil} 1 \\
+  &=& \lceil p/2\rceil - \lceil p/4\rceil \\
+  &=& \frac{p+1}{2} + \left\lfloor \frac{-p}{4}\right\rfloor \\
+  &=& \left\lfloor \frac{p+1}{2} - \frac{p}{4}\right\rfloor \\
+  &=& \left\lfloor \frac{p+2}{4}\right\rfloor
+\end{eqnarray*}
+
+Hence \[ \left(\frac{2}{q}\right) = (-1)^{\lfloor (p+2)/4\rfloor}.\]
+
+\subpar{c} We have
+\begin{eqnarray*}
+  \sum_{0\le k<p/2} \lfloor 2kq/p\rfloor &=&
+  \sum_{0\le k<p/4} \lfloor 2kq/p\rfloor + \sum_{p/4\le k<p/2} \lfloor
+  2kq/p\rfloor \\
+  &=& \sum_{0\le k<p/4} \lfloor 2kq/p\rfloor +
+  \sum_{-1/2 \le k \le (p-2)/4} \left\lfloor \frac{2\left(\frac{p-1}{2} -
+    k\right)q}{p}\right\rfloor \\
+  &=& \sum_{0\le k<p/4} \lfloor 2kq/p\rfloor +
+  \sum_{0\le k\le (p-2)/4} \left( q + \left\lfloor
+  -\frac{(2k+1)q}{p}\right\rfloor\right)
+\end{eqnarray*}
+
+$(2k+1)q/p$ is not an integer since $p$ is prime, $0 < 2k+1 < p$ and
+$q\,\bot\,p$, thus
+\begin{eqnarray*}
+  \left\lfloor -\frac{(2k+1)q}{p}\right\rfloor &=&
+  - \left\lceil \frac{(2k+1)q}{p}\right\rceil =
+  - \left( \left\lfloor \frac{(2k+1)q}{p}\right\rfloor + 1\right)
+\end{eqnarray*}
+
+Given that $q$ is odd, we have finally
+\begin{eqnarray*}
+  \sum_{0\le k<p/2}\lfloor 2kq/p\rfloor &\equiv& \left(
+  \sum_{0\le k<p/4} \lfloor 2kq/p\rfloor +
+  \sum_{0\le k\le (p-2)/4} \lfloor (2k+1)q/p\rfloor \right) \bmod 2 \\
+  &\equiv& \sum_{0\le k <p/2} \lfloor kq/p\rfloor \pmod 2
+\end{eqnarray*}
+
+\subpar{d} From exercise \textbf{46}, we deduce
+\begin{eqnarray*}
+  \sum_{0\le j<p/2} \lfloor kq/p\rfloor &=&
+  \sum_{0\le r<q/2} \lfloor pr/q \rfloor ((r-1) - r) +
+  (\lceil q/2\rceil - 1) \lceil p/2\rceil \\
+  &=& - \sum_{0\le r<q/2} \lfloor pr/q\rfloor + \frac{(q-1)(p+1)}{4}
+\end{eqnarray*}
+
+And finally
+\[ \sum_{0\le j<p/2} \lfloor kq/p\rfloor + \sum_{0\le j<q/2} \lfloor
+pj/q\rfloor \equiv \frac{(q-1)(p-1)}{4} \pmod 2.\]
+Hence if $p$ and $q$ are distinct odd prime numbers, we have
+\[ \left(\frac{p}{q}\right) \left(\frac{q}{p}\right) =
+(-1)^{(p-1)(q-1)/4}.\]
+
+\newpar{48} \subpar{a} If $n>0$, then we have
+\begin{eqnarray*}
+  \left\lfloor \frac{m+n-1}{n} \right\rfloor - \left\lceil
+  \frac{m}{n}\right\rceil &=& \left\lfloor
+  \frac{m+n-1}{n} + \left\lfloor -\frac{m}{n}\right\rfloor
+  \right\rfloor \\
+  &=& \left\lfloor \frac{n-1 - (-m) \bmod n}{n} \right\rfloor \\
+  &=& 0
+\end{eqnarray*}
+
+But the equality doesn't generally holds when $n<0$.
+
+\subpar{b} Using (a), we have
+\begin{eqnarray*}
+  \left\lfloor \frac{n+2-\lfloor n/25\rfloor}{3}\right\rfloor &=&
+  \left\lceil \frac{n - \lfloor n/25\rfloor}{3}\right\rceil \\
+  &=& \left\lceil \frac{n + \lceil -n/25\rceil}{3}\right\rceil \\
+  &=& \left\lceil \frac{\lceil 24n/25\rceil}{3}\right\rceil \\
+  &=& \lceil 8n/25\rceil \\
+  &=& \left\lfloor \frac{8n+24}{25}\right\rfloor
+\end{eqnarray*}
+
+\newpar{49} If $n$ is an integer we have $f(x+n) = f(x) + n$.  Since
+$f$ is integer-valued, we have
+\[ f(0) = f(f(0)) = f(0 + f(0)) = f(0) + f(0)\]
+Hence
+\[ f(0) = 0\ \mbox{and}\ f(n) = n\ \mbox{if $n$ is an integer}.\]
+
+If $f(1/2) \le 0$, then
+\begin{eqnarray*}
+  f(1/2) &=& f\left( \frac{f((1-2f(1/2))1/2)}{1-2f(1/2)} \right) \\
+  &=& f\left( \frac{f(1/2) - f(1/2)}{1 - 2f(1/2)} \right) \\
+  &=& 0
+\end{eqnarray*}
+
+If $n > 1$, then
+\[ f\left(\frac{1}{n-1}\right) = f\left(
+\frac{f(1+1/(n-1))}{n}\right) =
+f\left( \frac{f(1/(n-1)) + 1}{n} \right)\]
+
+Hence, by a simple induction $f(1/n) = 0$ if $n > 1$.  On the other
+hand, we have
+\begin{eqnarray*}
+  f(m/n) &=& f\left( \frac{f(\lceil n/m\rceil m/n)}{\lceil n/m\rceil}
+  \right) \\
+  &=& f\left( \frac{ f\left( 1 + \left(\lceil \frac{n}{m} \rceil -
+    \frac{n}{m} \right) \frac{m}{n} \right) }{\lceil n/m\rceil}
+  \right) \\
+  &=& f\left( \frac{1 + f\left( \frac{m\lceil n/m\rceil - n}{n}
+    \right) }{\lceil n/m\rceil}\right)
+\end{eqnarray*}
+
+Thus using a strong induction on $m > 0$ we deduce that $f(m/n) = 0$
+if $m < n$.  Since
+\[ f(x) = f(\{x\}) + \lfloor x\rfloor,\]
+we then deduce that $f(x) = \lfloor x\rfloor$ if $x$ is a rational.
+
+On the other hand, if $f(1/2) > 0$.  If we note $g(x) = -f(-x)$, then
+\begin{eqnarray*}
+  g(x+1) &=& g(x)+1 \\
+  g(x) &=& g(g(nx)/n) \\
+  g(1/2) &=& 1 + g(1/2 - 1) = 1 - f(1/2) \le 0
+\end{eqnarray*}
+
+Hence $g(x) = \lfloor x\rfloor$, thus $f(x) = \lceil x\rceil$.
 \end{document}
