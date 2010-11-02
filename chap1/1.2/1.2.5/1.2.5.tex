@@ -1,0 +1,194 @@
+\documentclass[a4paper,12pt]{article}
+\newcommand{\newpar}[1]{\bigskip \noindent \textbf{#1.}}
+\newcommand{\subpar}[1]{\medskip \noindent (#1)}
+\newcommand{\la}{\leftarrow}
+\newcommand{\ra}{\rightarrow}
+\begin{document}
+
+\newpar{1} $52!$.
+
+\newpar{2} $p_{n(n-1)} = n(n-1) \ldots 2 = p_{nn}$.  We have the
+equality since if we've already choose $n-1$ objects, the $n^{th}$
+object always come last.
+
+\newpar{3} Using the first method we obtain 5 3 1 2 4, 3 5 1 2 4, 3 1
+5 2 4, 3 1 2 5 4, 3 1 2 4 5.
+
+Using the second one we have: 4 2 3 5 1, 4 1 3 5 2, 4 1 2 5 3, 3 1 2 5
+4, 3 1 2 4 5.
+
+\newpar{4} The number of decimal digits of a positive integer $n$ is
+$\lfloor \log_{10} n\rfloor + 1$.  Thus, $1000!$ has $2568$ decimal
+digits.
+We have
+\[ 0.604 < \log_{10} \left(\frac{1000!}{10^{2567}}\right) < 0.605.\]
+Hence
+\[ 4.01 < \frac{1000!}{10^{2567}} < 4.03.\]
+
+And finally $\lfloor \frac{1000!}{10^{2567}} \rfloor = 4$  which is
+the most significant digit of $1000!$.  And the least significant
+digit is of course $0$.
+
+\newpar{5} We obtain $8! \simeq 40318.045$.
+
+\newpar{6} Note $\mu(p)$ the multiplicity of the prime $p$.  We have
+using (8)
+\begin{eqnarray*}
+  \mu(2) &=& 10 + 5 + 2 + 1 = 18 \\
+  \mu(3) &=& 6 + 2 = 8 \\
+  \mu(5) &=& 4 \\
+  \mu(7) &=& 2 \\
+  \mu(11) &=& 1 \\
+  \mu(13) &=& 1 \\
+  \mu(17) &=& 1 \\
+  \mu(19) &=& 1
+\end{eqnarray*}
+
+Hence
+\[ 20! = 2^{18} 3^8 5 ^4 7^2\,11\,13\,17\,19.\]
+
+\newpar{7} If $x$ is real, we have
+\begin{eqnarray*}
+  x? &=& \frac{1}{2} x (x+1) \\
+  &=& \frac{1}{2}x(x-1) + x \\
+  &=& x + (x-1)?
+\end{eqnarray*}
+
+\newpar{8} For $n\ge 0$, we have
+
+\begin{eqnarray*}
+  \frac{m^n m!}{(n+1)(n+2) \ldots(n+m)}
+  &=& n!\frac{m^n m!}{(m+n)!} \\
+  &=& n! \frac{1}{\prod_{k=1}^n (1+k/m)} \\
+  &{\longrightarrow \atop {m \to +\infty}}& n!
+\end{eqnarray*}
+
+\newpar{9}  We have $\Gamma(x) = x!/x$, thus $\Gamma(1/2) =
+\sqrt{\pi}$.  From (15), we have
+
+\begin{eqnarray*}
+  \Gamma(-1/2) &=& \lim_{m\to +\infty} \frac{m^{-1/2}
+    m!}{\prod_{k=0}^m (k-1/2)} \\
+  &=& -2\lim_{m\to +\infty} \frac{m^{-1/2}m!}{\prod_{k=0}^{m-1}(k +
+    1/2)} \\
+  &=& -2 \Gamma(1/2) \\
+  &=& -2 \sqrt{\pi}
+\end{eqnarray*}
+
+\newpar{10} We have using (15)
+\begin{eqnarray*}
+  \Gamma(x) &=& \lim_{m\to +\infty} \frac{m^x m!}{x(x+1)(x+2)\ldots
+    (x+m)} \\
+  &=& (x-1) \lim_{m \to +\infty} \frac{m^{x-1} m!}{(x-1)x \ldots
+    (x-1+m)} \times \frac{m}{m+x} \\
+  &=& (x-1) \Gamma(x-1)
+\end{eqnarray*}
+
+\newpar{11} We have using (8) and if we note $e_{r+1} = 0$
+\begin{eqnarray*}
+  \mu &=& \sum_{k>0} \left\lfloor \frac{n}{2^k} \right\rfloor \\
+  &=& \sum_{k=1}^{e_r} \left\lfloor \frac{n}{2^k} \right\rfloor \\
+  &=& \sum_{i=1}^r \sum_{e_{i+1} < k \le e_i} \left\lfloor
+  \frac{n}{2^k} \right\rfloor \\
+  &=& \sum_{i=1}^r \sum_{e_{i+1} < k\le e_i} \frac{\sum_{j=1}^i
+    2^{e_j}}{2^k} \\
+  &=& \sum_{i=1}^r \left(\sum_{j=1}^i 2^{e_j}\right)
+  \frac{1}{2^{e_{i+1}+1}} \times \frac{1 - \frac{1}{2^{e_i -
+        e_{i+1}}}}{\frac{1}{2}} \\
+  &=& \sum_{i=1}^r \left(\sum_{j=1}^i 2^{e_j}\right) \left(
+  \frac{1}{2^{e_{i+1}}} - \frac{1}{2^{e_i}} \right) \\
+  &=& \sum_{i=2}^{r+1} \frac{1}{2^{e_i}} \sum_{j=1}^{i-1} 2^{e_j} -
+  \sum_{i=1}^r \frac{1}{2^{e_i}} \sum_{j=1}^i 2^{e_j} \\
+  &=& \sum_{j=1}^r 2^{e_j} - 1 + \sum_{i=2}^r \frac{-
+    2^{e_i}}{2^{e_i}} \\
+  &=& n - r
+\end{eqnarray*}
+
+Thus the multiplicity of $2$ in $n!$ is $n-r$.
+
+\newpar{12} We have
+\begin{eqnarray*}
+  \mu &=& \sum_{i=1}^k \left\lfloor \frac{n}{p^i} \right\rfloor \\
+  &=& \sum_{i=1}^k \frac{1}{p^i} \sum_{j=i}^k a_j p^j \\
+  &=& \sum_{j=1}^k \sum_{i=1}^j \frac{a_j p^j}{p_i} \\
+  &=& \sum_{j=1}^k a_j p^j \frac{1}{p}\ \frac{1 - p^{-j}}{1 -
+    p^{-1}}\\
+  &=& \sum_{j=1}^k a_j \frac{p^j - 1}{p-1} \\
+  &=& \frac{n - \sum_{j=0}^k a_j}{p-1}
+\end{eqnarray*}
+
+\newpar{13} Since $p$ is prime, then all the integers $1, 2, \ldots,
+p-1$ are invertible.  Moreover $x^2 \equiv 1 \bmod p$ if and only if
+$x\equiv 1 \bmod p$ or $x \equiv -1 \bmod p$.  Thus by pairing each
+integer between $2, 3, \ldots, p-2$ with their respective inverse, we
+obtain
+\[ (p-1)! \equiv p-1 \bmod p.\]
+Hence $(p-1)! \bmod p = p-1$.
+
+\newpar{14} Note $\mu(n)$ the multiplicity of $p$ in $n$.  Let's show
+that for non-negative integer $l$, we have
+\[ (p^l)!/(-p)^{\mu((p^l)!)} \equiv 1 \pmod p.\ \mbox{(*)}\]
+
+Using (8) we have $\mu((p^l)!) = \frac{p^l-1}{p-1}$.  We then have
+\[ \mu((p^l)!) - p^{l-1} = \mu((p^{l-1})!).\ \mbox{(**)}\]
+Hence
+\begin{eqnarray*}
+  \frac{(p^l)!}{(-p)^{\mu((p^l)!)}} &=&
+  \frac{\prod_{r=1}^{p^{l-1}} \prod_{(r-1)p < i\le rp}
+    i}{(-p)^{\mu((p^l)!)}} \\
+  &=& \frac{\prod_{r=1}^{p^{l-1}} \prod_{0<i\le p}(i+(r-1)p)}
+       {(-p)^{\mu((p^l)!)}} \\
+  &=& \frac{p^{p^{l-1}}\prod_{r=1}^{p^{l-1}}r
+         \prod_{0<i<p}(i+(r-1)p)}{(-p)^{\mu((p^l)!)}} \\
+  &=& \frac{\prod_{r=1}^{p^{l-1}}r
+         \prod_{0<i<p}(i+(r-1)p)}{(-1)^{\mu((p^l)!)}
+         p^{\mu((p^{l-1})!)}}, \mbox{using (**)} \\
+  &=& \frac{\prod_{r=1}^{p^{l-1}} r
+         \prod_{0<i<p}(i+(r-1)p)}{(-1)^{\mu((p^l)!)}
+         \prod_{r=1}^{p^{l-1}} p^{\mu(r)}} \\
+  &=& (-1)^{\mu((p^l)!)}\prod_{r=1}^{p^{l-1}} \frac{r}{p^{\mu(r)}}
+       \prod_{i=1}^{p-1}(i+(r-1)p) \\
+  &\equiv& (-1)^{\mu((p^l)!)} \prod_{r=1}^{p^{l-1}} -
+       \frac{r}{p^{\mu(r)}}\pmod p,\ \mbox{using Wilson's theorem} \\
+  &\equiv& (-1)^{\mu((p^{l-1})!)} \prod_{r=1}^{p^{l-1}}
+       \frac{r}{p^{\mu(r)}} \pmod p,\ \mbox{using (**)} \\
+  &\equiv& \frac{(p^{l-1})!}{(-p)^{\mu((p^{l-1})!)}} \pmod p
+\end{eqnarray*}
+
+We then deduce (*) by a simple induction.  For the general case, if we
+note $\mu(n!) = \mu$, then we have
+\begin{eqnarray*}
+  \frac{n!}{(-p)^{\mu}} &=& \frac{\prod_{l=0}^k \prod_{a_k
+      p^k+\cdots+a_{l+1}p^{l+1} < i \le a_k p^k + \cdots + a_l p^l}
+    i}{(-p)^{\sum_{l=0}^k a_l \frac{p^l-1}{p-1}}} \\
+  &=& \prod_{l=0}^k (-p)^{-a_l\frac{p^l-1}{p-1}} \prod_{j=0}^{a_l - 1}
+  \prod_{a_kp^k+\cdots+a_{l+1}p^{l+1} + jp^l < i \le a_k p^k + \ldots
+    + a_{l+1}p^{l+1} + (j+1)p^l} i \\
+  &=& \prod_{l=0}^k \prod_{j=0}^{a_l-1} (-p)^{-\frac{p^l-1}{p-1}}
+  \prod_{0 < i \le p^l} (i + j p^l + a_k p^k + \cdots + a_{l+1}
+  p^{l+1}) \\
+  &=& \prod_{l=0}^k \prod_{j=0}^{a_l-1} (-p)^{-\mu((p^l)!)}
+  \prod_{0 < i \le p^l} (i + j p^l + a_k p^k + \cdots + a_{l+1} p^{l+1}) \\
+  &=& \prod_{l=0}^k \prod_{j=0}^{a_l-1} \prod_{0 < i \le p^l} \frac{i + j
+    p^l + a_k p^k + \cdots + a_{l+1}p^{l+1}}{(-p)^{\mu(i)}} \\
+  &=& \prod_{l=0}^k \prod_{j=0}^{a_l-1} (-1)^l (1+j + a_k p^{k-l} +
+  \cdots + a_{l+1}p) \\
+  &&\prod_{0 < i < p^l} \frac{i + j p^l + a_k p^k + \cdots +
+    a_{l+1}p^{l+1}}{(-p)^{\mu(i)}} \\
+  &=& \prod_{l=0}^k \prod_{j=0}^{a_l-1} (-1)^l (1+j + a_k p^{k-l} +
+  \cdots + a_{l+1}p) \\
+  &&\prod_{0 < i < p^l} (-1)^{\mu(i)} \left(\frac{i}{p^{\mu(i)}} +
+  p^{l-\mu(i)} (j + a_k p^{k-l} + \cdots + a_{l+1}p\right) \\
+\end{eqnarray*}
+
+If $0 < i < p^l$ then $\mu(i) < l$, we then deduce that
+
+\begin{eqnarray*}
+  \frac{n!}{(-p)^\mu} &\equiv& \prod_{l=0}^k \prod_{j=0}^{a_l - 1}
+  (-1)^l (1+j) \prod_{0<i<p^l} \frac{i}{(-p)^{\mu(i)}} \pmod p \\
+  &\equiv& \prod_{l=0}^k a_l! \prod_{0<i\le p^l}
+  \frac{i}{(-p)^{\mu(i)}} \pmod p \\
+  &\equiv& \prod_{l=0}^k a_l! \pmod p,\ \mbox{using (*)}
+\end{eqnarray*}
+
+\end{document}
