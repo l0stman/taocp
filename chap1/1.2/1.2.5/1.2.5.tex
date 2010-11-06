@@ -191,4 +191,286 @@ If $0 < i < p^l$ then $\mu(i) < l$, we then deduce that
   &\equiv& \prod_{l=0}^k a_l! \pmod p,\ \mbox{using (*)}
 \end{eqnarray*}
 
+\newpar{15} It's easy to see that the permanent of matrix where we
+multiply a column by a constant is equal to that same constant
+multiplying the permanent of the initial matrix --- just by developing
+the permanent according to that column.
+
+We then deduce that the permanent of the square matrix is equal to
+$n!$ multiplied by the permanent of the matrix where each column is
+equal to the vector
+\[ \left(
+\begin{array}{c}
+  1 \\
+  2 \\
+  \vdots \\
+  n
+\end{array}
+\right)
+\]
+
+Let's show by induction on the size of the matrix that the permanent
+of that matrix is equal to $n!^2$.  If $n=1$, it's obvious.  Suppose
+that we have the property for $n-1$.  Thus by developing the permanent
+according to the last row and by induction, it's equal to:
+\[ n(n-1)!^2 \times n = n!^2.\]
+
+Hence the permanent of the initial square matrix is $n!^3$.
+
+\newpar{16} We have
+\[ \lim_{n \to +\infty} \left(1 -\frac{1}{1!} + \frac{1}{2!} - \cdots
++ \frac{(-1)^n}{n!} \right) = \frac{1}{e} .\]
+
+Hence if $n$ is negative, the general term of the series tends to
+$-\infty$ when $n$ tends to $+\infty$.  Thus the series diverges.
+
+\newpar{17} We have
+\begin{eqnarray*}
+  \prod_{i=1}^k
+  \frac{\Gamma(1+\beta_i)}{\Gamma(1+\alpha_i)} &=&
+  \prod_{i=1}^k \lim_{m\to +\infty} \frac{m^{1+\beta_i}
+    m!(1+\alpha_i) \ldots (1+\alpha_i+m)}
+       {m^{1+\alpha_i}m!(1+\beta_i)\ldots (1+\beta_i+m)} \\
+  &=& \lim_{m\to +\infty}
+  \frac{m^{\sum_{i=1}^k\beta_i}}{m^{\sum_{i=1}^k\alpha_i}}
+  \prod_{i=1}^k \frac{(1+\alpha_i) \ldots (1+\alpha_i +
+    m)}{(1+\beta_i) \ldots (1+\beta_i+m)} \\
+  &=& \lim_{m\to+\infty} \prod_{i=1}^k \prod_{j=0}^m \frac{1+\alpha_i
+    + j}{1+\beta_i+j} \\
+  &=& \lim_{m\to+\infty} \prod_{j=0}^m \prod_{i=1}^k \frac{1+\alpha_i
+    + j}{1+\beta_i+j} \\
+  &=& \prod_{n\ge 0} \prod_{i=1}^k \frac{n+\alpha_i}{n+\beta_i}
+\end{eqnarray*}
+
+\newpar{18} We have
+
+\begin{eqnarray*}
+  \frac{\pi}{2} &=& \prod_{k\ge 1}\frac{(2k)^2}{(2k-1)(2k+1)} \\
+  &=& \lim_{m\to \infty}\prod_{k=1}^m \frac{(2k)^2}{(2k-1)(2k+1)} \\
+  &=& \lim_{m\to +\infty} \frac{(2^m
+    m!)^2}{\prod_{k=1}^m(2k-1)(2k+1)}\\
+  &=& \lim_{m\to +\infty} (2m+1)\left( \frac{2^m m!}{\prod_{k=1}^m
+    (2k+1)} \right)^2 \\
+  &=& 2 \lim_{m\to+\infty} \left( \frac{\sqrt{m}\,
+    m!}{\prod_{k=1}^m\left(k + \frac{1}{2}\right) }\right)^2 \\
+  &=& 2 \left(\frac{1}{2}\right)!,\ \mbox{from (15)}
+\end{eqnarray*}
+
+Hence $\left(\frac{1}{2}\right)! = \frac{\sqrt{\pi}}{2}$.
+
+\newpar{19} Note if $x>0$ and $m>1$:
+\[ f_m(x) = \int_0^m \left( 1 - \frac{t}{m} \right)^m t^{x-1} dt.\]
+
+By doing variable change $t \la mu$, we have
+\[ f_m(x) = m^x\int_0^1 (1 - u)^m  u^{x-1} du.\]
+
+If we note
+\[g_m(x) = \int_0^1 (1 - t)^m  t^{x-1} dt.\]
+
+By doing an integration by parts we have:
+\begin{eqnarray*}
+  g_m(x) &=& \left[ \frac{t^x}{x} (1-t)^m
+    \right]_0^1 + \frac{m}{x} \int_0^1 (1-t)^{m-1} t^x dt \\
+  &=& \frac{m}{x} g_{m-1}(x+1) \\
+  &=& \frac{m!}{\prod_{k=0}^{m-1} (x+k)}g_0(x+m),\ \mbox{by
+    induction}\\
+  &=& \frac{m!}{\prod_{k=0}^{m-1}(x+k)} \int_0^1 t^{x+m-1}dt\\
+  &=& \frac{m!}{\prod_{k=0}^m(x+k)}
+\end{eqnarray*}
+
+We then deduce that $f_m(x) = \Gamma_m(x).$
+
+\newpar{20} We have the following inequality for all real $x$
+\[ e^x \ge 1+x.\]
+Hence if $0\le t \le m$ \[ e^{\pm t/m} \ge 1 \pm t/m.\]
+and finally \[ e^{\pm t} \ge (1 \pm t/m)^m\]
+
+On the other hand,
+\begin{eqnarray*}
+  (1 - t/m)^m &=& e^{-t} (1-t/m)^m e^t \\
+  &\ge& e^{-t} (1-t/m)^m (1+t/m)^m \\
+  &=& e^{-t} \left(1-\left(\frac{t}{m}\right)^2\right)^m \\
+  &\ge& e^{-t} (1 - t^2/m)
+\end{eqnarray*}
+
+The last inequality is obtained by the inequality $(1+\alpha)^\beta
+\ge 1 + \beta\alpha$ if $\beta \ge 1$ and $\alpha \ge -1$.  Thus
+finally we have if $0\le t\le m$
+\[ 0 \le e^{-t} - (1-t/m)^m \le t^2e^{-t}/m.\]
+
+For sufficiently large values of $t$ we have $0 \le t^{x-1} \le
+t^{x+1} \le e^{t/2}$.  Hence $t \mapsto e^{-t}t^{x-1}$ and $t\mapsto
+e^{-t}t^{x+1}$ are integrable from $0$ to $+\infty$. Thus we have
+
+\begin{eqnarray*}
+  0 &\le& \int_0^m e^{-t} t^{x-1} dt - \Gamma_m(x) \\
+  &=& \int_0^m (e^{-t} - (1-t/m)^m) t^{x-1} dt \\
+  &\le& \frac{1}{m} \int_0^m t^{x+1} e^{-t} dt \\
+  &\le& \frac{1}{m} \int_0^{+\infty} t^{x+1}e^{-t} dt
+\end{eqnarray*}
+
+We then deduce that
+\[ \lim_{m\to +\infty} \Gamma_m(x) = \int_0^{+\infty} e^{-t}
+t^{x-1}dt.\]
+
+\newpar{21}  Let's prove the equality by induction for $n>0$.  We have
+the equality for $n=1$.  Suppose that we also have the equality for
+$n\ge 1$.  We then have by induction
+\begin{eqnarray*}
+  D_x^{n+1}w &=& \sum_{j=0}^n \sum_{k_1+\cdots+k_n=j \atop
+    {k_1+2k_2+\cdots+nk_n = n \atop k_1,\ldots,k_n \ge 0}} D_u^{j+1} w
+  \frac{n! (D_x^1 u)^{k_1+1} (D_x^2 u)^{k_2} \ldots (D_x^n
+    u)^{k_n}}{k_1!(1!)^{k_1}\ldots k_n! (n!)^{k_n}} +\\
+  && \sum_{j=0}^n \sum_{l=1}^n \sum_{k_1+\cdots+k_n = j \atop
+    {k_1+2k_2+\cdots+nk_n = n \atop {k_1, \ldots, k_n \ge 0
+  \atop k_l > 0}}} D_u^j
+  w\,n! \left(\prod_{i=1\atop i\not=l}^n
+  \frac{(D_x^iu)^{k_i}}{k_i!(i!)^{k_i}}\right)
+  \frac{(D_x^lu)^{k_l-1}}{(k_l-1)!(l!)^{k_l}} D_x^{l+1}u
+\end{eqnarray*}
+
+Let's note $T_1$ the first term and $T_2$ the second term.  By doing
+the variables change $k_1+1 \ra k_1$ and $j\ra j+1$, we have
+\begin{eqnarray*}
+  T_1 &=& \sum_{j=1}^{n+1} \sum_{k_1 + \cdots + k_n = j \atop {
+      k_1 + 2 k_2 + \cdots + n k_n = n+1 \atop {k_1, \ldots, k_n \ge
+        0 \atop k_1 > 0}}} k_1 D_u^jw \frac{n!}{k_1!(1!)^{k_1} \ldots
+    k_n!(n!)^{k_n}} (D_x^1u)^{k_1} \ldots (D_x^nu)^{k_n} \\
+  &=& \sum_{j=1}^{n+1} \sum_{k_1 + \cdots + k_n = j \atop {
+      k_1 + 2 k_2 + \cdots + (n+1) k_{n+1} = n+1 \atop {k_1, \ldots, k_{n+1} \ge
+        0 \atop k_1 > 0}}} k_1 D_u^jw \frac{n!(D_x^1u)^{k_1} \ldots
+    (D_x^{n+1}u)^{k_{n+1}}}{k_1!(1!)^{k_1} \ldots
+    k_{n+1}!((n+1)!)^{k_{n+1}}}
+\end{eqnarray*}
+
+We obtain the last equality since $k_1 > 0$ and $k_{n+1} > 0$ can't be
+satisfied simultaneously, otherwise $k_1 + 2 k_2 \cdots +
+(n+1)k_{n+1} > n+1$.  So $k_{n+1} = 0$ in the above summation.
+Moreover we could extend the sum for $k_1 = 0$ and $j=0$.  So finally,
+
+\[  T_1 = \sum_{j=0}^{n+1} \sum_{k_1 + \cdots + k_n = j \atop {
+      k_1 + 2 k_2 + \cdots + (n+1) k_{n+1} = n+1 \atop {k_1, \ldots, k_{n+1} \ge
+        0}}} k_1 D_u^jw \frac{n!(D_x^1u)^{k_1} \ldots
+    (D_x^{n+1}u)^{k_{n+1}}}{k_1!(1!)^{k_1} \ldots
+    k_{n+1}!((n+1)!)^{k_{n+1}}}.\]
+
+By doing the variables substitution $k_l - 1 \ra k_l$ and $k_{l+1} + 1
+\ra k_l$, we obtain
+\begin{eqnarray*}
+  T_2 &=& \sum_{j=0}^n \sum_{l=1}^n \sum_{k_1+\cdots+k_n = j \atop {
+      k_1 + 2k_2 + \ldots + n k_n = n+1 \atop {
+        k_1, \ldots, k_n \ge 0 \atop k_{l+1} > 0}}} k_{l+1}(l+1) D_u^j
+  w \frac{n!(D_u^1)^{k_1} \ldots (D_u^n)^{k_n}}{k_1!(1!)^{k_1} \ldots
+    k_n!(n!)^{k_n}} \\
+  &=& \sum_{j=0}^n \sum_{l=1}^n \sum_{k_1+\cdots+k_{n+1} = j \atop {
+      k_1 + \ldots + (n+1) k_{n+1} = n+1 \atop {
+        k_1, \ldots, k_{n+1} \ge 0 \atop k_{l+1} > 0}}} D_u^j
+  w \frac{k_{l+1}(l+1) n!(D_u^1)^{k_1} \ldots
+    (D_u^{n+1})^{k_{n+1}}}{k_1!(1!)^{k_1} \ldots k_{n+1}!((n+1)!)^{k_{n+1}}} \\
+\end{eqnarray*}
+
+The last equality is obtained applying the same reasoning we used when
+when $k_1 > 0$.  Moreover it's also true for $k_{l+1} = 0$, and by
+exchanging the two innermost summations we obtain
+
+\begin{eqnarray*}
+  &=& \sum_{j=0}^n \sum_{k_1+\cdots+k_{n+1} = j \atop {
+      k_1 + 2k_2 + \ldots + n k_{n+1} = n+1 \atop {
+        k_1, \ldots, k_{n+1} \ge 0}}} \left(\sum_{l=2}^{n+1}lk_l\right) D_u^j
+  w \frac{n!(D_u^1)^{k_1} \ldots (D_u^{n+1})^{k_{n+1}}}{k_1!(1!)^{k_1} \ldots
+    k_{n+1}!((n+1)!)^{k_{n+1}}} \\
+  &=& \sum_{j=0}^n \sum_{k_1+\cdots+k_{n+1} = j \atop {
+      k_1 + 2k_2 + \ldots + n k_{n+1} = n+1 \atop {
+        k_1, \ldots, k_{n+1} \ge 0}}} (n+1-k_1) D_u^j
+  w \frac{n!(D_u^1)^{k_1} \ldots (D_u^{n+1})^{k_{n+1}}}{k_1!(1!)^{k_1} \ldots
+    k_{n+1}!((n+1)!)^{k_{n+1}}} \\
+\end{eqnarray*}
+
+If we have $k_1+\cdots+k_{n+1} = n+1$ and $k_1 + 2k_2 + \ldots + (n+1)
+k_{n+1} = n+1$, by subtracting the two equalities, we have $k_2 +
+\ldots + nk_{n+1} = 0$.  Hence $k_2 = \cdots = k_{n+1} = 0$ and $k_1 =
+n+1$.  Thus,
+
+\[ T_2 = \sum_{j=0}^{n+1} \sum_{k_1+\cdots+k_{n+1} = j \atop {
+      k_1 + 2k_2 + \ldots + n k_{n+1} = n+1 \atop {
+        k_1, \ldots, k_{n+1} \ge 0}}} (n+1-k_1) D_u^j
+  w \frac{n!(D_u^1)^{k_1} \ldots (D_u^{n+1})^{k_{n+1}}}{k_1!(1!)^{k_1} \ldots
+    k_{n+1}!((n+1)!)^{k_{n+1}}} .
+  \]
+
+Thus finally,
+
+\begin{eqnarray*}
+  D_x^{n+1}w &=& T_1 + T_2 \\
+  &=& \sum_{j=0}^{n+1} \sum_{k_1+\cdots+k_{n+1} = j \atop {
+      k_1 + 2k_2 + \ldots + n k_{n+1} = n+1 \atop {
+        k_1, \ldots, k_{n+1} \ge 0}}} D_u^j
+  w \frac{(n+1)!(D_u^1)^{k_1} \ldots (D_u^{n+1})^{k_{n+1}}}{k_1!(1!)^{k_1} \ldots
+    k_{n+1}!((n+1)!)^{k_{n+1}}}
+\end{eqnarray*}
+
+\newpar{22} A good guess would be to approximate $(n + x)!/n!$ with
+$n^x$.  If $x$ is an integer we have
+\begin{eqnarray*}
+  \frac{(n+x)!}{n!} &=& \prod_{k=1}^x (n+k) \\
+  &=& n^x \prod_{k=1}^x\left(1 + \frac{k}{n}\right) \\
+  &{n \ra +\infty \atop \sim}& n^x
+\end{eqnarray*}
+
+Moreover if we assume that $x! = x (x-1)!$ if $x>0$, we have by induction
+\[ (n+x)! = x! \prod_{k=1}^n (x+k)\]
+
+Combining with the proposed approximation we then deduce that
+\[ \frac{x! \prod_{k=1}^n(x+k)}{n!} \sim n^x.\]
+Thus finally
+\[ x! = \lim_{n\ra +\infty} \frac{n^x n!}{\prod_{k=1}^n(x+k)}.\]
+
+\newpar{23} We have using (15) if $z$ is not an integer
+\begin{eqnarray*}
+  (-z!)(z!) &=& \lim_{m\ra +\infty} \frac{m^{-z} m!}{\prod_{k=1}^m(-z
+    + k)} \times \frac{m^z m!}{\prod_{k=1}^m (z+k)} \\
+  &=& \lim_{m\ra +\infty} \frac{1}{\prod_{k=1}^m
+    \left(1-\frac{z}{k}\right) \left(1+\frac{z}{k}\right)} \\
+  &=& \frac{1}{\prod_{k=1}^{+\infty} \left(1 -
+    \frac{z^2}{k^2}\right)}\\
+  &=& \frac{\pi z} {\sin \pi z}
+\end{eqnarray*}
+Hence
+\[ (-z!) \Gamma(z) = \frac{\pi}{\sin \pi z}.\]
+
+\newpar{24} We have $1+x\le e^x$ for all real x.  Thus we have for $k >0$
+\begin{eqnarray*}
+  \frac{k+1}{k} &\le& e^{1/k} \\
+  \frac{(k+1)^k}{k^k} &\le& e \\
+  \prod_{k=1}^{n-1} \frac{(k+1)^k}{k^k} &\le& e^{n-1} \\
+  \frac{\prod_{k=2}^n k^{k-1}}{\prod_{k=1}^{n-1} k^k} &\le& e^{n-1} \\
+  \frac{n^{n-1}}{\prod_{k=2}^{n-1}k} &\le& e^{n-1} \\
+  \frac{n^n}{e^{n-1}} &\le& n!
+\end{eqnarray*}
+
+And for $k>1$
+\begin{eqnarray*}
+  1 - \frac{1}{k} &\le& e^{-1/k} \\
+  e &\le& \frac{k^k}{(k-1)^k} \\
+  e^{n-1} &\le& \prod_{k=2}^n \frac{k^k}{(k-1)^k} \\
+  e^{n-1} &\le& \frac{\prod_{k=2}^n k^k}{\prod_{k=1}^{n-1}k^{k+1}} \\
+  e^{n-1} &\le& \frac{n^n}{\prod_{k=2}^{n-1}k} \\
+  n! &\le& \frac{n^{n+1}}{e^{n-1}}
+\end{eqnarray*}
+
+\newpar{25} Using (21), we have
+\begin{eqnarray*}
+  x^{\underline{m+n}} &=& \frac{x!}{(x-m-n)!} \\
+  &=& \frac{x!}{(x-m)!} \times \frac{(x-m)!}{(x-m-n)!} \\
+  &=& x^{\underline{m}}(x-m)^{\underline{n}}
+\end{eqnarray*}
+
+and
+\begin{eqnarray*}
+  x^{\overline{m+n}} &=& \frac{\Gamma(x+m+n)}{\Gamma(x)} \\
+  &=& \frac{\Gamma(x+m+n)}{\Gamma(x+m)} \times
+  \frac{\Gamma(x+m)}{\Gamma(x)} \\
+  &=& x^{\overline{m}}(x+m)^{\overline{n}}
+\end{eqnarray*}
+
 \end{document}
