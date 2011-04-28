@@ -1,0 +1,55 @@
+\documentclass[a4paper,12pt]{article}
+\newcommand{\newpar}[1]{\bigskip \noindent \textbf{#1.}}
+\newcommand{\subpar}[1]{\medskip \noindent (#1)}
+\newcommand{\la}{\leftarrow}
+\newcommand{\ra}{\rightarrow}
+\begin{document}
+
+\newpar{1} $n$.
+
+\newpar{2} $1$.
+
+\newpar{3} $C_{52}^{13} = 635013559600$.
+
+\newpar{4} $2^4\,41\,43\,23\,17\,5^2\,7^2\,47$.
+
+\newpar{5} We have
+\begin{eqnarray*}
+  11^4 &=& (10 + 1)^4 \\
+  &=& C_4^0 10^4 + C_4^1 10^3 + C_4^2 10^2 + C_4^1 10 + C_4^4 \\
+  &=& 10^4 + 4\,10^3 + 6\,10^2 + 4\,10 + 1 \\
+  &=& 14641
+\end{eqnarray*}
+
+\newpar{6} Using (4) and (9) we have,
+\begin{quote}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline $r$ & $C_r^0$ & $C_r^1$ & $C_r^2$ & $C_r^3$ & $C_r^4$ &
+    $C_r^5$ & $C_r^6$ & $C_r^7$ & $C_r^8$ & $C_r^9$ \\
+    \hline $-3$ & $1$ & $-3$ & $6$ & $-10$ & $15$ & $-21$ & $28$ &
+    $-36$ & $45$ & $-55$ \\
+    \hline $-2$ & $1$ & $-2$ & $3$ & $-4$ & $5$ & $-6$ & $7$ & $-8$ &
+    $9$ & $-10$ \\
+    \hline $-1$ & $1$ & $-1$ & $1$ & $-1$ & $1$ & $-1$ & $1$ & $-1$ &
+    $1$ & $-1$ \\
+    \hline
+  \end{tabular}
+\end{quote}
+
+\newpar{7}  Since we have $C_n^k = C_n^{n-k}$, we can impose that $k
+\le n-k$ without a loss of generality.  But we have,
+
+\[ C_n^k = \frac{n-k+1}{k}\ C_n^{k-1} \]
+
+We then deduce that $C_n^k \ge C_n^{k-1}$ if $k \le n-k$.  Thus, the
+value of $k$ that achieves the maximum is $\lfloor n/2\rfloor$.
+
+\newpar{8} Leaving out the zeroes, the triangle is symmetric according
+to the line $k = \lfloor r/2\rfloor$.
+
+\newpar{9} $1$ if $n$ is positive or equal to zero and $0$ otherwise.
+
+\newpar{10} Suppose that $p$ is prime.
+\subpar{a} 
+
+\end{document}
