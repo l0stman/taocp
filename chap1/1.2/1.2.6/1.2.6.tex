@@ -50,6 +50,121 @@ to the line $k = \lfloor r/2\rfloor$.
 \newpar{9} $1$ if $n$ is positive or equal to zero and $0$ otherwise.
 
 \newpar{10} Suppose that $p$ is prime.
-\subpar{a} 
+
+\subpar{a} We have
+
+\begin{eqnarray*}
+  n! &=& \prod_{k=1}^n k \\
+  &=& \left( \prod_{0 \le l \le \lfloor n/p\rfloor - 1}\ \prod_{lp <
+    k\le (l+1)p} k \right) \left( \prod_{p \lfloor n/p\rfloor + 1\le k \le
+    n} k \right) \\
+  &=& \left( \prod_{0\le l \le \lfloor n/p\rfloor - 1} \prod_{0 < k
+    \le p} (k+lp) \right) \left( \prod_{1 \le k \le n - p \lfloor n/p \rfloor}
+  (k+p\lfloor n/p\rfloor) \right)
+\end{eqnarray*}
+
+Hence we deduce,
+
+\begin{eqnarray*}
+  p!(n-p)! &=& p! \left( \prod_{0\le l \le \lfloor (n-p)/p\rfloor-1}
+  \prod_{0<k\le p} (k+lp)\right) \\ &&
+  \left( \prod_{1\le k\le n-p(\lfloor (n-p)/p\rfloor+1)} (k + p \lfloor
+  (n-p)/p\rfloor)\right)
+\end{eqnarray*}
+
+Given that $\lfloor (n-p)/p \rfloor = \lfloor n/p\rfloor - 1$, we then
+deduce
+
+
+\[  C_n^p = \lfloor n/p\rfloor \frac{\prod_{0< k < p}(k + p(\lfloor
+    n/p\rfloor - 1))}{(p-1)!}\,
+  \prod_{1\le k\le n-p\lfloor n/p\rfloor }
+  \frac{k+p\lfloor n/p\rfloor}{k+p\lfloor (n-p)/p\rfloor} \]
+
+Given that $p$ is prime, for $k$ varying between $1$ and $p-1$, $k$ is
+invertible in $Z/pZ$. We then deduce that all the terms that appear as
+denominators in the previous equality are invertible terms.  Hence
+
+\[ C_n^p \equiv \lfloor n/p\rfloor \pmod p\]
+
+\subpar{b} Let $k$ be an integer between $1$ and $p-1$.  We have
+\[ p! = C_p^k k! (p-k)! \]
+
+Since $p$ is prime, none of the term that appears in the two
+factorial divide $p$.  We then deduce that $k! (p-k)!$ divides
+$(p-1)!$. By rewriting the equality as
+\[ C_p^k = p\,\frac{(p-1)!}{k!(p-k)!}\]
+
+we deduce that $C_p^k \equiv 0 \pmod p$.
+
+\subpar{c} Let $k$ be an integer between $0$ and $p-1$. We have
+\begin{eqnarray*}
+  C_{p-1}^k &=& \frac{\prod_{p-k \le i\le p-1} i}{k!} \\
+  &=& \frac{\prod_{1\le i\le k} (p-i)}{k!}
+\end{eqnarray*}
+
+Given that $p$ is prime, the denominator is invertible in $Z/pZ$,
+hence
+\[ C_{p-1}^k \equiv (-1)^k \pmod p.\]
+
+\subpar{d} Let $k$ be an integer between $2$ and $p-1$. We then have $p+2-k
+\le p$, and since
+
+\[  k!C_{p+1}^k = \prod_{p+2-k\le i\le p+1} i \]
+
+we have $k! C_{p+1}^k \equiv 0 \pmod p$ and since $k!$ is invertible, we
+then deduce
+\[ C_{p+1}^k \equiv 0 \pmod p.\]
+
+\subpar{e} We have
+
+\begin{eqnarray*}
+  n! &=& \prod_{1\le i\le n} i \\
+  &=& \left( \prod_{0 \le j \le \lfloor n/p\rfloor - 1} \prod_{jp < i
+    \le (j+1)p} i \right) \left( \prod_{p\lfloor n/p\rfloor + 1 \le i
+    \le n} i\right) \\
+  &=& \left( \prod_{0 \le j\le \lfloor n/p\rfloor - 1} (j+1)p
+  \prod_{jp < i <(j+1)p} i \right)\left( \prod_{p\lfloor n/p\rfloor +
+    1 \le i \le n} i\right) \\
+  &=& p^{\lfloor n/p\rfloor} \lfloor n/p\rfloor!
+  \left( \prod_{ 0 \le j \le \lfloor n/p\rfloor - 1} \prod_{jp < i <
+    (j+1)p} i\right)\left( \prod_{p\lfloor n/p\rfloor + 1 \le i \le n}
+  i\right) \\
+  &=& p^{\lfloor n/p\rfloor} \lfloor n/p\rfloor! \left( \prod_{0\le j
+    \le \lfloor n/p\rfloor - 1} \prod_{0 < i < p}(i+jp)\right)
+  \prod_{1\le i\le n - p \lfloor n/p\rfloor} (i+p\lfloor n/p\rfloor) \\
+  n!  &=& p^{\lfloor n/p\rfloor} \lfloor n/p\rfloor! \left( \prod_{0\le j
+    \le \lfloor n/p\rfloor - 1} \prod_{0 < i < p}(i+jp)\right)
+  \prod_{1\le i\le n \bmod p} (i+p\lfloor n/p\rfloor)\, \mbox{(*)}
+\end{eqnarray*}
+
+On the other hand, we have
+
+\begin{eqnarray*}
+  \left\lfloor \frac{k}{p}\right\rfloor + \left\lfloor
+  \frac{n-k}{p}\right\rfloor &=& \left\lfloor \frac{n-k}{p} + \left\lfloor
+  \frac{k}{p}\right\rfloor\right\rfloor \\
+  &=& \left\lfloor \frac{n - k \bmod p}{p}\right\rfloor \\
+  &=& \left\lfloor \left\lfloor \frac{n}{p}\right\rfloor + \frac{n
+    \bmod p - k\bmod p}{p}\right\rfloor \\
+  &=& \left\lfloor \frac{n}{p}\right\rfloor + \left\lfloor  \frac{n
+    \bmod p - k\bmod p}{p}\right\rfloor \\
+  &=& \left\lfloor \frac{n}{p}\right\rfloor + \left\lfloor
+  \frac{(n-k)\bmod p}{p}\right\rfloor \\
+  &=& \left\lfloor \frac{n}{p}\right\rfloor, \mbox{since $k \le n$}
+\end{eqnarray*}
+
+From (*), we then deduce
+
+\begin{eqnarray*}
+  C_n^k &=& C_{\lfloor n/p\rfloor}^{\lfloor k/p\rfloor}
+  \frac{\prod_{j=\lfloor (n-k)/p\rfloor}^{\lfloor
+      n/p\rfloor-1}\prod_{0<i<p}(i+jp)} {\prod_{j=0}^{\lfloor
+      k/p\rfloor-1}\prod_{0<i<p}(i+jp)} C_{n\bmod p}^{k\bmod p} \\
+  &\equiv&  C_{\lfloor n/p\rfloor}^{\lfloor k/p\rfloor} C_{n\bmod
+    p}^{k\bmod p} \pmod p
+\end{eqnarray*}
+
+\subpar{f} The result is easily obtained by induction using (e).
 
 \end{document}
