@@ -167,4 +167,43 @@ From (*), we then deduce
 
 \subpar{f} The result is easily obtained by induction using (e).
 
+\newpar{11} Let $(a_i)_{i \in N}$, $(b_i)_{i \in N}$ and $(c_i)_{i \in
+  N}$ three sequels representing respectively  $a$, $b$ and $a+b$ in
+the $p$-ary number system.  Let's remark that all three of them become
+stationary to $0$ for a sufficiently large value of $i$. Using
+1.2.5--12, we have
+
+\begin{eqnarray*}
+  \mu\left( C_{a+b}^a \right) &=& \mu((a+b)!) - \mu(a!) - \mu(b!) \\
+  &=& \frac{\sum_{i \in N} (a_i + b_i - c_i)}{p-1}
+\end{eqnarray*}
+
+We can partition $N$ into intervals that distinguish the additions
+that produce carries and those which don't.  Let $(i_k)_{i \in N}$ and
+$(j_k)_{k \in N}$ be two increasing sequels such that
+\begin{eqnarray*}
+  a_{i_k} + b_{i_k} &=& c_{i_k} + p \\
+  a_{i_k+1} + b_{i_k + 1} + 1 &=& c_{i_k + 1} + p \\
+  \ldots \\
+  a_{j_k - 1} + b_{j_k - 1} + 1 &=& c_{j_k - 1} + p \\
+  a_{j_k} + b_{j_k} + 1 &=& c_{j_k}
+\end{eqnarray*}
+
+The last equality implies that $j_k < i_{k+1}$ and we have
+\[ \sum_{i_k \le i \le j_k} (a_i + b_i - c_i) = (p-1) (j_k - i_k +
+1),\]
+and obviously
+\[ \sum_{j_k < i < i_{k+1}} (a_i + b_i - c_i) = 0\]
+because none of the terms produce a carry.
+
+So finally,
+\begin{eqnarray*}
+  \mu\left( C_{a+b}^a\right) &=& \frac{\sum_{k \in N} \sum_{i_k \le i
+      < i_{k+1}} (a_i + b_i - c_i)}{p-1} \\
+  &=& \sum_{k \in N} (j_k - i_k + 1)
+\end{eqnarray*}
+
+We then deduce that the multiplicity of $p$ is the number of carries
+that occur when $a$ is added to $b$ in the $p$-ary number system.
+
 \end{document}
