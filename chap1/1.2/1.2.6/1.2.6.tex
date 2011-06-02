@@ -206,4 +206,19 @@ So finally,
 We then deduce that the multiplicity of $p$ is the number of carries
 that occur when $a$ is added to $b$ in the $p$-ary number system.
 
+\newpar{12} Using \textbf{f} from exercise \textbf{10}, if the $2$-ary
+system representations of $n$ and $k$ when $k \le n$ are
+\[
+\begin{array}{l}
+  n = a_r 2^r + \cdots + a_1 2 + a_0, \\
+  k = b_r 2^r + \cdots + b_1 2 + b_0,
+\end{array}
+\mbox{ then } C_n^k \equiv C_{a_r}^{b_r} \ldots C_{a_1}^{b_1}
+C_{a_0}^{b_0} \equiv 1 \pmod 2
+\]
+
+Hence $a_i \ge b_i$ for all the choices of $k \le n$, otherwise $C_n^k
+\equiv 0 \pmod 2$. This is only possible if $a_i = 1$ for $0 \le i \le
+r$.  Hence $n = 2^{r+1}-1$.
+
 \end{document}
