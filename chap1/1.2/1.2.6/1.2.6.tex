@@ -221,4 +221,82 @@ Hence $a_i \ge b_i$ for all the choices of $k \le n$, otherwise $C_n^k
 \equiv 0 \pmod 2$. This is only possible if $a_i = 1$ for $0 \le i \le
 r$.  Hence $n = 2^{r+1}-1$.
 
+\newpar{13} Let's show the formula by induction on $n \ge 0$.  If
+$n=0$, we have
+
+\[ \sum_{k=0}^0 C_{r+k}^k = 1 = C_{r+1}^0.\]
+
+Suppose that we have the equality for $n$, then we have
+
+\begin{eqnarray*}
+  \sum_{0\le k\le n+1}C_{r+k}^k &=& \sum_{0\le k \le n}C_{r+k}^k +
+  C_{r+n+1}^{n+1} \\
+  &=& C_{r+n+1}^n + C_{r+n+1}^{n+1}, \mbox{ by induction } \\
+  &=& C_{r+n+2}^{n+1}
+\end{eqnarray*}
+
+\newpar{14} Let $k$ be an integer between $0$ and $n$.  We have
+\[ (k+1)^4 - k^4 = 4 k^3 + 6 k^2 + 4 k + 1\]
+
+Hence
+\[ (n+1)^4 = 4 \sum_{k=0}^n k^3 + 6 \sum_{k=0}^n k^2 + 4 \sum_{k=0}^n k
++ (n+1)\]
+
+Thus
+\[ 4 \sum_{k=0}^n k^3 = (n+1)^4 - 2 n\left(n +
+\frac{1}{2}\right)(n+1) - 2 n(n+1) - (n+1)\]
+
+And finally
+\[ \sum_{k=0}^n k^3 = \left( \frac{n(n+1)}{2} \right)^2 (*)\]
+
+Similarly
+\[ (k+1)^5 - k^5 = 5 k^4 + 10 k^3 + 10 k^2 + 5 k + 1.\]
+
+Hence
+\[ (n+1)^5 = 5 \sum_{k=0}^n k^4 + 10 \sum_{k=0}^n k^3 + 10
+\sum_{k=0}^n k^2 + 5 \sum_{k=0}^n k + (n+1).\]
+
+From (*), we then deduce
+\[ 5 \sum_{k=0}^n k^4 = (n+1)^5 - \frac{5}{2} n^2(n+1)^2 -
+\frac{10}{3}n\left(n+\frac{1}{2}\right) (n+1) -
+\frac{5}{2}n(n+1)-(n+1).\]
+
+And finally
+
+\[ \sum_{k=0}^n k^4 = \frac{1}{5}n(n+2)\left(n+\frac{1}{2}\right)
+\left(n^2 + n - \frac{1}{3}\right).\]
+
+\newpar{15} Let's show the property by induction on $r$.  Suppose
+$r=0$, then we have
+\[ (x+y)^0 = 1 = \sum_k C_0^k x^k y^{-k}.\]
+
+Suppose that we have the property for $r$, then we have
+
+\begin{eqnarray*}
+  (x+y)^{r+1} &=& (x + y) (x+y)^n \\
+  &=& (x+y) \sum_k C_r^k x^k y^{r-k}, \mbox{ by induction} \\
+  &=& \sum_k C_r^k x^{k+1} y^{r-k} + \sum_k C_r^k x^k y^{r+1-k} \\
+  &=& \sum_k C_r^{k-1} x^k y^{r+1-k} + \sum_k C_r^k x^k y^{r+1-k} \\
+  &=& \sum_k C_{r+1}^k x^k y^{r+1-k}
+\end{eqnarray*}
+
+\newpar{16} We have
+
+\begin{eqnarray*}
+  (-1)^k C_{-k}^{n-1} &=& (-1)^k \frac{-k (-k-1)\ldots
+    (-k-n+2)}{(n-1)!} \\
+  &=& (-1)^k (-n) (-n-1)\ldots(-k-n+2) \frac{(-1)^{n-k}}{(k-1)!} \\
+  &=& (-1)^n C_{-n}^{k-1}
+\end{eqnarray*}
+
+\newpar{17} We have
+\begin{eqnarray*}
+  (1+x)^{r+s} &=& (1+x)^r (1+x)^s \\
+  &=& \sum_k C_r^k x^k \sum_k C_s^k x^k \\
+  &=& \sum_n \sum_k C_r^k C_s^{n-k} x^n \\
+\end{eqnarray*}
+
+The two polynomials are equals thus their coefficients are equals
+too.  Thus
+\[ C_{r+s}^n = \sum_k C_r^k C_s^{n-k}.\]
 \end{document}
