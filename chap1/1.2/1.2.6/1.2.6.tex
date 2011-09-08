@@ -299,4 +299,91 @@ Suppose that we have the property for $r$, then we have
 The two polynomials are equals thus their coefficients are equals
 too.  Thus
 \[ C_{r+s}^n = \sum_k C_r^k C_s^{n-k}.\]
+
+\newpar{18} We have
+\begin{eqnarray*}
+  \sum_k C_r^{m+k} C_s^{n+k} &=& \sum_k C_r^k C_s^{n-m+k} \\
+  &=& \sum_k C_r^k C_s^{s+m-n-k},\ \mbox{from (6)} \\
+  &=& C_{r+s}^{s+m-n}, \mbox{from (21)}\\
+  &=& C_{r+s}^{r-m+n}, \mbox{from (6)}
+\end{eqnarray*}
+
+\newpar{19} Let's show the equality by induction on $r \ge 0$.  If
+$r=0$, we have
+\begin{eqnarray*}
+  \sum_k C_0^k C_n^{s+k}(-1)^{-k} &=& \sum_k \delta_{k,0}
+  C_n^{s+k}(-1)^{k} \\
+  &=& C_n^s
+\end{eqnarray*}
+
+Suppose that we have the equality for $r$, then we have
+\begin{eqnarray*}
+  \sum_k C_{r+1}^k C_n^{s+k}(-1)^{r+1-k} &=&
+  \sum_k \left( C_r^{k-1} + C_r^k \right) C_n^{s+k} (-1)^{r+1-k} \\
+  &=& \sum_k C_r^k C_n^{s+k+1} (-1)^{r-k} - \sum_k C_r^k C_n^{s+k}
+  (-1)^{r-k} \\
+  &=& C_{s+1}^{n-r} - C_s^{n-r},\mbox{ by induction} \\
+  &=& C_s^{n-r} \left( \frac{s+1}{s+1+r-n} - 1 \right) \\
+  &=& C_s^{n-r} \frac{n-r}{s+1+r-n} \\
+  &=& C_s^{n-r-1}
+\end{eqnarray*}
+
+\newpar{20} We have
+\begin{eqnarray*}
+  \sum_{k=0}^r C_{r-k}^m C_s^{k-t} (-1)^{k-t} &=&
+  (-1)^{r-m-t} \sum_{k=0}^r C_{-(m+1)}^{r-k-m} C_s^{k-t},\mbox{ from
+    (19)} \\
+  &=& (-1)^{r-m-t} \sum_{k=-t}^{r-t} C_s^k C_{-(m+1)}^{r-k-t-m} \\
+  &=& (-1)^{r-m-t} \sum_k C_s^k C_{-(m+1)}^{r-k-t-m} \\
+  &=& (-1)^{r-m-t} C_{s-m-1}^{r-t-m}, \mbox{ from (21)} \\
+  &=& C_{r-t-s}^{r-t-m},\mbox{ from (17)}
+\end{eqnarray*}
+
+In the same vein, we have
+\begin{eqnarray*}
+  \sum_{k=0}^r C_{r-k}^m C_{s+k}^n &=& \sum_{k=0}^r C_{r-k}^m
+  C_{-(m+1)}^{s+k-n} (-1)^{s+k-n}, \mbox{ using (19)} \\
+  &=& C_{r+s+1}^{r+s-m-n}, \mbox{ using (24) with $t = n-s$} \\
+  &=& C_{r+s+1}^{m+n+1}
+\end{eqnarray*}
+
+\newpar{21} Because in the definition of $C_n^k$, $k$ should be an
+integer.
+
+\newpar{22} For $s = n-1-r+nt$, we have
+\[\sum_{k\ge 0} C_{r-tk}^k C_{s-t(n-k)}^{n-k} \frac{r}{r-tk} = \sum_{k\ge 0} C_{r-tk}^k
+  C_{n-1-r+tk}^{n-k} \frac{r}{r-tk} \mbox{ (*)}\]
+
+Let's suppose that $r$ and $t$ are integers. If $k \le r - tk$ then
+\[ (n-1-r+tk) - (n-k) \le -1 < 0.\]
+
+Hence $C_{r-tk}^k C_{n-1-r+tk}^{n-k} = 0$.  Thus we deduce that (*) is
+equal to $0$ for $r$ and $t$ integers.
+
+But the expression in (*) is a polynomial in $r$.  For each fix integer
+$t$, the corresponding polynomial in $r$ has an infinity of root for
+$r$ integer.  We then deduce that (*) holds for $r$ real and $t$
+integer.
+
+Similarly, (*) is also a polynomial in $t$.  Using the same reasoning,
+we deduce finally for $r$ and $t$ real numbers
+\[\sum_{k\ge 0} C_{r-tk}^k C_{n-1-r+tk}^{n-k} \frac{r}{r-tk} = 0 =
+C_{n-1}^n.\]
+
+\newpar{23}  Suppose that (26) holds for $(r,s,t,n)$ and
+$(r,s-t,t,n-1)$.  Then we have
+\begin{eqnarray*}
+  S(r,s+1,t,n) &=& \sum_{k\ge 0} C_{r-tk}^k C_{s+1-t(n-k)}^{n-k}
+  \frac{r}{r-tk}\\
+  &=& \sum_{k\ge 0} C_{r-tk}^k \left( C_{s-t(n-k)}^{n-k-1} +
+  C_{s-t(n-k)}^{n-k}\right) \frac{r}{r-tk} \\
+  &=& S(r,s-t,t,n-1) + S(r,s,t,n) \\
+  &=& C_{r+s-tn}^{n-1} + C_{r+s-tn}^n \\
+  &=& C_{r+s+1-tn}^n
+\end{eqnarray*}
+
+\newpar{24} Each member of the equality in (26) are polynomials in
+$s$.  And \textbf{22} and \textbf{23} implies that these polynomials
+are equals on an infinite number of reals.  We then deduce that
+they're equals.
 \end{document}
