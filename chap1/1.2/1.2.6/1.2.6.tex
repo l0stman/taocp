@@ -386,4 +386,61 @@ $(r,s-t,t,n-1)$.  Then we have
 $s$.  And \textbf{22} and \textbf{23} implies that these polynomials
 are equals on an infinite number of reals.  We then deduce that
 they're equals.
+
+\newpar{25} We have for $t \not= 0$ and $k \ge 1 + |r/t|$.
+\begin{eqnarray*}
+  \left| \frac{A_{k+1}(r,t)}{A_k(r,t)} \right| &=&
+  \left| \frac{r-(k+1)t - k}{k+1}\times \frac{r-kt}{r-(k+1)t} \prod_{i=0}^{k-1}
+  \frac{r - (k+1)t - i}{r - kt - i}\right| \\
+  &\le& 2(|r|+|t|+1) \left| \prod_{i=0}^{k-1} \frac{r - (k+1)t - i}{r - kt
+    - i}\right| \\
+  &=& 2(|r|+|t|+1) \prod_{i=0}^{k-1} \left( 1 +
+  \frac{1}{k-\frac{r-i}{t}}\right) \\
+  &\le& 2(|r| + |t| + 1) \exp\left( \sum_{i=0}^{k-1}
+  \frac{1}{k+\frac{i-r}{t}} \right) \\
+  &\le& 2(|r| + |t| + 1) \exp\left( \sum_{i=0}^{k-1} \frac{1}{k - r/t}
+  \right) \\
+  &=& 2(|r| + |t| + 1) \exp\left( \frac{k}{k - r/t} \right) \\
+  &\le& 2(|r| + |t| + 1) e^2
+\end{eqnarray*}
+
+When then deduce that $\sum_k A_k(r,t) z^k$ is defined for $|z|$ small
+enough.  Using (26) with $s = tn$, we have
+\[ \sum_k A_k(r,t) C_{tk}^{n-k} = C_r^n.\]
+
+Hence
+\begin{eqnarray*}
+  x^r &=& \sum_k C_r^k (x-1)^k \\
+  &=& \sum_k \sum_j A_j(r,t) C_{tj}^{k-j} (x-1)^k \\
+  &=& \sum_j A_j(r,t) \sum_k C_{tj}^{k-j} (x-1)^k \\
+  &=& \sum_j A_j(r,t) \sum_k C_{tj}^k (x-1)^{k+j} \\
+  &=& \sum_j A_j(r,t) (x-1)^j x^{tj} \\
+  &=& \sum_j A_j(r,t) z^k
+\end{eqnarray*}
+
+\newpar{26} From \textbf{25.} we have
+\[ 1 = \sum_k A_k(r,t) x^{tk-r}x^k.\]
+
+Hence
+\begin{eqnarray*}
+  0 &=& \frac{d}{dx} \left( \sum_k A_k(r,t) x^{tk-r}(x-1)^k \right) \\
+  &=& \sum_k A_k(r,t) ((tk-r) x^{-r-1} + k x^{-r}(x-1)^{-1}) z^k \\
+  &=& - r x^{-1} \sum_k C_{r-tk}^k z^k + \sum_k A_k(r,t) k
+  (x-1)^{-1} z^k \\
+\end{eqnarray*}
+
+Hence
+\begin{eqnarray*}
+  \sum_k C_{r-tk}^k z^k &=& \frac{x^{r+1}z}{r(x-1)}\ \frac{d}{dz}
+  \left( \sum_k A_k(r,t) z^k\right) \\
+  &=& \frac{x^{1+t}}{r} \frac{d}{dz} x^r \\
+  &=& x^{t+r} \frac{dx}{dz}
+\end{eqnarray*}
+
+But by definition we have
+\[  1 = \frac{dz}{dz} = \frac{d}{dz}(x^{t+1}-x^t) = x^{t-1}((t+1)x - t)
+\frac{dx}{dz} \]
+
+And finally
+\[ \sum_k C_{r-tk}^k z^k = \frac{x^{r+1}}{(t+1)x - t} .\]
 \end{document}
