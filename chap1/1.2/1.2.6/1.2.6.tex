@@ -387,21 +387,42 @@ $s$.  And \textbf{22} and \textbf{23} implies that these polynomials
 are equals on an infinite number of reals.  We then deduce that
 they're equals.
 
-\newpar{25} We have for $t \not= 0$ and $k \ge 1 + |r/t|$.
+\newpar{25} If we have $t=0$, we're reduced to the binomial theorem.
+Suppose that $t \not= 0$.
 \begin{eqnarray*}
   \left| \frac{A_{k+1}(r,t)}{A_k(r,t)} \right| &=&
   \left| \frac{r-(k+1)t - k}{k+1}\times \frac{r-kt}{r-(k+1)t} \prod_{i=0}^{k-1}
   \frac{r - (k+1)t - i}{r - kt - i}\right| \\
   &\le& 2(|r|+|t|+1) \left| \prod_{i=0}^{k-1} \frac{r - (k+1)t - i}{r - kt
     - i}\right| \\
-  &=& 2(|r|+|t|+1) \prod_{i=0}^{k-1} \left( 1 +
-  \frac{1}{k-\frac{r-i}{t}}\right) \\
-  &\le& 2(|r| + |t| + 1) \exp\left( \sum_{i=0}^{k-1}
-  \frac{1}{k+\frac{i-r}{t}} \right) \\
-  &\le& 2(|r| + |t| + 1) \exp\left( \sum_{i=0}^{k-1} \frac{1}{k - r/t}
-  \right) \\
-  &=& 2(|r| + |t| + 1) \exp\left( \frac{k}{k - r/t} \right) \\
-  &\le& 2(|r| + |t| + 1) e^2
+  &=& 2(|r|+|t|+1) \left| \prod_{i=0}^{k-1}\left( 1 +
+  \frac{t}{kt+i-r}\right)\right|
+\end{eqnarray*}
+
+If $t > 0$ and we suppose that $k \ge 1 + |r/t|$, we then deduce that
+\begin{eqnarray*}
+  \left| \frac{A_{k+1}(r,t)}{A_k(r,t)}\right| &\le& 2(|r|+|t|+1)
+  \left(1 + \frac{t}{kt-|r|}\right)^k \\
+  &\le& 2(|r|+|t|+1) \exp\left(\frac{k}{kt-|r|}\right) \\
+  &\le& 2(|r|+|t|+1) \exp(1 + |r|) \mbox{ (*)}
+\end{eqnarray*}
+
+We have also,
+\[ A_k(r,-t) = (-1)^k A_k(-r-1,t-1) \frac{-r-1-k(t-1)}{r+kt}\]
+We then deduce from (*) that if $t < -1$, then the ratio of two
+consecutive terms of the sequel $A_k(r,t)$ is bounded.  Suppose now
+that $-1 \le t < 0$. Then for $k \ge \frac{r+1}{1-|t|}$, we have
+\[ k-1 \ge r+k|t| = r-kt \ge \lfloor r-kt\rfloor.\]
+If we note $\{x\} = x - \lfloor x\rfloor$, then we have
+\begin{eqnarray*}
+  |A_k(r,t)| &=& \frac{|r|}{k!} \left| \prod_{i=1}^{k-1} (r-kt -i)
+  \right| \\
+  &=&  \frac{|r|}{k!} \prod_{i=1}^{\lfloor r-kt\rfloor}(r-kt -i)
+  \prod_{i=\lfloor r-kt\rfloor + 1}^{k-1}(i-(r-kt)) \\
+  &\le& \frac{|r|}{k!} \prod_{i=0}^{\lfloor r-kt\rfloor-1}(\{r-kt\} +
+  i) \prod_{i=\lfloor r-kt\rfloor +1}^{k-1} i \\
+  &\le& \frac{|r|}{k!} (k-1)! \\
+  &=& |r|
 \end{eqnarray*}
 
 When then deduce that $\sum_k A_k(r,t) z^k$ is defined for $|z|$ small
