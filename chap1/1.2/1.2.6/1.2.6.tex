@@ -464,4 +464,72 @@ But by definition we have
 
 And finally
 \[ \sum_k C_{r-tk}^k z^k = \frac{x^{r+1}}{(t+1)x - t} .\]
+
+\newpar{27} We have using \textbf{25}
+\begin{eqnarray*}
+  \sum_n A_n(r+s, t) z^n &=& x^{r+s} \\
+  &=& x^r x^s \\
+  &=& \sum_i A_i(r, t) z^i \sum_j A_j(s, t) z^j \\
+  &=& \sum_n \sum_{i,j \atop i+j=n} A_i(r,t) A_j(s,j) z^n \\
+  &=& \sum_n \sum_i A_i(r,t) A_{n-i}(s,t)z^n
+\end{eqnarray*}
+We then deduce that
+\[ A_n(r+s,t) = \sum_k A_k(r,t) A_{n-k}(s,t).\]
+
+Using \textbf{25} and \textbf{26}, we have
+\begin{eqnarray*}
+  x^r \times \frac{x^{s+1}}{(t+1)x-t} &=& \sum_i A_i(r,t) z^i \times
+  \sum_j C_{s-tj}^j z^j \\
+  &=& \sum_n \sum_i A_i(r,t) C_{s-t(n-i)}^{n-i} z^n
+\end{eqnarray*}
+
+But we have also from \textbf{26}
+\begin{eqnarray*}
+  \frac{x^{r+s+1}}{(t+1)x-t} &=& \sum_n C_{r+s-tn}^n z^n
+\end{eqnarray*}
+We then deduce that
+\[ \sum_i A_i(r,t) C_{s-t(n-i)}^{n-i} = C_{r+s-tn}^n.\]
+
+\newpar{28}  Let's show the equality by induction on the integer $n
+\ge 0$.  If $n=0$, then we're reduced to the equation (21).  Suppose
+that we have the equality for $n$ for all values of $r,s,t$.  Then we
+have using (26)
+\begin{eqnarray*}
+  \sum_k {r+tk \choose k}{s-tk\choose n+1-k} &=&
+  \sum_k {r+tk \choose k}{s-tk\choose n+1-k}\frac{r}{r+tk} +\\
+  && \sum_k {r+tk \choose k}{s-tk\choose n+1-k}\frac{tk}{r+tk} \\
+  &=& {r + s \choose n+1} + t \sum_k {r+tk-1 \choose k-1}{s-tk \choose
+    n+1-k} \\
+  &=& {r+s \choose n+1} + t \sum_k {r+t-1 + tk \choose k}{s-t-tk
+    \choose n-k} \\
+\end{eqnarray*}
+And by induction we then deduce that
+\begin{eqnarray*}
+\sum_k {r+tk \choose k}{s-tk\choose n+1-k}  &=& {r+s \choose n+1} + t
+\sum_{k\ge 0} {r+s-1-k\choose n+1-k} t^k \\
+&=& \sum_{k\ge 0} {r+s-k \choose n+1-k} t^k
+\end{eqnarray*}
+
+\newpar{29} We have
+\begin{eqnarray*}
+  \sum_k {r \choose k} (-1)^{r-k} \sum_{i=0}^r b_i k^i &=&
+  \sum_{k=0}^r {r \choose k} (-1)^{r-k} \sum_{i=0}^r b_i k^i \\
+  &=& \sum_{i=0}^r b_i \sum_{k=0}^r {r \choose k} (-1)^{r-k} k^i \\
+  &=& r! \sum_{i=0}^r b_i \sum_{k=0}^r \frac{k^i}{(-1)^{r-k}k!(r-k)!}
+\end{eqnarray*}
+But we have
+\begin{eqnarray*}
+  (-1)^{r-k}k! (r-k)! &=& \prod_{i=1}^k i \prod_{i=1}^{r-k}(-i) \\
+  &=& \prod_{i=0}^{k-1} (k-i) \prod_{i=k+1}^r (k-i) \\
+  &=& \prod_{0\le i \le r \atop i\not=k} (k-i)
+\end{eqnarray*}
+Hence
+\begin{eqnarray*}
+  \sum_k {r \choose k} (-1)^{r-k} \sum_{i=0}^r b_i k^i &=& r!
+  \sum_{i=0}^r b_i \sum_{k=0}^r \frac{k^i}{\prod_{0\le j \le r\atop
+      j\not=k} (k-j)} \\
+  &=& r!\,b_r
+\end{eqnarray*}
+The last equality is obtained by taking $x_i = i-1$ for $1\le i\le
+r+1$ in exercise 1.2.3-33.
 \end{document}
