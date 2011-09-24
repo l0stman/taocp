@@ -9,14 +9,15 @@
 
 \newpar{2} $1$.
 
-\newpar{3} $C_{52}^{13} = 635013559600$.
+\newpar{3} ${{52} \choose {13}} = 635013559600$.
 
 \newpar{4} $2^4\,41\,43\,23\,17\,5^2\,7^2\,47$.
 
 \newpar{5} We have
 \begin{eqnarray*}
   11^4 &=& (10 + 1)^4 \\
-  &=& C_4^0 10^4 + C_4^1 10^3 + C_4^2 10^2 + C_4^1 10 + C_4^4 \\
+  &=& {4 \choose 0} 10^4 + {4 \choose 1} 10^3 + {4 \choose 2} 10^2 +
+  {4 \choose 1} 10 + {4 \choose 4} \\
   &=& 10^4 + 4\,10^3 + 6\,10^2 + 4\,10 + 1 \\
   &=& 14641
 \end{eqnarray*}
@@ -24,8 +25,10 @@
 \newpar{6} Using (4) and (9) we have,
 \begin{quote}
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
-    \hline $r$ & $C_r^0$ & $C_r^1$ & $C_r^2$ & $C_r^3$ & $C_r^4$ &
-    $C_r^5$ & $C_r^6$ & $C_r^7$ & $C_r^8$ & $C_r^9$ \\
+    \hline $r$ & ${r \choose 0}$ & ${r \choose 1}$ & ${r \choose 2}$ &
+    ${r \choose 3}$ & ${r \choose 4}$ &
+    ${r \choose 5}$ & ${r \choose 6}$ & ${r \choose 7}$ & ${r \choose
+      8}$ & ${r \choose 9}$ \\
     \hline $-3$ & $1$ & $-3$ & $6$ & $-10$ & $15$ & $-21$ & $28$ &
     $-36$ & $45$ & $-55$ \\
     \hline $-2$ & $1$ & $-2$ & $3$ & $-4$ & $5$ & $-6$ & $7$ & $-8$ &
@@ -36,12 +39,12 @@
   \end{tabular}
 \end{quote}
 
-\newpar{7}  Since we have $C_n^k = C_n^{n-k}$, we can impose that $k
+\newpar{7}  Since we have ${n \choose k} = {n \choose {n-k}}$, we can impose that $k
 \le n-k$ without a loss of generality.  But we have,
 
-\[ C_n^k = \frac{n-k+1}{k}\ C_n^{k-1} \]
+\[ {n \choose k} = \frac{n-k+1}{k}\ {n \choose {k-1}} \]
 
-We then deduce that $C_n^k \ge C_n^{k-1}$ if $k \le n-k$.  Thus, the
+We then deduce that ${n \choose k} \ge {n \choose {k-1}}$ if $k \le n-k$.  Thus, the
 value of $k$ that achieves the maximum is $\lfloor n/2\rfloor$.
 
 \newpar{8} Leaving out the zeroes, the triangle is symmetric according
@@ -76,7 +79,7 @@ Given that $\lfloor (n-p)/p \rfloor = \lfloor n/p\rfloor - 1$, we then
 deduce
 
 
-\[  C_n^p = \lfloor n/p\rfloor \frac{\prod_{0< k < p}(k + p(\lfloor
+\[  {n \choose p} = \lfloor n/p\rfloor \frac{\prod_{0< k < p}(k + p(\lfloor
     n/p\rfloor - 1))}{(p-1)!}\,
   \prod_{1\le k\le n-p\lfloor n/p\rfloor }
   \frac{k+p\lfloor n/p\rfloor}{k+p\lfloor (n-p)/p\rfloor} \]
@@ -85,36 +88,36 @@ Given that $p$ is prime, for $k$ varying between $1$ and $p-1$, $k$ is
 invertible in $Z/pZ$. We then deduce that all the terms that appear as
 denominators in the previous equality are invertible terms.  Hence
 
-\[ C_n^p \equiv \lfloor n/p\rfloor \pmod p\]
+\[ {n \choose p} \equiv \lfloor n/p\rfloor \pmod p\]
 
 \subpar{b} Let $k$ be an integer between $1$ and $p-1$.  We have
-\[ p! = C_p^k k! (p-k)! \]
+\[ p! = {p \choose k} k! (p-k)! \]
 
 Since $p$ is prime, none of the term that appears in the two
 factorial divide $p$.  We then deduce that $k! (p-k)!$ divides
 $(p-1)!$. By rewriting the equality as
-\[ C_p^k = p\,\frac{(p-1)!}{k!(p-k)!}\]
+\[ {p \choose k} = p\,\frac{(p-1)!}{k!(p-k)!}\]
 
-we deduce that $C_p^k \equiv 0 \pmod p$.
+we deduce that ${p \choose k} \equiv 0 \pmod p$.
 
 \subpar{c} Let $k$ be an integer between $0$ and $p-1$. We have
 \begin{eqnarray*}
-  C_{p-1}^k &=& \frac{\prod_{p-k \le i\le p-1} i}{k!} \\
+  {{p-1} \choose k} &=& \frac{\prod_{p-k \le i\le p-1} i}{k!} \\
   &=& \frac{\prod_{1\le i\le k} (p-i)}{k!}
 \end{eqnarray*}
 
 Given that $p$ is prime, the denominator is invertible in $Z/pZ$,
 hence
-\[ C_{p-1}^k \equiv (-1)^k \pmod p.\]
+\[ {{p-1} \choose k} \equiv (-1)^k \pmod p.\]
 
 \subpar{d} Let $k$ be an integer between $2$ and $p-1$. We then have $p+2-k
 \le p$, and since
 
-\[  k!C_{p+1}^k = \prod_{p+2-k\le i\le p+1} i \]
+\[  k!{{p+1} \choose k} = \prod_{p+2-k\le i\le p+1} i \]
 
-we have $k! C_{p+1}^k \equiv 0 \pmod p$ and since $k!$ is invertible, we
+we have $k! {{p+1} \choose k} \equiv 0 \pmod p$ and since $k!$ is invertible, we
 then deduce
-\[ C_{p+1}^k \equiv 0 \pmod p.\]
+\[ {{p+1} \choose k} \equiv 0 \pmod p.\]
 
 \subpar{e} We have
 
@@ -157,12 +160,12 @@ On the other hand, we have
 From (*), we then deduce
 
 \begin{eqnarray*}
-  C_n^k &=& C_{\lfloor n/p\rfloor}^{\lfloor k/p\rfloor}
+  {n \choose k} &=& {{\lfloor n/p\rfloor} \choose {\lfloor k/p\rfloor}}
   \frac{\prod_{j=\lfloor (n-k)/p\rfloor}^{\lfloor
       n/p\rfloor-1}\prod_{0<i<p}(i+jp)} {\prod_{j=0}^{\lfloor
-      k/p\rfloor-1}\prod_{0<i<p}(i+jp)} C_{n\bmod p}^{k\bmod p} \\
-  &\equiv&  C_{\lfloor n/p\rfloor}^{\lfloor k/p\rfloor} C_{n\bmod
-    p}^{k\bmod p} \pmod p
+      k/p\rfloor-1}\prod_{0<i<p}(i+jp)} {{n\bmod p} \choose {k\bmod p}} \\
+  &\equiv&  {{\lfloor n/p\rfloor} \choose {\lfloor k/p\rfloor}} {{n\bmod
+    p} \choose {k\bmod p}} \pmod p
 \end{eqnarray*}
 
 \subpar{f} The result is easily obtained by induction using (e).
@@ -174,7 +177,7 @@ stationary to $0$ for a sufficiently large value of $i$. Using
 1.2.5--12, we have
 
 \begin{eqnarray*}
-  \mu\left( C_{a+b}^a \right) &=& \mu((a+b)!) - \mu(a!) - \mu(b!) \\
+  \mu\left( {{a+b} \choose a} \right) &=& \mu((a+b)!) - \mu(a!) - \mu(b!) \\
   &=& \frac{\sum_{i \in N} (a_i + b_i - c_i)}{p-1}
 \end{eqnarray*}
 
@@ -198,7 +201,7 @@ because none of the terms produce a carry.
 
 So finally,
 \begin{eqnarray*}
-  \mu\left( C_{a+b}^a\right) &=& \frac{\sum_{k \in N} \sum_{i_k \le i
+  \mu\left( {{a+b} \choose a}\right) &=& \frac{\sum_{k \in N} \sum_{i_k \le i
       < i_{k+1}} (a_i + b_i - c_i)}{p-1} \\
   &=& \sum_{k \in N} (j_k - i_k + 1)
 \end{eqnarray*}
@@ -213,26 +216,29 @@ system representations of $n$ and $k$ when $k \le n$ are
   n = a_r 2^r + \cdots + a_1 2 + a_0, \\
   k = b_r 2^r + \cdots + b_1 2 + b_0,
 \end{array}
-\mbox{ then } C_n^k \equiv C_{a_r}^{b_r} \ldots C_{a_1}^{b_1}
-C_{a_0}^{b_0} \equiv 1 \pmod 2
+\mbox{ then } {n \choose k} \equiv {{a_r} \choose {b_r}} \ldots {{a_1}
+  \choose {b_1}}
+{{a_0} \choose {b_0}} \equiv 1 \pmod 2
 \]
 
-Hence $a_i \ge b_i$ for all the choices of $k \le n$, otherwise $C_n^k
+Hence $a_i \ge b_i$ for all the choices of $k \le n$, otherwise ${n
+  \choose k}
 \equiv 0 \pmod 2$. This is only possible if $a_i = 1$ for $0 \le i \le
 r$.  Hence $n = 2^{r+1}-1$.
 
 \newpar{13} Let's show the formula by induction on $n \ge 0$.  If
 $n=0$, we have
 
-\[ \sum_{k=0}^0 C_{r+k}^k = 1 = C_{r+1}^0.\]
+\[ \sum_{k=0}^0 {{r+k} \choose k} = 1 = {{r+1} \choose 0}.\]
 
 Suppose that we have the equality for $n$, then we have
 
 \begin{eqnarray*}
-  \sum_{0\le k\le n+1}C_{r+k}^k &=& \sum_{0\le k \le n}C_{r+k}^k +
-  C_{r+n+1}^{n+1} \\
-  &=& C_{r+n+1}^n + C_{r+n+1}^{n+1}, \mbox{ by induction } \\
-  &=& C_{r+n+2}^{n+1}
+  \sum_{0\le k\le n+1}{{r+k} \choose k} &=& \sum_{0\le k \le n}{{r+k}
+    \choose k} +
+  {{r+n+1} \choose {n+1}} \\
+  &=& {{r+n+1} \choose n} + {{r+n+1} \choose {n+1}}, \mbox{ by induction } \\
+  &=& {{r+n+2} \choose {n+1}}
 \end{eqnarray*}
 
 \newpar{14} Let $k$ be an integer between $0$ and $n$.  We have
@@ -268,96 +274,103 @@ And finally
 
 \newpar{15} Let's show the property by induction on $r$.  Suppose
 $r=0$, then we have
-\[ (x+y)^0 = 1 = \sum_k C_0^k x^k y^{-k}.\]
+\[ (x+y)^0 = 1 = \sum_k {0 \choose k} x^k y^{-k}.\]
 
 Suppose that we have the property for $r$, then we have
 
 \begin{eqnarray*}
   (x+y)^{r+1} &=& (x + y) (x+y)^n \\
-  &=& (x+y) \sum_k C_r^k x^k y^{r-k}, \mbox{ by induction} \\
-  &=& \sum_k C_r^k x^{k+1} y^{r-k} + \sum_k C_r^k x^k y^{r+1-k} \\
-  &=& \sum_k C_r^{k-1} x^k y^{r+1-k} + \sum_k C_r^k x^k y^{r+1-k} \\
-  &=& \sum_k C_{r+1}^k x^k y^{r+1-k}
+  &=& (x+y) \sum_k {r \choose k} x^k y^{r-k}, \mbox{ by induction} \\
+  &=& \sum_k {r \choose k} x^{k+1} y^{r-k} + \sum_k {r \choose k} x^k y^{r+1-k} \\
+  &=& \sum_k {r \choose {k-1}} x^k y^{r+1-k} + \sum_k {r \choose k} x^k y^{r+1-k} \\
+  &=& \sum_k {{r+1} \choose k} x^k y^{r+1-k}
 \end{eqnarray*}
 
 \newpar{16} We have
 
 \begin{eqnarray*}
-  (-1)^k C_{-k}^{n-1} &=& (-1)^k \frac{-k (-k-1)\ldots
+  (-1)^k {{-k} \choose {n-1}} &=& (-1)^k \frac{-k (-k-1)\ldots
     (-k-n+2)}{(n-1)!} \\
   &=& (-1)^k (-n) (-n-1)\ldots(-k-n+2) \frac{(-1)^{n-k}}{(k-1)!} \\
-  &=& (-1)^n C_{-n}^{k-1}
+  &=& (-1)^n {{-n} \choose {k-1}}
 \end{eqnarray*}
 
 \newpar{17} We have
 \begin{eqnarray*}
   (1+x)^{r+s} &=& (1+x)^r (1+x)^s \\
-  &=& \sum_k C_r^k x^k \sum_k C_s^k x^k \\
-  &=& \sum_n \sum_k C_r^k C_s^{n-k} x^n \\
+  &=& \sum_k {r \choose k} x^k \sum_k {s \choose k} x^k \\
+  &=& \sum_n \sum_k {r \choose k} {s \choose {n-k}} x^n \\
 \end{eqnarray*}
 
 The two power series are equals thus their coefficients are equals
 too.  Thus
-\[ C_{r+s}^n = \sum_k C_r^k C_s^{n-k}.\]
+\[ {{r+s} \choose n} = \sum_k {r \choose k} {s \choose {n-k}}.\]
 
 \newpar{18} We have
 \begin{eqnarray*}
-  \sum_k C_r^{m+k} C_s^{n+k} &=& \sum_k C_r^k C_s^{n-m+k} \\
-  &=& \sum_k C_r^k C_s^{s+m-n-k},\ \mbox{from (6)} \\
-  &=& C_{r+s}^{s+m-n}, \mbox{from (21)}\\
-  &=& C_{r+s}^{r-m+n}, \mbox{from (6)}
+  \sum_k {r \choose {m+k}} {s \choose {n+k}} &=& \sum_k {r \choose k}
+      {s \choose {n-m+k}} \\
+  &=& \sum_k {r \choose k} {s \choose {s+m-n-k}},\ \mbox{from (6)} \\
+  &=& {{r+s} \choose {s+m-n}}, \mbox{from (21)}\\
+  &=& {{r+s} \choose {r-m+n}}, \mbox{from (6)}
 \end{eqnarray*}
 
 \newpar{19} Let's show the equality by induction on $r \ge 0$.  If
 $r=0$, we have
 \begin{eqnarray*}
-  \sum_k C_0^k C_n^{s+k}(-1)^{-k} &=& \sum_k \delta_{k,0}
-  C_n^{s+k}(-1)^{k} \\
-  &=& C_n^s
+  \sum_k {0 \choose k} {n \choose {s+k}}(-1)^{-k} &=& \sum_k \delta_{k,0}
+  {n \choose {s+k}}(-1)^{k} \\
+  &=& {n \choose s}
 \end{eqnarray*}
 
 Suppose that we have the equality for $r$, then we have
 \begin{eqnarray*}
-  \sum_k C_{r+1}^k C_n^{s+k}(-1)^{r+1-k} &=&
-  \sum_k \left( C_r^{k-1} + C_r^k \right) C_n^{s+k} (-1)^{r+1-k} \\
-  &=& \sum_k C_r^k C_n^{s+k+1} (-1)^{r-k} - \sum_k C_r^k C_n^{s+k}
+  \sum_k {{r+1} \choose k} {n \choose {s+k}}(-1)^{r+1-k} &=&
+  \sum_k \left( {r \choose {k-1}} + {r \choose k} \right) {n \choose
+    {s+k}} (-1)^{r+1-k} \\
+  &=& \sum_k {r \choose k} {n \choose {s+k+1}} (-1)^{r-k} -\\
+  && \sum_k {r \choose k} {n \choose {s+k}}
   (-1)^{r-k} \\
-  &=& C_{s+1}^{n-r} - C_s^{n-r},\mbox{ by induction} \\
-  &=& C_s^{n-r} \left( \frac{s+1}{s+1+r-n} - 1 \right) \\
-  &=& C_s^{n-r} \frac{n-r}{s+1+r-n} \\
-  &=& C_s^{n-r-1}
+  &=& {{s+1} \choose {n-r}} - {s \choose {n-r}},\mbox{ by induction} \\
+  &=& {s \choose {n-r}} \left( \frac{s+1}{s+1+r-n} - 1 \right) \\
+  &=& {s \choose {n-r}} \frac{n-r}{s+1+r-n} \\
+  &=& {s \choose {n-r-1}}
 \end{eqnarray*}
 
-\newpar{20} We have
+\newpar{20} Using (19), we have
 \begin{eqnarray*}
-  \sum_{k=0}^r C_{r-k}^m C_s^{k-t} (-1)^{k-t} &=&
-  (-1)^{r-m-t} \sum_{k=0}^r C_{-(m+1)}^{r-k-m} C_s^{k-t},\mbox{ from
-    (19)} \\
-  &=& (-1)^{r-m-t} \sum_{k=-t}^{r-t} C_s^k C_{-(m+1)}^{r-k-t-m} \\
-  &=& (-1)^{r-m-t} \sum_k C_s^k C_{-(m+1)}^{r-k-t-m} \\
-  &=& (-1)^{r-m-t} C_{s-m-1}^{r-t-m}, \mbox{ from (21)} \\
-  &=& C_{r-t-s}^{r-t-m},\mbox{ from (17)}
+  \sum_{k=0}^r {{r-k} \choose m} {s \choose {k-t}} (-1)^{k-t} &=&
+  (-1)^{r-m-t} \sum_{k=0}^r {{-(m+1)} \choose {r-k-m}} {s \choose
+    {k-t}} \\
+  &=& (-1)^{r-m-t} \sum_{k=-t}^{r-t} {s \choose k} {{-(m+1)} \choose {r-k-t-m}} \\
+  &=& (-1)^{r-m-t} \sum_k {s \choose k} {{-(m+1)} \choose {r-k-t-m}} \\
+  &=& (-1)^{r-m-t} {{s-m-1} \choose {r-t-m}}, \mbox{ from (21)} \\
+  &=& {{r-t-s} \choose {r-t-m}},\mbox{ from (17)}
 \end{eqnarray*}
 
 In the same vein, we have
 \begin{eqnarray*}
-  \sum_{k=0}^r C_{r-k}^m C_{s+k}^n &=& \sum_{k=0}^r C_{r-k}^m
-  C_{-(m+1)}^{s+k-n} (-1)^{s+k-n}, \mbox{ using (19)} \\
-  &=& C_{r+s+1}^{r+s-m-n}, \mbox{ using (24) with $t = n-s$} \\
-  &=& C_{r+s+1}^{m+n+1}
+  \sum_{k=0}^r {{r-k} \choose m} {{s+k} \choose n} &=& \sum_{k=0}^r
+      {{r-k} \choose m}
+  {{-(m+1)} \choose {s+k-n}} (-1)^{s+k-n}, \mbox{ using (19)} \\
+  &=& {{r+s+1} \choose {r+s-m-n}}, \mbox{ using (24) with $t = n-s$} \\
+  &=& {{r+s+1} \choose {m+n+1}}
 \end{eqnarray*}
 
-\newpar{21} Because in the definition of $C_n^k$, $k$ should be an
+\newpar{21} Because in the definition of ${n \choose k}$, $k$ should be an
 integer.
 
 \newpar{22} For $s = n-1-r+nt$, we have
-\[\sum_{k\ge 0} C_{r-tk}^k C_{s-t(n-k)}^{n-k} \frac{r}{r-tk} = \sum_{k\ge 0} C_{r-tk}^k
-  C_{n-1-r+tk}^{n-k} \frac{r}{r-tk} \mbox{ (*)}\]
+\begin{eqnarray*}
+  \sum_{k\ge 0} {{r-tk} \choose k} {{s-t(n-k)} \choose {n-k}} &&
+  \frac{r}{r-tk} = \\ &&\sum_{k\ge 0} {{r-tk} \choose k}
+       {{n-1-r+tk} \choose {n-k}} \frac{r}{r-tk} \mbox{ (*)}
+\end{eqnarray*}
 
 Let's suppose that $r$ and $t$ are integers. If $k \le r - tk$ then
 \[ (n-1-r+tk) - (n-k) \le -1 < 0.\]
 
-Hence $C_{r-tk}^k C_{n-1-r+tk}^{n-k} = 0$.  Thus we deduce that (*) is
+Hence ${{r-tk} \choose k} {{n-1-r+tk} \choose {n-k}} = 0$.  Thus we deduce that (*) is
 equal to $0$ for $r$ and $t$ integers.
 
 But the expression in (*) is a polynomial in $r$.  For each fix integer
@@ -367,19 +380,20 @@ integer.
 
 Similarly, (*) is also a polynomial in $t$.  Using the same reasoning,
 we deduce finally for $r$ and $t$ real numbers
-\[\sum_{k\ge 0} C_{r-tk}^k C_{n-1-r+tk}^{n-k} \frac{r}{r-tk} = 0 =
-C_{n-1}^n.\]
+\[\sum_{k\ge 0} {{r-tk} \choose k} {{n-1-r+tk} \choose {n-k}}
+\frac{r}{r-tk} = 0 = {{n-1} \choose n}.\]
 
 \newpar{23}  Suppose that (26) holds for $(r,s,t,n)$ and
 $(r,s-t,t,n-1)$.  Then we have
 \begin{eqnarray*}
-  S(r,s+1,t,n) &=& \sum_{k\ge 0} C_{r-tk}^k C_{s+1-t(n-k)}^{n-k}
+  S(r,s+1,t,n) &=& \sum_{k\ge 0} {{r-tk} \choose k} {{s+1-t(n-k)}
+    \choose {n-k}}
   \frac{r}{r-tk}\\
-  &=& \sum_{k\ge 0} C_{r-tk}^k \left( C_{s-t(n-k)}^{n-k-1} +
-  C_{s-t(n-k)}^{n-k}\right) \frac{r}{r-tk} \\
+  &=& \sum_{k\ge 0} {{r-tk} \choose k} \left( {{s-t(n-k)} \choose {n-k-1}} +
+  {{s-t(n-k)} \choose {n-k}}\right) \frac{r}{r-tk} \\
   &=& S(r,s-t,t,n-1) + S(r,s,t,n) \\
-  &=& C_{r+s-tn}^{n-1} + C_{r+s-tn}^n \\
-  &=& C_{r+s+1-tn}^n
+  &=& {{r+s-tn} \choose {n-1}} + {{r+s-tn} \choose n} \\
+  &=& {{r+s+1-tn} \choose n}
 \end{eqnarray*}
 
 \newpar{24} Each member of the equality in (26) are polynomials in
@@ -427,14 +441,14 @@ If we note $\{x\} = x - \lfloor x\rfloor$, then we have
 
 When then deduce that $\sum_k A_k(r,t) z^k$ is defined for $|z|$ small
 enough.  Using (26) with $s = tn$, we have
-\[ \sum_k A_k(r,t) C_{tk}^{n-k} = C_r^n.\]
+\[ \sum_k A_k(r,t) {{tk} \choose {n-k}} = {r \choose n}.\]
 
 Hence
 \begin{eqnarray*}
-  x^r &=& \sum_k C_r^k (x-1)^k \\
-  &=& \sum_k \sum_j A_j(r,t) C_{tj}^{k-j} (x-1)^k \\
-  &=& \sum_j A_j(r,t) \sum_k C_{tj}^{k-j} (x-1)^k \\
-  &=& \sum_j A_j(r,t) \sum_k C_{tj}^k (x-1)^{k+j} \\
+  x^r &=& \sum_k {r \choose k} (x-1)^k \\
+  &=& \sum_k \sum_j A_j(r,t) {{tj} \choose {k-j}} (x-1)^k \\
+  &=& \sum_j A_j(r,t) \sum_k {{tj} \choose {k-j}} (x-1)^k \\
+  &=& \sum_j A_j(r,t) \sum_k {{tj} \choose k} (x-1)^{k+j} \\
   &=& \sum_j A_j(r,t) (x-1)^j x^{tj} \\
   &=& \sum_j A_j(r,t) z^k
 \end{eqnarray*}
@@ -446,13 +460,13 @@ Hence
 \begin{eqnarray*}
   0 &=& \frac{d}{dx} \left( \sum_k A_k(r,t) x^{tk-r}(x-1)^k \right) \\
   &=& \sum_k A_k(r,t) ((tk-r) x^{-r-1} + k x^{-r}(x-1)^{-1}) z^k \\
-  &=& - r x^{-1} \sum_k C_{r-tk}^k z^k + \sum_k A_k(r,t) k
+  &=& - r x^{-1} \sum_k {{r-tk} \choose k} z^k + \sum_k A_k(r,t) k
   (x-1)^{-1} z^k \\
 \end{eqnarray*}
 
 Hence
 \begin{eqnarray*}
-  \sum_k C_{r-tk}^k z^k &=& \frac{x^{r+1}z}{r(x-1)}\ \frac{d}{dz}
+  \sum_k {{r-tk} \choose k} z^k &=& \frac{x^{r+1}z}{r(x-1)}\ \frac{d}{dz}
   \left( \sum_k A_k(r,t) z^k\right) \\
   &=& \frac{x^{1+t}}{r} \frac{d}{dz} x^r \\
   &=& x^{t+r} \frac{dx}{dz}
@@ -463,7 +477,7 @@ But by definition we have
 \frac{dx}{dz} \]
 
 And finally
-\[ \sum_k C_{r-tk}^k z^k = \frac{x^{r+1}}{(t+1)x - t} .\]
+\[ \sum_k {{r-tk} \choose k} z^k = \frac{x^{r+1}}{(t+1)x - t} .\]
 
 \newpar{27} We have using \textbf{25}
 \begin{eqnarray*}
@@ -479,16 +493,16 @@ We then deduce that
 Using \textbf{25} and \textbf{26}, we have
 \begin{eqnarray*}
   x^r \times \frac{x^{s+1}}{(t+1)x-t} &=& \sum_i A_i(r,t) z^i \times
-  \sum_j C_{s-tj}^j z^j \\
-  &=& \sum_n \sum_i A_i(r,t) C_{s-t(n-i)}^{n-i} z^n
+  \sum_j {{s-tj} \choose j} z^j \\
+  &=& \sum_n \sum_i A_i(r,t) {{s-t(n-i)} \choose {n-i}} z^n
 \end{eqnarray*}
 
 But we have also from \textbf{26}
 \begin{eqnarray*}
-  \frac{x^{r+s+1}}{(t+1)x-t} &=& \sum_n C_{r+s-tn}^n z^n
+  \frac{x^{r+s+1}}{(t+1)x-t} &=& \sum_n {{r+s-tn} \choose n} z^n
 \end{eqnarray*}
 We then deduce that
-\[ \sum_i A_i(r,t) C_{s-t(n-i)}^{n-i} = C_{r+s-tn}^n.\]
+\[ \sum_i A_i(r,t) {{s-t(n-i)} \choose {n-i}} = {{r+s-tn} \choose n}.\]
 
 \newpar{28}  Let's show the equality by induction on the integer $n
 \ge 0$.  If $n=0$, then we're reduced to the equation (21).  Suppose
