@@ -546,4 +546,20 @@ Hence
 \end{eqnarray*}
 The last equality is obtained by taking $x_i = i-1$ for $1\le i\le
 r+1$ in exercise 1.2.3-33.
+
+\newpar{30}  We have
+\begin{eqnarray*}
+  \sum_k {n+k \choose m+2k} {2k \choose k} \frac{(-1)^k}{k+1} &=&
+  \sum_k {n+k \choose m+2k} {-k-1 \choose k} \frac{1}{k+1}\mbox{ using
+    (17)} \\
+  &=& \sum_k {n+k \choose n-m -k} {-k-1 \choose k} \frac{1}{k+1} \\
+  &=& \sum_k {2n - m - (n-m -k) \choose n-m-k}{-k-1\choose k} \frac{1}{k+1}
+\end{eqnarray*}
+
+Using (26) with the substitutions: $r \la -1$, $t \la 1$, $n \la n-m$,
+$s \la 2n - m$, we then deduce
+
+\[ \sum_k {n+k \choose m+2k} {2k \choose k} \frac{(-1)^k}{k+1} = {n-1
+  \choose m-1}.\]
+
 \end{document}
