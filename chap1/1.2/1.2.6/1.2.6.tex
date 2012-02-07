@@ -562,4 +562,25 @@ $s \la 2n - m$, we then deduce
 \[ \sum_k {n+k \choose m+2k} {2k \choose k} \frac{(-1)^k}{k+1} = {n-1
   \choose m-1}.\]
 
+\newpar{31}  We have
+\begin{eqnarray*}
+  && \sum_k {m-r+s \choose k} {n+r-s \choose n-k} {r+k \choose
+    m+n}\\
+  &=& \sum_k \sum_j {m-r+s \choose k} {n+r-s \choose n-k}{r
+    \choose m+n -j}{k \choose j} \\
+  &=& \sum_k \sum_j {m-r+s \choose
+    j}{m-r+s-j \choose k-j} {n+r-s \choose n-k} {r \choose m+n -j} \\
+  &=& \sum_k \sum_j {m-r+s \choose j} {m-r+s -j \choose m-(k+r-s)}{n+r-s
+    \choose k+r-s} {r \choose m+n - j} \\
+  &=& \sum_k \sum_j {m-r+s \choose j} {m-r+s - j \choose m-k} {n+r-s
+    \choose k} {r \choose m+n -j } \\
+  &=& \sum_j {m-r+s \choose j} {r \choose m+n -j} \sum_k {m-r+s -j
+    \choose m-k} {n+r-s \choose k} \\
+  &=& \sum_j {m-r+s \choose j} {r \choose m+n - j} {m + n - j \choose
+    m} \\
+  &=& \sum_j {m-r + s \choose j} {r \choose m} {r -m \choose n - j} \\
+  &=& {r \choose m} \sum_j {m-r+s \choose j} {r-m \choose n-j} \\
+  &=& {r \choose m} {s \choose n}
+\end{eqnarray*}
+
 \end{document}
