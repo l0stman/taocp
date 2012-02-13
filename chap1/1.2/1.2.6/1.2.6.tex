@@ -1,6 +1,7 @@
 \documentclass[a4paper,12pt]{article}
 \newcommand{\newpar}[1]{\bigskip \noindent \textbf{#1.}}
 \newcommand{\subpar}[1]{\medskip \noindent (#1)}
+\newcommand{\stirlingone}[2]{{#1 \atopwithdelims[]#2}}
 \newcommand{\la}{\leftarrow}
 \newcommand{\ra}{\rightarrow}
 \begin{document}
@@ -583,4 +584,31 @@ $s \la 2n - m$, we then deduce
   &=& {r \choose m} {s \choose n}
 \end{eqnarray*}
 
+\newpar{32} We have
+\begin{eqnarray*}
+  \sum_k \stirlingone{n}{k} x^k &=& (-1)^n \sum_k
+  (-1)^{n-k}\stirlingone{n}{k} (-x)^k \\
+  &=& (-1)^n (-x)^{\underline{n}}, \mbox{ by definition} \\
+  &=& x^{\overline{n}}
+\end{eqnarray*}
+
+\newpar{33} Let's show the equality by induction on $n$.  If $n=0$, we
+have
+\[ 1 = (x + y)^{\overline{0}} = \sum_k {0 \choose k} x^{\overline{k}}
+y^{\overline{0-k}}.\]
+
+Suppose we have the equality for $n$, then we have
+\begin{eqnarray*}
+  \sum_k {n+1 \choose k} x^{\overline{k}} y^{\overline{n+1-k}} &=&
+  \sum_k \left( {n \choose k-1} + {n \choose k} \right)
+  x^{\overline{k}} y^{\overline{n+1-k}} \\
+  &=& \sum_k {n \choose k} x^{\overline{k+1}} y^{\overline{n-k}} +
+  \sum_k {n \choose k} x^{\overline{k}} y^{\overline{n+1-k}} \\
+  &=& \sum_k {n \choose k} x^{\overline{k}} y^{\overline{n-k}} ((x + k
+  )+ (y + n - k)) \\
+  &=& (x + y + n) \sum_k {n \choose k} x^{\overline{k}}
+  y^{\overline{n-k}}\\
+  &=& (x + y + n) (x+y)^{\overline{n}}, \mbox{ by induction} \\
+  &=& (x + y)^{\overline{n+1}}
+\end{eqnarray*}
 \end{document}
