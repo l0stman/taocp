@@ -2,6 +2,7 @@
 \newcommand{\newpar}[1]{\bigskip \noindent \textbf{#1.}}
 \newcommand{\subpar}[1]{\medskip \noindent (#1)}
 \newcommand{\stirlingone}[2]{{#1 \atopwithdelims[]#2}}
+\newcommand{\stirlingtwo}[2]{{#1 \atopwithdelims\{\}#2}}
 \newcommand{\la}{\leftarrow}
 \newcommand{\ra}{\rightarrow}
 \begin{document}
@@ -611,4 +612,103 @@ Suppose we have the equality for $n$, then we have
   &=& (x + y + n) (x+y)^{\overline{n}}, \mbox{ by induction} \\
   &=& (x + y)^{\overline{n+1}}
 \end{eqnarray*}
+
+\newpar{34}  Given that $a^{\overline{n}} = n!{a+n-1 \choose n}$, we
+then have
+\begin{eqnarray*}
+  S &=& \sum_k {n \choose k}
+  x(x-kz+1)^{\overline{k-1}}(y+kz)^{\overline{n-k}} \\ &=& \sum_k {n
+    \choose k} x (k-1)!(n-k)! {x-k(z-1)-1 \choose k-1} {y + kz + n - k
+    - 1 \choose n-k} \\
+  &=& n!\sum_k \frac{x}{k} {x -k (z-1)-1 \choose k-1}{y+nz - 1 -
+    (z-1)(n-k) \choose n-k} \\
+  &=& n! \sum_k \frac{x}{x - k(z-1)} {x - k(z-1) \choose k}{y+nz-1 -
+    (z-1)(n-k) \choose n-k}
+\end{eqnarray*}
+Using (26) with $r=x$, $s = y+nz-1$ and $t = z-1$, we then deduce that
+\begin{eqnarray*}
+  \sum_k {n\choose k}x(x-kz+1)^{\overline{k-1}}(y+kz)^{\overline{n-k}}
+  &=& n! {x + y + n - 1 \choose n} \\
+  &=& (x+y)^{\overline{n}}
+\end{eqnarray*}
+
+\newpar{35} We have
+\begin{eqnarray*}
+  x^{\underline{n}} &=& n! {x \choose n} \\
+  &=& n! \left( {x-1 \choose n} + {x-1 \choose n-1} \right) \\
+  &=& (x-1)^{\underline{n}} + n (x-1)^{\underline{n-1}} \\
+  &=& x^{-1} \left( x^{\underline{n+1}} + n x^{\underline{n}}\right)\\
+  &=& x^{-1} \left( \sum_k (-1)^{n+1-k} \stirlingone{n+1}{k} x^k + n
+  \sum_k (-1)^{n-k}\stirlingone{n}{k}x^k\right) \\
+  &=& \sum_k (-1)^{n-k} \left( -\stirlingone{n+1}{k} + n
+  \stirlingone{n}{k}\right) x^{k-1}
+\end{eqnarray*}
+
+From (44), we then deduce that
+\[ - \stirlingone{n}{k-1} = - \stirlingone{n+1}{k} + n
+\stirlingone{n}{k}.\]
+
+Hence
+\[ \stirlingone{n+1}{k} = n \stirlingone{n}{k} +
+\stirlingone{n}{k-1}.\]
+
+We have
+\begin{eqnarray*}
+  x^{n+1} &=& x\ x^n \\
+  &=& x \sum_k \stirlingtwo{n}{k} x^{\underline{k}} \\
+  &=& x \sum_k \stirlingtwo{n}{k} k! {x \choose k} \\
+  &=& x \sum_k \stirlingtwo{n}{k} k! \left( {x-1 \choose k} + {x-1
+    \choose k-1} \right) \\
+  &=& x \sum_k \stirlingtwo{n}{k} \left( (x-1)^{\underline{k}} + k
+  (x-1)^{\underline{k-1}} \right) \\
+  &=& \sum_k \stirlingtwo{n}{k} \left( x^{\underline{k+1}} + k
+  x^{\underline{k}} \right) \\
+  &=& \sum_k \left(k \stirlingtwo{n}{k} + \stirlingtwo{n}{k-1}\right)
+  x^{\underline{k}}
+\end{eqnarray*}
+
+Hence
+\[ \sum_k \stirlingtwo{n+1}{k} x^{\underline{k}} = \sum_k \left(k
+\stirlingtwo{n}{k} + \stirlingtwo{n}{k-1}\right) x^{\underline{k}}.\]
+
+Taking successively $x = 0, 1, \ldots$ and dividing the equation by
+$x, x-1, \ldots$ we deduce easily that
+\[ \stirlingtwo{n+1}{k} = k \stirlingtwo{n}{k} +
+\stirlingtwo{n}{k-1}.\]
+
+\newpar{36} We have
+\[ \sum_k {n \choose k} = \sum_k {n \choose k} 1^k 1^{n-k} = (1 + 1)^n
+= 2^n.\]
+And
+\[ \sum_k {n \choose k} (-1)^k = \sum_k {n \choose k} (-1)^k 1^{n-1} =
+(1-1)^n = \delta_{0,n}.\]
+
+\newpar{37} We have
+\[ 2^n + \delta_{0,n} = \sum_k {n \choose k} + \sum_k {n \choose k}
+(-1)^k = 2 \sum_{2k} {n \choose 2k}.\]
+
+Hence
+\[ \sum_{2k} {n \choose 2k} = \frac{2^n + \delta_{0,n}}{2}.\]
+
+\newpar{38} Note $\omega = e^{2\pi i/m}$.  We have
+\begin{eqnarray*}
+  \sum_{l\ge 0} {n \choose lm + k} &=& \sum_l {n \choose l} [ l \equiv
+    k \pmod m ] \\
+  &=& \sum_l {n \choose l} \frac{1}{m} \sum_{0 \le j < m}
+  \omega^{j(l-k)} \\
+  &=& \frac{1}{m} \sum_{0 \le j < m} \omega^{-jk} \sum_l {n \choose l}
+  \omega^{jl} \\
+  &=& \frac{1}{m} \sum_{0\le j < m} \omega^{-jk} (1+\omega^j)^n \\
+  &=& \frac{1}{m} \sum_{0\le j <m} \omega^{j(n/2 - k)}
+  \left(\omega^{j/2} + \omega^{-j/2}\right)^n \\
+  &=& \frac{1}{m} \sum_{0\le j <m} \omega^{j(n/2 - k)} \left(2
+  \cos\left(j\frac{\pi}{m}\right)\right)^n \\
+  &=& \Re\left(\frac{1}{m} \sum_{0\le j <m} \omega^{j(n/2 - k)} \left(2
+  \cos\left(j\frac{\pi}{m}\right)\right)^n \right)
+\end{eqnarray*}
+The last equality is true since the left-hand side of the equality is
+a real number.  Hence
+\[ \sum_{l\ge 0} {n \choose lm + k} = \frac{1}{m} \sum_{0\le j < m}
+\left( 2 \cos\left(\frac{j\pi}{m} \right) \right)^n
+\cos\left(\frac{j(n-2k)\pi}{m}\right).\]
 \end{document}
