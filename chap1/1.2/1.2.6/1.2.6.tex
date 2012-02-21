@@ -711,4 +711,125 @@ a real number.  Hence
 \[ \sum_{l\ge 0} {n \choose lm + k} = \frac{1}{m} \sum_{0\le j < m}
 \left( 2 \cos\left(\frac{j\pi}{m} \right) \right)^n
 \cos\left(\frac{j(n-2k)\pi}{m}\right).\]
+
+\newpar{39} From \textbf{32}, we have
+\[ \sum_k \stirlingone{n}{k} = 1^{\overline{n}} = n!.\]
+And by definition
+\[ \sum_k \stirlingone{n}{k}(-1)^k = (-1)^n 1^{\underline{n}} = [ n = 0].\]
+
+\newpar{40} \subpar{a} By doing the variable substitution $t \la 1-t$,
+we deduce that $B(x, y) = B(y, x)$.  Hence
+\begin{eqnarray*}
+  B(1, x) &=& B(x, 1) \\
+  &=& \int_0^1 t^{x-1} dt \\
+  &=& \left[ \frac{t^x}{x} \right]_0^1 \\
+  &=& \frac{1}{x}
+\end{eqnarray*}
+
+\subpar{b} We have
+\begin{eqnarray*}
+  B(x+1, y) + B(x, y+1) &=& \int_0^1 t^{x-1}(1-t)^{y-1}(t + 1 - t)
+  dt\\
+  &=& B(x, y)
+\end{eqnarray*}
+
+\subpar{c} By using an integration by parts, we have
+\begin{eqnarray*}
+  B(x, y+1) &=& \left[ \frac{t^x}{x}(1-t)^y \right]_0^1 +
+  \frac{y}{x}\int_0^1 t^x (1-t)^{y-1} dt \\
+  &=& \frac{y}{x} B(x+1, y)
+\end{eqnarray*}
+
+And from (b), we deduce
+\[ B(x, y) = \frac{x+y}{y} B(x, y+1).\]
+
+\newpar{41} \subpar{a} From \textbf{40} (c), for each $k$ integer we have
+\[ \frac{B(x, y + k + 1)}{B(x, y+k)} = \frac{x + y + k}{y+k}.\]
+Hence
+\begin{eqnarray*}
+  \frac{B(x, y+m+1)}{B(x, y)} &=& \prod_{k=0}^m \frac{B(x,
+    y+k+1)}{B(x, y+k)} \\
+  &=& \prod_{k=0}^m \frac{x+y+k}{y+k} \\
+  &=& \frac{\Gamma_m(x+y)}{\Gamma_m(y)m^x}
+\end{eqnarray*}
+
+\subpar{b} Note $n = \lfloor y\rfloor$.  We have
+\[ n + m + 1 \le y + m + 1 < n+m+2.\]
+Hence
+\[ B(x, n+m+1) \ge B(x, y+m+1) \ge B(x, n+m+2).\]
+Thus
+\[ \frac{\Gamma_{n+m}(x)}{(n+m)^x} \ge B(x, y+m+1) \ge
+\frac{\Gamma_{n+m+1}(x)}{(n+m+1)^x}.\]
+And finally
+\[ \frac{\Gamma_{n+m}(x)}{(1+n/m)^x} \ge m^x B(x, y+m+1) \ge
+\frac{\Gamma_{n+m+1}(x)}{(1+(n+1)/m)^x}.\]
+
+We then deduce that
+\[ \lim_{m \to +\infty} m^x B(x, y+m+1) = \Gamma(x).\]
+
+From (a), we then deduce that
+\[ B(x, y) = \frac{\Gamma(x) \Gamma(y)}{\Gamma(x+y)}.\]
+
+\newpar{42}  From \textbf{41} (b), we have
+\begin{eqnarray*}
+  B(k+1, r+1-k) &=& \frac{k!\Gamma(r+1-k)}{\Gamma(r+2)} \\
+  &=& \frac{k!}{(r+1)r(r-1) \ldots (r+1-k)} \\
+  &=& \frac{1}{(r+1){r \choose k}}
+\end{eqnarray*}
+Hence
+\[ {r \choose k} = \frac{1}{(r+1)B(k+1, r+1-k)}.\]
+
+\newpar{43} We have
+\[ B(1/2, 1/2) = \int_0^1 \frac{dt}{\sqrt{t(1-t)}}.\]
+
+$\theta \mapsto \sin^2\theta$ is a homeomorphism from $[0, \pi/2]$ to
+$[0, 1]$. Thus by doing the variable substitution $t \la
+\sin^2\theta$, we have
+\begin{eqnarray*}
+  B(1/2, 1/2) &=& \int_0^{\pi/2} \frac{2 \sin\theta \cos\theta
+    d\theta}{\sqrt{\sin^2\theta \cos^2\theta}} \\
+  &=& \pi
+\end{eqnarray*}
+
+\newpar{44} We have from \textbf{41} (b) and given that $\Gamma(x+1) =
+x\Gamma(x)$
+\begin{eqnarray*}
+  \frac{1}{{r \choose 1/2} {2r \choose r}} &=&
+  (r+1)B(3/2,r+1/2)(2r+1)B(r+1, r+1) \\
+  &=& (r+1)(2r+1)
+  \frac{\Gamma(3/2)\Gamma(r+1/2)}{\Gamma(r+2)}\times\frac{\Gamma(r+1)\Gamma(r+1)}{\Gamma(2r+2)}
+  \\ &=& \frac{\Gamma(3/2)\Gamma(r+1/2) \Gamma(r+1)}{\Gamma(2r+1)} \\
+\end{eqnarray*}
+
+We have $\Gamma(3/2) = 1/2 \times \Gamma(1/2) = \sqrt{\pi}/2$.  And
+\begin{eqnarray*}
+  \frac{\Gamma_m(r+1/2)\Gamma_m(r+1)}{\Gamma_{2m}(2r+1)} &=&
+  \frac{\frac{m^{r+1/2}m!}{(r+1/2)(r+3/2)\cdots(r+(m+1)/2} \times
+    \frac{m^{r+1}m!}{(r+1)(r+2)\cdots(r+m+1)}}
+       {\frac{(2m)^{2r+1}(2m)!}{(2r+1)(2r+2)\cdots(2r+2m+1)}} \\
+       &=& \frac{2^{2m-2r}\sqrt{m}}{r+m+1} \times
+       \frac{(m!)^2}{(2m)!}\\
+       &{\simeq \atop m \to +\infty}& \frac{2^{2m-2r}}{\sqrt{m}}\times
+       \frac{\left(\frac{m}{e}\right)^{2m} 2 \pi
+         m}{\left(\frac{2m}{e}\right)^{2m} \sqrt{4\pi m}} \\
+       &{\simeq \atop m \to +\infty}& \frac{\sqrt{\pi}}{2^{2r}}
+\end{eqnarray*}
+
+Thus finally
+\begin{eqnarray*}
+  {r \choose 1/2}{2r \choose r} &=&
+  \frac{2\Gamma(2r+1)}{\sqrt{\pi}\ \Gamma(r+1/2)\Gamma(r+1)} \\
+  &=& \lim_{m \to +\infty}
+  \frac{2\Gamma_{2m}(2r+1)}{\sqrt{\pi}\ \Gamma_m(r+1/2)\Gamma_m(r+1)}
+\\
+&=& \frac{2^{2r+1}}{\pi}
+\end{eqnarray*}
+
+\newpar{45} We have
+\begin{eqnarray*}
+  \frac{{r \choose k}}{r^k} &=& \frac{1}{(r+1)r^kB(k+1, r+1-k)} \\
+  &=& \frac{\Gamma(r+2)}{(r+1)r^kk!\Gamma(r+1-k)} \\
+  &=& \frac{r(r-1)\cdots(r+1-k)}{r^kk!} \\
+  &{\to \atop r \to +\infty}& \frac{1}{k!}
+\end{eqnarray*}
 \end{document}
