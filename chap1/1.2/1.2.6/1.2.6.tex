@@ -831,4 +831,97 @@ Thus finally
   &=& \frac{r(r-1)\cdots(r+1-k)}{r^kk!} \\
   &{\to \atop r \to +\infty}& \frac{1}{k!}
 \end{eqnarray*}
+
+\newpar{46} We have
+\begin{eqnarray*}
+  {x+y \choose y} &=& \frac{1}{(x+y+1)B(y+1, x+1)} \\
+  &=& \frac{\Gamma(x+y+1)}{\Gamma(x+1)\Gamma(y+1)} \\
+  &{\simeq \atop x,y \to +\infty}&
+  \frac{\left(\frac{x+y}{e}\right)^{x+y}\sqrt{(x+y)}}{\left(\frac{x}{e}\right)^{x}\left(\frac{y}{e}\right)^{y}
+    \sqrt{2\pi x y}} \\
+  &=& \sqrt{\frac{1}{2\pi}\left(\frac{1}{x}+\frac{1}{y}\right)}
+  \left(1 + \frac{y}{x}\right)^x   \left(1 + \frac{x}{y}\right)^y
+\end{eqnarray*}
+
+Hence
+\[ {2n \choose n} {\simeq \atop n \to +\infty} \frac{4^n}{\sqrt{\pi
+    n}}.\]
+
+\newpar{47}  For $k$ integer, we have
+\begin{eqnarray*}
+  {r \choose k} {r-1/2 \choose k} &=&
+  \frac{\prod_{i=0}^{k-1}(r-i)}{k!} \times
+  \frac{\prod_{i=0}^{k-1}(r-1/2-i)}{k!} \\
+  &=& \frac{\prod_{i=0}^{k-1}(2r-2i)}{2^kk!} \times
+  \frac{\prod_{i=0}^{k-1}(2r-2i-1)}{2^kk!} \\
+  &=& \frac{\prod_{i=0}^{2k-1}(2r-i)}{4^k (k!)^2} \\
+  &=& \frac{1}{4^k} \times \frac{\prod_{i=0}^{k-1}(2r-i)}{k!} \times
+  \frac{\prod_{i=k}^{2k-1}(2r-i)}{k!} \\
+  &=& \frac{1}{4^k} \times \frac{\prod_{i=0}^{k-1}(2r-i)}{k!} \times
+  \frac{\prod_{i=0}^{k-1}(2r-k-i)}{k!} \\
+  &=& \left. {2r \choose k}{2r-k \choose k} \right/4^k
+\end{eqnarray*}
+
+And using (20), we have
+\[ \left. {2r \choose k}{2r-k \choose k} \right/4^k = \left. {2r
+  \choose 2k}{2k \choose k} \right/ 4^k\]
+
+And taking $r = -1/2$, we deduce
+\[ (-1)^k {-1/2 \choose k} = \left. (-1)^k {-1-k \choose k}\right/4^k = \left.
+   {2k \choose k}\right/4^k\]
+
+\newpar{48}  We have the fraction decomposition
+\[ \frac{1}{x(x+1)\ldots(x+n)} = \sum_{k=0}^n \frac{a_k}{x+k}.\]
+
+By multiplying each member by $x+i$ and taking $x = -i$, we have
+\begin{eqnarray*}
+  a_i &=& \frac{1}{\prod_{0\le k\le n, k\not=i} (k-i)} \\
+  &=& \frac{(-1)^i}{(n-i)!i!} \\
+  &=& (-1)^i \frac{{n \choose i}}{n!}
+\end{eqnarray*}
+
+Hence
+\[ \sum_{k\ge 0} {n \choose k}\frac{(-1)^k}{k+x} = \frac{1}{x {n+x
+    \choose n}}.\]
+
+\newpar{49} We have
+\begin{eqnarray*}
+  (1-x^2)^r (1-x)^{-r} &=& \left( \sum_{k\ge 0} {r \choose k}(-1)^k
+  x^{2k}\right) \left( \sum_{k\ge 0} {-r \choose k} (-1)^k x^k\right)
+\\
+&=& \sum_{k \ge 0} \sum_{l \ge 0} {r \choose k}{-r \choose l}
+(-1)^{k+l} x^{2k+l} \\
+&=& \sum_{m \ge 0} \left( \sum_{k \ge 0} {r \choose k}{-r \choose
+  m-2k}(-1)^{m-k} \right) x^m
+\end{eqnarray*}
+
+We then deduce that
+\[  {r \choose m} =  \sum_{k \ge 0} {r \choose k}{-r \choose
+  m-2k}(-1)^{m-k} .\]
+
+\newpar{50} We have
+\begin{eqnarray*}
+  S &=&  \sum_k {n \choose k} x(x-kz)^{k-1}(-x + kz)^{n-k} \\
+  &=& \sum_k {n
+    \choose k} (-1)^{n-k} x (x - kz)^{n-1} \\
+  &=& \sum_k {n \choose k} (-1)^{n-k} \sum_l {n-1 \choose l}
+  x^{n-l}z^l k^l \\
+  &=& \delta_{n,0}, \mbox{ from (34)}
+\end{eqnarray*}
+
+\newpar{51} We have
+\begin{eqnarray*}
+ S &=&  \sum_k {n \choose k} x (x-kz)^{k-1}(y+kz)^{n-k} \\
+ &=&  \sum_k {n \choose k} x (x-kz)^{k-1}((x+y) - (x-kz))^{n-k} \\
+ &=& \sum_k {n \choose k} x(x-kz)^{k-1} \sum_l {n-k \choose l} (x+y)^l
+ (-1)^{n-k-l}(x-kz)^{n-k-l} \\
+ &=& \sum_l x (x+y)^l (-1)^{n-l} \sum_k (-1)^k {n \choose k}{n - k
+   \choose l}(x - kz)^{n-l-1} \\
+ &=& \sum_l x (x+y)^l (-1)^{n-l} \sum_k (-1)^k {n \choose l}{n-l
+   \choose k} (x-kz)^{n-l-1}, \mbox{ from (20)} \\
+ &=& \sum_l (x+y)^l \sum_k {n-l \choose k}(-1)^{n-l-k} x(x -
+ kz)^{n-l-1} \\
+ &=& \sum_l (x+y)^l \delta_{n,l}, \mbox{ from \textbf{50}} \\
+ &=& (x+y)^n
+\end{eqnarray*}
 \end{document}
