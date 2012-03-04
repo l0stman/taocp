@@ -320,18 +320,17 @@ too.  Thus
 \newpar{19} Let's show the equality by induction on $r \ge 0$.  If
 $r=0$, we have
 \begin{eqnarray*}
-  \sum_k {0 \choose k} {n \choose {s+k}}(-1)^{-k} &=& \sum_k \delta_{k,0}
-  {n \choose {s+k}}(-1)^{k} \\
-  &=& {n \choose s}
+  \sum_k {0 \choose k} {s+k \choose n}(-1)^{-k} &=& \sum_k \delta_{k,0}
+  {s+k \choose n}(-1)^{k} \\
+  &=& {s \choose n}
 \end{eqnarray*}
 
 Suppose that we have the equality for $r$, then we have
 \begin{eqnarray*}
-  \sum_k {{r+1} \choose k} {n \choose {s+k}}(-1)^{r+1-k} &=&
-  \sum_k \left( {r \choose {k-1}} + {r \choose k} \right) {n \choose
-    {s+k}} (-1)^{r+1-k} \\
-  &=& \sum_k {r \choose k} {n \choose {s+k+1}} (-1)^{r-k} -\\
-  && \sum_k {r \choose k} {n \choose {s+k}}
+  \sum_k {{r+1} \choose k} {s+k \choose n}(-1)^{r+1-k} &=&
+  \sum_k \left( {r \choose {k-1}} + {r \choose k} \right) {s+k \choose n} (-1)^{r+1-k} \\
+  &=& \sum_k {r \choose k} {s+k+1 \choose n} (-1)^{r-k} -\\
+  && \sum_k {r \choose k} {s+k \choose n}
   (-1)^{r-k} \\
   &=& {{s+1} \choose {n-r}} - {s \choose {n-r}},\mbox{ by induction} \\
   &=& {s \choose {n-r}} \left( \frac{s+1}{s+1+r-n} - 1 \right) \\
