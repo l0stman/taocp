@@ -924,4 +924,88 @@ We then deduce that
  &=& \sum_l (x+y)^l \delta_{n,l}, \mbox{ from \textbf{50}} \\
  &=& (x+y)^n
 \end{eqnarray*}
+
+\newpar{52} We have
+\begin{eqnarray*}
+  S &=& \sum_k {-1 \choose k}(-1-k)^{k-1}(1+k)^{-1-k} \\
+  &=& \sum_{k\ge 0} - (1+k)^{-2}
+\end{eqnarray*}
+
+This series is convergent whereas the left-hand side of the equality
+is not defined.
+
+\newpar{53} \subpar{a} If $m=0$, we have
+\begin{eqnarray*}
+  \sum_{k=0}^0 {r \choose k} {s \choose n-k} (nr-(r+sk)) &=& {s
+    \choose n}nr \\
+  &=& (0+1)(n-0) {r \choose 0+1}{s \choose n-0}
+\end{eqnarray*}
+
+Suppose the equality is true for $m$.  Then we have by induction
+\begin{eqnarray*}
+ S_{m+1} &=&  \sum_{k=0}^{m+1} {r \choose k}{s \choose n-k} (nr -
+ (r+s)k) \\
+ &=& (m+1)(n-m){r\choose m+1}{s \choose n-m} + \\ && {r \choose m+1}{s \choose
+   n -m -1}(nr-(r+s)(m+1)) \\
+ &=& (m+1)(s-n+m+1) {r \choose m+1}{s \choose n-m-1} + \\
+ && {r \choose m+1}{s \choose n-m-1}(nr-(r+s)(m+1)) \\
+ &=& {r \choose m+1}{s \choose n-m-1} ((m+1)(-r -n + m + 1) + nr) \\
+ &=& {r \choose m+1}{s \choose n-m-1}((m+1)(-r+m+1) + n(r-m-1)) \\
+ &=& {r \choose m+1}{s \choose n-m-1}(r-m-1)(n-m-1) \\
+ &=& (m+2)(n-m-1) {r \choose m+2} {s \choose n-m-1}
+\end{eqnarray*}
+
+\subpar{b} We have
+\begin{eqnarray*}
+  T_m &=& \sum_{k=0}^m {2k-1\choose k}{2n-2k\choose n-k}
+  \frac{-1}{2k-1} \\
+  &=& \sum_{k=0}^m \left( {1/2 \choose k} + \delta_{k0}
+  \right)(-1)^k2^{2k-1} {2n - 2k \choose n-k} \\
+  &=& \sum_{k=0}^m \left( {1/2 \choose k} + \delta_{k0}\right) (-1)^k
+  2^{2k-1} {-1/2 \choose n-k} 2^{2(n-k)}(-1)^{n-k} \\
+  &=& (-1)^n 2^{2n-1} \left( \sum_{k=0}^m {1/2 \choose k}{-1/2 \choose
+    n-k} + {-1/2 \choose n} \right)
+\end{eqnarray*}
+
+Thus using (a) with $r=1/2$ and $s=-1/2$, we have
+\begin{eqnarray*}
+  T_m &=& (-1)^n2^{2n-1}\left( \frac{2(m+1)(n-m)}{n}{1/2 \choose m+1}{-1/2
+    \choose n-m} + {-1/2 \choose n}\right) \\
+  &=& 2^{-2} \frac{(m+1)(n-m)}{n(2m+1)} {2(m+1)
+    \choose m+1} {2(n-m) \choose n-m} + \frac{1}{2} {2n \choose n} \\
+  &=& \frac{n-m}{2n} {2m \choose m}{2(n-m) \choose n-m} + \frac{1}{2}
+  {2n \choose n}
+\end{eqnarray*}
+
+\newpar{54}  We have
+\[ (1+x)^r = \sum_{k=0}^r {r \choose k} x^k = \sum_k {r \choose k}
+x^k.\]
+
+Hence
+\begin{eqnarray*}
+  \sum_r {n \choose r} (-1)^{n-r}(1+x)^r &=& \sum_r \sum_k {n \choose
+    r}{r \choose k} (-1)^{n-r} x^k \\
+  &=& \sum_k x^k \sum_r {n \choose r}{r \choose k}(-1)^{n-r} \\
+  &=& \sum_k x^k \delta_{nk}, \mbox{ from (33)} \\
+  &=& x^n
+\end{eqnarray*}
+
+Hence the line number $n$ and column number $r$ of the inverse of the
+Pascal triangle matrix is ${n \choose r} (-1)^{n-r}$.
+
+\newpar{55} From (45) and (44), it's easy to deduce that the inverse
+of the matrix of Stirling's numbers of the second kind is
+$\left((-1)^{n-k}\stirlingone{n}{k}\right)_{n, k}$.
+
+From \textbf{32}, we have $x^{\overline{n}} = \sum_k
+\stirlingone{n}{k} x^k$. And
+\begin{eqnarray*}
+  x^n &=& (-1)^n (-x)^n \\
+  &=& (-1)^n \sum_k \stirlingtwo{n}{k} (-x)^{\underline{k}} \\
+  &=& (-1)^n \sum_k \stirlingtwo{n}{k} (-1)^k x^{\overline{k}} \\
+  &=& \sum_k \stirlingtwo{n}{k}(-1)^{n-k} x^{\overline{k}}
+\end{eqnarray*}
+
+We then deduce that the inverse of the matrix of Stirling's numbers of
+the first kind is $\left((-1)^{n-k}\stirlingtwo{n}{k}\right)_{n,k}$.
 \end{document}
