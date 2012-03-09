@@ -1,0 +1,10 @@
+(defun seq (n)
+  (flet ((next (a b c)
+             (cond ((< a (1- b)) (values (1+ a) b c))
+                   ((< b (1- c)) (values 0 (1+ b) c))
+                   (t (values 0 1 (1+ c))))))
+    (let ((a 0) (b 1) (c 2) (res NIL))
+      (loop repeat (1+ n) do
+           (push (list a b c) res)
+           (multiple-value-setq (a b c) (next a b c)))
+      (nreverse res))))
