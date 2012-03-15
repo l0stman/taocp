@@ -1098,5 +1098,39 @@ Hence
 \end{eqnarray*}
 
 And finally
-\[ a_m = \frac{(-1)^m}{m!} \sum_{k\ge 1} (-1)^k {m-1 \choose k-1}\ln k.\]
+\[ a_m = \frac{(-1)^m}{m!} \sum_{k\ge 1} (-1)^k {m-1 \choose k-1}\ln
+k.\]
+
+\newpar{58} Let's show the property by induction on $n$.  If $n=0$, we
+have
+\[  1 = \prod_{k=0}^{-1} (1+q^k x) = \sum_k {0 \choose k} q^{k(k-1)/2}
+x^k.\]
+
+Suppose we have the property for $n$ by induction we have
+\begin{eqnarray*}
+  \prod_{k=0}^n(1+q^k x) &=& (1+q^n x) \sum_k {n \choose k}_q
+  q^{k(k-1)/2}x^k \\
+  &=& \sum_k {n \choose k}_q q^{k(k-1)/2}x^k + \sum_k {n \choose k-1}_q
+  q^{(k-1)(k-2)/2 + n} x^k \\
+  &=& \sum_k {n \choose k}_q \left(1 + \frac{1-q^k}{1-q^{n-k+1}}
+  q^{n-k+1}\right) q^{k(k-1)/2}x^k \\
+  &=& \sum_k {n+1 \choose k}_q q^{k(k-1)/2} x^k
+\end{eqnarray*}
+
+\newpar{59} Let's show by induction on $n \ge 0$ that we have
+\[ A_{nk} = k {n+1 \choose k+1} + {n \choose k}.\]
+
+We have
+\[ A_{0k} = \delta_{0k} = k {1 \choose k+1} + {0 \choose k}.\]
+
+Suppose the property is true for $n$, then we have
+\begin{eqnarray*}
+  A_{(n-1)k} + A_{(n-1)(k-1)} + {n \choose k} &=& k {n \choose k+1} +
+  {n-1 \choose k} + (k-1) {n \choose k} + \\ && {n-1 \choose k-1} + {n
+    \choose k} \\
+  &=& k \left( {n \choose k+1} + {n \choose k} \right) + {n-1 \choose
+    k} + \\ && {n-1 \choose k-1} \\
+  &=& k {n+1 \choose k+1} + {n \choose k}
+\end{eqnarray*}
+
 \end{document}
