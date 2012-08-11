@@ -743,12 +743,12 @@ And from (b), we deduce
 \[ B(x, y) = \frac{x+y}{y} B(x, y+1).\]
 
 \newpar{41} \subpar{a} From \textbf{40} (c), for each integer $k$ we have
-\[ \frac{B(x, y + k + 1)}{B(x, y+k)} = \frac{x + y + k}{y+k}.\]
+\[ \frac{B(x, y + k + 1)}{B(x, y+k)} = \frac{y + k}{x+y+k}.\]
 Hence
 \begin{eqnarray*}
   \frac{B(x, y+m+1)}{B(x, y)} &=& \prod_{k=0}^m \frac{B(x,
     y+k+1)}{B(x, y+k)} \\
-  &=& \prod_{k=0}^m \frac{x+y+k}{y+k} \\
+  &=& \prod_{k=0}^m \frac{y+k}{x+y+k} \\
   &=& \frac{\Gamma_m(x+y)}{\Gamma_m(y)m^x}
 \end{eqnarray*}
 
