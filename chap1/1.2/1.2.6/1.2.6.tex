@@ -1133,4 +1133,18 @@ Suppose the property is true for $n$, then we have
   &=& k {n+1 \choose k+1} + {n \choose k}
 \end{eqnarray*}
 
+\newpar{60} Let's note $N_R(n, k)$ the combination with repetitions of
+$k$ elements from a set of $n$ elements. By definition, we have
+\[ {n \choose k} = \sum_{0 < N_1 < N_2 < \ldots < N_k < n+1} 1.\]
+
+And by analogy,
+\[  N_R(n, k) = \sum_{0 < N_1 \le N_2 \le \ldots \le N_k < n+1} 1.\]
+
+Given $a\le b$ if and only if $a < b+1$, a quick induction gives us
+\begin{eqnarray*}
+  N_R(n, k) &=& \sum_{0 < N_1 < N_2+1 < \ldots < N_k + k-1 < n+k} 1 \\
+  &=& \sum_{0 < N_1\prime < N_2\prime < \ldots < N_k\prime < n+k} 1 \\
+  &=& {n+k-1 \choose k}
+\end{eqnarray*}
+
 \end{document}
