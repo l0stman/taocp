@@ -154,21 +154,33 @@ On the other hand, we have
     \bmod p - k\bmod p}{p}\right\rfloor \\
   &=& \left\lfloor \frac{n}{p}\right\rfloor + \left\lfloor  \frac{n
     \bmod p - k\bmod p}{p}\right\rfloor \\
-  &=& \left\lfloor \frac{n}{p}\right\rfloor + \left\lfloor
-  \frac{(n-k)\bmod p}{p}\right\rfloor \\
-  &=& \left\lfloor \frac{n}{p}\right\rfloor, \mbox{since $k \le n$}
+  &=& \left\lfloor \frac{n}{p} \right\rfloor - [ n\bmod p < k\bmod p ]
 \end{eqnarray*}
 
 From (*), we then deduce
 
 \begin{eqnarray*}
-  {n \choose k} &=& {{\lfloor n/p\rfloor} \choose {\lfloor k/p\rfloor}}
+  {n \choose k} &=& p^{[n\bmod p < k \bmod p]} \times \frac{\lfloor
+    n/p\rfloor!}{\lfloor k/p\rfloor!\lfloor (n-k)/p\rfloor!} \times
+  \\ &&
   \frac{\prod_{j=\lfloor (n-k)/p\rfloor}^{\lfloor
       n/p\rfloor-1}\prod_{0<i<p}(i+jp)} {\prod_{j=0}^{\lfloor
-      k/p\rfloor-1}\prod_{0<i<p}(i+jp)} {{n\bmod p} \choose {k\bmod p}} \\
-  &\equiv&  {{\lfloor n/p\rfloor} \choose {\lfloor k/p\rfloor}} {{n\bmod
-    p} \choose {k\bmod p}} \pmod p
+      k/p\rfloor-1}\prod_{0<i<p}(i+jp)} \times
+  \frac{\prod_{1\le i\le n\bmod p} (i+p\lfloor
+    n/p\rfloor)}{\prod_{1\le i\le k\bmod p} (i+p\lfloor k/p\rfloor)}
+  \times \\ &&
+  \frac{1}{\prod_{1\le i\le n\bmod p} (i+p\lfloor n/p\rfloor)}\\
 \end{eqnarray*}
+
+We then deduce that if $n \bmod p < k \bmod p$, then
+\[ {n \choose k} \equiv 0 \pmod p.\]
+
+Otherwise, we have
+
+\[ {n \choose k} \equiv { \lfloor n/p\rfloor \choose \lfloor k/p
+  \rfloor } {n \bmod p \choose k \bmod p} \pmod p.\]
+
+Which is also true if $n \bmod p < k \bmod p$.
 
 \subpar{f} The result is easily obtained by induction using (e).
 
