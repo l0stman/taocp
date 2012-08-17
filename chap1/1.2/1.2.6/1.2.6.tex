@@ -1147,4 +1147,24 @@ Given $a\le b$ if and only if $a < b+1$, a quick induction gives us
   &=& {n+k-1 \choose k}
 \end{eqnarray*}
 
+\newpar{61} Note $a_{n,m} = \sum_k
+\stirlingone{n+1}{k+1}\stirlingtwo{k}{m}(-1)^{k-m}$.  We have from
+$(46)$ and $(47)$
+\begin{eqnarray*}
+  a_{n,m} &=&
+  \sum_k \left( n \stirlingone{n}{k+1} + \stirlingone{n}{k}\right)
+  \stirlingtwo{k}{m} (-1)^{k-m} \\
+  &=& n \sum_k \stirlingone{n}{k+1} \stirlingtwo{k}{m} (-1)^{k-m} +
+  (-1)^{m-n} \delta_{m,n} \\
+  &=& n a_{n-1,m} + (-1)^{m-n}\delta_{m,n} \\
+  &=& n a_{n-1,m} + \delta_{m,n}
+\end{eqnarray*}
+
+We have
+\[ a_{n,m} = \sum_{m \le k \le n} \stirlingone{n+1}{k+1}
+\stirlingtwo{k}{m}(-1)^{k-m}.\]
+
+Thus if $n<m$, $a_{n,m} = 0$ and $a_{m,m} = 1$.  And if $n > m$, we
+have $a_{n,m} = n a_{n-1,m}$.  So finally
+\[ a_{n,m} = [ n \ge m ] \frac{n!}{m!}.\]
 \end{document}
