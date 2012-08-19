@@ -1179,4 +1179,20 @@ We have
 Thus if $n<m$, $a_{n,m} = 0$ and $a_{m,m} = 1$.  And if $n > m$, we
 have $a_{n,m} = n a_{n-1,m}$.  So finally
 \[ a_{n,m} = [ n \ge m ] \frac{n!}{m!}.\]
+
+\newpar{61} Note $S(m,n,l) = \sum_k(-1)^k {l+m \choose l+k}{m+n
+  \choose m+k}{n+l \choose n+k}$.  Using \textbf{exercise 31}, we have
+\begin{eqnarray*}
+ S(m,n,l) &=& \sum_k(-1)^k {l+m \choose l+k}{m+n \choose m+k}{n+l
+   \choose l-k} \\
+  &=& \sum_k (-1)^k {l+m \choose l+k} \sum_i {k+l \choose i} {m-k
+   \choose l-k-i}{m+n+i \choose m+l} \\
+ &=& \sum_k \sum_i \frac{(m+n+i)!}{(n+i-l)! i! (m-l+i)!} \times
+ \frac{(-1)^k}{(k+l-i)!(l-k-i)!} \\
+ &=& \sum_i \frac{(m+n+i)!}{(n+i-l)!i!(m-l+i)!(2l-2i)!} \sum_k (-1)^k
+      {2(l-i) \choose k+l-i} \\
+  &=& \sum_i \frac{(m+n+i)!}{(n+i-l)!i!(m-l+i)!(2l-2i)!} \times
+      (-1)^{l+i} \delta_{l,i} \\
+      &=& \frac{(m+n+l)!}{m!n!l!}
+\end{eqnarray*}
 \end{document}
