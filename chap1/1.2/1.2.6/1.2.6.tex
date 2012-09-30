@@ -1195,4 +1195,104 @@ have $a_{n,m} = n a_{n-1,m}$.  So finally
       (-1)^{l+i} \delta_{l,i} \\
       &=& \frac{(m+n+l)!}{m!n!l!}
 \end{eqnarray*}
+
+\newpar{63} For $l, m,$ and $n$ integers and $n \ge 0$, let's note
+\[ S(s, r, m, n, l) = \sum_{j,k}(-1)^{j+k}{j+k \choose k+l}{r \choose
+  j}{n \choose k}{s + n - j -k \choose m-j}.\]
+
+Our aim is to show that
+\[ S(s, r, m, n, l) = (-1)^l {n+r \choose n+l} {s-r \choose
+  m-n-l}.(*)\]
+
+Notice that the right hand side of (*) is a polynomial of degree $m$ in
+$r$.  And it's easy to see that if $j > m$, the last term in the sum
+in $S(s, r, m, n, l)$ would be equal to zero.  Hence we can always
+assume that $j \le m$.  Thus $S(s, r, m, n, l)$ is a polynomial of
+degree at most equal to $m$ in $r$.  Thus to prove (*), we only need
+to prove the equality on $m+1$ different values of $r$ when all the
+other parameters are fixed.
+
+Let's consider first the case where $s = m$ and let's show that
+\[ S(m, r, m, n, l) = (-1)^l {n+r \choose n+l}{m-r \choose
+  m-n-l}. (**)\]
+
+Suppose that $m < n+l$.  The right-hand side of (**) is thus equal to
+zero. And we have
+\[ S(m, r, m, n, l) = \sum_k (-1)^k {n \choose k} \sum_j (-1)^j {j+k
+  \choose j-l} {r \choose j}{m+n-j-k\choose m-j}.\]
+
+The degree of $\sum_j (-1)^j {j+k\choose j-l}{r \choose
+  j}{m+n-j-k\choose m-j}$ as a polynomial in $k$ is less than or equal
+to $(j-l) + (m-j) = m - l < n$.  Hence from (34), we deduce that
+\[ S(m, r, m, n, l) = 0.\]
+
+From now on, let's assume that $m \ge n+l$.  Suppose that $0 \le n+l <
+r \le m$.  Again the right-hand side of (**) is equal to zero.  And we
+have
+\[ S(m, r, m, n, l) = \sum_j (-1)^j {r \choose j} \sum_k (-1)^k {j+k
+  \choose k+l}{n \choose k} {m+n-j-k \choose n-k}.\]
+
+The degree of $\sum_k (-1)^k {j+k \choose k+l}{n \choose k}{m+n+j-k
+  \choose n-k}$ as a polynomial in $j$ is less than or equal to $(k+l)
++ (n-k) = l+n < r$.  Hence again from (33), we have
+\[ S(m, r, m, n, l) = 0.\]
+
+We have thus far proved the equality (**) on $m-n-l$ different values
+of $r$.  Now, suppose that $0 \le -r-1+l < n+l$.  Note that we thus
+have $r \le l-1 < n+l$ so these values of $r$ are different from the
+previous one.  Notice also that the right-hand side of (**) is equal
+to zero.  We have
+\[ {r \choose j} = (-1)^j {j-r-1 \choose j} = (-1)^j \sum_p {j-l
+  \choose j-p}{-r-1+l\choose p}.\]
+
+Hence
+\begin{eqnarray*}
+  S(m,r,m,n,l) &=& \sum_{j,k,p}(-1)^k {j+k \choose k+l}{j-l\choose
+    j-p}{-r-1+l\choose p}{n \choose k}\\ &&{m+n-j-k\choose m-j} \\
+  &=& \sum_{j,k,p}(-1)^k {j+k \choose j-l}{j-l\choose
+    j-p}{-r-1+l\choose p}{n \choose k}\\ &&{m+n-j-k\choose m-j} \\
+  &=& \sum_{j,k,p}(-1)^k {j+k \choose j-p}{k+p \choose k+l}{-r-1+l
+    \choose p} {n \choose k}\\ && {m+n-j-k \choose m-j} \\
+  &=& \sum_{j,k,p}(-1)^{k+p+m} {k+p \choose k+l}{-r-1+l \choose p}{n
+    \choose k} \\ && {-p -k -1 \choose j - p}{k-n-1\choose m-j} \\
+  &=& \sum_{k,p}(-1)^{k+p+m} {k+p \choose k+l} {-r-1+l \choose p}{n
+    \choose k} {-n-p-2 \choose m-p} \\
+  &=& \sum_k (-1)^k {n \choose k} \sum_p (-1)^{p+m} {k+p \choose
+    p-l}{-r-1+l \choose p}\\ && {-n-p-2 \choose m-p}
+\end{eqnarray*}
+The degree of $\sum_p (-1)^{p+m} {k+p \choose p-l}{-r-1+l\choose
+  p}{-n-p-2\choose m-p}$ as a polynomial in $k$ is less than or equal
+$p-l \le (-r-1+l) -l < n$.  Using (33) once again, we deduce that
+$S(m,r,m,n,l) = 0$.
+
+We have thus established the equality (**) on $m$ different values of
+$r$.  Finally let's show that we also have (**) for $r = l$.   We have
+\begin{eqnarray*}
+  S(m,l,m,n,l) &=& \sum_{j,k}(-1)^{j+k}{j+k \choose l+k}{l \choose
+    j}{n \choose k}{m+n-j-k\choose m-j} \\
+  &=& \sum_{j,k} (-1)^{j+k} \delta_{j,l} {n \choose k}{m+n-j-k \choose
+    m-j} \\
+  &=& \sum_k (-1)^{l+k}{n \choose k}{m+n-l-k \choose m-l} \\
+  &=& \sum_k (-1)^{l+k}{n \choose k}{m+n-l-k \choose n-k} \\
+  &=& \sum_k (-1)^{n+l}{n \choose k}{l-m-1 \choose n-k} \\
+  &=& (-1)^{n+l} {n+l-m-1 \choose n} \\
+  &=& (-1)^l {m-l \choose n}
+\end{eqnarray*}
+
+Thus, we have established the equality (**) on $m+1$ different values
+of $r$ where all the polynomials in the equality are of degree less
+than $m$.  Hence we have the equality for all values of $r$.
+
+Let's now prove (*) by induction on $s \ge m$.  From (**), the
+equality is true when $s = m$.  Suppose that we have (*).  We have
+\[ {s+1 + n-j-k\choose m-j} = {s+n-j-k\choose m-j} + {s+n-j-k\choose
+  m-1-j}.\]
+
+Hence by induction,
+\begin{eqnarray*}
+  S(s+1, r, m, n, l) &=& S(s, r, m, n, l) + S(s, r, m-1, n, l) \\
+  &=& (-1)^l {n+r\choose n+l}\left({s-r\choose m-n-l} + {s-r\choose
+    m-n-l-1}\right) \\
+  &=& (-1)^l {n+r \choose n+l}{s+1-r\choose m-n-l}
+\end{eqnarray*}
 \end{document}
