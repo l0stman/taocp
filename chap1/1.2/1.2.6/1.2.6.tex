@@ -1299,4 +1299,23 @@ Hence by induction,
 Since the two terms in (*) are polynomials in $s$ and they're equals
 on an infinite number of values of $s$, we then deduce that the
 equality holds for all values of $s$.
+
+\newpar{64} Let's note $P(n, m)$ the number of ways to partition a set
+of $n$ elements into $m$ nonempty disjoint subsets.  Thus, we have
+\[ P(1, n) = \delta_{1,n} \mbox{ and } P(n, 0) = \delta_{n, 0}.\]
+
+Now suppose $m > 0$ and let's compute $P(n+1, m)$.  There's two cases
+that we need to consider.  Firstly, the $(n+1)^{th}$ element is the
+only element of its subset.  Thus it's like the remaining $n$ elements
+are partitioned into the remaining $m-1$ nonempty disjoint subsets.
+Hence there is $P(n, m-1)$ of them.
+
+Secondly the $(n+1)^{th}$ element isn't the only element of its
+subset.  This case is the same as if we partitioned the first $n$
+elements into $m$ nonempty disjoint subsets, then we place the
+$(n+1)^{th}$ element into one of them.  So there is $m P(n, m)$
+partitions covered by this case.  Hence,
+\[ P(n+1, m) = m P(n, m) + P(n, m-1).\]
+
+And we can prove that $P(n, m) = \stirlingtwo{n}{m}$ by induction.
 \end{document}
