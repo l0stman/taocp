@@ -1318,4 +1318,60 @@ partitions covered by this case.  Hence,
 \[ P(n+1, m) = m P(n, m) + P(n, m-1).\]
 
 And we can prove that $P(n, m) = \stirlingtwo{n}{m}$ by induction.
+
+\newpar{66} We have
+\begin{eqnarray*}
+  {x \choose n+1} &=& (-1)^{n+1} {n-x \choose n+1} \\
+  &=& (-1)^{n+1} \sum_{k\ge 0} {n-z-1 \choose n+1-k}{z-x+1 \choose
+    k}\\ &=&
+  (-1)^{n+1} \sum_{k\ge -1} {n-z-1 \choose n-k}{z-x+1 \choose k+1} \\
+  &=& (-1)^{n+1} {n-z-1 \choose n+1} + \\&&\sum_{k\ge 0} (-1)^{n-k}{n-z-1
+    \choose n-k}(-1)^{k+1}{z-x+1 \choose k+1} \\
+  &=& {z+1 \choose n+1} + \sum_{k\ge 0} {z-k \choose n-k}{k+x-z-1
+    \choose k+1}.
+\end{eqnarray*}
+
+We then deduce
+\begin{eqnarray*}
+  {x \choose n+1} - {y \choose n+1} = \sum_{k\ge 0} {z-k \choose n-k}
+  t_k (*)
+\end{eqnarray*}
+where $t_k = {k+x-z-1 \choose k+1} - {k+y-z-1 \choose k+1}$.
+
+If $z > n$, then $0 < {z \choose n+1} \le {y \choose n+1}$ since $y
+\ge z$.  Otherwise $n-1 \le z \le n$, hence
+\[ {z \choose n+1} \le 0 \le {y \choose n+1}.\]
+
+Thus,
+\[ {z+1 \choose n+1} = {z \choose n+1} + {z \choose n} \le {y \choose
+  n+1} + {z \choose n} = {x \choose n}.\]
+
+We then deduce that $z+1 \le x$ since $z \ge n-1$.
+
+So we can conclude that ${k+x-z-1 \choose k+1} \ge 0$.  If we have $y
+\ge z+1$, then we conclude easily that $t_k \ge 0$ since $x \ge y$.
+Otherwise, $z \le y < z+1$.  Hence ${k + y - z - 1\choose k+1} < 0$
+and thus $t_k > 0$.
+
+Since $z \ge n-1$, we then conclude that all the terms in the
+right-hand side of (*) are positive.
+
+We then have
+\begin{eqnarray*}
+  {x \choose n} - {y \choose n} - {z \choose n-1} &=& \sum_{k\ge 0}
+  {z-k \choose n-1-k}(t_k-\delta_{0k}) \\
+  &=& \sum_{k\ge0} \frac{n-k}{z-n+1} {z-k \choose n-k}
+  (t_k-\delta_{0k}) \\
+  &=& \frac{n}{z-n+1}{z \choose n}(t_0 - 1) + \\
+  && \sum_{k \ge 1} \frac{n-k}{z-n+1}{z-k \choose n-k}t_k \\
+  &\le& \frac{n}{z-n+1}{z \choose n}(t_0 - 1) + \\
+  && \frac{n-1}{z-n+1}\sum_{k\ge 1} {z-k \choose n-k}t_k \\
+  &=& \frac{n}{z-n+1}{z \choose n}(t_0 - 1) + \\
+  && \frac{n-1}{z-n+1} \left( {x \choose n+1} - {y\choose n+1} - {z
+    \choose n}t_0\right) \\
+  &=& \frac{n}{z-n+1}{z \choose n}(t_0 - 1) + \\
+  && \frac{n-1}{z-n+1} \left( {z \choose n} - {z \choose n}t_0\right) \\
+  &=& \frac{x-y-1}{z-n+1} {z \choose n} \\
+  &\le& 0
+\end{eqnarray*}
 \end{document}
