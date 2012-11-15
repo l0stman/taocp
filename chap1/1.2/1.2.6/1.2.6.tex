@@ -1388,4 +1388,41 @@ Suppose we have the inequality for $k$, then we deduce
   &\le& \frac{1}{e} \left( \frac{ne}{k+1} \right)^{k+1} e \\
   &=& \left(\frac{ne}{k+1}\right)^{k+1}
 \end{eqnarray*}
+
+\newpar{68} We have
+\begin{eqnarray*}
+  \sum_k {n \choose k} p^k(1-p)^{n-k}(np-k) &=& np - \sum_k {n \choose
+    k}k p^k(1-p)^{n-k} \\
+  &=& np - \sum_{k=1}^n {n\choose k}kp^k(1-p)^{n-k} \\
+  &=& np - n \sum_{k=1}^n {n-1\choose k-1}p^k(1-p)^{n-k} \\
+  &=& np - np \sum_{k=0}^{n-1} {n-1\choose k}p^k(1-p)^{n-1-k} \\
+  &=& 0
+\end{eqnarray*}
+Hence
+\[ \sum_{k < \lceil np\rceil} {n \choose k} p^k(1-p)^{n-k}(np-k) =
+\sum_{k \ge \lceil np\rceil} {n \choose k} p^k (1-p)^{n-k}(k-np).\]
+Thus
+\begin{eqnarray*}
+  \sum_k {n \choose k} p^k(1-p)^{n-k}|np-k| &=& 2 \sum_{k \ge \lceil
+    np\rceil} {n \choose k} p^k(1-p)^{n-k}(k-np) \\
+  &=& 2 \sum_{k \ge \lceil np\rceil} p^k(1-p)^{n-k}\left( k{n \choose
+    k} - np {n \choose k} \right) \\
+  &=& 2n \sum_{k \ge \lceil np\rceil} p^k(1-p)^{n-k}\left( {n-1 \choose
+    k-1} - p {n \choose k} \right) \\
+  &=& 2n \sum_{k \ge \lceil np\rceil} p^k(1-p)^{n-k}\left( (1-p){n-1 \choose
+    k-1} -\right.\\
+  && \left. p {n-1 \choose k} \right) \\
+  &=& 2n \left( \sum_{k \ge \lceil np\rceil}{n-1\choose
+    k-1}p^k(1-p)^{n+1-k}\right. - \\
+  && \left. \sum_{k \ge \lceil np\rceil} {n-1\choose k}
+  p^{k+1}(1-p)^{n-k}\right) \\
+  &=& 2n \left( \sum_{k \ge \lceil np\rceil -1} {n-1 \choose k}
+  p^{k+1}(1-p)^{n-k} \right.-\\
+  && \left.\sum_{k \ge \lceil np\rceil} {n-1 \choose k}
+  p^{k+1}(1-p)^{n-k}\right) \\
+  &=& 2n {n-1 \choose \lceil np\rceil -1} p^{\lceil np\rceil} (1-p)^{n
+    +1 +\lceil np\rceil} \\
+  &=& 2\lceil np\rceil {n \choose \lceil np\rceil} p^{\lceil np\rceil}
+  (1-p)^{n+1 \lceil np\rceil}
+\end{eqnarray*}
 \end{document}
