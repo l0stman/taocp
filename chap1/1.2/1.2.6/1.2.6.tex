@@ -1374,4 +1374,18 @@ We then have
   &=& \frac{x-y-1}{z-n+1} {z \choose n} \\
   &\le& 0
 \end{eqnarray*}
+
+\newpar{67} Let's prove the inequality by induction on $k$.  For
+$k=0$, we have
+\[ {n \choose k} = 1 \le \left( \frac{ne}{k} \right)^k = 1.\]
+
+Suppose we have the inequality for $k$, then we deduce
+\begin{eqnarray*}
+  {n \choose k+1} &=& \frac{n-k}{k+1}{n \choose k} \\
+  &\le& \frac{n-k}{k+1} \left(\frac{ne}{k}\right)^k \\
+  &\le& \frac{n-k}{ne} \left(\frac{ne}{k+1}\right)^{k+1}
+  \left(1+\frac{1}{k}\right)^k \\
+  &\le& \frac{1}{e} \left( \frac{ne}{k+1} \right)^{k+1} e \\
+  &=& \left(\frac{ne}{k+1}\right)^{k+1}
+\end{eqnarray*}
 \end{document}
