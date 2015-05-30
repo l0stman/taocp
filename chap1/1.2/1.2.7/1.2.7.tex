@@ -1,0 +1,501 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsfonts}
+\newcommand{\newpar}[1]{\bigskip \noindent \textbf{#1.}}
+\newcommand{\subpar}[1]{\medskip \noindent (#1)}
+\newcommand{\stirlingone}[2]{{#1 \atopwithdelims[]#2}}
+\newcommand{\stirlingtwo}[2]{{#1 \atopwithdelims\{\}#2}}
+\newcommand{\la}{\leftarrow}
+\newcommand{\ra}{\rightarrow}
+\begin{document}
+
+\newpar{1}  We have $H_0 = 0$, $H_1 = 1$ and $H_2 = \frac{3}{2}$.
+
+\newpar{2} We have
+\begin{eqnarray*}
+  H_{2^{m+1}} &=& H_{2^m} + \frac{1}{2^m+1} + \frac{1}{2^m + 2} +
+  \cdots + \frac{1}{2^{m+1}} \\
+  &\le& H_{2^m} + \frac{1}{2^m} + \frac{1}{2^m} + \cdots +
+  \frac{1}{2^m} \\
+  &=& H_{2^m} + 1
+\end{eqnarray*}
+
+Hence $H_{2^m} \le 1 + m$.
+
+\newpar{3} We have
+\begin{eqnarray*}
+  H_{2^{m+1}}^{(r)} &=& H_{2^m}^{(r)} + \frac{1}{(2^m+1)^r} +
+  \frac{1}{(2^m+2)^r} + \cdots + \frac{1}{(2^{m+1})^r} \\
+  &\le& H_{2^m}^{(r)} + 2^m \times \frac{1}{2^{mr}} \\
+  &=& H_{2^m}^{(r)} + \frac{1}{2^{m(r-1)}}
+\end{eqnarray*}
+
+Hence
+\begin{eqnarray*}
+  H_{2^{m+1}}^{(r)} &\le& H_{1}^{(r)} + \sum_{k=0}^m
+  \frac{1}{2^{k(r-1)}} \\
+  &\le& 1 + \sum_{k \ge 0} \frac{1}{2^{k(r-1)}} \\
+  &=& 1 + \frac{1}{1 - \frac{1}{2^{r-1}}} \\
+  &=& \frac{2^r - 1}{2^{r-1}-1}
+\end{eqnarray*}
+
+Since $H_n^{(r)}$ is an increasing sequel, this is an upper bound for
+all integers $n$.
+
+\newpar{4} From (3), we have
+\[  H_n - \ln n - \gamma > \frac{1}{2n}\left(1 - \frac{1}{6n}\right) +
+\frac{1}{120n^4} \left(1 - \frac{10}{21n^2}\right) > 0.\]
+
+\newpar{5} Using (3), we have
+\begin{eqnarray*}
+  \left| H_{10000} - \ln 10000 - \gamma - \frac{1}{2\times 10000} +
+  \frac{1}{12\times 10000^2} \right| &<& \frac{1}{120\times 10000^4} \\
+  &\simeq& 8.33 \times 10^{-19}
+\end{eqnarray*}
+
+And given that $\ln 10000 = 4 \times \ln 10$, we could deduce that
+$H_{10000} \simeq 9.787606036044382 \pm 10^{-15}$.
+
+\newpar{6} Let us remind the relation
+\[ \stirlingone{n+1}{m} = n \stirlingone{n}{m} + \stirlingone{n}{m-1}
+.\]
+
+Hence if $n > 0$ we have
+\[ \stirlingone{n}{1} = (n-1)\stirlingone{n-1}{1}.\]
+
+Thus $\stirlingone{n}{1} = (n-1)!$.  Using the same equality, we then have
+\[ \stirlingone{n+1}{2} = n\stirlingone{n}{2} + (n-1)!.\]
+
+And dividing the  last equality by $n!$, we obtain
+\[\frac{\stirlingone{n+1}{2}}{n!} = \frac{\stirlingone{n}{2}}{(n-1)!}
++ \frac{1}{n}.\]
+
+And finally,
+\[ H_n = \frac{\stirlingone{n+1}{2}}{n!}.\]
+
+\newpar{7} \subpar{a} We have for $m$ and $n$ positive
+\begin{eqnarray*}
+  T(m+1, n) - T(m, n) &=& \frac{1}{m+1} + H_{mn} - H_{(m+1)n} \\
+  &=& \frac{1}{m+1} - \left(\frac{1}{mn+1} + \cdots +
+  \frac{1}{mn + n}\right) \\
+  &<& \frac{1}{m+1} - n \times \frac{1}{(m+1)n} = 0\\
+\end{eqnarray*}
+
+And since $T(m, n) = T(n, m)$, we then deduce that when $m$ or $n$
+increases, $T(m, n)$ never increases.
+
+\subpar{b}  We then deduce easily that
+\[\max_{m, n > 0} T(m, n) = T(1, 1) = 1.\]
+
+And from (3), we have $H_n = \ln n + \gamma + \frac{1}{2n} +
+o\left(\frac{1}{n}\right)$, hence
+\begin{eqnarray*}
+  T(m, n) &=& \gamma + \frac{1}{2n} + \frac{1}{2m} - \frac{1}{2mn} +
+  o\left(\frac{1}{n}\right) + o\left(\frac{1}{m}\right) +
+  o\left(\frac{1}{mn}\right)
+\end{eqnarray*}
+
+Since $T(m, n)$ is decreasing when $m$ and $n$ are increasing and
+since the values taken by the sequel are positive, we can deduce that
+$T$ has a limit that is equal to its minimal.  So
+\[ \min_{m, n > 0} T(m, n) = \gamma.\]
+
+\newpar{8} We have
+\[  \sum_{k=1}^n H_k = (n + 1)H_n - n.\]
+And from Stirling's approximation we have
+\[ \ln n! = n(\ln n - 1) + \frac{1}{2}\ln(2\pi n) + o(1).\]
+Hence
+\begin{eqnarray*}
+  \sum_{k=1}^n H_k - \sum_{k=1}^n \ln k &=& (n+1)\left(\ln n + \gamma
+  + \frac{1}{2n} + o\left(\frac{1}{n}\right)\right)- n -\\ &&n(\ln n -
+  1) - \frac{1}{2}\ln(2\pi n) + o(1)\\ &=& \frac{1}{2}\ln n + \gamma n
+  + \left(\gamma + \frac{1}{2} - \frac{1}{2}\ln(2\pi)\right) + o(1)
+\end{eqnarray*}
+
+\newpar{9}  We already saw that
+\[ S_{n+1} = (x+1) S_n + \frac{(x+1)^{n+1}-1}{n+1}.\]
+
+Hence if $n > 0$, we have
+\[ \sum_k {n \choose k}(-1)^k H_k = \frac{-1}{n}.\]
+
+And if $n = 0$ the sum is equal to $0$.
+
+\newpar{10} We have
+\begin{eqnarray*}
+  \sum_{1 \le k < n}(a_{k+1} - a_k)b_k &=& \sum_{1 \le k <
+    n}a_{k+1}b_k - \sum_{1\le k < n}a_k b_k \\
+  &=& \sum_{1\le k < n}a_{k+1}b_k - \sum_{0 \le k \le
+    n-2}a_{k+1}b_{k+1} \\
+  &=& a_nb_n - a_1b_1 - \sum_{1\le k < n}a_{k+1}(b_{k+1} - b_k)
+\end{eqnarray*}
+
+\newpar{11} We have
+\begin{eqnarray*}
+  \sum_{1 < k \le n} \frac{1}{k(k-1)} H_k &=& \sum_{1 < k \le n}
+  \left(\frac{1}{k-1} - \frac{1}{k} \right) H_k \\
+  &=& \sum_{1\le k < n} \left(\frac{1}{k} - \frac{1}{k+1}\right)
+  H_{k+1} \\
+  &=& -\frac{1}{n} \times H_{n+1} + H_2 + \sum_{1\le k < n}
+  \frac{1}{(k+1)(k+2)} \\
+  &=& -\frac{H_{n+1}}{n} + \frac{3}{2} + \sum_{1\le k <
+    n}\left(\frac{1}{k+1} - \frac{1}{k+2}\right) \\
+  &=& -\frac{H_{n+1}}{n} + \frac{3}{2} + \frac{1}{2} - \frac{1}{n+1} \\
+  &=& -\frac{H_n}{n} -\frac{1}{n} + 2
+\end{eqnarray*}
+
+\newpar{12} We have for $k > 0$ and $r > 1$
+\[ \int_k^{k+1}\frac{dx}{x^r} \ge \frac{1}{(k+1)^r} \int_k^{k+1}dx =
+\frac{1}{(k+1)^r}.\]
+Hence
+\begin{eqnarray*}
+  \sum_{k=n+1}^m \frac{1}{k^r} &\le& \sum_{k=n}^{m-1} \int_k^{k+1}
+  \frac{dx}{x^r} \\
+  &=& \int_{n}^m \frac{dx}{x^r} \\
+  &=& \left[ \frac{x^{1-r}}{1-r}\right]_n^m \\
+  &=& \frac{m^{1-r} - n^{1-r}}{1-r}
+\end{eqnarray*}
+
+Hence
+\[ \sum_{k=n+1}^{+\infty} \frac{1}{k^r} \le
+\frac{1}{(r-1)n^{r-1}}.\]
+
+We then deduce that for $r = 1000$ and $n = 1$,
+\[ 0 < H_\infty^{(1000)} - 1 < 10^{-2}.\]
+
+\newpar{13} We have
+\begin{eqnarray*}
+  \sum_{k=0}^{n-1} x^k &=& \frac{x^n - 1}{x-1} \\
+  &=& \frac{((x-1) + 1)^n - 1}{x-1} \\
+  &=& \frac{\sum_{k=1}^n {n \choose k}(x-1)^k}{x-1} \\
+  &=& \sum_{k=1}^n {n \choose k}(x-1)^{k-1}
+\end{eqnarray*}
+
+By taking the integral between $1$ and $x$ we have
+\begin{eqnarray*}
+  \int_1^x \sum_{k=0}^{n-1} t^k dt &=& \int_1^x \sum_{k=1}^n {n
+    \choose k}(t-1)^{k-1} dt \\
+  &=& \sum_{k=1}^n {n \choose k} \int_1^x (t - 1)^{k-1} dt \\
+  &=& \sum_{k=1}^n {n \choose k} \left[ \frac{(t-1)^k}{k}\right]_1^x
+\\
+&=& \sum_{k=1}^n {n \choose k} \frac{(x-1)^k}{k}
+\end{eqnarray*}
+
+On the other hand we have
+\begin{eqnarray*}
+  \int_1^x \sum_{k=0}^{n-1} t^k dt &=& \sum_{k=0}^{n-1} \int_1^x t^k
+  dt \\
+  &=& \sum_{k=0}^{n-1} \left[\frac{t^{k+1}}{k+1}\right]_1^x \\
+  &=& \sum_{k=1}^n \frac{x^k}{k} - H_n
+\end{eqnarray*}
+
+So finally
+\[ \sum_{k=1}^n \frac{x^k}{k} = H_n + \sum_{k=1}^n {n \choose k}
+\frac{(x-1)^k}{k}\]
+
+\newpar{14}
+\begin{eqnarray*}
+  \sum_{k=1}^n \frac{H_k}{k} &=& \sum_{k=1}^n \sum_{i=1}^k
+  \frac{1}{ik} \\
+  &=& \sum_{i=1}^n \sum_{k=i}^n \frac{1}{ik} \\
+  &=& \sum_{i=1}^n \frac{1}{i} (H_n - H_{i-1}) \\
+  &=& H_n \sum_{i=1}^n \frac{1}{i} - \sum_{i=1}^n \frac{1}{i}\left( H_i -
+  \frac{1}{i}\right) \\
+  &=& {H_n}^2 - \sum_{k=1}^n \frac{H_k}{k} + H_n^{(2)} \\
+\end{eqnarray*}
+
+Hence
+\[ \sum_{k=1}^n \frac{H_k}{k} = \frac{1}{2}\left({H_n}^2 +
+H_n^{(2)}\right).\]
+
+We have
+\begin{eqnarray*}
+  \sum_{k=1}^n \frac{H_k}{k+1} &=& \sum_{k=1}^n \frac{H_{k+1} -
+    \frac{1}{k+1}}{k+1} \\
+  &=& \sum_{k=1}^{n+1} \frac{H_k}{k}  -
+  \sum_{k=1}^{n+1}\frac{1}{k^2} \\
+  &=& \frac{1}{2} \left({H_{n+1}}^2 + H_{n+1}^{(2)}\right) -
+  H_{n+1}^{(2)} \\
+  &=& \frac{1}{2} \left({H_{n+1}}^2 - H_{n+1}^{(2)}\right)
+\end{eqnarray*}
+
+\newpar{15} We have
+\begin{eqnarray*}
+  \sum_{k=1}^n {H_k}^2 &=& \sum_{k=1}^n \sum_{i=1}^k \frac{H_k}{i} \\
+  &=& \sum_{i=1}^n \sum_{k=i}^n \frac{H_k}{i} \\
+  &=& \sum_{i=1}^n \frac{1}{i} \left(\sum_{k=1}^n H_k -
+  \sum_{k=1}^{i-1}H_k\right)
+\end{eqnarray*}
+
+But on the other hand,
+\begin{eqnarray*}
+  \sum_{k=1}^n H_k &=& \sum_{k=1}^n \sum_{i=1}^k \frac{1}{i} \\
+  &=& \sum_{i=1}^n \sum_{k=i}^n \frac{1}{i} \\
+  &=& \sum_{i=1}^n \frac{n-i+1}{i} \\
+  &=& (n+1)H_n - n
+\end{eqnarray*}
+
+Hence
+\begin{eqnarray*}
+  \sum_{k=1}^n {H_k}^2 &=& \sum_{i=1}^n \frac{1}{i} \left( (n+1)H_n -
+  n - i H_{i-1} + i - 1\right) \\
+  &=& \sum_{i=1}^n \frac{1}{i} \left((n+1)(H_n - 1) -
+  i(H_{i-1}-1)\right) \\
+  &=& (n+1)(H_n - 1)H_n - \sum_{i=1}^{n-1} H_i + n \\
+  &=& (n+1){H_n}^2 - nH_n - \sum_{i=1}^n H_i + n \\
+  &=& (n+1){H_n}^2 - nH_n - (n+1)H_n + 2n \\
+  &=& (n+1){H_n}^2 - (2n+1)H_n + 2n
+\end{eqnarray*}
+
+\newpar{16} We have
+\[  1 + \frac{1}{3} + \cdots + \frac{1}{2n-1} = H_{2n-1} - \frac{1}{2}
+H_{n-1} .\]
+
+\newpar{17}  Let $p$ be an odd prime.  We have
+\begin{eqnarray*}
+  H_{p-1} &=& \sum_{k=1}^{p-1} \frac{1}{k} \\
+  &=& \frac{1}{(p-1)!} \times \sum_{k=1}^{p-1} \frac{(p-1)!}{k}
+\end{eqnarray*}
+
+Note $N = \sum_{k=1}^{p-1}\frac{(p-1)!}{k}$.  $N$ is a positive
+integer.  And since $p$ is a prime, $p$ and $(p-1)!$ are mutually
+prime.  Hence if $p$ divides $N$, then $p$ divides the numerator  of
+$H_{p-1}$ since the factor is still there after we reduce the fraction
+to an irreducible one.
+
+But the application $k \mapsto \frac{(p-1)!}{k}$ is a permutation of
+$(\mathbb{Z}/p\mathbb{Z})^*$.  Hence
+\begin{eqnarray*}
+  N &\equiv& \sum_{k=1}^{p-1} k \bmod p \\
+  &\equiv& p\times\frac{p-1}{2} \bmod p
+\end{eqnarray*}
+
+Since $p$ is an odd prime number, $\frac{p-1}{2}$ is an integer.
+Hence $p$ divides $N$.
+
+\newpar{18} Let's show by induction on $k$ that
+\[ \sum_{j = 0}^{2^k-1} \prod_{i=0 \atop i \not= j}^{2^k-1} (2i+1) =
+2^{2k}M_k \]
+where $M_k$ is an odd integer.
+
+If $k=0$ the left hand side of the equality is equal to $1$ so the
+property is true.
+
+Suppose that it's true for $k$.  Then we have
+\begin{eqnarray*}
+  \prod_{j=0}^{2^k-1}(2^{k+1} + 2j + 1) &=& \prod_{j=0}^{2^{k-1}-1}(2^{k+1}
+  + 2j + 1)(2^{k+2} - 2j - 1) \\
+  &=& \prod_{j=0}^{2^{k-1}-1}(2^{2k+3} + (2j+1)(2^{k+1}-2j-1)) \\
+  \prod_{j=0}^{2^k-1}(2^{k+1} + 2j + 1) &\equiv&
+  \prod_{j=0}^{2^k-1}(2j+1) \bmod 2^{2k+3} (*)
+\end{eqnarray*}
+
+And for $0 \le s \le 2^k -1$, we have
+\begin{eqnarray*}
+  \prod_{j=0 \atop j\not= s}^{2^k-1} (2^{k+1} + 2i + 1) &=& (2^{k+2} -
+  2s -1) \prod_{i=0 \atop i \not= s}^{2^{k-1}-1}(2^{k+1} + 2i +
+  1)(2^{k+2} - 2i - 1) \\
+  &=& (2^{k+2} - 2s - 1) \times \\
+  &&\prod_{i=0\atop i\not=s}^{2^{k-1}-1}(2^{2k+3}
+  + (2i+1)(2^{k+1}-2i-1)) \\
+  &\equiv& (2^{k+2} - 2s - 1) \times \\
+  &&\prod_{i=0\atop i\not=s}^{2^{k-1}-1}((2i+1)(2^{k+1}-2i-1)) \bmod
+  2^{2k+3}\\
+  &\equiv& (2^{k+2} - 2s -1) \prod_{i=0\atop {i \not= s \atop i \not=
+      2^k - s -1}}^{2^k-1} (2i+1) \bmod 2^{2k+3} \\
+  &\equiv& \left(2^k\prod_{i=0\atop {i \not= s \atop i \not=
+      2^k - s -1}}^{2^k-1} (2i+1) + \prod_{i=0\atop i\not=
+    s}^{2^k-1}(2i+1)\right) \bmod 2^{2k+3}
+\end{eqnarray*}
+
+But given that $\frac{1}{2s+1} + \frac{1}{2^k - 2s - 1} =
+\frac{2^k}{(2s+1)(2^k-2s-1)}$, we have
+\begin{eqnarray*}
+2^k\prod_{i=0\atop {i \not= s \atop i \not=
+      2^k - s -1}}^{2^k-1} (2i+1) &=& \prod_{i=0}^{2^k-1}(2i+1)\times
+\frac{2^k}{(2s+1)(2^k-2s-1)} \\
+&=& \prod_{i=0\atop i\not= s}^{2^k-1}(2i+1) + \prod_{i=0\atop i\not= 2^k-s-1}^{2^k-1}(2i+1)
+\end{eqnarray*}
+
+Thus
+\[  \prod_{i=0\atop i\not= s}^{2^k - 1}(2^{k+1} + 2i + 1) \equiv \left(2
+\prod_{i=0\atop i\not= s}^{2^k-1}(2i+1) + \prod_{i=0\atop i\not= 2^k
+  -s -1}^{2^k-1}(2i+1)\right) \bmod 2^{2k+3}.\]
+
+Hence
+\[\sum_{s=0}^{2^k-1}\prod_{i=0\atop i\not=s}^{2^k-1}(2^{k+1} + 2i +
+1) \equiv 3 \sum_{s=0}^{2^k-1}\prod_{i=0\atop i\not=s}^{2^k-1}(2i+1)
+\bmod 2^{2k+3}.\]
+Thus by induction we have
+\[\sum_{s=0}^{2^k-1}\prod_{i=0\atop i\not=s}^{2^k-1}(2^{k+1} + 2i +
+1) \equiv 3\ 2^{2k}M_k \bmod 2^{2k+3} (**) \]
+
+We have now
+\begin{eqnarray*}
+  \sum_{s=0}^{2^{k+1}-1} \prod_{i=0\atop i\not= s}^{2^{k+1}-1}(2i+1)
+  &=& \sum_{s=0}^{2^k-1} \prod_{i=0\atop i\not= s}^{2^{k+1}-1}(2i+1) +
+  \sum_{s = 2^k}^{2^{k+1}-1} \prod_{i=0\atop i\not=
+    s}^{2^{k+1}-1}(2i+1) \\
+  &=& \prod_{i=0}^{2^k-1}(2^{k+1}+2i+1) \sum_{s=0}^{2^k-1}
+  \prod_{i=0\atop i\not=s}^{2^k-1}(2i+1) + \\
+  && \prod_{i=0}^{2^k-1}(2i+1) \sum_{s=0}^{2^k-1} \prod_{i=0\atop
+    i\not=s}^{2^k -1}(2^{k+1} + 2i + 1)
+\end{eqnarray*}
+
+Using (*), (**) and by induction, we have
+\begin{eqnarray*}
+  \sum_{s=0}^{2^{k+1}-1} \prod_{i=0\atop i\not= s}^{2^{k+1}-1}(2i+1)
+  &\equiv& 2^{2k}M_k\left(\prod_{i=0}^{2^k-1}(2i+1) +
+  3\prod_{i=0}^{2^k-1}(2i+1)\right)\bmod 2^{2k+3} \\
+  &\equiv& 2^{2(k+1)}M_k \prod_{i=0}^{2^k-1}(2i+1)\bmod 2^{2k+3}
+\end{eqnarray*}
+
+There exists an integer $N_k$ such that
+\[ \sum_{s=0}^{2^{k+1}-1} \prod_{i=0\atop i\not=
+  s}^{2^{k+1}-1}(2i+1) = 2^{2(k+1)} M_k \prod_{i=0}^{2^k-1}(2i+1) +
+2^{2k+3}N_k.\]
+
+Hence if we note $M_{k+1} = M_k \prod_{i=0}^{2^k-1}(2i+1) + 2N_k$
+which is an odd integer, we have
+\[ \sum_{s=0}^{2^{k+1}-1} \prod_{i=0\atop i\not=
+  s}^{2^{k+1}-1}(2i+1) = 2^{2(k+1)} M_{k+1}.\]
+
+Hence we have finished the proof by induction.
+
+It's now easy to deduce that $$ 1 + \frac{1}{3} + \cdots +
+\frac{1}{2^{k+1}-1} = 2^{2k} \frac{N}{M}$$ where $N$ and $M$ are two
+odd integers.
+
+Let's now consider the general case where $n = 2^kr+1$ where $r$ is an
+odd integer.  We have
+\[1 + \cdots + \frac{1}{2n-1} =
+\sum_{i=0}^{r-1}\left(\frac{1}{2^{k+1}i+1} + \frac{1}{2^{k+1}i+3} +
+\cdots + \frac{1}{2^{k+1}(i+1)-1}\right)\]
+
+For $0\le i\le r-1$, and if we note $P_i =
+\prod_{j=0}^{2^k-1}(2^{k+1}i + 2j + 1)$,  we have
+\begin{eqnarray*}
+P_i\sum_{j=0}^{2^k-1} \frac{1}{2^{k+1}i + 2j + 1} &=&
+\sum_{s=0}^{2^k-1} \prod_{j=0\atop j\not=s}^{2^k-1} (2^{k+1}i +
+  2j + 1) \\
+&\equiv& \sum_{s=0}^{2^k-1}\left(\prod_{j=0\atop
+    j\not=s}^{2^k-1}(2j+1)+2^{k+1}i\sum_{t=0}^{2^k-1}\prod_{j=0\atop{j\not=s \atop
+      j\not=t}}^{2^k-1}(2j+1)\right)  \bmod 2^{2k+2} \\
+  &\equiv& 2^{2k}N_k + 2^{k+1}i
+  \sum_{s=0}^{2^k-1}\sum_{t=0}^{2^k-1}\frac{P_i}{(2s+1)(2t+1)} \bmod
+  2^{2k+2} \\
+  &\equiv& 2^{2k}N_k + 2^{k+1}{i}P_i \left(\sum_{s=0}^{2^k-1}
+  \frac{1}{2s+1}\right)^2 \bmod 2^{2k+2}
+\end{eqnarray*}
+
+We already know that $\sum_{s=0}^{2^k-1}\frac{1}{2s+1} = 2^{2k}\frac{a}{b}$
+where $a$ and $b$ are both odd integers.  But since
+$P_i\left(\sum_{s=0}^{2^k-1}\frac{1}{2s+1}\right)^2$ is an integer, we
+deduce that it's divisible by $2^{4k}$.  Thus finally
+\[ P_i \sum_{j=0}^{2^k-1}\frac{1}{2^{k+1}i + 2j + 1} = 2^{2k}Q_i\]
+where $Q_i$ is an odd integer.  Thus we have
+\[ 1 + \frac{1}{3} + \cdots + \frac{1}{2n-1} = 2^{2k} \sum_{i=0}^{r-1}
+\frac{Q_i}{P_i}.\]
+
+If we collect the $r$ fractions using as common denominator the
+product the $P_i$, the numerator is the sum of an odd number of odd
+terms, hence odd.
+
+Thus the greatest power of two that divides the numerator when $n =
+2^k r$ where is $r$ is odd is $2^{2k}$.
+
+\newpar{19} We have $H_0 = 0$ and $H_1 = 1$. Note $k = \lfloor \lg n
+\rfloor$ for $n>1$.  Then $2^k$ is the only integer divisible by $2^k$
+between $1$ and $n$.  And we have
+\[  2^k H_n = 1 + \sum_{i=1\atop i\not= k}^n \frac{2^k}{i}.\]
+
+Each term $\frac{2^k}{i}$ in the summation has an even numerator and
+an odd denominator.  Thus we conclude that the summation is a fraction
+which has an even numerator and an odd denominator.  Thus $2^k H_n -
+1$ is not an integer.  Hence $H_n$ is not an integer if $n>1$.
+
+\newpar{20} Suppose that $x_0$ is stricly inside the disk of
+convergence of $f$ where $f$ is absolutely convergent.  Thus for
+$0<y<1$, $f$ is also absolutely convergent on $x_0y$.  Hence
+\[  \frac{f(x_0) - f(x_0y)}{1 - y} = \sum_{k\ge1} a_k
+x_0^k\frac{1-y^k}{1-y} .\]
+
+Note $b_k = a_k \frac{1-y^k}{1-y}$ and $g(x) = \sum_{k\ge 0}b_k
+x^k$. The radius of convergence of $g$ is
+\[ \frac{1}{\limsup_{k\to+\infty} \sqrt[k]{\left|b_k\right|}} =
+\frac{1}{\limsup_{k \to +\infty} \sqrt[k]{\left|a_k\right|}}.\]
+
+Hence $f$ and $g$ have the same radius of convergence.  Thus $g$ is
+absolutely convergent for $x=x_0$ and $0 < y < 1$.  Hence we can swap the
+integral and the summation,
+\begin{eqnarray*}
+  \int_0^1 \frac{f(x_0) - f(x_0y)}{1 - y}dy &=& \sum_{k\ge 1} a_k x_0^k
+  \int_0^1 \frac{1-y^k}{1-y}dy \\
+  &=& \sum_{k\ge 1}a_kx_0^k \int_0^1 \sum_{i=0}^{k-1} y^idy \\
+  &=& \sum_{k\ge 0} a_kx_0^k H_k
+\end{eqnarray*}
+
+\newpar{21} Note $S_n = \sum_{k=1}^n \frac{H_k}{n+1-k}$.  We have
+\begin{eqnarray*}
+  S_n &=& \sum_{k=1}^n \frac{\frac{1}{k} + H_{k-1}}{n+1-k} \\
+  &=& \sum_{k=1}^n \frac{1}{k(n+1-k)} +
+  \sum_{k=1}^n\frac{H_{k-1}}{n+1-k} \\
+  &=& \frac{1}{n+1}\sum_{k=1}^n
+  \left(\frac{1}{k}+\frac{1}{n+1-k}\right) + S_{n-1} \\
+  &=& \frac{2H_n}{n+1} + S_{n-1}
+\end{eqnarray*}
+
+Hence
+\begin{eqnarray*}
+  S_n &=& 2 \sum_{k=1}^n \frac{H_k}{k+1} \\
+  &=& {H_{n+1}}^2 - H_{n+1}^{(2)}
+\end{eqnarray*}
+
+The last equality comes from exercise \textbf{14.}
+
+\newpar{22} We have
+\begin{eqnarray*}
+  \sum_{k=0}^n H_k H_{n-k} &=& \sum_{k=1}^{n-1}H_kH_{n-k} \\
+  &=& \sum_{k=1}^{n-1} \sum_{i=1}^{n-k}\frac{H_k}{i} \\
+  &=& \sum_{i=1}^{n-1} \frac{1}{i}\sum_{k=1}^{n-i}H_k
+\end{eqnarray*}
+
+We have already seen in exercise \textbf{15.} that $\sum_{k=1}^n H_k =
+(n+1)H_n - n$.  Hence using the result of exercise \textbf{22.}, we have
+\begin{eqnarray*}
+  \sum_{k=0}^n H_k H_{n-k} &=&
+  \sum_{i=1}^{n-1}\frac{(n-i+1)H_{n-i}-n+i}{i} \\
+  &=& (n+1) \sum_{i=1}^{n-1}\frac{H_{n-i}}{i} -
+  \sum_{i=1}^{n-1}H_{n-i} - nH_{n-1} + n - 1 \\
+  &=& (n+1)({H_n}^2 - H_n^{(2)}) - (nH_{n-1} - n + 1) - nH_n + n
+\\
+&=& (n+1)({H_n}^2 - H_n^{(2)}) - 2nH_n + 2n
+\end{eqnarray*}
+
+\newpar{23} Since we have $\Gamma(x+1) = x\Gamma(x)$, we then deduce
+that
+\[ \Gamma'(x+1) = \Gamma(x) + x\Gamma'(x).\]
+Hence
+\[ \frac{\Gamma'(x+1)}{\Gamma(x+1)} = \frac{1}{x} +
+\frac{\Gamma'(x)}{\Gamma(x)}.\]
+Thus for an integer $n$
+\[ H_n = -\frac{\Gamma'(1)}{\Gamma(1)} +
+\frac{\Gamma'(n+1)}{\Gamma(n+1)} = \gamma +
+\frac{\Gamma'(n+1)}{\Gamma(n+1)}.\]
+So we can get a natural generalization of $H_n$ to noninteger values
+of $n$.
+
+\newpar{24}  Note
+\[\Gamma_n(x) = \frac{n^x n!}{x(x+1)\cdots(x+n)}.\]
+We have $\Gamma(x) = \lim_{n \to +\infty} \Gamma_n(x)$.  But on the
+other hand
+\begin{eqnarray*}
+  \Gamma_n(x) &=& \frac{e^{x\ln n}}{x} \prod_{k=1}^n \frac{k}{x+k} \\
+  &=& \frac{e^{x\left(H_n - \gamma +
+      o\left(\frac{1}{n}\right)\right)}}{x} \prod_{k=1}^n \left(1 +
+  \frac{x}{k}\right)^{-1}\\
+  &=& \frac{e^{x\left(-\gamma + o\left(\frac{1}{n}\right)\right)}}{x}
+  \prod_{k=1}^n e^{\frac{x}{k}}\left(1 + \frac{x}{k}\right)^{-1}
+\end{eqnarray*}
+Hence by taking the limit when $n \to +\infty$, we have
+\[\Gamma(x) = \frac{e^{-\gamma x}}{x} \prod_{k\ge 1} e^{\frac{x}{k}}
+\left(1 + \frac{x}{k}\right)^{-1}.\]
+\end{document}
