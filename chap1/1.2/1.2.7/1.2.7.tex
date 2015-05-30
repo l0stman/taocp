@@ -301,17 +301,17 @@ And for $0 \le s \le 2^k -1$, we have
   2^{2k+3}\\
   &\equiv& (2^{k+2} - 2s -1) \prod_{i=0\atop {i \not= s \atop i \not=
       2^k - s -1}}^{2^k-1} (2i+1) \bmod 2^{2k+3} \\
-  &\equiv& \left(2^k\prod_{i=0\atop {i \not= s \atop i \not=
+  &\equiv& \left(2^{k+1}\prod_{i=0\atop {i \not= s \atop i \not=
       2^k - s -1}}^{2^k-1} (2i+1) + \prod_{i=0\atop i\not=
     s}^{2^k-1}(2i+1)\right) \bmod 2^{2k+3}
 \end{eqnarray*}
 
-But given that $\frac{1}{2s+1} + \frac{1}{2^k - 2s - 1} =
-\frac{2^k}{(2s+1)(2^k-2s-1)}$, we have
+But given that $\frac{1}{2s+1} + \frac{1}{2^{k+1} - 2s - 1} =
+\frac{2^{k+1}}{(2s+1)(2^{k+1}-2s-1)}$, we have
 \begin{eqnarray*}
-2^k\prod_{i=0\atop {i \not= s \atop i \not=
+2^{k+1}\prod_{i=0\atop {i \not= s \atop i \not=
       2^k - s -1}}^{2^k-1} (2i+1) &=& \prod_{i=0}^{2^k-1}(2i+1)\times
-\frac{2^k}{(2s+1)(2^k-2s-1)} \\
+\frac{2^{k+1}}{(2s+1)(2^{k+1}-2s-1)} \\
 &=& \prod_{i=0\atop i\not= s}^{2^k-1}(2i+1) + \prod_{i=0\atop i\not= 2^k-s-1}^{2^k-1}(2i+1)
 \end{eqnarray*}
 
